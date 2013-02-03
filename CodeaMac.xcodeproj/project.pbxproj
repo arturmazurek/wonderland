@@ -16,6 +16,8 @@
 		75C139CA16BE949A00F81C99 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75C139C916BE949A00F81C99 /* CoreGraphics.framework */; };
 		75C139CC16BE94A300F81C99 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75C139CB16BE94A300F81C99 /* CoreVideo.framework */; };
 		75C139CE16BE94AA00F81C99 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75C139CD16BE94AA00F81C99 /* OpenGL.framework */; };
+		75C139E116BE97CC00F81C99 /* cdecode.c in Sources */ = {isa = PBXBuildFile; fileRef = 75C139DF16BE97CC00F81C99 /* cdecode.c */; };
+		75C139E216BE97CC00F81C99 /* cencode.c in Sources */ = {isa = PBXBuildFile; fileRef = 75C139E016BE97CC00F81C99 /* cencode.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,12 @@
 		75C139C916BE949A00F81C99 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		75C139CB16BE94A300F81C99 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		75C139CD16BE94AA00F81C99 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		75C139DA16BE97CC00F81C99 /* cdecode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cdecode.h; sourceTree = "<group>"; };
+		75C139DB16BE97CC00F81C99 /* cencode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cencode.h; sourceTree = "<group>"; };
+		75C139DC16BE97CC00F81C99 /* decode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = decode.h; sourceTree = "<group>"; };
+		75C139DD16BE97CC00F81C99 /* encode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = encode.h; sourceTree = "<group>"; };
+		75C139DF16BE97CC00F81C99 /* cdecode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cdecode.c; sourceTree = "<group>"; };
+		75C139E016BE97CC00F81C99 /* cencode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cencode.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +64,7 @@
 		75C1399716BE91E800F81C99 = {
 			isa = PBXGroup;
 			children = (
+				75C139CF16BE973700F81C99 /* External */,
 				75C139CD16BE94AA00F81C99 /* OpenGL.framework */,
 				75C139CB16BE94A300F81C99 /* CoreVideo.framework */,
 				75C139C916BE949A00F81C99 /* CoreGraphics.framework */,
@@ -114,6 +123,52 @@
 				75C139B416BE91E900F81C99 /* CodeaMac-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		75C139CF16BE973700F81C99 /* External */ = {
+			isa = PBXGroup;
+			children = (
+				75C139D716BE97CC00F81C99 /* libb64 */,
+			);
+			name = External;
+			sourceTree = "<group>";
+		};
+		75C139D716BE97CC00F81C99 /* libb64 */ = {
+			isa = PBXGroup;
+			children = (
+				75C139D816BE97CC00F81C99 /* include */,
+				75C139DE16BE97CC00F81C99 /* src */,
+			);
+			name = libb64;
+			path = External/libb64;
+			sourceTree = "<group>";
+		};
+		75C139D816BE97CC00F81C99 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				75C139D916BE97CC00F81C99 /* b64 */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		75C139D916BE97CC00F81C99 /* b64 */ = {
+			isa = PBXGroup;
+			children = (
+				75C139DA16BE97CC00F81C99 /* cdecode.h */,
+				75C139DB16BE97CC00F81C99 /* cencode.h */,
+				75C139DC16BE97CC00F81C99 /* decode.h */,
+				75C139DD16BE97CC00F81C99 /* encode.h */,
+			);
+			path = b64;
+			sourceTree = "<group>";
+		};
+		75C139DE16BE97CC00F81C99 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				75C139DF16BE97CC00F81C99 /* cdecode.c */,
+				75C139E016BE97CC00F81C99 /* cencode.c */,
+			);
+			path = src;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,6 +237,8 @@
 				75C139B316BE91E900F81C99 /* main.m in Sources */,
 				75C139C516BE927300F81C99 /* MainController.m in Sources */,
 				75C139C816BE92AD00F81C99 /* OpenGLView.m in Sources */,
+				75C139E116BE97CC00F81C99 /* cdecode.c in Sources */,
+				75C139E216BE97CC00F81C99 /* cencode.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
