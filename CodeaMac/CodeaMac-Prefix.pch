@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'CodeaMac' target in the 'CodeaMac' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif
