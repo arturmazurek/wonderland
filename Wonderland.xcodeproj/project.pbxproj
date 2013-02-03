@@ -98,15 +98,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		75C139A216BE91E900F81C99 /* CodeaMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeaMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		75C139A216BE91E900F81C99 /* Wonderland.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wonderland.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75C139A616BE91E900F81C99 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		75C139A916BE91E900F81C99 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		75C139AA16BE91E900F81C99 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		75C139AB16BE91E900F81C99 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		75C139AE16BE91E900F81C99 /* CodeaMac-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CodeaMac-Info.plist"; sourceTree = "<group>"; };
+		75C139AE16BE91E900F81C99 /* Wonderland-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Wonderland-Info.plist"; sourceTree = "<group>"; };
 		75C139B016BE91E900F81C99 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		75C139B216BE91E900F81C99 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		75C139B416BE91E900F81C99 /* CodeaMac-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CodeaMac-Prefix.pch"; sourceTree = "<group>"; };
+		75C139B416BE91E900F81C99 /* Wonderland-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Wonderland-Prefix.pch"; sourceTree = "<group>"; };
 		75C139BC16BE91EA00F81C99 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		75C139C316BE927300F81C99 /* MainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainController.h; sourceTree = "<group>"; };
 		75C139C416BE927300F81C99 /* MainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainController.m; sourceTree = "<group>"; };
@@ -510,10 +510,7 @@
 			isa = PBXGroup;
 			children = (
 				75C139CF16BE973700F81C99 /* External */,
-				75C139CD16BE94AA00F81C99 /* OpenGL.framework */,
-				75C139CB16BE94A300F81C99 /* CoreVideo.framework */,
-				75C139C916BE949A00F81C99 /* CoreGraphics.framework */,
-				75C139AC16BE91E900F81C99 /* CodeaMac */,
+				75C139AC16BE91E900F81C99 /* WonderlandMac */,
 				75C139A516BE91E900F81C99 /* Frameworks */,
 				75C139A316BE91E900F81C99 /* Products */,
 			);
@@ -522,7 +519,7 @@
 		75C139A316BE91E900F81C99 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				75C139A216BE91E900F81C99 /* CodeaMac.app */,
+				75C139A216BE91E900F81C99 /* Wonderland.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -530,6 +527,9 @@
 		75C139A516BE91E900F81C99 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				75C139CD16BE94AA00F81C99 /* OpenGL.framework */,
+				75C139CB16BE94A300F81C99 /* CoreVideo.framework */,
+				75C139C916BE949A00F81C99 /* CoreGraphics.framework */,
 				75C139A616BE91E900F81C99 /* Cocoa.framework */,
 				75C139A816BE91E900F81C99 /* Other Frameworks */,
 			);
@@ -546,7 +546,7 @@
 			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
-		75C139AC16BE91E900F81C99 /* CodeaMac */ = {
+		75C139AC16BE91E900F81C99 /* WonderlandMac */ = {
 			isa = PBXGroup;
 			children = (
 				75C139BB16BE91EA00F81C99 /* MainMenu.xib */,
@@ -556,16 +556,16 @@
 				75C139C616BE92AD00F81C99 /* OpenGLView.h */,
 				75C139C716BE92AD00F81C99 /* OpenGLView.m */,
 			);
-			path = CodeaMac;
+			path = WonderlandMac;
 			sourceTree = "<group>";
 		};
 		75C139AD16BE91E900F81C99 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				75C139AE16BE91E900F81C99 /* CodeaMac-Info.plist */,
+				75C139AE16BE91E900F81C99 /* Wonderland-Info.plist */,
 				75C139AF16BE91E900F81C99 /* InfoPlist.strings */,
 				75C139B216BE91E900F81C99 /* main.m */,
-				75C139B416BE91E900F81C99 /* CodeaMac-Prefix.pch */,
+				75C139B416BE91E900F81C99 /* Wonderland-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1118,9 +1118,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		75C139A116BE91E900F81C99 /* CodeaMac */ = {
+		75C139A116BE91E900F81C99 /* Wonderland */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 75C139C016BE91EA00F81C99 /* Build configuration list for PBXNativeTarget "CodeaMac" */;
+			buildConfigurationList = 75C139C016BE91EA00F81C99 /* Build configuration list for PBXNativeTarget "Wonderland" */;
 			buildPhases = (
 				75C1399E16BE91E900F81C99 /* Sources */,
 				75C1399F16BE91E900F81C99 /* Frameworks */,
@@ -1130,9 +1130,9 @@
 			);
 			dependencies = (
 			);
-			name = CodeaMac;
+			name = Wonderland;
 			productName = CodeaMac;
-			productReference = 75C139A216BE91E900F81C99 /* CodeaMac.app */;
+			productReference = 75C139A216BE91E900F81C99 /* Wonderland.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1144,7 +1144,7 @@
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "Artur Mazurek";
 			};
-			buildConfigurationList = 75C1399C16BE91E900F81C99 /* Build configuration list for PBXProject "CodeaMac" */;
+			buildConfigurationList = 75C1399C16BE91E900F81C99 /* Build configuration list for PBXProject "Wonderland" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1156,7 +1156,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				75C139A116BE91E900F81C99 /* CodeaMac */,
+				75C139A116BE91E900F81C99 /* Wonderland */,
 			);
 		};
 /* End PBXProject section */
@@ -1341,10 +1341,10 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "CodeaMac/CodeaMac-Prefix.pch";
+				GCC_PREFIX_HEADER = "WonderlandMac/Wonderland-Prefix.pch";
 				HEADER_SEARCH_PATHS = External;
-				INFOPLIST_FILE = "CodeaMac/CodeaMac-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "WonderlandMac/Wonderland-Info.plist";
+				PRODUCT_NAME = Wonderland;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1354,10 +1354,10 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "CodeaMac/CodeaMac-Prefix.pch";
+				GCC_PREFIX_HEADER = "WonderlandMac/Wonderland-Prefix.pch";
 				HEADER_SEARCH_PATHS = External;
-				INFOPLIST_FILE = "CodeaMac/CodeaMac-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "WonderlandMac/Wonderland-Info.plist";
+				PRODUCT_NAME = Wonderland;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1365,7 +1365,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		75C1399C16BE91E900F81C99 /* Build configuration list for PBXProject "CodeaMac" */ = {
+		75C1399C16BE91E900F81C99 /* Build configuration list for PBXProject "Wonderland" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				75C139BE16BE91EA00F81C99 /* Debug */,
@@ -1374,13 +1374,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		75C139C016BE91EA00F81C99 /* Build configuration list for PBXNativeTarget "CodeaMac" */ = {
+		75C139C016BE91EA00F81C99 /* Build configuration list for PBXNativeTarget "Wonderland" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				75C139C116BE91EA00F81C99 /* Debug */,
 				75C139C216BE91EA00F81C99 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

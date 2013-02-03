@@ -1,0 +1,9 @@
+//
+// Prefix header for all source files of the 'Wonderland' target in the 'CodeWonderlandaMac' project
+//
+
+#ifdef __OBJC__
+    #if TARGET_OS_MAC
+        #import <Cocoa/Cocoa.h>
+    #endif
+#endif
