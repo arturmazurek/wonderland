@@ -9,6 +9,8 @@
 #ifndef __Wonderland__Renderer__
 #define __Wonderland__Renderer__
 
+#include "Math/Vector.h"
+
 #include <iostream>
 
 #endif /* defined(__Wonderland__Renderer__) */
