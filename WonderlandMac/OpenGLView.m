@@ -74,6 +74,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 		kCGLPFADoubleBuffer,
 		kCGLPFAColorSize, 24,
 		kCGLPFADepthSize, 16,
+        kCGLPFAOpenGLProfile, kCGLOGLPVersion_3_2_Core,
 		0
     };
     

@@ -95,6 +95,7 @@
 		75C13AD016BE997700F81C99 /* lvm.c in Sources */ = {isa = PBXBuildFile; fileRef = 75C13AB016BE997700F81C99 /* lvm.c */; };
 		75C13AD116BE997700F81C99 /* lzio.c in Sources */ = {isa = PBXBuildFile; fileRef = 75C13AB216BE997700F81C99 /* lzio.c */; };
 		75C13AD216BE997700F81C99 /* print.c in Sources */ = {isa = PBXBuildFile; fileRef = 75C13AB416BE997700F81C99 /* print.c */; };
+		75C13C9B16BEA11B00F81C99 /* Renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 75C13C9916BEA11B00F81C99 /* Renderer.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -489,6 +490,8 @@
 		75C13BAE16BE99D200F81C99 /* wrap.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = wrap.hpp; sourceTree = "<group>"; };
 		75C13BAF16BE99D200F81C99 /* wrap.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wrap.inl; sourceTree = "<group>"; };
 		75C13BB116BE99D200F81C99 /* xstream.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = xstream.hpp; sourceTree = "<group>"; };
+		75C13C9916BEA11B00F81C99 /* Renderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Renderer.cpp; path = Renderer/Renderer.cpp; sourceTree = "<group>"; };
+		75C13C9A16BEA11B00F81C99 /* Renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Renderer.h; path = Renderer/Renderer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -509,6 +512,7 @@
 		75C1399716BE91E800F81C99 = {
 			isa = PBXGroup;
 			children = (
+				75C13C9416BEA0DB00F81C99 /* Renderer */,
 				75C139CF16BE973700F81C99 /* External */,
 				75C139AC16BE91E900F81C99 /* WonderlandMac */,
 				75C139A516BE91E900F81C99 /* Frameworks */,
@@ -1115,6 +1119,15 @@
 			path = virtrev;
 			sourceTree = "<group>";
 		};
+		75C13C9416BEA0DB00F81C99 /* Renderer */ = {
+			isa = PBXGroup;
+			children = (
+				75C13C9916BEA11B00F81C99 /* Renderer.cpp */,
+				75C13C9A16BEA11B00F81C99 /* Renderer.h */,
+			);
+			name = Renderer;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1260,6 +1273,7 @@
 				75C13AD016BE997700F81C99 /* lvm.c in Sources */,
 				75C13AD116BE997700F81C99 /* lzio.c in Sources */,
 				75C13AD216BE997700F81C99 /* print.c in Sources */,
+				75C13C9B16BEA11B00F81C99 /* Renderer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
