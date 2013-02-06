@@ -10,6 +10,7 @@
 #define Wonderland_Vector_h
 
 #include <cmath>
+#include <limits>
 
 struct Vector {
     float x, y, z;
@@ -84,9 +85,9 @@ static inline Vector operator/(const Vector& a, float k) {
     return a * (1.f / k);
 }
     
-static inline float normalized(const Vector& a) {
+static inline Vector normalized(const Vector& a) {
     Vector result(a);
-    return a.normalize();
+    return result.normalize();
 }
     
 static inline float dot(const Vector& a, const Vector& b) {
@@ -99,6 +100,11 @@ static inline Vector cross(const Vector& a, const Vector& b) {
     result.y = a.z*b.x - a.x*b.z;
     result.z = a.x*b.y - a.y*b.x;
     return result;
+}
+    
+static inline bool equal(const Vector& a, const Vector& b, float epsilon = std::numeric_limits<float>::epsilon()) {
+    using namespace std;
+    return fabsf(a.x-b.x) <= epsilon && fabsf(a.y-b.y) <= epsilon && fabsf(a.z-b.z) <= epsilon;
 }
 
 #endif

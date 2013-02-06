@@ -98,6 +98,7 @@
 
 /* Begin PBXFileReference section */
 		75A8217816C2F64C00C2E102 /* Vector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Vector.h; path = Math/Vector.h; sourceTree = "<group>"; };
+		75A8217916C2FC6B00C2E102 /* Matrix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Matrix.h; path = Math/Matrix.h; sourceTree = "<group>"; };
 		75C139A216BE91E900F81C99 /* Wonderland.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wonderland.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75C139A616BE91E900F81C99 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		75C139A916BE91E900F81C99 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -289,6 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				75A8217816C2F64C00C2E102 /* Vector.h */,
+				75A8217916C2FC6B00C2E102 /* Matrix.h */,
 			);
 			name = Math;
 			sourceTree = "<group>";
