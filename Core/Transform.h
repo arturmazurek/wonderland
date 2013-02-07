@@ -10,20 +10,38 @@
 #define __Wonderland__Transform__
 
 #include "Math/Matrix.h"
+#include "Math/Vector.h"
 
 class Transform {
 public:
-    Transform();
+    Transform(Transform* parent = nullptr);
     ~Transform();
     
-    Vector translation() const;
-    void setTranslation(const Vector& v);
+    const Vector& pos() const;
+    void setPos(const Vector& pos);
     
     float scale() const;
+    void setScale(float s);
+    
+    float scaleX() const;
+    float scaleY() const;
+    float scaleZ() const;
+    
+    void setScaleX(float sx);
+    void setScaleY(float sy);
+    void setScaleZ(float sz);
+    
+    void updateTransforms();
     
 private:
+    void registerChild(Transform* child);
+    
+private:
+    bool        mDirty;
     Matrix      mFrame;
     Transform*  mParent;
+    Vector      mPosition;
+    Vector      mScale;
 };
 
 #endif /* defined(__Wonderland__Transform__) */

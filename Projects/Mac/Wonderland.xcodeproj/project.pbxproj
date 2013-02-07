@@ -265,6 +265,8 @@
 		6D36E0A616C415DC00BEBCCC /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameObject.h; path = ../../Core/GameObject.h; sourceTree = "<group>"; };
 		6D36E0A816C4160300BEBCCC /* Transform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Transform.cpp; path = ../../Core/Transform.cpp; sourceTree = "<group>"; };
 		6D36E0A916C4160300BEBCCC /* Transform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Transform.h; path = ../../Core/Transform.h; sourceTree = "<group>"; };
+		757C457516C443B000487778 /* List.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = List.h; path = Util/List.h; sourceTree = "<group>"; };
+		757C457716C444C900487778 /* Log.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Log.h; path = ../../Util/Log.h; sourceTree = "<group>"; };
 		75A8217816C2F64C00C2E102 /* Vector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Vector.h; sourceTree = "<group>"; };
 		75A8217916C2FC6B00C2E102 /* Matrix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Matrix.h; sourceTree = "<group>"; };
 		75C139A216BE91E900F81C99 /* Wonderland.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wonderland.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -552,6 +554,22 @@
 			name = Core;
 			sourceTree = "<group>";
 		};
+		757C457316C4439200487778 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				757C457516C443B000487778 /* List.h */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
+		757C457616C444AF00487778 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				757C457716C444C900487778 /* Log.h */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
 		75A8217716C2F61A00C2E102 /* Math */ = {
 			isa = PBXGroup;
 			children = (
@@ -565,6 +583,7 @@
 		75C1399716BE91E800F81C99 = {
 			isa = PBXGroup;
 			children = (
+				757C457616C444AF00487778 /* Util */,
 				6D36E0A416C415CA00BEBCCC /* Core */,
 				75A8217716C2F61A00C2E102 /* Math */,
 				75C13C9416BEA0DB00F81C99 /* Renderer */,
@@ -632,6 +651,7 @@
 		75C139CF16BE973700F81C99 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				757C457316C4439200487778 /* Util */,
 				6D36DF8516C3F2CA00BEBCCC /* Box2D */,
 				6D36DFEF16C3F2CA00BEBCCC /* Lua */,
 			);

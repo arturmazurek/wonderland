@@ -2,3 +2,4 @@
 Wonderland.xcodeproj/project.xcworkspace/
 Wonderland.xcodeproj/xcuserdata/
 *.DS_Store
+*xcuserdata*
