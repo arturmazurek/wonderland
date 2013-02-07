@@ -103,6 +103,29 @@ struct Matrix {
         return result;
     }
     
+    static Matrix createScale(float s) {
+        return createScale(s, s, s);
+    }
+    
+    static Matrix createScale(float sx, float sy, float sz) {
+        Matrix result;
+        result.m[index(0, 0)] = sx;
+        result.m[index(1, 1)] = sy;
+        result.m[index(2, 2)] = sz;
+        result.m[index(3, 3)] = 1;
+        
+        return result;
+    }
+    
+    static Matrix createTranslation(const Vector& v) {
+        Matrix result = createIdentity();
+        result.m[index(0, 3)] = v.x;
+        result.m[index(1, 3)] = v.y;
+        result.m[index(2, 3)] = v.z;
+        
+        return result;
+    }
+    
     static Matrix createPerspective(float fovy, float aspect, float nearZ, float farZ) {
         Matrix result;
         
