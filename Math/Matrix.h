@@ -37,8 +37,18 @@ struct Matrix {
         return (*this) *= k;
     }
     
-    static inline int index(int i, int j) {
+    static int index(int i, int j) {
         return 4*j + i;
+    }
+    
+    Vector getColumn(int j) {
+        return Vector(m[index(0, j)], m[index(1, j)], m[index(2, j)]);
+    }
+    
+    void setColumn(int j, const Vector& v) {
+        m[index(0, j)] = v.x;
+        m[index(1, j)] = v.y;
+        m[index(2, j)] = v.z;
     }
     
     Matrix& setTranslation(const Vector& v) {
@@ -55,7 +65,36 @@ struct Matrix {
         return *this;
     }
     
-    static Matrix identity() {
+    Matrix& setScale(float s) {
+        return setScale(s, s, s);
+    }
+    
+    Matrix& setScale(float sx, float sy, float sz) {
+        float scales[] = {sx, sy, sz};
+        
+        for(int i = 0; i < 3; ++i) {
+            Vector temp = getColumn(i);
+            temp.normalize();
+            temp *= scales[i];
+            setColumn(i, temp);
+        }
+        
+        return *this;
+    }
+    
+    Matrix& scale(float s) {
+        return scale(s, s, s);
+    }
+    
+    Matrix& scale(float sx, float sy, float sz) {
+        m[index(0, 0)] *= sx; m[index(1, 0)] *= sx; m[index(2, 0)] *= sx;
+        m[index(0, 1)] *= sy; m[index(1, 1)] *= sy; m[index(2, 1)] *= sy;
+        m[index(0, 2)] *= sz; m[index(1, 2)] *= sz; m[index(2, 2)] *= sz;
+        
+        return *this;
+    }
+    
+    static Matrix createIdentity() {
         Matrix result;
         result.m[0] = 1;
         result.m[index(1, 1)] = 1;
@@ -64,7 +103,7 @@ struct Matrix {
         return result;
     }
     
-    static Matrix perspective(float fovy, float aspect, float nearZ, float farZ) {
+    static Matrix createPerspective(float fovy, float aspect, float nearZ, float farZ) {
         Matrix result;
         
         float f = 1.f / std::tanf( (M_PI * fovy /180) * 0.5f);
@@ -77,8 +116,8 @@ struct Matrix {
         return result;
     }
     
-    static Matrix ortho(float width, float height, float near, float far) {
-        Matrix result = identity();
+    static Matrix createOrtho(float width, float height, float near, float far) {
+        Matrix result = createIdentity();
         
         result.m[index(0, 0)] = 2.0f / width;
         result.m[index(1, 1)] = 2.0f / height;
