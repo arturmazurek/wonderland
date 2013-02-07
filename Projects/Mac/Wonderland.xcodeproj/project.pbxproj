@@ -89,6 +89,8 @@
 		6D36E07F16C3FBCF00BEBCCC /* Vertex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D36E07D16C3FBCF00BEBCCC /* Vertex.cpp */; };
 		6D36E08216C3FC7800BEBCCC /* Surface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D36E08016C3FC7800BEBCCC /* Surface.cpp */; };
 		6D36E0A316C413FC00BEBCCC /* RendererGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D36E0A116C413FC00BEBCCC /* RendererGL.cpp */; };
+		6D36E0A716C415DC00BEBCCC /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D36E0A516C415DB00BEBCCC /* GameObject.cpp */; };
+		6D36E0AA16C4160300BEBCCC /* Transform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D36E0A816C4160300BEBCCC /* Transform.cpp */; };
 		75C139A716BE91E900F81C99 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75C139A616BE91E900F81C99 /* Cocoa.framework */; };
 		75C139B116BE91E900F81C99 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 75C139AF16BE91E900F81C99 /* InfoPlist.strings */; };
 		75C139B316BE91E900F81C99 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C139B216BE91E900F81C99 /* main.m */; };
@@ -259,6 +261,10 @@
 		6D36E08116C3FC7800BEBCCC /* Surface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Surface.h; sourceTree = "<group>"; };
 		6D36E0A116C413FC00BEBCCC /* RendererGL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RendererGL.cpp; path = GL/RendererGL.cpp; sourceTree = "<group>"; };
 		6D36E0A216C413FC00BEBCCC /* RendererGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RendererGL.h; path = GL/RendererGL.h; sourceTree = "<group>"; };
+		6D36E0A516C415DB00BEBCCC /* GameObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameObject.cpp; path = ../../Core/GameObject.cpp; sourceTree = "<group>"; };
+		6D36E0A616C415DC00BEBCCC /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameObject.h; path = ../../Core/GameObject.h; sourceTree = "<group>"; };
+		6D36E0A816C4160300BEBCCC /* Transform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Transform.cpp; path = ../../Core/Transform.cpp; sourceTree = "<group>"; };
+		6D36E0A916C4160300BEBCCC /* Transform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Transform.h; path = ../../Core/Transform.h; sourceTree = "<group>"; };
 		75A8217816C2F64C00C2E102 /* Vector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Vector.h; sourceTree = "<group>"; };
 		75A8217916C2FC6B00C2E102 /* Matrix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Matrix.h; sourceTree = "<group>"; };
 		75C139A216BE91E900F81C99 /* Wonderland.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wonderland.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -535,6 +541,17 @@
 			name = GL;
 			sourceTree = "<group>";
 		};
+		6D36E0A416C415CA00BEBCCC /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				6D36E0A516C415DB00BEBCCC /* GameObject.cpp */,
+				6D36E0A616C415DC00BEBCCC /* GameObject.h */,
+				6D36E0A816C4160300BEBCCC /* Transform.cpp */,
+				6D36E0A916C4160300BEBCCC /* Transform.h */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
 		75A8217716C2F61A00C2E102 /* Math */ = {
 			isa = PBXGroup;
 			children = (
@@ -548,6 +565,7 @@
 		75C1399716BE91E800F81C99 = {
 			isa = PBXGroup;
 			children = (
+				6D36E0A416C415CA00BEBCCC /* Core */,
 				75A8217716C2F61A00C2E102 /* Math */,
 				75C13C9416BEA0DB00F81C99 /* Renderer */,
 				75C139CF16BE973700F81C99 /* External */,
@@ -785,6 +803,8 @@
 				6D36E07F16C3FBCF00BEBCCC /* Vertex.cpp in Sources */,
 				6D36E08216C3FC7800BEBCCC /* Surface.cpp in Sources */,
 				6D36E0A316C413FC00BEBCCC /* RendererGL.cpp in Sources */,
+				6D36E0A716C415DC00BEBCCC /* GameObject.cpp in Sources */,
+				6D36E0AA16C4160300BEBCCC /* Transform.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
