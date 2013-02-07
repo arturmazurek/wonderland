@@ -12,6 +12,7 @@
 #include "Math/Vector.h"
 #include "Math/Matrix.h"
 
-#include <iostream>
+#include "Vertex.h"
+#include "Surface.h"
 
 #endif /* defined(__Wonderland__Renderer__) */
