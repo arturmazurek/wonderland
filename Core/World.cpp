@@ -7,3 +7,15 @@
 //
 
 #include "World.h"
+
+World::World() {
+    
+}
+
+World::~World() {
+    mObjects.DeleteAll();
+}
+
+void World::addObject(GameObject* obj) {
+    
+}

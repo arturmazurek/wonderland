@@ -9,17 +9,29 @@
 #ifndef __Wonderland__GameObject__
 #define __Wonderland__GameObject__
 
-#include "Transform.h"
+#include "SceneNode.h"
 
-class GameObject {
+#include "Util/List.h"
+
+class GameObject : public SceneNode {
+    friend class World;
 public:
     GameObject();
     ~GameObject();
 
     Transform& transform();
     
+    unsigned objectId() const;
+    
+    void addChild(GameObject* child);
+    void removeFromParent();
+    
 private:
-    Transform mTransform;
+    static unsigned         sIdCounter;
+    
+    unsigned                mId;
+    
+    LIST_LINK(GameObject)   mObjectsLink;
 };
 
 #endif /* defined(__Wonderland__GameObject__) */

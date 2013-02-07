@@ -8,7 +8,9 @@
 
 #include "GameObject.h"
 
-GameObject::GameObject() {
+unsigned GameObject::sIdCounter(0);
+
+GameObject::GameObject() : mId(sIdCounter++) {
     
 }
 
@@ -18,4 +20,17 @@ GameObject::~GameObject() {
 
 Transform& GameObject::transform() {
     return mTransform;
+}
+
+unsigned GameObject::objectId() const {
+    return mId;
+}
+
+void GameObject::addChild(GameObject* child) {
+    registerChild(child);
+    child->mDirty = true;
+}
+
+void GameObject::removeFromParent() {
+    
 }
