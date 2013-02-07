@@ -12,6 +12,8 @@
 #include "Math/Matrix.h"
 #include "Math/Vector.h"
 
+#include "Util/List.h"
+
 class Transform {
 public:
     Transform(Transform* parent = nullptr);
@@ -31,16 +33,22 @@ public:
     void setScaleY(float sy);
     void setScaleZ(float sz);
     
+    void addChild(Transform* child);
+    void removeFromParent();
+    
     void updateTransforms();
     
 private:
     void registerChild(Transform* child);
+    void unregisterChild(Transform* child);
     
 private:
+    Transform*  mChildren;
     bool        mDirty;
     Matrix      mFrame;
     Transform*  mParent;
     Vector      mPosition;
+    Transform*  mSiblings;
     Vector      mScale;
 };
 

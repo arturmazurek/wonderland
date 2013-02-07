@@ -16,6 +16,8 @@ public:
     GameObject();
     ~GameObject();
 
+    Transform& transform();
+    
 private:
     Transform mTransform;
 };

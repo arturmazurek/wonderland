@@ -7,3 +7,15 @@
 //
 
 #include "GameObject.h"
+
+GameObject::GameObject() {
+    
+}
+
+GameObject::~GameObject() {
+    
+}
+
+Transform& GameObject::transform() {
+    return mTransform;
+}

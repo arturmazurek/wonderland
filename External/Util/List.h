@@ -76,11 +76,11 @@
  ***/
 
 
-#ifdef LIST_H
-#error "Header included more than once"
-#endif
+#ifndef LIST_H
 #define LIST_H
 
+#include <cassert>
+#define ASSERT assert
 
 /******************************************************************************
  *
@@ -307,7 +307,7 @@ private:
     
     TList (size_t offset);
     TLink<T> * GetLinkFromNode (const T * node) const;
-    template<class T, size_t offset> friend class TListDeclare;
+    template<class U, size_t offset> friend class TListDeclare;
     
     // Hide copy-constructor and assignment operator
     TList (const TList &);
@@ -487,3 +487,4 @@ TListDeclare<T, offset>::TListDeclare () : TList<T>(offset)
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 //===================================
+#endif

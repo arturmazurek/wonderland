@@ -10,14 +10,14 @@
 
 #include "Util/Log.h"
 
-Transform::Transform(Transform* parent) : mDirty(true), mParent(parent) {
+Transform::Transform(Transform* parent) : mChildren(nullptr), mDirty(true), mParent(parent), mSiblings(nullptr) {
     if(mParent) {
-        mParent->registerChild(this);
+        mParent->addChild(this);
     }
 }
 
 Transform::~Transform() {
-    
+    removeFromParent();
 }
 
 const Vector& Transform::pos() const {
@@ -75,9 +75,43 @@ void Transform::updateTransforms() {
     
     // multiply by parent's transform
     
-    // foreach child child->updateTransforms()
+    Transform* child = mChildren;
+    while(child) {
+        child->updateTransforms();
+        child = child->mSiblings;
+    }
 }
 
 void Transform::registerChild(Transform* child) {
+    child->mSiblings = mChildren;
+    mChildren = child;
+}
+
+void Transform::unregisterChild(Transform* child) {
+    Transform* node = mChildren;
+    while(node) {
+        if(node->mSiblings == child) {
+            break;
+        }
+        node = node->mSiblings;
+    }
     
+    if(!node) {
+        LOG("Trying to unregister an unknown child 0x%p from 0x%p", child, this);
+        return;
+    }
+    
+    node->mSiblings = child->mSiblings;
+    child->mSiblings = nullptr;
+}
+
+void Transform::addChild(Transform* child) {
+    registerChild(child);
+    child->mDirty = true;
+}
+
+void Transform::removeFromParent() {
+    if(mParent) {
+        mParent->unregisterChild(this);
+    }
 }
