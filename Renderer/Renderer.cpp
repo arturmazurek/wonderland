@@ -8,9 +8,17 @@
 
 #include "Renderer.h"
 
-class Renderer {
-public:
-    static Renderer* instance();
+#include "GL/RendererGL.h"
+
+Renderer* Renderer::instance() {
+    static Renderer* renderer = new RendererGL();
+    return renderer;
+}
+
+Renderer::Renderer() {
     
-    void renderFrame();
-};
+}
+
+Renderer::~Renderer() {
+    
+}

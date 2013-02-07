@@ -88,6 +88,7 @@
 		6D36E07416C3F2CA00BEBCCC /* print.c in Sources */ = {isa = PBXBuildFile; fileRef = 6D36E02516C3F2CA00BEBCCC /* print.c */; };
 		6D36E07F16C3FBCF00BEBCCC /* Vertex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D36E07D16C3FBCF00BEBCCC /* Vertex.cpp */; };
 		6D36E08216C3FC7800BEBCCC /* Surface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D36E08016C3FC7800BEBCCC /* Surface.cpp */; };
+		6D36E0A316C413FC00BEBCCC /* RendererGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D36E0A116C413FC00BEBCCC /* RendererGL.cpp */; };
 		75C139A716BE91E900F81C99 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75C139A616BE91E900F81C99 /* Cocoa.framework */; };
 		75C139B116BE91E900F81C99 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 75C139AF16BE91E900F81C99 /* InfoPlist.strings */; };
 		75C139B316BE91E900F81C99 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C139B216BE91E900F81C99 /* main.m */; };
@@ -256,6 +257,8 @@
 		6D36E07E16C3FBCF00BEBCCC /* Vertex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vertex.h; sourceTree = "<group>"; };
 		6D36E08016C3FC7800BEBCCC /* Surface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Surface.cpp; sourceTree = "<group>"; };
 		6D36E08116C3FC7800BEBCCC /* Surface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Surface.h; sourceTree = "<group>"; };
+		6D36E0A116C413FC00BEBCCC /* RendererGL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RendererGL.cpp; path = GL/RendererGL.cpp; sourceTree = "<group>"; };
+		6D36E0A216C413FC00BEBCCC /* RendererGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RendererGL.h; path = GL/RendererGL.h; sourceTree = "<group>"; };
 		75A8217816C2F64C00C2E102 /* Vector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Vector.h; sourceTree = "<group>"; };
 		75A8217916C2FC6B00C2E102 /* Matrix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Matrix.h; sourceTree = "<group>"; };
 		75C139A216BE91E900F81C99 /* Wonderland.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wonderland.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -523,6 +526,15 @@
 			path = Lua;
 			sourceTree = "<group>";
 		};
+		6D36E0A016C413EC00BEBCCC /* GL */ = {
+			isa = PBXGroup;
+			children = (
+				6D36E0A116C413FC00BEBCCC /* RendererGL.cpp */,
+				6D36E0A216C413FC00BEBCCC /* RendererGL.h */,
+			);
+			name = GL;
+			sourceTree = "<group>";
+		};
 		75A8217716C2F61A00C2E102 /* Math */ = {
 			isa = PBXGroup;
 			children = (
@@ -612,6 +624,7 @@
 		75C13C9416BEA0DB00F81C99 /* Renderer */ = {
 			isa = PBXGroup;
 			children = (
+				6D36E0A016C413EC00BEBCCC /* GL */,
 				75C13C9916BEA11B00F81C99 /* Renderer.cpp */,
 				75C13C9A16BEA11B00F81C99 /* Renderer.h */,
 				6D36E07D16C3FBCF00BEBCCC /* Vertex.cpp */,
@@ -771,6 +784,7 @@
 				6D36E07416C3F2CA00BEBCCC /* print.c in Sources */,
 				6D36E07F16C3FBCF00BEBCCC /* Vertex.cpp in Sources */,
 				6D36E08216C3FC7800BEBCCC /* Surface.cpp in Sources */,
+				6D36E0A316C413FC00BEBCCC /* RendererGL.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

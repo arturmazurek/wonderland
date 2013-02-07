@@ -9,10 +9,19 @@
 #ifndef __Wonderland__Renderer__
 #define __Wonderland__Renderer__
 
-#include "Math/Vector.h"
-#include "Math/Matrix.h"
-
-#include "Vertex.h"
-#include "Surface.h"
+class Renderer {
+public:
+    static Renderer* instance();
+    
+    virtual void renderFrame() = 0;
+    
+protected:
+    Renderer();
+    virtual ~Renderer();
+    
+private:
+    Renderer(const Renderer&);
+    Renderer& operator=(const Renderer&);
+};
 
 #endif /* defined(__Wonderland__Renderer__) */
