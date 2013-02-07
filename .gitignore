@@ -1,5 +1,4 @@
-Projects/Mac/Wonderland.xcodeproj/project.xcworkspace/xcuserdata/arturm.xcuserdatad/UserInterfaceState.xcuserstate
+*.xcuserstate
 Wonderland.xcodeproj/project.xcworkspace/
 Wonderland.xcodeproj/xcuserdata/
-.DS_Store
-Projects/Mac/.DS_Store
+*.DS_Store
