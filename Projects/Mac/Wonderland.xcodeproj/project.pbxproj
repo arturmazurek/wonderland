@@ -93,6 +93,8 @@
 		6D36E0AA16C4160300BEBCCC /* Transform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D36E0A816C4160300BEBCCC /* Transform.cpp */; };
 		6D36E0D816C54E3A00BEBCCC /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D36E0D616C54E3A00BEBCCC /* Game.cpp */; };
 		6D36E0DB16C552A400BEBCCC /* GameClock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D36E0D916C552A400BEBCCC /* GameClock.cpp */; };
+		6D36E0DE16C557CF00BEBCCC /* StaticMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D36E0DC16C557CF00BEBCCC /* StaticMesh.cpp */; };
+		6D36E0E216C5611C00BEBCCC /* Material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D36E0E016C5611C00BEBCCC /* Material.cpp */; };
 		757C457A16C4513000487778 /* World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 757C457816C4513000487778 /* World.cpp */; };
 		757C457D16C4595100487778 /* SceneNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 757C457B16C4595100487778 /* SceneNode.cpp */; };
 		75C139A716BE91E900F81C99 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75C139A616BE91E900F81C99 /* Cocoa.framework */; };
@@ -273,6 +275,11 @@
 		6D36E0D716C54E3A00BEBCCC /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Game.h; path = ../../Game/Game.h; sourceTree = "<group>"; };
 		6D36E0D916C552A400BEBCCC /* GameClock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameClock.cpp; path = ../../Game/GameClock.cpp; sourceTree = "<group>"; };
 		6D36E0DA16C552A400BEBCCC /* GameClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameClock.h; path = ../../Game/GameClock.h; sourceTree = "<group>"; };
+		6D36E0DC16C557CF00BEBCCC /* StaticMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StaticMesh.cpp; sourceTree = "<group>"; };
+		6D36E0DD16C557CF00BEBCCC /* StaticMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticMesh.h; sourceTree = "<group>"; };
+		6D36E0DF16C5595500BEBCCC /* LinkedList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LinkedList.h; path = ../../Util/LinkedList.h; sourceTree = "<group>"; };
+		6D36E0E016C5611C00BEBCCC /* Material.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Material.cpp; sourceTree = "<group>"; };
+		6D36E0E116C5611C00BEBCCC /* Material.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Material.h; sourceTree = "<group>"; };
 		757C457516C443B000487778 /* List.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = List.h; path = Util/List.h; sourceTree = "<group>"; };
 		757C457716C444C900487778 /* Log.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Log.h; path = ../../Util/Log.h; sourceTree = "<group>"; };
 		757C457816C4513000487778 /* World.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = World.cpp; path = ../../Core/World.cpp; sourceTree = "<group>"; };
@@ -593,6 +600,7 @@
 			isa = PBXGroup;
 			children = (
 				757C457716C444C900487778 /* Log.h */,
+				6D36E0DF16C5595500BEBCCC /* LinkedList.h */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -697,6 +705,10 @@
 				6D36E07E16C3FBCF00BEBCCC /* Vertex.h */,
 				6D36E08016C3FC7800BEBCCC /* Surface.cpp */,
 				6D36E08116C3FC7800BEBCCC /* Surface.h */,
+				6D36E0DC16C557CF00BEBCCC /* StaticMesh.cpp */,
+				6D36E0DD16C557CF00BEBCCC /* StaticMesh.h */,
+				6D36E0E016C5611C00BEBCCC /* Material.cpp */,
+				6D36E0E116C5611C00BEBCCC /* Material.h */,
 			);
 			name = Renderer;
 			path = ../../Renderer;
@@ -857,6 +869,8 @@
 				757C457D16C4595100487778 /* SceneNode.cpp in Sources */,
 				6D36E0D816C54E3A00BEBCCC /* Game.cpp in Sources */,
 				6D36E0DB16C552A400BEBCCC /* GameClock.cpp in Sources */,
+				6D36E0DE16C557CF00BEBCCC /* StaticMesh.cpp in Sources */,
+				6D36E0E216C5611C00BEBCCC /* Material.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
