@@ -10,7 +10,7 @@
 
 #include "Util/Log.h"
 
-SceneNode::SceneNode() : mDirty(false), mParent(nullptr) {
+SceneNode::SceneNode() : mParent(nullptr) {
 
 }
 

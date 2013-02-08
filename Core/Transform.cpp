@@ -8,6 +8,8 @@
 
 #include "Transform.h"
 
+#include "Util/Log.h"
+
 Transform::Transform() {
 }
 
@@ -63,16 +65,21 @@ void Transform::setScaleZ(float sz) {
     mDirty = true;
 }
 
-void Transform::updateTransforms() {
+bool Transform::dirty() const {
+    return mDirty;
+}
+
+void Transform::setDirty() {
+    mDirty = true;
+}
+
+void Transform::update(Transform* parentTransform) {
     mFrame = Matrix::createIdentity();
     mFrame.setScale(mScale.x, mScale.y, mScale.z);
     mFrame.setTranslation(mPosition);
+    // also set rotation
     
-    // multiply by parent's transform
+    // multiply mFrame by parentTransform->mFrame
     
-    Transform* child = mChildren;
-    while(child) {
-        child->updateTransforms();
-        child = child->mSiblings;
-    }
+    mDirty = false;
 }

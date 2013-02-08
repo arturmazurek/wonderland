@@ -15,11 +15,7 @@ GameObject::GameObject() : mId(sIdCounter++) {
 }
 
 GameObject::~GameObject() {
-    
-}
 
-Transform& GameObject::transform() {
-    return mTransform;
 }
 
 unsigned GameObject::objectId() const {
@@ -28,9 +24,9 @@ unsigned GameObject::objectId() const {
 
 void GameObject::addChild(GameObject* child) {
     registerChild(child);
-    child->mDirty = true;
+    child->transform.setDirty();
 }
 
 void GameObject::removeFromParent() {
-    
+    mParent->unregisterChild(this);
 }

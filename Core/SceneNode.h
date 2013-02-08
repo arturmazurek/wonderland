@@ -12,20 +12,21 @@
 #include "Transform.h"
 
 class SceneNode {
+public:
+    Transform              transform;
+    
+public:
+    void registerChild(SceneNode* child);
+    void unregisterChild(SceneNode* child);
+    
 protected:
     SceneNode();
     virtual ~SceneNode();
-    
-    void registerChild(SceneNode* child);
-    void unregisterChild(SceneNode* child);
     
 protected:
     SceneNode*             mParent;
     SceneNode*             mFirstChild;
     SceneNode*             mSiblings;
-    
-    bool                   mDirty;
-    Transform              mTransform;
 };
 
 #endif /* defined(__Wonderland__SceneNode__) */

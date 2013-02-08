@@ -32,7 +32,9 @@ public:
     void setScaleZ(float sz);
     
     bool dirty() const;
-    void setDirty() const;
+    void setDirty();
+    
+    void update(Transform* parentTransform);
 private:
     bool        mDirty;
     Matrix      mFrame;

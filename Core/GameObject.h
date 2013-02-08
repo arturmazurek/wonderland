@@ -18,8 +18,6 @@ class GameObject : public SceneNode {
 public:
     GameObject();
     ~GameObject();
-
-    Transform& transform();
     
     unsigned objectId() const;
     
