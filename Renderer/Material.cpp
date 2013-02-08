@@ -15,3 +15,7 @@ Material::Material() : mShader(nullptr) {
 Material::~Material() {
     
 }
+
+Material* Material::create(const std::string& name) {
+    
+}

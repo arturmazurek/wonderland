@@ -11,8 +11,10 @@
 
 struct Vertex;
 
-// Surface owns its vertices - there should be just
-// one surface with the given vertices anyway
+/** 
+ * Surface owns its vertices - there should be just
+ * one surface with the given vertices anyway
+ */
 class Surface {
 public:
     Surface();
@@ -26,8 +28,8 @@ private:
     Surface& operator=(const Surface&);
 
 private:
-    Vertex* mVerts;
-    int mNumVerts;
+    Vertex*     mVerts;
+    int         mNumVerts;
 };
 
 #endif /* defined(__Wonderland__Surface__) */

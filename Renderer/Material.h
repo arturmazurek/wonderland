@@ -9,12 +9,21 @@
 #ifndef __Wonderland__Material__
 #define __Wonderland__Material__
 
+#include <string>
+
 class Shader;
 
+/**
+ * Material is a shader with associated parameters
+ * There is one material per surface. Each has its own instance
+ * and that allows to tweak material properies to be shown later on.
+ */
 class Material {
 public:
     Material();
     virtual ~Material();
+    
+    static Material* create(const std::string& name);
     
 private:
     Shader* mShader;
