@@ -95,6 +95,8 @@
 		6D36E0DB16C552A400BEBCCC /* GameClock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D36E0D916C552A400BEBCCC /* GameClock.cpp */; };
 		6D36E0DE16C557CF00BEBCCC /* StaticMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D36E0DC16C557CF00BEBCCC /* StaticMesh.cpp */; };
 		6D36E0E216C5611C00BEBCCC /* Material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D36E0E016C5611C00BEBCCC /* Material.cpp */; };
+		6D36E0E516C564F500BEBCCC /* ShaderGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D36E0E316C564F500BEBCCC /* ShaderGL.cpp */; };
+		6D36E0E816C5654E00BEBCCC /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D36E0E616C5654E00BEBCCC /* Shader.cpp */; };
 		757C457A16C4513000487778 /* World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 757C457816C4513000487778 /* World.cpp */; };
 		757C457D16C4595100487778 /* SceneNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 757C457B16C4595100487778 /* SceneNode.cpp */; };
 		75C139A716BE91E900F81C99 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75C139A616BE91E900F81C99 /* Cocoa.framework */; };
@@ -280,6 +282,10 @@
 		6D36E0DF16C5595500BEBCCC /* LinkedList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LinkedList.h; path = ../../Util/LinkedList.h; sourceTree = "<group>"; };
 		6D36E0E016C5611C00BEBCCC /* Material.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Material.cpp; sourceTree = "<group>"; };
 		6D36E0E116C5611C00BEBCCC /* Material.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Material.h; sourceTree = "<group>"; };
+		6D36E0E316C564F500BEBCCC /* ShaderGL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ShaderGL.cpp; path = GL/ShaderGL.cpp; sourceTree = "<group>"; };
+		6D36E0E416C564F500BEBCCC /* ShaderGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShaderGL.h; path = GL/ShaderGL.h; sourceTree = "<group>"; };
+		6D36E0E616C5654E00BEBCCC /* Shader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Shader.cpp; sourceTree = "<group>"; };
+		6D36E0E716C5654E00BEBCCC /* Shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shader.h; sourceTree = "<group>"; };
 		757C457516C443B000487778 /* List.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = List.h; path = Util/List.h; sourceTree = "<group>"; };
 		757C457716C444C900487778 /* Log.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Log.h; path = ../../Util/Log.h; sourceTree = "<group>"; };
 		757C457816C4513000487778 /* World.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = World.cpp; path = ../../Core/World.cpp; sourceTree = "<group>"; };
@@ -558,6 +564,8 @@
 			children = (
 				6D36E0A116C413FC00BEBCCC /* RendererGL.cpp */,
 				6D36E0A216C413FC00BEBCCC /* RendererGL.h */,
+				6D36E0E316C564F500BEBCCC /* ShaderGL.cpp */,
+				6D36E0E416C564F500BEBCCC /* ShaderGL.h */,
 			);
 			name = GL;
 			sourceTree = "<group>";
@@ -709,6 +717,8 @@
 				6D36E0DD16C557CF00BEBCCC /* StaticMesh.h */,
 				6D36E0E016C5611C00BEBCCC /* Material.cpp */,
 				6D36E0E116C5611C00BEBCCC /* Material.h */,
+				6D36E0E616C5654E00BEBCCC /* Shader.cpp */,
+				6D36E0E716C5654E00BEBCCC /* Shader.h */,
 			);
 			name = Renderer;
 			path = ../../Renderer;
@@ -871,6 +881,8 @@
 				6D36E0DB16C552A400BEBCCC /* GameClock.cpp in Sources */,
 				6D36E0DE16C557CF00BEBCCC /* StaticMesh.cpp in Sources */,
 				6D36E0E216C5611C00BEBCCC /* Material.cpp in Sources */,
+				6D36E0E516C564F500BEBCCC /* ShaderGL.cpp in Sources */,
+				6D36E0E816C5654E00BEBCCC /* Shader.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

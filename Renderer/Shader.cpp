@@ -1,17 +1,17 @@
 //
-//  Material.cpp
+//  Shader.cpp
 //  Wonderland
 //
 //  Created by Artur Mazurek on 08/02/2013.
 //  Copyright (c) 2013 Artur Mazurek. All rights reserved.
 //
 
-#include "Material.h"
+#include "Shader.h"
 
-Material::Material() : mShader(nullptr) {
+Shader::Shader() {
     
 }
 
-Material::~Material() {
+Shader::~Shader() {
     
 }

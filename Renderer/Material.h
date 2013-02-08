@@ -9,8 +9,15 @@
 #ifndef __Wonderland__Material__
 #define __Wonderland__Material__
 
-class Material {
+class Shader;
 
+class Material {
+public:
+    Material();
+    virtual ~Material();
+    
+private:
+    Shader* mShader;
 };
 
 #endif /* defined(__Wonderland__Material__) */
