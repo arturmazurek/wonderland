@@ -16,12 +16,13 @@ public:
     Transform              transform;
     
 public:
+    SceneNode();
+    virtual ~SceneNode();
+    
     void registerChild(SceneNode* child);
     void unregisterChild(SceneNode* child);
     
-protected:
-    SceneNode();
-    virtual ~SceneNode();
+    SceneNode* getParent();
     
 protected:
     SceneNode*             mParent;

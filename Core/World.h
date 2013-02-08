@@ -12,6 +12,7 @@
 #include "Util/List.h"
 
 #include "GameObject.h"
+#include "SceneNode.h"
 
 class World {
 public:
@@ -26,7 +27,7 @@ private:
     
 private:
     LIST_DECLARE(GameObject, mObjectsLink) mObjects;
-    Transform mRoot;
+    SceneNode mRoot;
 };
 
 #endif /* defined(__Wonderland__World__) */

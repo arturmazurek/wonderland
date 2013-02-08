@@ -8,6 +8,10 @@
 
 #include "World.h"
 
+#include "Util/Log.h"
+
+#include "SceneNode.h"
+
 World::World() {
     
 }
@@ -17,5 +21,6 @@ World::~World() {
 }
 
 void World::addObject(GameObject* obj) {
-    
+    mRoot.registerChild(obj);
+    mObjects.InsertTail(obj);
 }

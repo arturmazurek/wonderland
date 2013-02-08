@@ -8,6 +8,7 @@
 
 #include "GameObject.h"
 
+
 unsigned GameObject::sIdCounter(0);
 
 GameObject::GameObject() : mId(sIdCounter++) {

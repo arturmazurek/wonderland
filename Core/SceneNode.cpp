@@ -20,9 +20,19 @@ SceneNode::~SceneNode() {
         mFirstChild = mFirstChild->mSiblings;
         delete node;
     }
+    if(mParent) {
+        unregisterChild(this);
+    }
 }
 
 void SceneNode::registerChild(SceneNode* child) {
+    if(child->getParent()) {
+        LOG("Warning - child 0x%p given to %s already has parent 0x%p", child, __PRETTY_FUNCTION__, child->getParent());
+        child->getParent()->unregisterChild(child);
+    }
+    
+    child->mParent = this;
+    
     child->mSiblings = mFirstChild;
     mFirstChild = child;
 }
@@ -43,4 +53,8 @@ void SceneNode::unregisterChild(SceneNode* child) {
     
     node->mSiblings = child->mSiblings;
     child->mSiblings = nullptr;
+}
+
+SceneNode* SceneNode::getParent() {
+    return mParent;
 }
