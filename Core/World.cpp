@@ -24,3 +24,11 @@ void World::addObject(GameObject* obj) {
     mRoot.registerChild(obj);
     mObjects.InsertTail(obj);
 }
+
+void World::update(float timeInSeconds) {
+    GameObject* obj = mObjects.Head();
+    while(obj) {
+        obj->update(timeInSeconds);
+        obj = obj->mObjectsLink.Next();
+    }
+}

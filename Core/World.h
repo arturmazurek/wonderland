@@ -21,6 +21,8 @@ public:
     
     void addObject(GameObject* obj);
     
+    void update(float timeInSeconds);
+    
 private:
     World(const World&);
     World& operator=(const World&);

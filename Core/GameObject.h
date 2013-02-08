@@ -24,6 +24,8 @@ public:
     void addChild(GameObject* child);
     void removeFromParent();
     
+    void update(float timeInSeconds);
+    
 private:
     static unsigned         sIdCounter;
     

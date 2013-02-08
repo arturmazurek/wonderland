@@ -31,3 +31,7 @@ void GameObject::addChild(GameObject* child) {
 void GameObject::removeFromParent() {
     mParent->unregisterChild(this);
 }
+
+void GameObject::update(float timeInSeconds) {
+    
+}
