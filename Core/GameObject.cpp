@@ -32,5 +32,8 @@ void GameObject::removeFromParent() {
 }
 
 void GameObject::update(float timeInSeconds) {
-    
+    ComponentBase* component = mComponents.Head();
+    while(component) {
+        component->update(timeInSeconds, this);
+    }
 }

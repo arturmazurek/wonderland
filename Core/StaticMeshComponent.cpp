@@ -17,3 +17,7 @@ StaticMeshComponent::StaticMeshComponent() {
 StaticMeshComponent::~StaticMeshComponent() {
     
 }
+
+void StaticMeshComponent::update(float dt, GameObject* owner) {
+    
+}

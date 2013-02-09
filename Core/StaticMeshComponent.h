@@ -18,6 +18,8 @@ class StaticMeshComponent : public ComponentBase {
 public:
     StaticMeshComponent();
     ~StaticMeshComponent();
+    
+    virtual void update(float dt, GameObject* owner) override;
 
 private:
     StaticMesh* staticMesh;
