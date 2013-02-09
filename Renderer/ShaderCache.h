@@ -13,15 +13,18 @@
 
 #include "Util/HashMap.h"
 
-class Shader;
+#include "Shader.h"
 
 class ShaderCache {
 public:
     ShaderCache();
-    ~ShaderCache();
+    virtual ~ShaderCache();
 
     Shader* getShader(const std::string& name);
 
+protected:
+    virtual Shader* loadShader(const std::string& name) = 0;
+    
 private:
     ShaderCache(const ShaderCache&);
     ShaderCache& operator=(const ShaderCache&);

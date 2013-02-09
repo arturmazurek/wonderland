@@ -19,3 +19,7 @@ RendererGL::~RendererGL() {
 void RendererGL::renderFrame() {
     
 }
+
+ShaderCache* RendererGL::shaderCache() {
+    return nullptr;
+}

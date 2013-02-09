@@ -17,5 +17,14 @@ ShaderCache::~ShaderCache() {
 }
 
 Shader* ShaderCache::getShader(const std::string& name) {
-    return nullptr;
+    Shader* s = mShaders[name.c_str()];
+    if(!s) {
+        s = loadShader(name);
+    }
+    return s;
 }
+
+Shader* ShaderCache::loadShader(const std::string& name) {
+    
+}
+

@@ -17,5 +17,5 @@ Material::~Material() {
 }
 
 Material* Material::create(const std::string& name) {
-    
+    return nullptr;
 }

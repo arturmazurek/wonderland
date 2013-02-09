@@ -17,10 +17,15 @@ public:
     virtual ~RendererGL();
     
     virtual void renderFrame() override;
+
+    virtual ShaderCache* shaderCache() override;
     
 private:
     RendererGL(const RendererGL&);
     RendererGL& operator=(const RendererGL&);
+    
+private:
+    
 };
 
 #endif /* defined(__Wonderland__RendererGL__) */

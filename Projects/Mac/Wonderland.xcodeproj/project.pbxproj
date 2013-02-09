@@ -56,6 +56,7 @@
 		757C459916C5A63C00487778 /* sparse_hash_map in Resources */ = {isa = PBXBuildFile; fileRef = 757C459216C5A63C00487778 /* sparse_hash_map */; };
 		757C459A16C5A63C00487778 /* sparse_hash_set in Resources */ = {isa = PBXBuildFile; fileRef = 757C459316C5A63C00487778 /* sparse_hash_set */; };
 		757C459B16C5A63C00487778 /* sparsetable in Resources */ = {isa = PBXBuildFile; fileRef = 757C459416C5A63C00487778 /* sparsetable */; };
+		757C45A316C5B61000487778 /* ShaderCacheGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 757C45A116C5B61000487778 /* ShaderCacheGL.cpp */; };
 		75C139A716BE91E900F81C99 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75C139A616BE91E900F81C99 /* Cocoa.framework */; };
 		75C139B116BE91E900F81C99 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 75C139AF16BE91E900F81C99 /* InfoPlist.strings */; };
 		75C139B316BE91E900F81C99 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C139B216BE91E900F81C99 /* main.m */; };
@@ -166,6 +167,8 @@
 		757C459516C5A63C00487778 /* template_util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = template_util.h; sourceTree = "<group>"; };
 		757C459616C5A63C00487778 /* type_traits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = type_traits.h; sourceTree = "<group>"; };
 		757C459C16C5A6AB00487778 /* HashMap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HashMap.h; path = ../../Util/HashMap.h; sourceTree = "<group>"; };
+		757C45A116C5B61000487778 /* ShaderCacheGL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ShaderCacheGL.cpp; path = GL/ShaderCacheGL.cpp; sourceTree = "<group>"; };
+		757C45A216C5B61000487778 /* ShaderCacheGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShaderCacheGL.h; path = GL/ShaderCacheGL.h; sourceTree = "<group>"; };
 		75A8217816C2F64C00C2E102 /* Vector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Vector.h; sourceTree = "<group>"; };
 		75A8217916C2FC6B00C2E102 /* Matrix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Matrix.h; sourceTree = "<group>"; };
 		75C139A216BE91E900F81C99 /* Wonderland.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wonderland.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -272,6 +275,8 @@
 				6D36E0A216C413FC00BEBCCC /* RendererGL.h */,
 				6D36E0E316C564F500BEBCCC /* ShaderGL.cpp */,
 				6D36E0E416C564F500BEBCCC /* ShaderGL.h */,
+				757C45A116C5B61000487778 /* ShaderCacheGL.cpp */,
+				757C45A216C5B61000487778 /* ShaderCacheGL.h */,
 			);
 			name = GL;
 			sourceTree = "<group>";
@@ -575,6 +580,7 @@
 				6D36E0E516C564F500BEBCCC /* ShaderGL.cpp in Sources */,
 				6D36E0E816C5654E00BEBCCC /* Shader.cpp in Sources */,
 				757C458816C5A45800487778 /* ShaderCache.cpp in Sources */,
+				757C45A316C5B61000487778 /* ShaderCacheGL.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

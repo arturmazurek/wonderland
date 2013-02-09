@@ -11,6 +11,11 @@
 
 class Material;
 
+enum ShaderType {
+    VERTEX_SHADER,
+    PIXEL_SHADER
+};
+
 /**
  * There should be just one shader object of each name
  * existing in the engine. They are referenced by materials but not owned 
@@ -18,6 +23,8 @@ class Material;
  */
 class Shader {
 public:
+    ShaderType type() const;
+    
     void reference(Material* claimer);
     void release(Material* claimer);
     
@@ -26,7 +33,8 @@ protected:
     virtual ~Shader();
     
 private:
-    int mReferenceCount;
+    int         mReferenceCount;
+    ShaderType  mType;
 };
 
 #endif /* defined(__Wonderland__Shader__) */
