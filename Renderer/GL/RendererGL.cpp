@@ -8,18 +8,23 @@
 
 #include "RendererGL.h"
 
+#include "Util/Constants.h"
+
+#include "MaterialCacheGL.h"
+#include "MaterialGL.h"
+
 RendererGL::RendererGL() {
-    
+    mMaterialCache = new MaterialCacheGL(Constants::RESOURCES_BASE);
 }
 
 RendererGL::~RendererGL() {
-    
+    delete mMaterialCache;
 }
 
 void RendererGL::renderFrame() {
     
 }
 
-ShaderCache* RendererGL::shaderCache() {
+Material* RendererGL::createMaterial(const std::string& name) {
     return nullptr;
 }

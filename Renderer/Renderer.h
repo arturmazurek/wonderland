@@ -9,7 +9,9 @@
 #ifndef __Wonderland__Renderer__
 #define __Wonderland__Renderer__
 
-class ShaderCache;
+#include <string>
+
+class Material;
 
 class Renderer {
 public:
@@ -17,7 +19,7 @@ public:
     
     virtual void renderFrame() = 0;
     
-    virtual ShaderCache* shaderCache() = 0;
+    virtual Material* createMaterial(const std::string& name) = 0;
     
 protected:
     Renderer();

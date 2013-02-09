@@ -56,6 +56,8 @@
 		757C459B16C5A63C00487778 /* sparsetable in Resources */ = {isa = PBXBuildFile; fileRef = 757C459416C5A63C00487778 /* sparsetable */; };
 		757C45A316C5B61000487778 /* ShaderCacheGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 757C45A116C5B61000487778 /* ShaderCacheGL.cpp */; };
 		759C946216C69ED50070D6F7 /* File.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 759C946116C69ED50070D6F7 /* File.cpp */; };
+		75B4E81916C6CCB000DD2F63 /* MaterialGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 75B4E81716C6CCB000DD2F63 /* MaterialGL.cpp */; };
+		75B4E81F16C6D28600DD2F63 /* MaterialCacheGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 75B4E81D16C6D28500DD2F63 /* MaterialCacheGL.cpp */; };
 		75C139A716BE91E900F81C99 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75C139A616BE91E900F81C99 /* Cocoa.framework */; };
 		75C139B116BE91E900F81C99 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 75C139AF16BE91E900F81C99 /* InfoPlist.strings */; };
 		75C139B316BE91E900F81C99 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C139B216BE91E900F81C99 /* main.m */; };
@@ -169,6 +171,11 @@
 		75A8217816C2F64C00C2E102 /* Vector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Vector.h; sourceTree = "<group>"; };
 		75A8217916C2FC6B00C2E102 /* Matrix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Matrix.h; sourceTree = "<group>"; };
 		75B4E81616C6C96900DD2F63 /* OpenGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OpenGL.h; path = ../../wonderland/Renderer/GL/OpenGL.h; sourceTree = "<group>"; };
+		75B4E81716C6CCB000DD2F63 /* MaterialGL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MaterialGL.cpp; path = ../../wonderland/Renderer/GL/MaterialGL.cpp; sourceTree = "<group>"; };
+		75B4E81816C6CCB000DD2F63 /* MaterialGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MaterialGL.h; path = ../../wonderland/Renderer/GL/MaterialGL.h; sourceTree = "<group>"; };
+		75B4E81C16C6D0F800DD2F63 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = ../../../wonderland/Util/Constants.h; sourceTree = "<group>"; };
+		75B4E81D16C6D28500DD2F63 /* MaterialCacheGL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MaterialCacheGL.cpp; path = ../../wonderland/Renderer/GL/MaterialCacheGL.cpp; sourceTree = "<group>"; };
+		75B4E81E16C6D28500DD2F63 /* MaterialCacheGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MaterialCacheGL.h; path = ../../wonderland/Renderer/GL/MaterialCacheGL.h; sourceTree = "<group>"; };
 		75C139A216BE91E900F81C99 /* Wonderland.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wonderland.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75C139A616BE91E900F81C99 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		75C139A916BE91E900F81C99 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -276,6 +283,10 @@
 				6D36E0E416C564F500BEBCCC /* ShaderGL.h */,
 				757C45A116C5B61000487778 /* ShaderCacheGL.cpp */,
 				757C45A216C5B61000487778 /* ShaderCacheGL.h */,
+				75B4E81716C6CCB000DD2F63 /* MaterialGL.cpp */,
+				75B4E81816C6CCB000DD2F63 /* MaterialGL.h */,
+				75B4E81D16C6D28500DD2F63 /* MaterialCacheGL.cpp */,
+				75B4E81E16C6D28500DD2F63 /* MaterialCacheGL.h */,
 			);
 			name = GL;
 			sourceTree = "<group>";
@@ -322,6 +333,7 @@
 				757C459C16C5A6AB00487778 /* HashMap.h */,
 				759C946016C69E780070D6F7 /* File.h */,
 				759C946116C69ED50070D6F7 /* File.cpp */,
+				75B4E81C16C6D0F800DD2F63 /* Constants.h */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -577,6 +589,8 @@
 				6D36E0E516C564F500BEBCCC /* ShaderGL.cpp in Sources */,
 				757C45A316C5B61000487778 /* ShaderCacheGL.cpp in Sources */,
 				759C946216C69ED50070D6F7 /* File.cpp in Sources */,
+				75B4E81916C6CCB000DD2F63 /* MaterialGL.cpp in Sources */,
+				75B4E81F16C6D28600DD2F63 /* MaterialCacheGL.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

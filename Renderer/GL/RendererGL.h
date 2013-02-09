@@ -11,6 +11,8 @@
 
 #include "../Renderer.h"
 
+class MaterialCacheGL;
+
 class RendererGL : public Renderer {
 public:
     RendererGL();
@@ -18,14 +20,14 @@ public:
     
     virtual void renderFrame() override;
 
-    virtual ShaderCache* shaderCache() override;
+    virtual Material* createMaterial(const std::string& name) override;
     
 private:
     RendererGL(const RendererGL&);
     RendererGL& operator=(const RendererGL&);
     
 private:
-    
+    MaterialCacheGL*  mMaterialCache;
 };
 
 #endif /* defined(__Wonderland__RendererGL__) */
