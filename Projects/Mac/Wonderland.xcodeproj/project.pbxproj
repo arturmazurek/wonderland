@@ -49,15 +49,11 @@
 		6D36E0E516C564F500BEBCCC /* ShaderGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D36E0E316C564F500BEBCCC /* ShaderGL.cpp */; };
 		757C457A16C4513000487778 /* World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 757C457816C4513000487778 /* World.cpp */; };
 		757C457D16C4595100487778 /* SceneNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 757C457B16C4595100487778 /* SceneNode.cpp */; };
-		757C459716C5A63C00487778 /* dense_hash_map in Resources */ = {isa = PBXBuildFile; fileRef = 757C458B16C5A63C00487778 /* dense_hash_map */; };
-		757C459816C5A63C00487778 /* dense_hash_set in Resources */ = {isa = PBXBuildFile; fileRef = 757C458C16C5A63C00487778 /* dense_hash_set */; };
-		757C459916C5A63C00487778 /* sparse_hash_map in Resources */ = {isa = PBXBuildFile; fileRef = 757C459216C5A63C00487778 /* sparse_hash_map */; };
-		757C459A16C5A63C00487778 /* sparse_hash_set in Resources */ = {isa = PBXBuildFile; fileRef = 757C459316C5A63C00487778 /* sparse_hash_set */; };
-		757C459B16C5A63C00487778 /* sparsetable in Resources */ = {isa = PBXBuildFile; fileRef = 757C459416C5A63C00487778 /* sparsetable */; };
 		757C45A316C5B61000487778 /* ShaderCacheGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 757C45A116C5B61000487778 /* ShaderCacheGL.cpp */; };
 		759C946216C69ED50070D6F7 /* File.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 759C946116C69ED50070D6F7 /* File.cpp */; };
 		75B4E81916C6CCB000DD2F63 /* MaterialGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 75B4E81716C6CCB000DD2F63 /* MaterialGL.cpp */; };
 		75B4E81F16C6D28600DD2F63 /* MaterialCacheGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 75B4E81D16C6D28500DD2F63 /* MaterialCacheGL.cpp */; };
+		75B4E82216C6DF3200DD2F63 /* Shaders in Resources */ = {isa = PBXBuildFile; fileRef = 75B4E82116C6DF3200DD2F63 /* Shaders */; };
 		75C139A716BE91E900F81C99 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75C139A616BE91E900F81C99 /* Cocoa.framework */; };
 		75C139B116BE91E900F81C99 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 75C139AF16BE91E900F81C99 /* InfoPlist.strings */; };
 		75C139B316BE91E900F81C99 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C139B216BE91E900F81C99 /* main.m */; };
@@ -176,6 +172,7 @@
 		75B4E81C16C6D0F800DD2F63 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = ../../../wonderland/Util/Constants.h; sourceTree = "<group>"; };
 		75B4E81D16C6D28500DD2F63 /* MaterialCacheGL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MaterialCacheGL.cpp; path = ../../wonderland/Renderer/GL/MaterialCacheGL.cpp; sourceTree = "<group>"; };
 		75B4E81E16C6D28500DD2F63 /* MaterialCacheGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MaterialCacheGL.h; path = ../../wonderland/Renderer/GL/MaterialCacheGL.h; sourceTree = "<group>"; };
+		75B4E82116C6DF3200DD2F63 /* Shaders */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Shaders; path = ../../../wonderland/Resources/Shaders; sourceTree = "<group>"; };
 		75C139A216BE91E900F81C99 /* Wonderland.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wonderland.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75C139A616BE91E900F81C99 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		75C139A916BE91E900F81C99 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -374,9 +371,18 @@
 			path = ../../Math;
 			sourceTree = "<group>";
 		};
+		75B4E82016C6DF2600DD2F63 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				75B4E82116C6DF3200DD2F63 /* Shaders */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		75C1399716BE91E800F81C99 = {
 			isa = PBXGroup;
 			children = (
+				75B4E82016C6DF2600DD2F63 /* Resources */,
 				6D36E0D416C54E0C00BEBCCC /* Game */,
 				757C457616C444AF00487778 /* Util */,
 				6D36E0A416C415CA00BEBCCC /* Core */,
@@ -526,11 +532,7 @@
 			files = (
 				75C139B116BE91E900F81C99 /* InfoPlist.strings in Resources */,
 				75C139BD16BE91EA00F81C99 /* MainMenu.xib in Resources */,
-				757C459716C5A63C00487778 /* dense_hash_map in Resources */,
-				757C459816C5A63C00487778 /* dense_hash_set in Resources */,
-				757C459916C5A63C00487778 /* sparse_hash_map in Resources */,
-				757C459A16C5A63C00487778 /* sparse_hash_set in Resources */,
-				757C459B16C5A63C00487778 /* sparsetable in Resources */,
+				75B4E82216C6DF3200DD2F63 /* Shaders in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

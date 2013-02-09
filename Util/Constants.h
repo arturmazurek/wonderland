@@ -13,7 +13,7 @@
 
 namespace Constants {
     
-    static const std::string RESOURCES_BASE = "resources";
+    static const std::string RESOURCES_BASE = "Shaders/GL";
     
 }
 
