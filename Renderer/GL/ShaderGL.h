@@ -9,12 +9,23 @@
 #ifndef __Wonderland__ShaderGL__
 #define __Wonderland__ShaderGL__
 
-#include "../Shader.h"
+#include "Util/OpenGL.h"
 
-class ShaderGL : public Shader {
-public:
+struct ShaderGL {
+    enum Type {
+        TYPE_INVALID,
+        
+        VERTEX_SHADER = GL_VERTEX_SHADER,
+        FRAGMENT_SHADER = GL_FRAGMENT_SHADER
+    };
+    
     ShaderGL();
     virtual ~ShaderGL();
+    
+    bool compile(const GLchar* body, Type type);
+    
+    GLuint  shader;
+    Type    type;
 };
 
 #endif /* defined(__Wonderland__ShaderGL__) */

@@ -11,19 +11,29 @@
 
 #include <string>
 
-#include "../ShaderCache.h"
+#include "Util/HashMap.h"
 
-class Shader;
+#include "ShaderGL.h"
 
-class ShaderCacheGL : ShaderCache {
+class ShaderCacheGL {
 public:
     ShaderCacheGL(const std::string& basePath);
-    virtual ~ShaderCacheGL();
+    ~ShaderCacheGL();
     
-    virtual Shader* loadShader(const std::string& name) override;
+    ShaderGL* getShader(const std::string& name, ShaderGL::Type type);
     
 private:
-    const std::string mBasePath;
+    ShaderCacheGL(ShaderCacheGL&);
+    ShaderCacheGL& operator=(ShaderCacheGL&);
+    
+    ShaderGL* loadShader(const std::string& name, ShaderGL::Type type) const;
+    
+private:
+    static const std::string    VERTEX_SHADER_EXTENSION;
+    static const std::string    FRAGMENT_SHADER_EXTENSION;
+    
+    const std::string           mBasePath;
+    HashMap<ShaderGL*>          mShaders;
 };
 
 #endif /* defined(__Wonderland__ShaderCacheGL__) */
