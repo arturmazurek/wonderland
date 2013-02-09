@@ -9,7 +9,7 @@
 #ifndef __Wonderland__ShaderGL__
 #define __Wonderland__ShaderGL__
 
-#include "Util/OpenGL.h"
+#include "OpenGL.h"
 
 struct ShaderGL {
     enum Type {

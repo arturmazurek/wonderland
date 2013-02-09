@@ -164,11 +164,11 @@
 		757C459C16C5A6AB00487778 /* HashMap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HashMap.h; path = ../../Util/HashMap.h; sourceTree = "<group>"; };
 		757C45A116C5B61000487778 /* ShaderCacheGL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ShaderCacheGL.cpp; path = GL/ShaderCacheGL.cpp; sourceTree = "<group>"; };
 		757C45A216C5B61000487778 /* ShaderCacheGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShaderCacheGL.h; path = GL/ShaderCacheGL.h; sourceTree = "<group>"; };
-		759C945F16C696A40070D6F7 /* OpenGL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OpenGL.h; path = ../../Util/OpenGL.h; sourceTree = "<group>"; };
 		759C946016C69E780070D6F7 /* File.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = File.h; path = ../../Util/File.h; sourceTree = "<group>"; };
 		759C946116C69ED50070D6F7 /* File.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = File.cpp; path = ../../Util/File.cpp; sourceTree = "<group>"; };
 		75A8217816C2F64C00C2E102 /* Vector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Vector.h; sourceTree = "<group>"; };
 		75A8217916C2FC6B00C2E102 /* Matrix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Matrix.h; sourceTree = "<group>"; };
+		75B4E81616C6C96900DD2F63 /* OpenGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OpenGL.h; path = ../../wonderland/Renderer/GL/OpenGL.h; sourceTree = "<group>"; };
 		75C139A216BE91E900F81C99 /* Wonderland.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wonderland.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75C139A616BE91E900F81C99 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		75C139A916BE91E900F81C99 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -269,6 +269,7 @@
 		6D36E0A016C413EC00BEBCCC /* GL */ = {
 			isa = PBXGroup;
 			children = (
+				75B4E81616C6C96900DD2F63 /* OpenGL.h */,
 				6D36E0A116C413FC00BEBCCC /* RendererGL.cpp */,
 				6D36E0A216C413FC00BEBCCC /* RendererGL.h */,
 				6D36E0E316C564F500BEBCCC /* ShaderGL.cpp */,
@@ -317,7 +318,6 @@
 			isa = PBXGroup;
 			children = (
 				757C457716C444C900487778 /* Log.h */,
-				759C945F16C696A40070D6F7 /* OpenGL.h */,
 				6D36E0DF16C5595500BEBCCC /* LinkedList.h */,
 				757C459C16C5A6AB00487778 /* HashMap.h */,
 				759C946016C69E780070D6F7 /* File.h */,
