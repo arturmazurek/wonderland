@@ -9,6 +9,7 @@
 #ifndef Wonderland_LinkedList_h
 #define Wonderland_LinkedList_h
 
+#include <cassert>
 
 template <typename ObjT>
 class LinkedList {
@@ -21,9 +22,15 @@ public:
     template <typename T>
     class LinkedListIterator {
     public:
-        T next() {
+        bool hasNext() {
+            return mNode != nullptr;
+        }
+        
+        T& next() {
+            assert(mNode && "Iterator is invalid if mNode is null");
             if(!mNode) {
-                return T();
+                static T empty;
+                return empty;
             }
             
             LinkedList::Node* temp = mNode;
@@ -31,7 +38,8 @@ public:
             return temp->obj;
         };
         
-    private:        
+    private:
+        template <class U> friend class LinkedList;
         LinkedList::Node* mNode;
     };
 

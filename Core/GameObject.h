@@ -9,9 +9,10 @@
 #ifndef __Wonderland__GameObject__
 #define __Wonderland__GameObject__
 
-#include "SceneNode.h"
-
 #include "Util/List.h"
+
+#include "ComponentBase.h"
+#include "SceneNode.h"
 
 class GameObject : public SceneNode {
     friend class World;
@@ -32,6 +33,8 @@ private:
     unsigned                mId;
     
     LIST_LINK(GameObject)   mObjectsLink;
+    
+    LIST_DECLARE(ComponentBase, mOwnersLink) mComponents;
 };
 
 #endif /* defined(__Wonderland__GameObject__) */

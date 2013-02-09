@@ -29,9 +29,15 @@ public:
     template <class T>
     class HashMapIterator {
     public:
-        T next() {
+        bool hasNext() {
+            return mCurrent != mEnd;
+        }
+        
+        T& next() {
+            assert(mCurrent != mEnd && "This assert means you're out of bounds");
             if(mCurrent == mEnd) {
-                return T();
+                static T empty;
+                return empty;
             }
         
             IteratorType temp = mCurrent;

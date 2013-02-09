@@ -20,11 +20,13 @@ public:
     ~StaticMesh();
     
     void addSurface(Surface* surface, Material* material);
+    void addSurface(Surface* surface, Material* material, bool willOwnSurface);
     
 private:
     struct SurfaceInfo {
         Surface* surface;
         Material* material;
+        bool own;
     };
     
     LinkedList<SurfaceInfo> mSurfaces;

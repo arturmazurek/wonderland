@@ -8,7 +8,6 @@
 
 #include "GameObject.h"
 
-
 unsigned GameObject::sIdCounter(0);
 
 GameObject::GameObject() : mId(sIdCounter++) {
@@ -16,7 +15,7 @@ GameObject::GameObject() : mId(sIdCounter++) {
 }
 
 GameObject::~GameObject() {
-
+    mComponents.DeleteAll();
 }
 
 unsigned GameObject::objectId() const {

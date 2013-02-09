@@ -23,8 +23,8 @@ MaterialCacheGL::~MaterialCacheGL() {
     delete mShaderCache;
     
     HashMap<MaterialGL*>::Iterator iterator = mMaterials.iterator();
-    while(MaterialGL* m = iterator.next()) {
-        delete m;
+    while(iterator.hasNext()) {
+        delete iterator.next();
     }
 }
 
