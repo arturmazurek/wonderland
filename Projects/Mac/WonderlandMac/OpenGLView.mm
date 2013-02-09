@@ -8,9 +8,24 @@
 
 #import "OpenGLView.h"
 #import "MainController.h"
-//#import "Scene.h"
+
+#include "Game.h"
+#include "World.h"
 
 @implementation OpenGLView
+
+@synthesize game = _game;
+
+- (Game*)game {
+    if(!_game) {
+        _game = new Game();
+        
+        World* world = new World();
+        _game->setWorld(world);
+    }
+    
+    return _game;
+}
 
 - (NSOpenGLContext*) openGLContext
 {
@@ -60,8 +75,8 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 	CVDisplayLinkSetOutputCallback(displayLink, &MyDisplayLinkCallback, self);
 	
 	// Set the display link for the current renderer
-	CGLContextObj cglContext = [[self openGLContext] CGLContextObj];
-	CGLPixelFormatObj cglPixelFormat = [[self pixelFormat] CGLPixelFormatObj];
+	CGLContextObj cglContext = (CGLContextObj)[[self openGLContext] CGLContextObj];
+	CGLPixelFormatObj cglPixelFormat = (CGLPixelFormatObj)[[self pixelFormat] CGLPixelFormatObj];
 	CVDisplayLinkSetCurrentCGDisplayFromOpenGLContext(displayLink, cglContext, cglPixelFormat);
 }
 
@@ -123,13 +138,13 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 {
 	// This method will be called on the main thread when resizing, but we may be drawing on a secondary thread through the display link
 	// Add a mutex around to avoid the threads accessing the context simultaneously
-	CGLLockContext([[self openGLContext] CGLContextObj]);
+	CGLLockContext((CGLContextObj)[[self openGLContext] CGLContextObj]);
 	
 	// Delegate to the scene object to update for a change in the view size
 //	[[controller scene] setViewportRect:[self bounds]];
 	[[self openGLContext] update];
 	
-	CGLUnlockContext([[self openGLContext] CGLContextObj]);
+	CGLUnlockContext((CGLContextObj)[[self openGLContext] CGLContextObj]);
 }
 
 - (void) drawRect:(NSRect)dirtyRect
@@ -144,19 +159,21 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 	// This method will be called on both the main thread (through -drawRect:) and a secondary thread (through the display link rendering loop)
 	// Also, when resizing the view, -reshape is called on the main thread, but we may be drawing on a secondary thread
 	// Add a mutex around to avoid the threads accessing the context simultaneously
-	CGLLockContext([[self openGLContext] CGLContextObj]);
+	CGLLockContext((CGLContextObj)[[self openGLContext] CGLContextObj]);
 	
 	// Make sure we draw to the right context
 	[[self openGLContext] makeCurrentContext];
     
     glClearColor(0.f, 0.3f, 0.6f, 1.f);
     glClear(GL_COLOR_BUFFER_BIT);
-	
+    
+    self.game->doFrame();
+//
 	// Delegate to the scene object for rendering
 //    [[controller scene] render];
 	[[self openGLContext] flushBuffer];
 	
-	CGLUnlockContext([[self openGLContext] CGLContextObj]);
+	CGLUnlockContext((CGLContextObj)[[self openGLContext] CGLContextObj]);
 }
 
 - (BOOL) acceptsFirstResponder
@@ -202,6 +219,9 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 	[[NSNotificationCenter defaultCenter] removeObserver:self
 													name:NSViewGlobalFrameDidChangeNotification
 												  object:self];
+    
+    delete self.game;
+    
 	[super dealloc];
 }
 

@@ -20,14 +20,16 @@ public:
     
     void setWorld(World* world);
 
-    void update(float wallTimeInSeconds);
+    void doFrame();
 
 private:
     Game(const Game&);
     Game& operator=(const Game&);
     
 private:
+    bool        mFirstFrame;
     GameClock   mGameClock;
+    float       mLastFrameTime;
     World*      mWorld;
 };
 

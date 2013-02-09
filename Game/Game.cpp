@@ -8,9 +8,11 @@
 
 #include "Game.h"
 
+#include "Util/Timer.h"
+
 #include "World.h"
 
-Game::Game() : mWorld(nullptr) {
+Game::Game() : mFirstFrame(true), mLastFrameTime(0), mWorld(nullptr) {
     
 }
 
@@ -24,12 +26,21 @@ void Game::setWorld(World* world) {
     }
     
     mWorld = world;
+    mFirstFrame = true;
 }
 
-void Game::update(float wallTimeInSeconds) {
+void Game::doFrame() {
     if(!mWorld) {
         return;
     }
     
-    mWorld->update(mGameClock.tickTime(wallTimeInSeconds));
+    float frameTime = Timer::elapsedTime() - mLastFrameTime;
+    if(mFirstFrame) {
+        mFirstFrame = false;
+        frameTime = 0;
+    }
+    
+    mWorld->update(mGameClock.tickTime(frameTime));
+    
+    mLastFrameTime = frameTime;
 }

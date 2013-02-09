@@ -11,6 +11,8 @@
 
 @class MainController;
 
+class Game;
+
 @interface OpenGLView : NSView {
 	
 	NSOpenGLContext *openGLContext;
@@ -33,5 +35,7 @@
 
 - (void) startAnimation;
 - (void) stopAnimation;
+
+@property (nonatomic, readonly) Game* game;
 
 @end
