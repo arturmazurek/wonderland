@@ -13,7 +13,7 @@
 
 template <class DataT>
 class HashMap {
-public:
+public:    
     HashMap() {
         mMap.set_empty_key(nullptr);
     }
@@ -24,6 +24,35 @@ public:
     
     const DataT& operator[](const char* key) const {
         return mMap[key];
+    }
+    
+    template <class T>
+    class HashMapIterator {
+    public:
+        T next() {
+            if(mCurrent == mEnd) {
+                return T();
+            }
+        
+            IteratorType temp = mCurrent;
+            ++mCurrent;
+            return temp->second;
+        }
+        
+    private:
+        template <typename U> friend class HashMap;
+        typedef typename google::dense_hash_map<const char *, T, std::hash<const char*> >::iterator IteratorType;
+        IteratorType mCurrent;
+        IteratorType mEnd;
+    };
+    
+    typedef HashMapIterator<DataT> Iterator;
+    
+    Iterator iterator() {
+        Iterator result;
+        result.mCurrent = mMap.begin();
+        result.mEnd = mMap.end();
+        return result;
     }
     
 private:

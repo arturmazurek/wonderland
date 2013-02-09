@@ -22,15 +22,17 @@ public:
     class LinkedListIterator {
     public:
         T next() {
-            T result = mNode.next;
-            if(result) {
-                mNode = mNode.next;
+            if(!mNode) {
+                return T();
             }
-            return result;
+            
+            LinkedList::Node* temp = mNode;
+            mNode = mNode->next;
+            return temp->obj;
         };
         
     private:        
-        LinkedList::Node mNode;
+        LinkedList::Node* mNode;
     };
 
     typedef LinkedListIterator<ObjT> Iterator;

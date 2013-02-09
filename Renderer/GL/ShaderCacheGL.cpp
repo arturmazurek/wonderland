@@ -21,7 +21,10 @@ ShaderCacheGL::ShaderCacheGL(const std::string& basePath) : mBasePath(basePath) 
 }
 
 ShaderCacheGL::~ShaderCacheGL() {
-    
+    HashMap<ShaderGL*>::Iterator iterator = mShaders.iterator();
+    while(ShaderGL* s = iterator.next()) {
+        delete s;
+    }
 }
 
 ShaderGL* ShaderCacheGL::getShader(const std::string& name, ShaderGL::Type type) {
