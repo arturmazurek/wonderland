@@ -10,25 +10,26 @@
 
 #ifdef __APPLE__
 
-#include <sys/time.h>
+#include <mach/mach_time.h>
 
 namespace Timer {
     
+    static float _machTimeToSeconds(uint64_t machTime) {
+        mach_timebase_info_data_t timebase;
+        mach_timebase_info(&timebase);
+        return machTime * (float)timebase.numer / timebase.denom / 1e9;
+    }
+    
     float elapsedTime() {
-        static bool firstRun = true;
-        static timeval referenceTime = {0};
+        static uint64_t start = 0;
+        uint64_t end = 0;
         
-        if(firstRun) {
-            gettimeofday(&referenceTime, NULL);
+        if(start == 0) {
+            start = mach_absolute_time();
         }
+        end = mach_absolute_time();
         
-        timeval timeNow = {0};
-        gettimeofday(&timeNow, NULL);
-        
-        float timeDiff = timeNow.tv_sec - referenceTime.tv_sec;
-        timeDiff += (timeNow.tv_usec - referenceTime.tv_usec) * 0.001f;
-        
-        return timeDiff;
+        return _machTimeToSeconds(end - start);
     }
     
 }

@@ -34,7 +34,11 @@ void Game::doFrame() {
         return;
     }
     
+#ifndef DEBUG
     float frameTime = Timer::elapsedTime() - mLastFrameTime;
+#else
+    float frameTime = 1./60.f;
+#endif
     if(mFirstFrame) {
         mFirstFrame = false;
         frameTime = 0;
