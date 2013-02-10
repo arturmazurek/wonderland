@@ -52,6 +52,8 @@ void Game::doFrame() {
     }
     
     mWorld->update(mGameClock.tickTime(frameTime));
+    mWorld->prepareRender(mRenderer);
+    mRenderer->renderFrame();
     
     mLastFrameTime = frameTime;
 }

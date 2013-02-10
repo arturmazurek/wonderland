@@ -14,12 +14,17 @@
 #include "GameObject.h"
 #include "SceneNode.h"
 
+class Renderer;
+
 class World {
 public:
     World();
     ~World();
     
-    void addObject(GameObject* obj);
+    void addObject(GameObject* object);
+    void addObject(GameObject* object, SceneNode* toNode);
+    
+    void prepareRender(Renderer* renderer);
     
     void update(float timeInSeconds);
     
@@ -27,8 +32,13 @@ private:
     World(const World&);
     World& operator=(const World&);
     
+    void updateTransform(SceneNode* object);
+    
 private:
-    LIST_DECLARE(GameObject, mObjectsLink) mObjects;
+    LIST_DECLARE(GameObject, mObjectsLink)  mObjects;
+    LIST_DECLARE(GameObject, mObjectsLink)  mDeletedObjects;
+    LinkedList<GameObject*>                 mSpawnedObjects;
+    
     SceneNode mRoot;
 };
 

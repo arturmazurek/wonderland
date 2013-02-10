@@ -15,11 +15,6 @@ SceneNode::SceneNode() : mParent(nullptr) {
 }
 
 SceneNode::~SceneNode() {
-    while(mFirstChild) {
-        SceneNode* node = mFirstChild;
-        mFirstChild = mFirstChild->mSiblings;
-        delete node;
-    }
     if(mParent) {
         unregisterChild(this);
     }
@@ -32,27 +27,14 @@ void SceneNode::registerChild(SceneNode* child) {
     }
     
     child->mParent = this;
-    
-    child->mSiblings = mFirstChild;
-    mFirstChild = child;
+    mChildren.add(child);
+
+    child->transform.setDirty();
 }
 
 void SceneNode::unregisterChild(SceneNode* child) {
-    SceneNode* node = mFirstChild;
-    while(node) {
-        if(node->mSiblings == child) {
-            break;
-        }
-        node = node->mSiblings;
-    }
-    
-    if(!node) {
-        LOG("Trying to unregister an unknown child 0x%p from 0x%p", child, this);
-        return;
-    }
-    
-    node->mSiblings = child->mSiblings;
-    child->mSiblings = nullptr;
+    mChildren.erase(child);
+    child->mParent = nullptr;
 }
 
 SceneNode* SceneNode::getParent() {

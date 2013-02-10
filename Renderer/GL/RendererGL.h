@@ -11,6 +11,8 @@
 
 #include "../Renderer.h"
 
+#include "Util/List.h"
+
 class MaterialCacheGL;
 
 class RendererGL : public Renderer {
@@ -22,12 +24,22 @@ public:
 
     virtual Material* createMaterial(const std::string& name) override;
     
+    virtual void drawStaticMesh(StaticMesh* mesh, GameObject* owner) override;
+    virtual void dropStaticMesh(StaticMesh* mesh, GameObject* owner) override;
+    
 private:
     RendererGL(const RendererGL&);
     RendererGL& operator=(const RendererGL&);
     
 private:
     MaterialCacheGL*  mMaterialCache;
+    
+    struct RenderInfo {
+        StaticMesh* mesh;
+        GameObject* owner;
+        LIST_LINK(RenderInfo) listLink;
+    };
+    LIST_DECLARE(RenderInfo, listLink) mRenderables;
 };
 
 #endif /* defined(__Wonderland__RendererGL__) */

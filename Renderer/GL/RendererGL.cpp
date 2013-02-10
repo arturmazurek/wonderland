@@ -8,7 +8,10 @@
 
 #include "RendererGL.h"
 
+#include "Core/World.h"
+
 #include "Util/Constants.h"
+#include "Util/Log.h"
 
 #include "MaterialCacheGL.h"
 #include "MaterialGL.h"
@@ -27,4 +30,29 @@ void RendererGL::renderFrame() {
 
 Material* RendererGL::createMaterial(const std::string& name) {
     return nullptr;
+}
+
+void RendererGL::drawStaticMesh(StaticMesh* mesh, GameObject* owner) {
+    RenderInfo *ri = new RenderInfo();
+    ri->mesh = mesh;
+    ri->owner = owner;
+    mRenderables.InsertTail(ri);
+}
+
+void RendererGL::dropStaticMesh(StaticMesh* mesh, GameObject* owner) {
+    RenderInfo* found = nullptr;
+    RenderInfo* temp = mRenderables.Head();
+    while(temp) {
+        if(temp == found) {
+            break;
+        }
+        temp = mRenderables.Next(temp);
+    }
+    
+    if(!found) {
+        LOG("Static mesh 0x%p not drawn for object - 0x%p (%u)", mesh, owner, owner->objectId());
+        return;
+    }
+    
+    delete found;
 }

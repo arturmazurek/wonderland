@@ -9,6 +9,8 @@
 #ifndef __Wonderland__SceneNode__
 #define __Wonderland__SceneNode__
 
+#include "Util/LinkedList.h"
+
 #include "Transform.h"
 
 class SceneNode {
@@ -25,9 +27,8 @@ public:
     SceneNode* getParent();
     
 protected:
-    SceneNode*             mParent;
-    SceneNode*             mFirstChild;
-    SceneNode*             mSiblings;
+    LinkedList<SceneNode*>  mChildren;
+    SceneNode*              mParent;
 };
 
 #endif /* defined(__Wonderland__SceneNode__) */

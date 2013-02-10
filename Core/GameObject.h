@@ -27,6 +27,9 @@ public:
     
     void update(float timeInSeconds);
     
+public:
+    bool                    toDelete;
+    
 private:
     static unsigned         sIdCounter;
     

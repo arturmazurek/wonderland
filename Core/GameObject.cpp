@@ -10,7 +10,7 @@
 
 unsigned GameObject::sIdCounter(0);
 
-GameObject::GameObject() : mId(sIdCounter++) {
+GameObject::GameObject() : mId(sIdCounter++), toDelete(false) {
     
 }
 
@@ -35,5 +35,6 @@ void GameObject::update(float timeInSeconds) {
     ComponentBase* component = mComponents.Head();
     while(component) {
         component->update(timeInSeconds, this);
+        component = mComponents.Next(component);
     }
 }
