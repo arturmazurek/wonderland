@@ -50,7 +50,9 @@
 		757C457A16C4513000487778 /* World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 757C457816C4513000487778 /* World.cpp */; };
 		757C457D16C4595100487778 /* SceneNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 757C457B16C4595100487778 /* SceneNode.cpp */; };
 		757C45A316C5B61000487778 /* ShaderCacheGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 757C45A116C5B61000487778 /* ShaderCacheGL.cpp */; };
-		757FAD2B16C8440700FCDC19 /* ComponentType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 757FAD2916C8440700FCDC19 /* ComponentType.cpp */; };
+		757FAD3416C845E500FCDC19 /* ComponentBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 757FAD2E16C845E500FCDC19 /* ComponentBase.cpp */; };
+		757FAD3516C845E500FCDC19 /* ComponentType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 757FAD3016C845E500FCDC19 /* ComponentType.cpp */; };
+		757FAD3616C845E500FCDC19 /* StaticMeshComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 757FAD3216C845E500FCDC19 /* StaticMeshComponent.cpp */; };
 		759C946216C69ED50070D6F7 /* File.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 759C946116C69ED50070D6F7 /* File.cpp */; };
 		759DB64516C7D9C500E9216C /* SystemInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 759DB64316C7D9C500E9216C /* SystemInfo.cpp */; };
 		759DB64916C7DA6D00E9216C /* RendererFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 759DB64716C7DA6D00E9216C /* RendererFactory.cpp */; };
@@ -58,7 +60,6 @@
 		75B4E81F16C6D28600DD2F63 /* MaterialCacheGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 75B4E81D16C6D28500DD2F63 /* MaterialCacheGL.cpp */; };
 		75B4E82216C6DF3200DD2F63 /* Shaders in Resources */ = {isa = PBXBuildFile; fileRef = 75B4E82116C6DF3200DD2F63 /* Shaders */; };
 		75B4E82516C6E28F00DD2F63 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 75B4E82416C6E28F00DD2F63 /* Timer.cpp */; };
-		75B4E82C16C6F3E000DD2F63 /* ComponentBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 75B4E82A16C6F3E000DD2F63 /* ComponentBase.cpp */; };
 		75C139A716BE91E900F81C99 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75C139A616BE91E900F81C99 /* Cocoa.framework */; };
 		75C139B116BE91E900F81C99 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 75C139AF16BE91E900F81C99 /* InfoPlist.strings */; };
 		75C139B316BE91E900F81C99 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C139B216BE91E900F81C99 /* main.m */; };
@@ -69,7 +70,6 @@
 		75C139CC16BE94A300F81C99 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75C139CB16BE94A300F81C99 /* CoreVideo.framework */; };
 		75C139CE16BE94AA00F81C99 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75C139CD16BE94AA00F81C99 /* OpenGL.framework */; };
 		75C13C9B16BEA11B00F81C99 /* Renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 75C13C9916BEA11B00F81C99 /* Renderer.cpp */; };
-		75DEFE6A16C6F78200C29D6A /* StaticMeshComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 75DEFE6816C6F78200C29D6A /* StaticMeshComponent.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -168,8 +168,12 @@
 		757C459C16C5A6AB00487778 /* HashMap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HashMap.h; path = ../../Util/HashMap.h; sourceTree = "<group>"; };
 		757C45A116C5B61000487778 /* ShaderCacheGL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ShaderCacheGL.cpp; path = GL/ShaderCacheGL.cpp; sourceTree = "<group>"; };
 		757C45A216C5B61000487778 /* ShaderCacheGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShaderCacheGL.h; path = GL/ShaderCacheGL.h; sourceTree = "<group>"; };
-		757FAD2916C8440700FCDC19 /* ComponentType.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ComponentType.cpp; path = ../../Core/ComponentType.cpp; sourceTree = "<group>"; };
-		757FAD2A16C8440700FCDC19 /* ComponentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComponentType.h; path = ../../Core/ComponentType.h; sourceTree = "<group>"; };
+		757FAD2E16C845E500FCDC19 /* ComponentBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ComponentBase.cpp; sourceTree = "<group>"; };
+		757FAD2F16C845E500FCDC19 /* ComponentBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComponentBase.h; sourceTree = "<group>"; };
+		757FAD3016C845E500FCDC19 /* ComponentType.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ComponentType.cpp; sourceTree = "<group>"; };
+		757FAD3116C845E500FCDC19 /* ComponentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComponentType.h; sourceTree = "<group>"; };
+		757FAD3216C845E500FCDC19 /* StaticMeshComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StaticMeshComponent.cpp; sourceTree = "<group>"; };
+		757FAD3316C845E500FCDC19 /* StaticMeshComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticMeshComponent.h; sourceTree = "<group>"; };
 		759C946016C69E780070D6F7 /* File.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = File.h; path = ../../Util/File.h; sourceTree = "<group>"; };
 		759C946116C69ED50070D6F7 /* File.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = File.cpp; path = ../../Util/File.cpp; sourceTree = "<group>"; };
 		759DB64316C7D9C500E9216C /* SystemInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SystemInfo.cpp; path = ../../Game/SystemInfo.cpp; sourceTree = "<group>"; };
@@ -187,8 +191,6 @@
 		75B4E82116C6DF3200DD2F63 /* Shaders */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Shaders; path = ../../../wonderland/Resources/Shaders; sourceTree = "<group>"; };
 		75B4E82316C6E1D500DD2F63 /* Timer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Timer.h; path = ../../../wonderland/Util/Timer.h; sourceTree = "<group>"; };
 		75B4E82416C6E28F00DD2F63 /* Timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Timer.cpp; path = ../../../wonderland/Util/Timer.cpp; sourceTree = "<group>"; };
-		75B4E82A16C6F3E000DD2F63 /* ComponentBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ComponentBase.cpp; path = ../../Core/ComponentBase.cpp; sourceTree = "<group>"; };
-		75B4E82B16C6F3E000DD2F63 /* ComponentBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComponentBase.h; path = ../../Core/ComponentBase.h; sourceTree = "<group>"; };
 		75C139A216BE91E900F81C99 /* Wonderland.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wonderland.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75C139A616BE91E900F81C99 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		75C139A916BE91E900F81C99 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -208,8 +210,6 @@
 		75C139CD16BE94AA00F81C99 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		75C13C9916BEA11B00F81C99 /* Renderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Renderer.cpp; sourceTree = "<group>"; };
 		75C13C9A16BEA11B00F81C99 /* Renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Renderer.h; sourceTree = "<group>"; };
-		75DEFE6816C6F78200C29D6A /* StaticMeshComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StaticMeshComponent.cpp; path = ../../Core/StaticMeshComponent.cpp; sourceTree = "<group>"; };
-		75DEFE6916C6F78200C29D6A /* StaticMeshComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StaticMeshComponent.h; path = ../../Core/StaticMeshComponent.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -309,6 +309,7 @@
 		6D36E0A416C415CA00BEBCCC /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				757FAD2D16C845E500FCDC19 /* Components */,
 				6D36E0A516C415DB00BEBCCC /* GameObject.cpp */,
 				6D36E0A616C415DC00BEBCCC /* GameObject.h */,
 				6D36E0A816C4160300BEBCCC /* Transform.cpp */,
@@ -317,12 +318,6 @@
 				757C457916C4513000487778 /* World.h */,
 				757C457B16C4595100487778 /* SceneNode.cpp */,
 				757C457C16C4595100487778 /* SceneNode.h */,
-				75B4E82A16C6F3E000DD2F63 /* ComponentBase.cpp */,
-				75B4E82B16C6F3E000DD2F63 /* ComponentBase.h */,
-				75DEFE6816C6F78200C29D6A /* StaticMeshComponent.cpp */,
-				75DEFE6916C6F78200C29D6A /* StaticMeshComponent.h */,
-				757FAD2916C8440700FCDC19 /* ComponentType.cpp */,
-				757FAD2A16C8440700FCDC19 /* ComponentType.h */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -387,6 +382,20 @@
 				757C459116C5A63C00487778 /* sparsehashtable.h */,
 			);
 			path = internal;
+			sourceTree = "<group>";
+		};
+		757FAD2D16C845E500FCDC19 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				757FAD2E16C845E500FCDC19 /* ComponentBase.cpp */,
+				757FAD2F16C845E500FCDC19 /* ComponentBase.h */,
+				757FAD3016C845E500FCDC19 /* ComponentType.cpp */,
+				757FAD3116C845E500FCDC19 /* ComponentType.h */,
+				757FAD3216C845E500FCDC19 /* StaticMeshComponent.cpp */,
+				757FAD3316C845E500FCDC19 /* StaticMeshComponent.h */,
+			);
+			name = Components;
+			path = ../../Core/Components;
 			sourceTree = "<group>";
 		};
 		75A8217716C2F61A00C2E102 /* Math */ = {
@@ -624,11 +633,11 @@
 				75B4E81916C6CCB000DD2F63 /* MaterialGL.cpp in Sources */,
 				75B4E81F16C6D28600DD2F63 /* MaterialCacheGL.cpp in Sources */,
 				75B4E82516C6E28F00DD2F63 /* Timer.cpp in Sources */,
-				75B4E82C16C6F3E000DD2F63 /* ComponentBase.cpp in Sources */,
-				75DEFE6A16C6F78200C29D6A /* StaticMeshComponent.cpp in Sources */,
 				759DB64516C7D9C500E9216C /* SystemInfo.cpp in Sources */,
 				759DB64916C7DA6D00E9216C /* RendererFactory.cpp in Sources */,
-				757FAD2B16C8440700FCDC19 /* ComponentType.cpp in Sources */,
+				757FAD3416C845E500FCDC19 /* ComponentBase.cpp in Sources */,
+				757FAD3516C845E500FCDC19 /* ComponentType.cpp in Sources */,
+				757FAD3616C845E500FCDC19 /* StaticMeshComponent.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

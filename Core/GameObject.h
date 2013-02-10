@@ -11,7 +11,8 @@
 
 #include "Util/List.h"
 
-#include "ComponentBase.h"
+#include "Components/ComponentBase.h"
+
 #include "SceneNode.h"
 
 class GameObject : public SceneNode {
