@@ -11,6 +11,6 @@
 
 #include <cstdio>
 
-#define LOG(...) std::printf(__VA_ARGS__)
+#define LOG(...) { std::printf(__VA_ARGS__); std::printf("\n"); }
 
 #endif

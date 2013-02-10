@@ -17,7 +17,7 @@ namespace File {
         std::string result;
         std::ifstream f(path);
         
-        if(f.bad()) {
+        if(!f.is_open()) {
             LOG("Could not open file at %s", path.c_str());
             return result;
         }
@@ -25,7 +25,8 @@ namespace File {
         char buffer[256] = {0};
         while(!f.eof()) {
             f.getline(buffer, sizeof(buffer));
-            result += result;
+            LOG("Read %s", buffer);
+            result += buffer;
             if(!f.failbit) {
                 result += "\n";
             }
