@@ -11,11 +11,16 @@
 
 #include "Util/List.h"
 
+#include "ComponentType.h"
+
 class GameObject;
 
 class ComponentBase {
 public:
     virtual ~ComponentBase();
+    
+    typedef int Type;
+    virtual Type type() const = 0;
     
     virtual void update(float dt, GameObject* owner) = 0;
     

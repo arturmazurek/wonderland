@@ -16,6 +16,8 @@ struct Vertex;
 
 class StaticMeshComponent : public ComponentBase {
 public:
+    COMPONENT_TYPE;
+    
     StaticMeshComponent();
     ~StaticMeshComponent();
     
