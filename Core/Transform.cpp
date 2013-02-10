@@ -73,7 +73,7 @@ void Transform::setDirty() {
     mDirty = true;
 }
 
-void Transform::update(Transform* parentTransform) {
+void Transform::update(const Transform& parentTransform) {
     mFrame = Matrix::createIdentity();
     mFrame.setScale(mScale.x, mScale.y, mScale.z);
     mFrame.setTranslation(mPosition);

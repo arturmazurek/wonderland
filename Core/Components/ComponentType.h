@@ -9,8 +9,8 @@
 #ifndef __Wonderland__ComponentType__
 #define __Wonderland__ComponentType__
 
-#define COMPONENT_TYPE \
-    static const Type type; \
-    virtual Type getType() const { return type; }
+#define DEFINE_TYPE \
+    static const Type TYPE; \
+    virtual Type getType() const { return TYPE; }
 
 #endif /* defined(__Wonderland__ComponentType__) */

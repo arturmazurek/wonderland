@@ -8,6 +8,8 @@
 
 #include "World.h"
 
+#include "Core/Components/StaticMeshComponent.h"
+
 #include "Util/Log.h"
 
 #include "Renderer/Renderer.h"
@@ -61,21 +63,46 @@ void World::updateTransform(SceneNode* object) {
     if(object->getParent()->transform.dirty()) {
         updateTransform(object->getParent());
     }
-    object->transform.update(&object->getParent()->transform);
+    object->transform.update(object->getParent()->transform);
 }
 
 void World::prepareRender(Renderer *renderer) {
-    GameObject* obj = mDeletedObjects.Head();
-    while(obj) {
-        // remove static meshes from renderer
-        obj = mDeletedObjects.Next(obj);
-    }
-    mDeletedObjects.DeleteAll();
-    
+    removeDeleted(renderer);
+    addSpawned(renderer);
+}
+
+void World::addSpawned(Renderer* renderer) {
     LinkedList<GameObject*>::Iterator addedIterator = mSpawnedObjects.iterator();
     while(addedIterator.hasNext()) {
         GameObject* obj = addedIterator.next();
-        // add static meshes to the renderer
+        
+        LinkedList<ComponentBase*> staticMeshComponents;
+        obj->getComponents(staticMeshComponents, StaticMeshComponent::TYPE);
+        
+        LinkedList<ComponentBase*>::Iterator it = staticMeshComponents.iterator();
+        while(it.hasNext()) {
+            StaticMeshComponent* staticMeshComponent = static_cast<StaticMeshComponent*>(it.next());
+            renderer->drawStaticMesh(staticMeshComponent->getMesh(), obj);
+        }
     }
+    
     mSpawnedObjects.eraseAll();
+}
+
+void World::removeDeleted(Renderer* renderer) {
+    GameObject* obj = mDeletedObjects.Head();
+    while(obj) {
+        LinkedList<ComponentBase*> staticMeshComponents;
+        obj->getComponents(staticMeshComponents, StaticMeshComponent::TYPE);
+        
+        LinkedList<ComponentBase*>::Iterator it = staticMeshComponents.iterator();
+        while(it.hasNext()) {
+            StaticMeshComponent* staticMeshComponent = static_cast<StaticMeshComponent*>(it.next());
+            renderer->dropStaticMesh(staticMeshComponent->getMesh(), obj);
+        }
+        
+        obj = mDeletedObjects.Next(obj);
+    }
+    
+    mDeletedObjects.DeleteAll();
 }

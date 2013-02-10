@@ -34,7 +34,7 @@ public:
     bool dirty() const;
     void setDirty();
     
-    void update(Transform* parentTransform);
+    void update(const Transform& parentTransform);
 private:
     bool        mDirty;
     Matrix      mFrame;

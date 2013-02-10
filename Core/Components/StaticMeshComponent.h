@@ -16,15 +16,17 @@ struct Vertex;
 
 class StaticMeshComponent : public ComponentBase {
 public:
-    COMPONENT_TYPE;
+    DEFINE_TYPE;
     
     StaticMeshComponent();
     ~StaticMeshComponent();
     
     virtual void update(float dt, GameObject* owner) override;
+    
+    StaticMesh* getMesh();
 
 private:
-    StaticMesh* staticMesh;
+    StaticMesh* mStaticMesh;
 };
 
 #endif /* defined(__Wonderland__StaticMeshComponent__) */

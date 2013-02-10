@@ -38,3 +38,13 @@ void GameObject::update(float timeInSeconds) {
         component = mComponents.Next(component);
     }
 }
+
+void GameObject::getComponents(LinkedList<ComponentBase*>& result, ComponentBase::Type type) {
+    ComponentBase* component = mComponents.Head();
+    while(component) {
+        if(component->type() == type) {
+            result.add(component);
+        }
+        component = mComponents.Next(component);
+    }
+}

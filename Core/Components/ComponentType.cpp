@@ -11,7 +11,7 @@
 #include "ComponentBase.h"
 #include "StaticMeshComponent.h"
 
-#define DEFINE_TYPE(componentClass, number) \
-    const ComponentBase::Type componentClass::type = number;
+#define CREATE_TYPE(componentClass, number) \
+    const ComponentBase::Type componentClass::TYPE = number;
 
-DEFINE_TYPE(StaticMeshComponent, 1);
+CREATE_TYPE(StaticMeshComponent, 1);

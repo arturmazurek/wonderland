@@ -34,6 +34,9 @@ private:
     
     void updateTransform(SceneNode* object);
     
+    void removeDeleted(Renderer* renderer);
+    void addSpawned(Renderer* renderer);
+    
 private:
     LIST_DECLARE(GameObject, mObjectsLink)  mObjects;
     LIST_DECLARE(GameObject, mObjectsLink)  mDeletedObjects;

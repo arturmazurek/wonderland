@@ -21,3 +21,7 @@ StaticMeshComponent::~StaticMeshComponent() {
 void StaticMeshComponent::update(float dt, GameObject* owner) {
     
 }
+
+StaticMesh* StaticMeshComponent::getMesh() {
+    return mStaticMesh;
+}

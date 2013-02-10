@@ -45,6 +45,14 @@ public:
 
     typedef LinkedListIterator<ObjT> Iterator;
     
+    LinkedList() : mHead(nullptr) {
+        
+    }
+    
+    ~LinkedList() {
+        eraseAll();
+    }
+    
     void erase(ObjT obj) {
         if(!mHead) {
             return;
@@ -90,6 +98,10 @@ public:
         result.mNode = mHead;
         return result;
     }
+    
+private:
+    LinkedList(const LinkedList&);
+    LinkedList& operator=(const LinkedList&);
     
 private:
     template <typename T> friend class Iterator;

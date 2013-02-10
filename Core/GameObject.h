@@ -9,6 +9,7 @@
 #ifndef __Wonderland__GameObject__
 #define __Wonderland__GameObject__
 
+#include "Util/LinkedList.h"
 #include "Util/List.h"
 
 #include "Components/ComponentBase.h"
@@ -27,6 +28,8 @@ public:
     void removeFromParent();
     
     void update(float timeInSeconds);
+    
+    void getComponents(LinkedList<ComponentBase*>& result, ComponentBase::Type type);
     
 public:
     bool                    toDelete;
