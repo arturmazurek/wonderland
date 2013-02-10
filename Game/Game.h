@@ -11,6 +11,7 @@
 
 #include "GameClock.h"
 
+class Renderer;
 class World;
 
 class Game {
@@ -18,18 +19,23 @@ public:
     Game();
     ~Game();
     
-    void setWorld(World* world);
-
     void doFrame();
+    
+    bool initializeGame();
+    
+    void setWorld(World* world);
 
 private:
     Game(const Game&);
     Game& operator=(const Game&);
     
+    World* createWorld() const;
+    
 private:
     bool        mFirstFrame;
     GameClock   mGameClock;
     float       mLastFrameTime;
+    Renderer*   mRenderer;
     World*      mWorld;
 };
 

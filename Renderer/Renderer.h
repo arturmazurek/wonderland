@@ -15,7 +15,7 @@ class Material;
 
 class Renderer {
 public:
-    static Renderer* instance();
+    virtual ~Renderer();
     
     virtual void renderFrame() = 0;
     
@@ -23,7 +23,6 @@ public:
     
 protected:
     Renderer();
-    virtual ~Renderer();
     
 private:
     Renderer(const Renderer&);

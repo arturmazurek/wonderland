@@ -19,9 +19,10 @@
 - (Game*)game {
     if(!_game) {
         _game = new Game();
-        
-        World* world = new World();
-        _game->setWorld(world);
+        if(!_game->initializeGame()) {
+            NSLog(@"Couldn't initialize game");
+            _game = nullptr;
+        }
     }
     
     return _game;

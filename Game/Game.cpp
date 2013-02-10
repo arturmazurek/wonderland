@@ -8,30 +8,37 @@
 
 #include "Game.h"
 
+#include "Core/GameObject.h"
+#include "Core/World.h"
+
+#include "Renderer/Renderer.h"
+#include "Renderer/RendererFactory.h"
+
 #include "Util/Timer.h"
 
-#include "World.h"
+#include "SystemInfo.h"
 
 Game::Game() : mFirstFrame(true), mLastFrameTime(0), mWorld(nullptr) {
     
 }
 
 Game::~Game() {
+    delete mRenderer;
     delete mWorld;
 }
 
-void Game::setWorld(World* world) {
-    if(mWorld) {
-        delete mWorld;
-    }
+World* Game::createWorld() const {
+    World* world = new World();
+    GameObject* obj = new GameObject();
     
-    mWorld = world;
-    mFirstFrame = true;
+    world->addObject(obj);
+    
+    return world;
 }
 
 void Game::doFrame() {
     if(!mWorld) {
-        return;
+        setWorld(createWorld());
     }
     
 #ifndef DEBUG
@@ -47,4 +54,22 @@ void Game::doFrame() {
     mWorld->update(mGameClock.tickTime(frameTime));
     
     mLastFrameTime = frameTime;
+}
+
+bool Game::initializeGame() {
+    SystemInfo system;
+    if(system.hasOpengGL()) {
+        mRenderer = RendererFactory::createRenderer(RendererFactory::RENDERER_OPENGL);
+    }
+    
+    return true;
+}
+
+void Game::setWorld(World* world) {
+    if(mWorld) {
+        delete mWorld;
+    }
+    
+    mWorld = world;
+    mFirstFrame = true;
 }

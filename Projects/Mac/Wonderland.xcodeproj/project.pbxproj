@@ -51,6 +51,8 @@
 		757C457D16C4595100487778 /* SceneNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 757C457B16C4595100487778 /* SceneNode.cpp */; };
 		757C45A316C5B61000487778 /* ShaderCacheGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 757C45A116C5B61000487778 /* ShaderCacheGL.cpp */; };
 		759C946216C69ED50070D6F7 /* File.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 759C946116C69ED50070D6F7 /* File.cpp */; };
+		759DB64516C7D9C500E9216C /* SystemInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 759DB64316C7D9C500E9216C /* SystemInfo.cpp */; };
+		759DB64916C7DA6D00E9216C /* RendererFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 759DB64716C7DA6D00E9216C /* RendererFactory.cpp */; };
 		75B4E81916C6CCB000DD2F63 /* MaterialGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 75B4E81716C6CCB000DD2F63 /* MaterialGL.cpp */; };
 		75B4E81F16C6D28600DD2F63 /* MaterialCacheGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 75B4E81D16C6D28500DD2F63 /* MaterialCacheGL.cpp */; };
 		75B4E82216C6DF3200DD2F63 /* Shaders in Resources */ = {isa = PBXBuildFile; fileRef = 75B4E82116C6DF3200DD2F63 /* Shaders */; };
@@ -167,6 +169,10 @@
 		757C45A216C5B61000487778 /* ShaderCacheGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShaderCacheGL.h; path = GL/ShaderCacheGL.h; sourceTree = "<group>"; };
 		759C946016C69E780070D6F7 /* File.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = File.h; path = ../../Util/File.h; sourceTree = "<group>"; };
 		759C946116C69ED50070D6F7 /* File.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = File.cpp; path = ../../Util/File.cpp; sourceTree = "<group>"; };
+		759DB64316C7D9C500E9216C /* SystemInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SystemInfo.cpp; path = ../../Game/SystemInfo.cpp; sourceTree = "<group>"; };
+		759DB64416C7D9C500E9216C /* SystemInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SystemInfo.h; path = ../../Game/SystemInfo.h; sourceTree = "<group>"; };
+		759DB64716C7DA6D00E9216C /* RendererFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RendererFactory.cpp; sourceTree = "<group>"; };
+		759DB64816C7DA6D00E9216C /* RendererFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RendererFactory.h; sourceTree = "<group>"; };
 		75A8217816C2F64C00C2E102 /* Vector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Vector.h; sourceTree = "<group>"; };
 		75A8217916C2FC6B00C2E102 /* Matrix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Matrix.h; sourceTree = "<group>"; };
 		75B4E81616C6C96900DD2F63 /* OpenGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OpenGL.h; path = ../../wonderland/Renderer/GL/OpenGL.h; sourceTree = "<group>"; };
@@ -323,6 +329,8 @@
 				6D36E0D716C54E3A00BEBCCC /* Game.h */,
 				6D36E0D916C552A400BEBCCC /* GameClock.cpp */,
 				6D36E0DA16C552A400BEBCCC /* GameClock.h */,
+				759DB64316C7D9C500E9216C /* SystemInfo.cpp */,
+				759DB64416C7D9C500E9216C /* SystemInfo.h */,
 			);
 			name = Game;
 			sourceTree = "<group>";
@@ -489,6 +497,8 @@
 				6D36E0DD16C557CF00BEBCCC /* StaticMesh.h */,
 				6D36E0E016C5611C00BEBCCC /* Material.cpp */,
 				6D36E0E116C5611C00BEBCCC /* Material.h */,
+				759DB64716C7DA6D00E9216C /* RendererFactory.cpp */,
+				759DB64816C7DA6D00E9216C /* RendererFactory.h */,
 			);
 			name = Renderer;
 			path = ../../Renderer;
@@ -611,6 +621,8 @@
 				75B4E82516C6E28F00DD2F63 /* Timer.cpp in Sources */,
 				75B4E82C16C6F3E000DD2F63 /* ComponentBase.cpp in Sources */,
 				75DEFE6A16C6F78200C29D6A /* StaticMeshComponent.cpp in Sources */,
+				759DB64516C7D9C500E9216C /* SystemInfo.cpp in Sources */,
+				759DB64916C7DA6D00E9216C /* RendererFactory.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
