@@ -24,6 +24,7 @@ public:
     virtual void update(float dt, GameObject* owner) override;
     
     StaticMesh* getMesh();
+    void setMesh(StaticMesh* mesh);
 
 private:
     StaticMesh* mStaticMesh;

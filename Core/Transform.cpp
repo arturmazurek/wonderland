@@ -10,7 +10,7 @@
 
 #include "Util/Log.h"
 
-Transform::Transform() : mDirty(false), mFrame(Matrix::createIdentity()) {
+Transform::Transform() : mDirty(false), mFrame(Matrix::createIdentity()), mScale(1, 1, 1) {
 }
 
 Transform::~Transform() {

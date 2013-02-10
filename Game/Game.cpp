@@ -8,11 +8,15 @@
 
 #include "Game.h"
 
+#include "Core/Components/StaticMeshComponent.h"
 #include "Core/GameObject.h"
 #include "Core/World.h"
 
 #include "Renderer/Renderer.h"
 #include "Renderer/RendererFactory.h"
+#include "Renderer/StaticMesh.h"
+#include "Renderer/Surface.h"
+#include "Renderer/Vertex.h"
 
 #include "Util/Timer.h"
 
@@ -31,6 +35,19 @@ World* Game::createWorld() const {
     World* world = new World();
     GameObject* obj = new GameObject();
     
+    StaticMeshComponent* smc = new StaticMeshComponent();
+    StaticMesh* mesh = new StaticMesh();
+    Vertex vertices[] = {
+        { Vector(0, 0, 0), {1, 0, 0, 1}, {0, 0} },
+        { Vector(5, 0, 0), {1, 0, 0, 1}, {0, 0} },
+        { Vector(5, 5, 0), {1, 0, 0, 1}, {0, 0} }
+    };
+    
+    Surface* surface = new Surface(vertices, sizeof(vertices) / sizeof(*vertices));
+    mesh->addSurface(surface, mRenderer->createMaterial("simple"), true);
+    
+    smc->setMesh(mesh);
+    obj->addComponent(smc);
     world->addObject(obj);
     
     return world;

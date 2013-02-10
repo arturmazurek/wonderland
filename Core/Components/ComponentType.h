@@ -11,6 +11,6 @@
 
 #define DEFINE_TYPE \
     static const Type TYPE; \
-    virtual Type getType() const { return TYPE; }
+    virtual Type type() const { return TYPE; }
 
 #endif /* defined(__Wonderland__ComponentType__) */
