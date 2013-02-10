@@ -8,6 +8,8 @@
 
 #include "GameObject.h"
 
+#include "Util/Log.h"
+
 unsigned GameObject::sIdCounter(0);
 
 GameObject::GameObject() : mId(sIdCounter++), toDelete(false) {
@@ -37,6 +39,25 @@ void GameObject::update(float timeInSeconds) {
         component->update(timeInSeconds, this);
         component = mComponents.Next(component);
     }
+}
+
+void GameObject::addComponent(ComponentBase* component) {
+    if(hasComponent(component)) {
+        LOG("Already added component 0x%p to object 0x%p (%u) of type %d", component, this, objectId(), component->type());
+        return;
+    }
+    mComponents.InsertTail(component);
+}
+
+bool GameObject::hasComponent(const ComponentBase* component) const {
+    const ComponentBase* c = mComponents.Head();
+    while(c) {
+        if(c == component) {
+            return true;
+        }
+        c = mComponents.Next(c);
+    }
+    return false;
 }
 
 void GameObject::getComponents(LinkedList<ComponentBase*>& result, ComponentBase::Type type) {

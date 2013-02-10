@@ -29,6 +29,8 @@ public:
     
     void update(float timeInSeconds);
     
+    void addComponent(ComponentBase* component);
+    bool hasComponent(const ComponentBase* component) const;
     void getComponents(LinkedList<ComponentBase*>& result, ComponentBase::Type type);
     
 public:
