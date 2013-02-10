@@ -29,7 +29,7 @@ void RendererGL::renderFrame() {
 }
 
 Material* RendererGL::createMaterial(const std::string& name) {
-    return nullptr;
+    return mMaterialCache->getMaterial(name);
 }
 
 void RendererGL::drawStaticMesh(StaticMesh* mesh, GameObject* owner) {
