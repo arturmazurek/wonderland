@@ -7,3 +7,6 @@
 //
 
 #include "Vertex.h"
+
+static_assert(sizeof(Vector) == 3 * sizeof(float), "Vector structure mustn't have padding inside.");
+static_assert(sizeof(Vertex) == (3 + 4 + 2) * sizeof(float), "Vertex structure mustn't have padding inside.");
