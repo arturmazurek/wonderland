@@ -335,6 +335,14 @@
 			name = Game;
 			sourceTree = "<group>";
 		};
+		7523C63F16C984A700AA3D7C /* Projects */ = {
+			isa = PBXGroup;
+			children = (
+				75C139AC16BE91E900F81C99 /* Mac */,
+			);
+			name = Projects;
+			sourceTree = "<group>";
+		};
 		757C457316C4439200487778 /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -426,7 +434,7 @@
 				75A8217716C2F61A00C2E102 /* Math */,
 				75C13C9416BEA0DB00F81C99 /* Renderer */,
 				75C139CF16BE973700F81C99 /* External */,
-				75C139AC16BE91E900F81C99 /* WonderlandMac */,
+				7523C63F16C984A700AA3D7C /* Projects */,
 				75C139A516BE91E900F81C99 /* Frameworks */,
 				75C139A316BE91E900F81C99 /* Products */,
 			);
@@ -462,7 +470,7 @@
 			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
-		75C139AC16BE91E900F81C99 /* WonderlandMac */ = {
+		75C139AC16BE91E900F81C99 /* Mac */ = {
 			isa = PBXGroup;
 			children = (
 				75C139BB16BE91EA00F81C99 /* MainMenu.xib */,
@@ -472,6 +480,7 @@
 				75C139C616BE92AD00F81C99 /* OpenGLView.h */,
 				75C139C716BE92AD00F81C99 /* OpenGLView.mm */,
 			);
+			name = Mac;
 			path = WonderlandMac;
 			sourceTree = "<group>";
 		};
