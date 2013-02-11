@@ -36,7 +36,7 @@ bool ShaderGL::compile(const GLchar* body, Type type) {
     if(compileStatus == GL_TRUE) {
         return true;
     } else {
-        LOG("Could not compile shader %s", body);
+        LOG("Could not compile shader:\n***\n%s***", body);
         type = TYPE_INVALID;
         return false;
     }

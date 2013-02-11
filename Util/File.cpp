@@ -26,7 +26,7 @@ namespace File {
         while(!f.eof()) {
             f.getline(buffer, sizeof(buffer));
             result += buffer;
-            if(!f.failbit) {
+            if(!f.fail()) {
                 result += "\n";
             }
         }
