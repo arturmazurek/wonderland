@@ -9,11 +9,12 @@
 #ifndef __Wonderland__RendererGL__
 #define __Wonderland__RendererGL__
 
-#include "../Renderer.h"
+#include "Renderer/Renderer.h"
 
 #include "Util/List.h"
 
 class MaterialCacheGL;
+class Surface;
 
 class RendererGL : public Renderer {
 public:
@@ -30,6 +31,10 @@ public:
 private:
     RendererGL(const RendererGL&);
     RendererGL& operator=(const RendererGL&);
+    
+    struct RenderInfo;
+    void render(RenderInfo* renderable);
+    void renderSurface(Surface* surface, Material* material);
     
 private:
     MaterialCacheGL*  mMaterialCache;

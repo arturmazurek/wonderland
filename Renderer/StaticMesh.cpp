@@ -31,3 +31,7 @@ void StaticMesh::addSurface(Surface* surface, Material* material) {
 void StaticMesh::addSurface(Surface* surface, Material* material, bool willOwnSurface) {
     mSurfaces.add({surface, material});
 }
+
+StaticMesh::SurfacesIterator StaticMesh::surfacesIterator() {
+    return mSurfaces.iterator();
+}

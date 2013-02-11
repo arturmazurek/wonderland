@@ -22,12 +22,15 @@ public:
     void addSurface(Surface* surface, Material* material);
     void addSurface(Surface* surface, Material* material, bool willOwnSurface);
     
-private:
     struct SurfaceInfo {
         Surface* surface;
         Material* material;
         bool own;
     };
+    typedef LinkedList<SurfaceInfo>::Iterator SurfacesIterator;
+    SurfacesIterator surfacesIterator();
+    
+private:
     
     LinkedList<SurfaceInfo> mSurfaces;
 };

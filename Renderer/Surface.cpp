@@ -28,3 +28,11 @@ void Surface::setVertices(Vertex* vertices, int numVerts) {
     mVerts = vertices;
     mNumVerts = numVerts;
 }
+
+const Vertex* Surface::vertices() const {
+    return mVerts;
+}
+
+int Surface::verticesCount() const {
+    return mNumVerts;
+}

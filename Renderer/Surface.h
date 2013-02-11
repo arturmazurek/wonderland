@@ -23,6 +23,9 @@ public:
     
     void setVertices(Vertex* verts, int numVerts);
     
+    const Vertex* vertices() const;
+    int verticesCount() const;
+    
 private:
     Surface(const Surface&);
     Surface& operator=(const Surface&);

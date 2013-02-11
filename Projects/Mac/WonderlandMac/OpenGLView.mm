@@ -104,6 +104,8 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 	
 	if (self = [super initWithFrame:frameRect]) {
 		[[self openGLContext] makeCurrentContext];
+        
+        
 		
 		// Synchronize buffer swaps with vertical refresh rate
 		GLint swapInt = 1;
