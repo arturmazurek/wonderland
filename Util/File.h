@@ -15,6 +15,8 @@ namespace File {
     
     std::string asString(const std::string& path);
     
+    std::string basePath();
+    
 };
 
 #endif

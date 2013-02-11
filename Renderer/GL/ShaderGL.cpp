@@ -12,6 +12,8 @@
 
 #include "Util/Log.h"
 
+const int ShaderGL::MAX_ERROR_LOG_LENGTH = 256;
+
 ShaderGL::ShaderGL() : shader(0), type(TYPE_INVALID) {
     
 }
@@ -38,4 +40,10 @@ bool ShaderGL::compile(const GLchar* body, Type type) {
         type = TYPE_INVALID;
         return false;
     }
+}
+
+std::string ShaderGL::getShaderError() const {
+    GLchar errorLog[MAX_ERROR_LOG_LENGTH];
+    glGetShaderInfoLog(shader, sizeof(errorLog), NULL, errorLog);
+    return std::string(errorLog);
 }

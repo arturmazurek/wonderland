@@ -11,13 +11,14 @@
 #include "Core/World.h"
 
 #include "Util/Constants.h"
+#include "Util/File.h"
 #include "Util/Log.h"
 
 #include "MaterialCacheGL.h"
 #include "MaterialGL.h"
 
 RendererGL::RendererGL() {
-    mMaterialCache = new MaterialCacheGL(Constants::RESOURCES_BASE);
+    mMaterialCache = new MaterialCacheGL(File::basePath() + "/" + Constants::SHADERS_BASE);
 }
 
 RendererGL::~RendererGL() {

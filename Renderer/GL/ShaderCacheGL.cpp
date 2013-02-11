@@ -57,7 +57,10 @@ ShaderGL* ShaderCacheGL::loadShader(const std::string& name, ShaderGL::Type type
     ShaderGL* shader = new ShaderGL();
     shader->compile(shaderSource.c_str(), type);
     if(shader->type == ShaderGL::TYPE_INVALID) {
-        LOG("Could not load shader named %s, of type %d", name.c_str(), type);
+        LOG("Could not compile shader named %s, of type 0x%x", name.c_str(), type);
+        LOG("Info: %s", shader->getShaderError().c_str());
+        
+        delete shader;
         return nullptr;
     }
     

@@ -25,7 +25,6 @@ namespace File {
         char buffer[256] = {0};
         while(!f.eof()) {
             f.getline(buffer, sizeof(buffer));
-            LOG("Read %s", buffer);
             result += buffer;
             if(!f.failbit) {
                 result += "\n";
