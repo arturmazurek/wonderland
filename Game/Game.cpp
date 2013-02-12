@@ -37,14 +37,14 @@ World* Game::createWorld() const {
     
     StaticMeshComponent* smc = new StaticMeshComponent();
     StaticMesh* mesh = new StaticMesh();
-    Vertex vertices[] = {
+    static Vertex vertices[] = {
         { Vector(0, 0, 0), {1, 0, 0, 1}, {0, 0} },
         { Vector(5, 0, 0), {1, 0, 0, 1}, {0, 0} },
         { Vector(5, 5, 0), {1, 0, 0, 1}, {0, 0} }
     };
     
     Surface* surface = new Surface(vertices, sizeof(vertices) / sizeof(*vertices));
-    mesh->addSurface(surface, mRenderer->createMaterial("simple"), true);
+    mesh->addSurface(surface, mRenderer->createMaterial("simple"));
     
     smc->setMesh(mesh);
     obj->addComponent(smc);

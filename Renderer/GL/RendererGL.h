@@ -32,16 +32,16 @@ private:
     RendererGL(const RendererGL&);
     RendererGL& operator=(const RendererGL&);
     
-    struct RenderInfo;
-    void render(RenderInfo* renderable);
     void renderSurface(Surface* surface, Material* material);
     
 private:
     MaterialCacheGL*  mMaterialCache;
     
     struct RenderInfo {
-        StaticMesh* mesh;
+        Surface*    surface;
+        Material*   material;
         GameObject* owner;
+        StaticMesh* sourceMesh;
         LIST_LINK(RenderInfo) listLink;
     };
     LIST_DECLARE(RenderInfo, listLink) mRenderables;

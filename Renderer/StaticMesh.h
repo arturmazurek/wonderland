@@ -20,12 +20,10 @@ public:
     ~StaticMesh();
     
     void addSurface(Surface* surface, Material* material);
-    void addSurface(Surface* surface, Material* material, bool willOwnSurface);
     
     struct SurfaceInfo {
         Surface* surface;
         Material* material;
-        bool own;
     };
     typedef LinkedList<SurfaceInfo>::Iterator SurfacesIterator;
     SurfacesIterator surfacesIterator();
