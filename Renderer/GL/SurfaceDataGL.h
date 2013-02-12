@@ -9,8 +9,15 @@
 #ifndef __Wonderland__SurfaceDataGL__
 #define __Wonderland__SurfaceDataGL__
 
-struct SurfaceDataGL {
+#include "Renderer/SurfaceData.h"
+
+#include "OpenGL.h"
+
+struct SurfaceDataGL : SurfaceData {
+    SurfaceDataGL();
+    virtual ~SurfaceDataGL();
     
+    GLuint vbo;
 };
 
 #endif /* defined(__Wonderland__SurfaceDataGL__) */

@@ -8,12 +8,16 @@
 
 #include "Material.h"
 
-Material::Material() : mShader(nullptr) {
+#include "RendererData.h"
+
+Material::Material() : rendererData(nullptr), mShader(nullptr) {
     
 }
 
 Material::~Material() {
-    
+    if(rendererData) {
+        delete rendererData;
+    }
 }
 
 Material* Material::create(const std::string& name) {

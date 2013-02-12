@@ -12,6 +12,7 @@
 #include <string>
 
 class Shader;
+struct RendererData;
 
 /**
  * Material is a shader with associated parameters
@@ -25,6 +26,7 @@ public:
     
     static Material* create(const std::string& name);
     
+    RendererData*   rendererData;
 private:
     Shader* mShader;
 };

@@ -8,18 +8,20 @@
 
 #include "Surface.h"
 
+#include "SurfaceData.h"
 #include "Vertex.h"
 
-Surface::Surface() : mVerts(nullptr), mNumVerts(0) {
+Surface::Surface() : surfaceData(nullptr), mVerts(nullptr), mNumVerts(0) {
     
 }
 
-Surface::Surface(Vertex* verts, int numVerts) : mVerts(verts), mNumVerts(numVerts) {
+Surface::Surface(Vertex* verts, int numVerts) : surfaceData(nullptr), mVerts(verts), mNumVerts(numVerts) {
     
 }
 
 Surface::~Surface() {
     delete[] mVerts;
+    delete surfaceData;
 }
 
 void Surface::setVertices(Vertex* vertices, int numVerts) {

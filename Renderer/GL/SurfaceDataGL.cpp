@@ -7,3 +7,13 @@
 //
 
 #include "SurfaceDataGL.h"
+
+SurfaceDataGL::SurfaceDataGL() : vbo(0) {
+    
+}
+
+SurfaceDataGL::~SurfaceDataGL() {
+    if(vbo) {
+        glDeleteBuffers(1, &vbo);
+    }
+}

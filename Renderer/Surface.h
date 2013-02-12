@@ -9,6 +9,7 @@
 #ifndef __Wonderland__Surface__
 #define __Wonderland__Surface__
 
+struct SurfaceData;
 struct Vertex;
 
 /** 
@@ -25,7 +26,8 @@ public:
     
     const Vertex* vertices() const;
     int verticesCount() const;
-    
+
+    SurfaceData* surfaceData;
 private:
     Surface(const Surface&);
     Surface& operator=(const Surface&);

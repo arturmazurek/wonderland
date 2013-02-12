@@ -11,9 +11,14 @@
 
 #include "Renderer/Renderer.h"
 
+#include <string>
+
 #include "Util/List.h"
 
+#include "OpenGL.h"
+
 class MaterialCacheGL;
+class MaterialGL;
 class Surface;
 
 class RendererGL : public Renderer {
@@ -32,16 +37,25 @@ private:
     RendererGL(const RendererGL&);
     RendererGL& operator=(const RendererGL&);
     
-    void renderSurface(Surface* surface, Material* material);
+    void renderSurface(Surface* surface, MaterialGL* material);
+    
+    void generateRendererData(MaterialGL* m) const;
+    void generateSurfaceData(Surface* s) const;
     
 private:
+    static const std::string MODEL_VIEW_NAME;
+    static const std::string PROJECTION_NAME;
+    static const std::string COLOR_NAME;
+    
+    static const std::string POSITION_NAME;
+    
     MaterialCacheGL*  mMaterialCache;
     
     struct RenderInfo {
-        Surface*    surface;
-        Material*   material;
-        GameObject* owner;
-        StaticMesh* sourceMesh;
+        Surface*        surface;
+        MaterialGL*     material;
+        GameObject*     owner;
+        StaticMesh*     sourceMesh;
         LIST_LINK(RenderInfo) listLink;
     };
     LIST_DECLARE(RenderInfo, listLink) mRenderables;
