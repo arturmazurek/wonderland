@@ -18,6 +18,7 @@ struct SurfaceDataGL : SurfaceData {
     virtual ~SurfaceDataGL();
     
     GLuint vbo;
+    GLuint vao;
 };
 
 #endif /* defined(__Wonderland__SurfaceDataGL__) */

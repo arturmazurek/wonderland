@@ -28,11 +28,11 @@ ShaderCacheGL::~ShaderCacheGL() {
 }
 
 ShaderGL* ShaderCacheGL::getShader(const std::string& name, ShaderGL::Type type) {
-    ShaderGL* s = mShaders[name.c_str()];
+    ShaderGL* s = mShaders[fileName(name, type).c_str()];
     if(!s) {
         s = loadShader(name, type);
         if(s) {
-            mShaders[name.c_str()] = s;
+            mShaders[fileName(name, type).c_str()] = s;
         } else {
             abort();
         }
@@ -41,12 +41,7 @@ ShaderGL* ShaderCacheGL::getShader(const std::string& name, ShaderGL::Type type)
 }
 
 ShaderGL* ShaderCacheGL::loadShader(const std::string& name, ShaderGL::Type type) const {
-    std::string fullPath = mBasePath  + "/" + name;
-    if(type == ShaderGL::VERTEX_SHADER) {
-        fullPath += VERTEX_SHADER_EXTENSION;
-    } else {
-        fullPath += FRAGMENT_SHADER_EXTENSION;
-    }
+    std::string fullPath = mBasePath  + "/" + fileName(name, type);
     
     std::string shaderSource = File::asString(fullPath);
     if(shaderSource.empty()) {
@@ -64,4 +59,13 @@ ShaderGL* ShaderCacheGL::loadShader(const std::string& name, ShaderGL::Type type
     }
     
     return shader;
+}
+
+std::string ShaderCacheGL::fileName(std::string shaderName, ShaderGL::Type type) const {
+    if(type == ShaderGL::VERTEX_SHADER) {
+        shaderName += VERTEX_SHADER_EXTENSION;
+    } else {
+        shaderName += FRAGMENT_SHADER_EXTENSION;
+    }
+    return shaderName;
 }

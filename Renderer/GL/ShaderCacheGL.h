@@ -28,6 +28,8 @@ private:
     
     ShaderGL* loadShader(const std::string& name, ShaderGL::Type type) const;
     
+    std::string fileName(std::string shaderName, ShaderGL::Type type) const;
+    
 private:
     static const std::string    VERTEX_SHADER_EXTENSION;
     static const std::string    FRAGMENT_SHADER_EXTENSION;

@@ -9,6 +9,6 @@
 #ifndef Wonderland_OpenGL_h
 #define Wonderland_OpenGL_h
 
-#include <OpenGL/gl.h>
+#include <OpenGL/gl3.h>
 
 #endif

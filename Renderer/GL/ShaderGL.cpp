@@ -34,6 +34,7 @@ bool ShaderGL::compile(const GLchar* body, Type type) {
     glGetShaderiv(shader, GL_COMPILE_STATUS, &compileStatus);
     
     if(compileStatus == GL_TRUE) {
+        this->type = type;
         return true;
     } else {
         LOG("Could not compile shader:\n***\n%s***", body);

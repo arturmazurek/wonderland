@@ -12,6 +12,12 @@
 #include "Math/Vector.h"
 
 struct Vertex {
+    enum {
+        ATTR_POS,
+        ATTR_COLOR,
+        ATTR_UV
+    };
+    
     Vector pos;
     float color[4];
     float uv[2];
