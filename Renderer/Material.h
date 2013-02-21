@@ -11,7 +11,6 @@
 
 #include <string>
 
-class Shader;
 struct RendererData;
 
 /**
@@ -21,14 +20,15 @@ struct RendererData;
  */
 class Material {
 public:
-    Material();
+    Material(const std::string& name);
     virtual ~Material();
     
-    static Material* create(const std::string& name);
-    
     RendererData*   rendererData;
+    
+    const std::string& name() const;
+    
 private:
-    Shader* mShader;
+    std::string mName;
 };
 
 #endif /* defined(__Wonderland__Material__) */

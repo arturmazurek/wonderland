@@ -13,12 +13,19 @@
 
 #include "OpenGL.h"
 
+class ShaderGL;
+
 class MaterialGL : public Material {
 public:
-    MaterialGL();
+    MaterialGL(const std::string& name);
     ~MaterialGL();
     
+    bool buildMaterial(ShaderGL* vertexShader, ShaderGL* fragmentShader);
+    
     GLuint program;
+    
+private:
+    static const std::string ATTRIBUTE_NAMES[];
 };
 
 #endif /* defined(__Wonderland__MaterialGL__) */

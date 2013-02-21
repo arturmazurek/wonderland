@@ -14,12 +14,14 @@
 struct Vertex {
     enum {
         ATTR_POS,
-        ATTR_COLOR,
-        ATTR_UV
+        ATTR_NORMAL,
+        ATTR_UV,
+        
+        ATTR_ENUM_SIZE
     };
     
     Vector pos;
-    float color[4];
+    float normal[3];
     float uv[2];
 };
 

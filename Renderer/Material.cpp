@@ -10,7 +10,7 @@
 
 #include "RendererData.h"
 
-Material::Material() : rendererData(nullptr), mShader(nullptr) {
+Material::Material(const std::string& name) : rendererData(nullptr), mName(name) {
     
 }
 
@@ -20,6 +20,6 @@ Material::~Material() {
     }
 }
 
-Material* Material::create(const std::string& name) {
-    return nullptr;
+const std::string& Material::name() const {
+    return mName;
 }
