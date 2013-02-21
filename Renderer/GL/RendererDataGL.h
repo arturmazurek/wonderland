@@ -22,8 +22,6 @@ struct RendererDataGL : public RendererData {
     GLint modelViewUniform;
     GLint projectionUniform;
     GLint colorUniform;
-
-    GLint positionIn;
 };
 
 #endif /* defined(__Wonderland__RendererDataGL__) */

@@ -43,11 +43,6 @@ MaterialGL* MaterialCacheGL::getMaterial(const std::string& name) {
 }
 
 MaterialGL* MaterialCacheGL::loadMaterial(const std::string& name) {
-    LOG("--%x", glGetError());
-    LOG("--%x", glGetError());
-    LOG("--%x", glGetError());
-    LOG("--%x", glGetError());
-    
     // at the moment material consists only of a vertex and fragment shaders
     // named identically
     ShaderGL* vertexShader = mShaderCache->getShader(name, ShaderGL::VERTEX_SHADER);
@@ -63,35 +58,11 @@ MaterialGL* MaterialCacheGL::loadMaterial(const std::string& name) {
     }
     
     MaterialGL* result = new MaterialGL(name);
-//    result->program = glCreateProgram();
-//    glAttachShader(result->program, fragmentShader->shader);
-//    LOG("glAttachShader - %x", glGetError());
-//    glAttachShader(result->program, vertexShader->shader);
-//    LOG("glAttachShader - %x", glGetError());
-    
-//    glBindAttribLocation(result->program, 0, "aPosition");
-//    glBindAttribLocation(result->program, Vertex::ATTR_POS, "aPosition");
-//    LOG("bind attrib location - %x", glGetError());
-//    glBindAttribLocation(result->program, Vertex::ATTR_COLOR, "aColor");
-//    LOG("bind attrib location - %x", glGetError());
-//    glBindAttribLocation(result->program, Vertex::ATTR_UV, "aUv");
-//    LOG("bind attrib location - %x", glGetError());
-    
-//    glLinkProgram(result->program);
-    
     if(!result->buildMaterial(vertexShader, fragmentShader)) {
         LOG("Could not build material");
         delete result;
         return nullptr;
     }
-    
-//    GLint linkSuccessful;
-//    glGetProgramiv(result->program, GL_LINK_STATUS, &linkSuccessful);
-//    if(linkSuccessful == GL_FALSE) {
-//        LOG("Could not link material %s", name.c_str());
-//        delete result;
-//        result = nullptr;
-//    }
     
     return result;
 }

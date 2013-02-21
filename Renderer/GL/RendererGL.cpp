@@ -89,18 +89,9 @@ void RendererGL::dropStaticMesh(StaticMesh* mesh, GameObject* owner) {
 void RendererGL::generateRendererData(MaterialGL* m) const {
     RendererDataGL* data = new RendererDataGL();
     
-    LOG("0x%x", glGetError());
-    LOG("0x%x", glGetError());
-    
     data->modelViewUniform = glGetUniformLocation(m->program, MODEL_VIEW_NAME.c_str());
-    LOG("0x%x - modelViewUniform", glGetError());
     data->projectionUniform = glGetUniformLocation(m->program, PROJECTION_NAME.c_str());
-    LOG("0x%x - projectionUnifrom", glGetError());
     data->colorUniform = glGetUniformLocation(m->program, COLOR_NAME.c_str());
-    LOG("0x%x - colorUniform", glGetError());
-    
-    data->positionIn = glGetAttribLocation(m->program, POSITION_NAME.c_str());
-    LOG("0x%x - positionAttribute", glGetError());
     
     m->rendererData = data;
 }
@@ -109,35 +100,22 @@ void RendererGL::generateSurfaceData(Surface* s) const {
     SurfaceDataGL* data = new SurfaceDataGL();
     
     glGenBuffers(1, &data->vbo);
-    LOG("0x%x - glGenBuffers", glGetError());
     glBindBuffer(GL_ARRAY_BUFFER, data->vbo);
-    LOG("0x%x - glBindBuffer", glGetError());
     glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * s->verticesCount(), s->vertices(), GL_STATIC_DRAW);
-    LOG("0x%x - glBufferData", glGetError());
     
     glGenVertexArrays(1, &data->vao);
-    LOG("0x%x - glGenVertexArrays", glGetError());
     glBindVertexArray(data->vao);
-    LOG("0x%x - glBindVertexArray", glGetError());
-    
     
     glVertexAttribPointer(Vertex::ATTR_POS, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), 0);
-    LOG("0x%x - glVertexAttribPointer", glGetError());
     glEnableVertexAttribArray(Vertex::ATTR_POS);
-    LOG("0x%x - glEnableVertexAttribArray", glGetError());
     
     glVertexAttribPointer(Vertex::ATTR_NORMAL, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)(3*sizeof(float)));
-    LOG("0x%x - glVertexAttribPointer", glGetError());
     glEnableVertexAttribArray(Vertex::ATTR_NORMAL);
-    LOG("0x%x - glEnableVertexAttribArray", glGetError());
     
     glVertexAttribPointer(Vertex::ATTR_UV, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)(7*sizeof(float)));
-    LOG("0x%x - glVertexAttribPointer", glGetError());
     glEnableVertexAttribArray(Vertex::ATTR_UV);
-    LOG("0x%x - glEnableVertexAttribArray", glGetError());
     
     glBindBuffer(GL_ARRAY_BUFFER, 0);
-    LOG("0x%x - glBindBuffer", glGetError());
     
     s->surfaceData = data;
 }
@@ -149,21 +127,12 @@ void RendererGL::renderSurface(Surface* surface, MaterialGL* material) {
     
     glUseProgram(material->program);
     
-    LOG("\n");
     glUniformMatrix4fv(renderData->projectionUniform, 1, GL_FALSE, m.m);
-    LOG("0x%x", glGetError());
     glUniformMatrix4fv(renderData->modelViewUniform, 1, GL_FALSE, m.m);
-    LOG("0x%x", glGetError());
     glUniform4f(renderData->colorUniform, 0, 1, 0, 1);
-    LOG("0x%x", glGetError());
-
 
     glBindVertexArray(surfaceData->vao);
-    LOG("0x%x - glBindVertexArray", glGetError());
     glDrawArrays(GL_TRIANGLES, 0, surface->verticesCount());
-    LOG("0x%x - glDrawArrays", glGetError());
     
     glBindVertexArray(0);
-//    glDrawElements(GL_TRIANGLES, 3, GL, )
-    
 }
