@@ -116,6 +116,7 @@ void RendererGL::generateSurfaceData(Surface* s) const {
     glEnableVertexAttribArray(Vertex::ATTR_UV);
     
     glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glBindVertexArray(0);
     
     s->surfaceData = data;
 }
@@ -133,6 +134,5 @@ void RendererGL::renderSurface(Surface* surface, MaterialGL* material) {
 
     glBindVertexArray(surfaceData->vao);
     glDrawArrays(GL_TRIANGLES, 0, surface->verticesCount());
-    
     glBindVertexArray(0);
 }
