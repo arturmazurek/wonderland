@@ -47,8 +47,6 @@ private:
     static const std::string PROJECTION_NAME;
     static const std::string COLOR_NAME;
     
-    static const std::string POSITION_NAME;
-    
     MaterialCacheGL*  mMaterialCache;
     
     struct RenderInfo {

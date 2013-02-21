@@ -8,6 +8,7 @@
 
 #include "MaterialGL.h"
 
+#include "RendererDataGL.h"
 #include "ShaderGL.h"
 
 #include "Renderer/Vertex.h"
@@ -24,12 +25,15 @@ const std::string MaterialGL::ATTRIBUTE_NAMES[] = {
     "aUv"
 };
 
-MaterialGL::MaterialGL(const std::string& name) : Material(name), program(0) {
+MaterialGL::MaterialGL(const std::string& name) : Material(name), program(0), rendererData(nullptr) {
     
 }
 
 MaterialGL::~MaterialGL() {
     glDeleteProgram(program);
+    if(rendererData) {
+        delete rendererData;
+    }
 }
 
 bool MaterialGL::buildMaterial(ShaderGL* vertexShader, ShaderGL* fragmentShader) {

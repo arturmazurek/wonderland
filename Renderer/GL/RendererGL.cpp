@@ -31,8 +31,6 @@ const std::string RendererGL::MODEL_VIEW_NAME("uModelView");
 const std::string RendererGL::PROJECTION_NAME("uProjection");
 const std::string RendererGL::COLOR_NAME("uColor");
 
-const std::string RendererGL::POSITION_NAME("aPosition");
-
 RendererGL::RendererGL() {
     mMaterialCache = new MaterialCacheGL(File::basePath() + "/" + Constants::SHADERS_BASE);
 }
@@ -109,10 +107,10 @@ void RendererGL::generateSurfaceData(Surface* s) const {
     glVertexAttribPointer(Vertex::ATTR_POS, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), 0);
     glEnableVertexAttribArray(Vertex::ATTR_POS);
     
-    glVertexAttribPointer(Vertex::ATTR_NORMAL, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)(3*sizeof(float)));
+    glVertexAttribPointer(Vertex::ATTR_NORMAL, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)(3*sizeof(float)));
     glEnableVertexAttribArray(Vertex::ATTR_NORMAL);
     
-    glVertexAttribPointer(Vertex::ATTR_UV, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)(7*sizeof(float)));
+    glVertexAttribPointer(Vertex::ATTR_UV, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)(6*sizeof(float)));
     glEnableVertexAttribArray(Vertex::ATTR_UV);
     
     glBindBuffer(GL_ARRAY_BUFFER, 0);

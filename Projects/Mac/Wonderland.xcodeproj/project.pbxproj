@@ -199,7 +199,6 @@
 		75B4E82416C6E28F00DD2F63 /* Timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Timer.cpp; path = ../../../wonderland/Util/Timer.cpp; sourceTree = "<group>"; };
 		75BEAB9816CADC960067922C /* RendererDataGL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RendererDataGL.cpp; path = GL/RendererDataGL.cpp; sourceTree = "<group>"; };
 		75BEAB9916CADC960067922C /* RendererDataGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RendererDataGL.h; path = GL/RendererDataGL.h; sourceTree = "<group>"; };
-		75BEAB9C16CADCE30067922C /* RendererData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RendererData.h; sourceTree = "<group>"; };
 		75BEAB9D16CAE9420067922C /* SurfaceData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SurfaceData.h; sourceTree = "<group>"; };
 		75C139A216BE91E900F81C99 /* Wonderland.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wonderland.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75C139A616BE91E900F81C99 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -545,7 +544,6 @@
 				6D36E0E116C5611C00BEBCCC /* Material.h */,
 				759DB64716C7DA6D00E9216C /* RendererFactory.cpp */,
 				759DB64816C7DA6D00E9216C /* RendererFactory.h */,
-				75BEAB9C16CADCE30067922C /* RendererData.h */,
 				75BEAB9D16CAE9420067922C /* SurfaceData.h */,
 			);
 			name = Renderer;

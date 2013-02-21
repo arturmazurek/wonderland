@@ -8,16 +8,12 @@
 
 #include "Material.h"
 
-#include "RendererData.h"
-
-Material::Material(const std::string& name) : rendererData(nullptr), mName(name) {
+Material::Material(const std::string& name) : mName(name) {
     
 }
 
 Material::~Material() {
-    if(rendererData) {
-        delete rendererData;
-    }
+
 }
 
 const std::string& Material::name() const {

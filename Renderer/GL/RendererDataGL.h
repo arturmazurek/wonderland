@@ -9,15 +9,13 @@
 #ifndef __Wonderland__RendererDataGL__
 #define __Wonderland__RendererDataGL__
 
-#include "Renderer/RendererData.h"
-
 #include <string>
 
 #include "OpenGL.h"
 
-struct RendererDataGL : public RendererData {
+struct RendererDataGL {
     RendererDataGL();
-    virtual ~RendererDataGL();
+    ~RendererDataGL();
     
     GLint modelViewUniform;
     GLint projectionUniform;

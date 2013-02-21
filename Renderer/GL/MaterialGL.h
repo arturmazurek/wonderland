@@ -13,6 +13,7 @@
 
 #include "OpenGL.h"
 
+class RendererDataGL;
 class ShaderGL;
 
 class MaterialGL : public Material {
@@ -23,6 +24,7 @@ public:
     bool buildMaterial(ShaderGL* vertexShader, ShaderGL* fragmentShader);
     
     GLuint program;
+    RendererDataGL* rendererData;
     
 private:
     static const std::string ATTRIBUTE_NAMES[];
