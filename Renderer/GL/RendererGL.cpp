@@ -48,13 +48,13 @@ void RendererGL::renderFrame() {
     }
 }
 
-MaterialInstance* RendererGL::createMaterial(const std::string& name) {
+UniquePtr<MaterialInstance> RendererGL::createMaterial(const std::string& name) {
     MaterialGL* material = mMaterialCache->getMaterial(name);
     MaterialInstance* result = new MaterialInstance(material);
     if(!material->rendererData) {
         generateRendererData(material);
     }
-    return result;
+    return UniquePtr<MaterialInstance>(result);
 }
 
 void RendererGL::drawStaticMesh(StaticMesh* mesh, GameObject* owner) {
@@ -64,10 +64,10 @@ void RendererGL::drawStaticMesh(StaticMesh* mesh, GameObject* owner) {
         StaticMesh::SurfaceInfo& si = iterator.next();
         
         if(!si.surface->surfaceData) {
-            generateSurfaceData(si.surface);
+            generateSurfaceData(si.surface.get());
         }
         
-        ri->surface = si.surface;
+        ri->surface = si.surface.get();
         ri->materialInstance = si.material;
         ri->owner = owner;
         
@@ -93,11 +93,11 @@ void RendererGL::generateRendererData(MaterialGL* m) const {
     data->projectionUniform = glGetUniformLocation(m->program, PROJECTION_NAME.c_str());
     data->colorUniform = glGetUniformLocation(m->program, COLOR_NAME.c_str());
     
-    m->rendererData = data;
+    m->rendererData = UniquePtr<RendererDataGL>(data);
 }
 
 void RendererGL::generateSurfaceData(Surface* s) const {
-    SurfaceDataGL* data = new SurfaceDataGL();
+    UniquePtr<SurfaceDataGL> data(new SurfaceDataGL());
     
     glGenBuffers(1, &data->vbo);
     glBindBuffer(GL_ARRAY_BUFFER, data->vbo);
@@ -124,7 +124,7 @@ void RendererGL::generateSurfaceData(Surface* s) const {
 void RendererGL::renderSurface(Surface* surface, MaterialInstance* materialInstance) {
     Matrix m = Matrix::createIdentity();
     MaterialGL* material = static_cast<MaterialGL*>(materialInstance->parent());
-    SurfaceDataGL* surfaceData = static_cast<SurfaceDataGL*>(surface->surfaceData);
+    SurfaceDataGL* surfaceData = static_cast<SurfaceDataGL*>(surface->surfaceData.get());
     
     glUseProgram(material->program);
     

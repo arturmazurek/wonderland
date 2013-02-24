@@ -25,15 +25,12 @@ const std::string MaterialGL::ATTRIBUTE_NAMES[] = {
     "aUv"
 };
 
-MaterialGL::MaterialGL(const std::string& name) : Material(name), program(0), rendererData(nullptr) {
+MaterialGL::MaterialGL(const std::string& name) : Material(name), program(0) {
     
 }
 
 MaterialGL::~MaterialGL() {
     glDeleteProgram(program);
-    if(rendererData) {
-        delete rendererData;
-    }
 }
 
 bool MaterialGL::buildMaterial(ShaderGL* vertexShader, ShaderGL* fragmentShader) {

@@ -11,6 +11,8 @@
 
 #include <string>
 
+#include "Util/UniquePtr.h"
+
 class GameObject;
 class MaterialInstance;
 class StaticMesh;
@@ -21,7 +23,7 @@ public:
     
     virtual void renderFrame() = 0;
     
-    virtual MaterialInstance* createMaterial(const std::string& name) = 0;
+    virtual UniquePtr<MaterialInstance> createMaterial(const std::string& name) = 0;
     
     virtual void drawStaticMesh(StaticMesh* mesh, GameObject* owner) = 0;
     virtual void dropStaticMesh(StaticMesh* mesh, GameObject* owner) = 0;

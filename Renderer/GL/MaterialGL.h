@@ -13,6 +13,8 @@
 
 #include "OpenGL.h"
 
+#include "Util/UniquePtr.h"
+
 class RendererDataGL;
 class ShaderGL;
 
@@ -24,7 +26,7 @@ public:
     bool buildMaterial(ShaderGL* vertexShader, ShaderGL* fragmentShader);
     
     GLuint program;
-    RendererDataGL* rendererData;
+    UniquePtr<RendererDataGL> rendererData;
     
 private:
     static const std::string ATTRIBUTE_NAMES[];

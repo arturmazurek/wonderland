@@ -1,46 +1,40 @@
 //
-//  UniquePtr.h
+//  UniqueArray.h
 //  Wonderland
 //
 //  Created by Artur Mazurek on 24.02.2013.
 //  Copyright (c) 2013 Artur Mazurek. All rights reserved.
 //
 
-#ifndef Wonderland_UniquePtr_h
-#define Wonderland_UniquePtr_h
-
-#include "Log.h"
+#ifndef Wonderland_UniqueArray_h
+#define Wonderland_UniqueArray_h
 
 template <typename T>
-class UniquePtr {
+class UniqueArray {
 public:
-    explicit UniquePtr(T* obj = nullptr) : mPtr(obj) {
+    explicit UniqueArray(T* arr = nullptr) : mPtr(arr) {
+    }
+    
+    UniqueArray(const UniqueArray& other) : mPtr(const_cast<UniqueArray&>(other).release()) {
     }
     
     template <typename U>
-    explicit UniquePtr(U* obj = nullptr) : mPtr(obj) { 
+    UniqueArray(const UniqueArray<U>& other) : mPtr(const_cast<UniqueArray&>(other).release())  {
     }
     
-    UniquePtr(const UniquePtr& other) : mPtr(const_cast<UniquePtr&>(other).release()) {
-    }
-    
-    template <typename U>
-    UniquePtr(const UniquePtr<U>& other) : mPtr(const_cast<UniquePtr&>(other).release())  {
-    }
-    
-    UniquePtr& operator=(const UniquePtr& other) {
-        mPtr = const_cast<UniquePtr&>(other).release();
+    UniqueArray& operator=(const UniqueArray& other) {
+        mPtr = const_cast<UniqueArray&>(other).release();
         return *this;
     }
     
     template <typename U>
-    UniquePtr& operator=(const UniquePtr<U>& other) {
-        mPtr = const_cast<UniquePtr<U>&>(other).release();
+    UniqueArray& operator=(const UniqueArray<U>& other) {
+        mPtr = const_cast<UniqueArray&>(other).release();
         return *this;
     }
     
-    ~UniquePtr() {
-        delete mPtr;
+    ~UniqueArray() {
+        delete[] mPtr;
     }
     
     void reset(T* obj = nullptr) {
@@ -62,10 +56,6 @@ public:
         return mPtr != nullptr;
     }
     
-    T* operator->() const {
-        return mPtr;
-    }
-    
     T& operator*() {
         return *mPtr;
     }
@@ -74,17 +64,25 @@ public:
         return *mPtr;
     }
     
+    T& operator[](unsigned i) {
+        return mPtr[i];
+    }
+    
+    const T& operator[](unsigned i) const {
+        return mPtr[i];
+    }
+    
 private:
     T *mPtr;
 };
 
 template <typename T1, typename T2>
-bool operator==(const UniquePtr<T1>& p1, const UniquePtr<T2>& p2) {
+bool operator==(const UniqueArray<T1>& p1, const UniqueArray<T2>& p2) {
     return p1.get() == p2.get();
 }
 
 template <typename T1, typename T2>
-bool operator!=(const UniquePtr<T1>& p1, const UniquePtr<T2>& p2) {
+bool operator!=(const UniqueArray<T1>& p1, const UniqueArray<T2>& p2) {
     return !(p1 == p2);
 }
 

@@ -157,6 +157,7 @@
 		7561443716D94FD1000ECECE /* MaterialInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaterialInstance.h; sourceTree = "<group>"; };
 		7561443E16DA44FC000ECECE /* UniquePtr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UniquePtr.h; path = ../../Util/UniquePtr.h; sourceTree = "<group>"; };
 		7561444016DA6CF1000ECECE /* SharedPtr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SharedPtr.h; path = ../../Util/SharedPtr.h; sourceTree = "<group>"; };
+		7561444116DA7C20000ECECE /* UniqueArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UniqueArray.h; path = ../../Util/UniqueArray.h; sourceTree = "<group>"; };
 		7569479216C99F1400ECA36F /* SurfaceDataGL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SurfaceDataGL.cpp; path = GL/SurfaceDataGL.cpp; sourceTree = "<group>"; };
 		7569479316C99F1400ECA36F /* SurfaceDataGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SurfaceDataGL.h; path = GL/SurfaceDataGL.h; sourceTree = "<group>"; };
 		757C457516C443B000487778 /* List.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = List.h; path = Util/List.h; sourceTree = "<group>"; };
@@ -390,6 +391,7 @@
 				75B4E82416C6E28F00DD2F63 /* Timer.cpp */,
 				7561443E16DA44FC000ECECE /* UniquePtr.h */,
 				7561444016DA6CF1000ECECE /* SharedPtr.h */,
+				7561444116DA7C20000ECECE /* UniqueArray.h */,
 			);
 			name = Util;
 			sourceTree = "<group>";

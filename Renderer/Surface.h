@@ -9,6 +9,9 @@
 #ifndef __Wonderland__Surface__
 #define __Wonderland__Surface__
 
+#include "Util/UniqueArray.h"
+#include "Util/UniquePtr.h"
+
 struct SurfaceData;
 struct Vertex;
 
@@ -19,22 +22,22 @@ struct Vertex;
 class Surface {
 public:
     Surface();
-    Surface(Vertex* verts, int numVertices);
+    Surface(UniqueArray<Vertex> verts, int numVertices);
     ~Surface();
     
-    void setVertices(Vertex* verts, int numVerts);
+    void setVertices(UniqueArray<Vertex> verts, int numVerts);
     
     const Vertex* vertices() const;
     int verticesCount() const;
 
-    SurfaceData* surfaceData;
+    UniquePtr<SurfaceData> surfaceData;
 private:
     Surface(const Surface&);
     Surface& operator=(const Surface&);
 
 private:
-    Vertex*     mVerts;
-    int         mNumVerts;
+    UniqueArray<Vertex>     mVerts;
+    int                     mNumVerts;
 };
 
 #endif /* defined(__Wonderland__Surface__) */

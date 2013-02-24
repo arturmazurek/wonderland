@@ -28,7 +28,7 @@ public:
     
     virtual void renderFrame() override;
 
-    virtual MaterialInstance* createMaterial(const std::string& name) override;
+    virtual UniquePtr<MaterialInstance> createMaterial(const std::string& name) override;
     
     virtual void drawStaticMesh(StaticMesh* mesh, GameObject* owner) override;
     virtual void dropStaticMesh(StaticMesh* mesh, GameObject* owner) override;

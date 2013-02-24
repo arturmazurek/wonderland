@@ -23,7 +23,7 @@ public:
         decrease();
     }
     
-    SharedPtr(const SharedPtr& other) : mCounter(other.mCounter) : mPtr(other.mPtr) {
+    SharedPtr(const SharedPtr& other) : mCounter(other.mCounter), mPtr(other.mPtr) {
         increase();
     }
     
@@ -58,7 +58,7 @@ public:
         return *mPtr;
     }
     
-    unsigned short useCount const {
+    unsigned short useCount() const {
         if(!mCounter) {
             return 0;
         } else {

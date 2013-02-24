@@ -11,28 +11,24 @@
 #include "SurfaceData.h"
 #include "Vertex.h"
 
-Surface::Surface() : surfaceData(nullptr), mVerts(nullptr), mNumVerts(0) {
+Surface::Surface() : mNumVerts(0) {
     
 }
 
-Surface::Surface(Vertex* verts, int numVerts) : surfaceData(nullptr), mVerts(verts), mNumVerts(numVerts) {
+Surface::Surface(UniqueArray<Vertex> verts, int numVerts) : mVerts(verts), mNumVerts(numVerts) {
     
 }
 
 Surface::~Surface() {
-    delete[] mVerts;
-    delete surfaceData;
 }
 
-void Surface::setVertices(Vertex* vertices, int numVerts) {
-    delete[] mVerts;
-    
+void Surface::setVertices(UniqueArray<Vertex> vertices, int numVerts) {
     mVerts = vertices;
     mNumVerts = numVerts;
 }
 
 const Vertex* Surface::vertices() const {
-    return mVerts;
+    return mVerts.get();
 }
 
 int Surface::verticesCount() const {

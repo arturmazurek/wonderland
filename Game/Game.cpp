@@ -12,12 +12,14 @@
 #include "Core/GameObject.h"
 #include "Core/World.h"
 
+#include "Renderer/MaterialInstance.h"
 #include "Renderer/Renderer.h"
 #include "Renderer/RendererFactory.h"
 #include "Renderer/StaticMesh.h"
 #include "Renderer/Surface.h"
 #include "Renderer/Vertex.h"
 
+#include "Util/UniqueArray.h"
 #include "Util/Timer.h"
 
 #include "SystemInfo.h"
@@ -41,8 +43,8 @@ UniquePtr<World> Game::createWorld() const {
         { Vector(5, 5, 0), {0, 0, 1}, {0, 0} }
     };
     
-    Surface* surface = new Surface(vertices, sizeof(vertices) / sizeof(*vertices));
-    mesh->addSurface(surface, mRenderer->createMaterial("simple"));
+    Surface* surface = new Surface(UniqueArray<Vertex>(vertices), sizeof(vertices) / sizeof(*vertices));
+    mesh->addSurface(SharedPtr<Surface>(surface), mRenderer->createMaterial("simple"));
     
     smc->setMesh(mesh);
     obj->addComponent(smc);

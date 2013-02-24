@@ -10,6 +10,8 @@
 #define __Wonderland__StaticMesh__
 
 #include "Util/LinkedList.h"
+#include "Util/SharedPtr.h"
+#include "Util/UniquePtr.h"
 
 class Surface;
 class MaterialInstance;
@@ -19,17 +21,16 @@ public:
     StaticMesh();
     ~StaticMesh();
     
-    void addSurface(Surface* surface, MaterialInstance* material);
+    void addSurface(SharedPtr<Surface> surface, UniquePtr<MaterialInstance> material);
     
     struct SurfaceInfo {
-        Surface* surface;
+        SharedPtr<Surface> surface;
         MaterialInstance* material;
     };
     typedef LinkedList<SurfaceInfo>::Iterator SurfacesIterator;
     SurfacesIterator surfacesIterator();
     
 private:
-    
     LinkedList<SurfaceInfo> mSurfaces;
 };
 

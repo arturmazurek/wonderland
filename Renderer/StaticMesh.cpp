@@ -8,6 +8,7 @@
 
 #include "StaticMesh.h"
 
+#include "MaterialInstance.h"
 #include "Surface.h"
 
 StaticMesh::StaticMesh() {
@@ -15,11 +16,15 @@ StaticMesh::StaticMesh() {
 }
 
 StaticMesh::~StaticMesh() {
-
+    SurfacesIterator iter = surfacesIterator();
+    while(iter.hasNext()) {
+        SurfaceInfo& si = iter.next();
+        delete si.material;
+    }
 }
 
-void StaticMesh::addSurface(Surface* surface, MaterialInstance* material) {
-    mSurfaces.add({surface, material});
+void StaticMesh::addSurface(SharedPtr<Surface> surface, UniquePtr<MaterialInstance> material) {
+    mSurfaces.add({surface, material.release()});
 }
 
 StaticMesh::SurfacesIterator StaticMesh::surfacesIterator() {
