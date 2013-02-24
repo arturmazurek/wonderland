@@ -14,70 +14,70 @@
 template <typename T>
 class UniquePtr {
 public:
-    explicit UniquePtr(T* obj = nullptr) : mObj(obj) {
+    explicit UniquePtr(T* obj = nullptr) : mPtr(obj) {
     }
     
-    UniquePtr(const UniquePtr& other) : mObj(const_cast<UniquePtr&>(other).release()) {
+    UniquePtr(const UniquePtr& other) : mPtr(const_cast<UniquePtr&>(other).release()) {
     }
     
     template <typename U>
-    UniquePtr(const UniquePtr<U>& other) : mObj(const_cast<UniquePtr&>(other).release())  {
+    UniquePtr(const UniquePtr<U>& other) : mPtr(const_cast<UniquePtr&>(other).release())  {
     }
     
     UniquePtr& operator=(const UniquePtr& other) {
-        mObj = const_cast<UniquePtr&>(other).release();
+        mPtr = const_cast<UniquePtr&>(other).release();
         return *this;
     }
     
     template <typename U>
     UniquePtr& operator=(const UniquePtr<U>& other) {
-        mObj = const_cast<UniquePtr&>(other).release();
+        mPtr = const_cast<UniquePtr&>(other).release();
         return *this;
     }
     
     ~UniquePtr() {
-        delete mObj;
+        delete mPtr;
     }
     
     void reset(T* obj = nullptr) {
-        delete mObj;
-        mObj = obj;
+        delete mPtr;
+        mPtr = obj;
     }
     
     T* release() {
-        T* temp = mObj;
-        mObj = nullptr;
+        T* temp = mPtr;
+        mPtr = nullptr;
         return temp;
     }
     
     T* get() {
-        return mObj;
+        return mPtr;
     }
     
     void swap(UniquePtr& other) {
-        T* temp = mObj;
-        mObj = other.mObj;
-        other.mObj = temp;
+        T* temp = mPtr;
+        mPtr = other.mPtr;
+        other.mPtr = temp;
     }
     
     operator bool() const {
-        return mObj != nullptr;
+        return mPtr != nullptr;
     }
     
     T* operator->() const {
-        return mObj;
+        return mPtr;
     }
     
     T& operator*() {
-        return *mObj;
+        return *mPtr;
     }
     
     const T& operator*() const {
-        return *mObj;
+        return *mPtr;
     }
     
 private:
-    T *mObj;
+    T *mPtr;
 };
 
 template <typename T1, typename T2>
