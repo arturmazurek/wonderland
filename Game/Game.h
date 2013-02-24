@@ -25,20 +25,20 @@ public:
     
     bool initializeGame();
     
-    void setWorld(World* world);
+    void setWorld(UniquePtr<World> world);
 
 private:
     Game(const Game&);
     Game& operator=(const Game&);
     
-    World* createWorld() const;
+    UniquePtr<World> createWorld() const;
     
 private:
     bool                mFirstFrame;
     GameClock           mGameClock;
     float               mLastFrameTime;
     UniquePtr<Renderer> mRenderer;
-    World*              mWorld;
+    UniquePtr<World>    mWorld;
 };
 
 #endif /* defined(__Wonderland__Game__) */

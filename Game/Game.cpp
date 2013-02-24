@@ -27,10 +27,9 @@ Game::Game() : mFirstFrame(true), mLastFrameTime(0), mWorld(nullptr) {
 }
 
 Game::~Game() {
-    delete mWorld;
 }
 
-World* Game::createWorld() const {
+UniquePtr<World> Game::createWorld() const {
     World* world = new World();
     GameObject* obj = new GameObject();
     
@@ -49,7 +48,7 @@ World* Game::createWorld() const {
     obj->addComponent(smc);
     world->addObject(obj);
     
-    return world;
+    return UniquePtr<World>(world);
 }
 
 void Game::doFrame() {
@@ -83,11 +82,7 @@ bool Game::initializeGame() {
     return true;
 }
 
-void Game::setWorld(World* world) {
-    if(mWorld) {
-        delete mWorld;
-    }
-    
+void Game::setWorld(UniquePtr<World> world) {
     mWorld = world;
     mFirstFrame = true;
 }
