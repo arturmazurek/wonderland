@@ -23,12 +23,10 @@ public:
     Material(const std::string& name);
     virtual ~Material();
     
-    RendererData*   rendererData;
-    
     const std::string& name() const;
     
 private:
-    std::string mName;
+    std::string     mName;
 };
 
 #endif /* defined(__Wonderland__Material__) */
