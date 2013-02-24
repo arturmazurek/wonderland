@@ -9,6 +9,20 @@
 #ifndef Wonderland_SharedPtr_h
 #define Wonderland_SharedPtr_h
 
-
+template <typename T>
+class SharedPtr {
+public:
+    explicit SharedPtr(T* ptr = nullptr) {
+        
+    }
+    
+private:
+    struct Counter {
+        unsigned short count;
+    };
+    
+    T* mPtr;
+    Counter* mCounter;
+};
 
 #endif
