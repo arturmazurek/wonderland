@@ -54,12 +54,6 @@ public:
         return mPtr;
     }
     
-    void swap(UniquePtr& other) {
-        T* temp = mPtr;
-        mPtr = other.mPtr;
-        other.mPtr = temp;
-    }
-    
     operator bool() const {
         return mPtr != nullptr;
     }
