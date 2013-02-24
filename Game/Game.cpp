@@ -38,9 +38,9 @@ World* Game::createWorld() const {
     StaticMeshComponent* smc = new StaticMeshComponent();
     StaticMesh* mesh = new StaticMesh();
     static Vertex vertices[] = {
-        { Vector(0, 0, 0), {1, 0, 0}, {0, 0} },
-        { Vector(5, 0, 0), {1, 0, 0}, {0, 0} },
-        { Vector(5, 5, 0), {1, 0, 0}, {0, 0} }
+        { Vector(0, 0, 0), {0, 0, 1}, {0, 0} },
+        { Vector(5, 0, 0), {0, 0, 1}, {0, 0} },
+        { Vector(5, 5, 0), {0, 0, 1}, {0, 0} }
     };
     
     Surface* surface = new Surface(vertices, sizeof(vertices) / sizeof(*vertices));

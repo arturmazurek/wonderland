@@ -12,18 +12,18 @@
 #include "Util/LinkedList.h"
 
 class Surface;
-class Material;
+class MaterialInstance;
 
 class StaticMesh {
 public:
     StaticMesh();
     ~StaticMesh();
     
-    void addSurface(Surface* surface, Material* material);
+    void addSurface(Surface* surface, MaterialInstance* material);
     
     struct SurfaceInfo {
         Surface* surface;
-        Material* material;
+        MaterialInstance* material;
     };
     typedef LinkedList<SurfaceInfo>::Iterator SurfacesIterator;
     SurfacesIterator surfacesIterator();

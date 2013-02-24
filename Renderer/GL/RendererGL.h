@@ -28,7 +28,7 @@ public:
     
     virtual void renderFrame() override;
 
-    virtual Material* createMaterial(const std::string& name) override;
+    virtual MaterialInstance* createMaterial(const std::string& name) override;
     
     virtual void drawStaticMesh(StaticMesh* mesh, GameObject* owner) override;
     virtual void dropStaticMesh(StaticMesh* mesh, GameObject* owner) override;
@@ -37,7 +37,7 @@ private:
     RendererGL(const RendererGL&);
     RendererGL& operator=(const RendererGL&);
     
-    void renderSurface(Surface* surface, MaterialGL* material);
+    void renderSurface(Surface* surface, MaterialInstance* materialInstance);
     
     void generateRendererData(MaterialGL* m) const;
     void generateSurfaceData(Surface* s) const;
@@ -50,11 +50,11 @@ private:
     MaterialCacheGL*  mMaterialCache;
     
     struct RenderInfo {
-        Surface*        surface;
-        MaterialGL*     material;
-        GameObject*     owner;
-        StaticMesh*     sourceMesh;
-        LIST_LINK(RenderInfo) listLink;
+        Surface*                surface;
+        MaterialInstance*       materialInstance;
+        GameObject*             owner;
+        StaticMesh*             sourceMesh;
+        LIST_LINK(RenderInfo)   listLink;
     };
     LIST_DECLARE(RenderInfo, listLink) mRenderables;
 };

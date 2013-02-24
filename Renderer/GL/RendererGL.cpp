@@ -12,6 +12,7 @@
 
 #include "Math/Matrix.h"
 
+#include "Renderer/MaterialInstance.h"
 #include "Renderer/StaticMesh.h"
 #include "Renderer/Surface.h"
 #include "Renderer/Vertex.h"
@@ -42,15 +43,16 @@ RendererGL::~RendererGL() {
 void RendererGL::renderFrame() {
     RenderInfo* renderable = mRenderables.Head();
     while(renderable) {
-        renderSurface(renderable->surface, renderable->material);
+        renderSurface(renderable->surface, renderable->materialInstance);
         renderable = mRenderables.Next(renderable);
     }
 }
 
-Material* RendererGL::createMaterial(const std::string& name) {
-    MaterialGL* result = mMaterialCache->getMaterial(name);
-    if(!result->rendererData) {
-        generateRendererData(result);
+MaterialInstance* RendererGL::createMaterial(const std::string& name) {
+    MaterialGL* material = mMaterialCache->getMaterial(name);
+    MaterialInstance* result = new MaterialInstance(material);
+    if(!material->rendererData) {
+        generateRendererData(material);
     }
     return result;
 }
@@ -66,7 +68,7 @@ void RendererGL::drawStaticMesh(StaticMesh* mesh, GameObject* owner) {
         }
         
         ri->surface = si.surface;
-        ri->material = static_cast<MaterialGL*>(si.material);
+        ri->materialInstance = si.material;
         ri->owner = owner;
         
         mRenderables.InsertTail(ri);
@@ -119,16 +121,16 @@ void RendererGL::generateSurfaceData(Surface* s) const {
     s->surfaceData = data;
 }
 
-void RendererGL::renderSurface(Surface* surface, MaterialGL* material) {
+void RendererGL::renderSurface(Surface* surface, MaterialInstance* materialInstance) {
     Matrix m = Matrix::createIdentity();
-    RendererDataGL* renderData = static_cast<RendererDataGL*>(material->rendererData);
+    MaterialGL* material = static_cast<MaterialGL*>(materialInstance->parent());
     SurfaceDataGL* surfaceData = static_cast<SurfaceDataGL*>(surface->surfaceData);
     
     glUseProgram(material->program);
     
-    glUniformMatrix4fv(renderData->projectionUniform, 1, GL_FALSE, m.m);
-    glUniformMatrix4fv(renderData->modelViewUniform, 1, GL_FALSE, m.m);
-    glUniform4f(renderData->colorUniform, 0, 1, 0, 1);
+    glUniformMatrix4fv(material->rendererData->projectionUniform, 1, GL_FALSE, m.m);
+    glUniformMatrix4fv(material->rendererData->modelViewUniform, 1, GL_FALSE, m.m);
+    glUniform4f(material->rendererData->colorUniform, 0, 1, 0, 1);
 
     glBindVertexArray(surfaceData->vao);
     glDrawArrays(GL_TRIANGLES, 0, surface->verticesCount());

@@ -18,7 +18,7 @@ StaticMesh::~StaticMesh() {
 
 }
 
-void StaticMesh::addSurface(Surface* surface, Material* material) {
+void StaticMesh::addSurface(Surface* surface, MaterialInstance* material) {
     mSurfaces.add({surface, material});
 }
 

@@ -12,7 +12,7 @@
 #include <string>
 
 class GameObject;
-class Material;
+class MaterialInstance;
 class StaticMesh;
 
 class Renderer {
@@ -21,7 +21,7 @@ public:
     
     virtual void renderFrame() = 0;
     
-    virtual Material* createMaterial(const std::string& name) = 0;
+    virtual MaterialInstance* createMaterial(const std::string& name) = 0;
     
     virtual void drawStaticMesh(StaticMesh* mesh, GameObject* owner) = 0;
     virtual void dropStaticMesh(StaticMesh* mesh, GameObject* owner) = 0;
