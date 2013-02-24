@@ -27,7 +27,6 @@ Game::Game() : mFirstFrame(true), mLastFrameTime(0), mWorld(nullptr) {
 }
 
 Game::~Game() {
-    delete mRenderer;
     delete mWorld;
 }
 
@@ -69,7 +68,7 @@ void Game::doFrame() {
     }
     
     mWorld->update(mGameClock.tickTime(frameTime));
-    mWorld->prepareRender(mRenderer);
+    mWorld->prepareRender(mRenderer.get());
     mRenderer->renderFrame();
     
     mLastFrameTime = frameTime;

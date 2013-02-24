@@ -9,6 +9,8 @@
 #ifndef __Wonderland__RendererFactory__
 #define __Wonderland__RendererFactory__
 
+#include "Util/UniquePtr.h"
+
 class Renderer;
 
 class RendererFactory {
@@ -17,7 +19,7 @@ public:
         RENDERER_OPENGL
     };
     
-    static Renderer* createRenderer(RendererType type);
+    static UniquePtr<Renderer> createRenderer(RendererType type);
     
 private:
     RendererFactory() {}

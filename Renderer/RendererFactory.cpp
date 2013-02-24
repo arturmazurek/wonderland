@@ -13,15 +13,15 @@
 #include "GL/OpenGL.h"
 #include "GL/RendererGL.h"
 
-Renderer* RendererFactory::createRenderer(RendererType type) {
+UniquePtr<Renderer> RendererFactory::createRenderer(RendererType type) {
     switch (type) {
         case RENDERER_OPENGL:
-            return createRendererGL();
+            return UniquePtr<Renderer>(createRendererGL());
             break;
             
         default:
             assert(!"Unknown type");
-            return createRendererGL();
+            return UniquePtr<Renderer>(createRendererGL());
             break;
     }
 }

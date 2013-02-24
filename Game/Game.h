@@ -11,6 +11,8 @@
 
 #include "GameClock.h"
 
+#include "Util/UniquePtr.h"
+
 class Renderer;
 class World;
 
@@ -32,11 +34,11 @@ private:
     World* createWorld() const;
     
 private:
-    bool        mFirstFrame;
-    GameClock   mGameClock;
-    float       mLastFrameTime;
-    Renderer*   mRenderer;
-    World*      mWorld;
+    bool                mFirstFrame;
+    GameClock           mGameClock;
+    float               mLastFrameTime;
+    UniquePtr<Renderer> mRenderer;
+    World*              mWorld;
 };
 
 #endif /* defined(__Wonderland__Game__) */
