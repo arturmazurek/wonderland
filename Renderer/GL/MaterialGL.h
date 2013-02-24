@@ -15,7 +15,6 @@
 
 #include "Util/UniquePtr.h"
 
-class RendererDataGL;
 class ShaderGL;
 
 class MaterialGL : public Material {
@@ -25,8 +24,12 @@ public:
     
     bool buildMaterial(ShaderGL* vertexShader, ShaderGL* fragmentShader);
     
+    bool generated;
+    
     GLuint program;
-    UniquePtr<RendererDataGL> rendererData;
+    GLint modelViewUniform;
+    GLint projectionUniform;
+    GLint colorUniform;
     
 private:
     static const std::string ATTRIBUTE_NAMES[];

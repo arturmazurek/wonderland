@@ -8,7 +8,6 @@
 
 #include "MaterialGL.h"
 
-#include "RendererDataGL.h"
 #include "ShaderGL.h"
 
 #include "Renderer/Vertex.h"
@@ -25,7 +24,8 @@ const std::string MaterialGL::ATTRIBUTE_NAMES[] = {
     "aUv"
 };
 
-MaterialGL::MaterialGL(const std::string& name) : Material(name), program(0) {
+MaterialGL::MaterialGL(const std::string& name) : Material(name), program(0), generated(false),
+modelViewUniform(0), projectionUniform(0), colorUniform(0) {
     
 }
 

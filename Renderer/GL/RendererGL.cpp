@@ -23,7 +23,6 @@
 
 #include "MaterialCacheGL.h"
 #include "MaterialGL.h"
-#include "RendererDataGL.h"
 #include "SurfaceDataGL.h"
 
 static const int PARAMS_BUFFER_LENGTH = 256;
@@ -51,7 +50,7 @@ void RendererGL::renderFrame() {
 UniquePtr<MaterialInstance> RendererGL::createMaterial(const std::string& name) {
     MaterialGL* material = mMaterialCache->getMaterial(name);
     MaterialInstance* result = new MaterialInstance(material);
-    if(!material->rendererData) {
+    if(!material->generated) {
         generateRendererData(material);
     }
     return UniquePtr<MaterialInstance>(result);
@@ -87,13 +86,11 @@ void RendererGL::dropStaticMesh(StaticMesh* mesh, GameObject* owner) {
 }
 
 void RendererGL::generateRendererData(MaterialGL* m) const {
-    RendererDataGL* data = new RendererDataGL();
+    m->modelViewUniform = glGetUniformLocation(m->program, MODEL_VIEW_NAME.c_str());
+    m->projectionUniform = glGetUniformLocation(m->program, PROJECTION_NAME.c_str());
+    m->colorUniform = glGetUniformLocation(m->program, COLOR_NAME.c_str());
     
-    data->modelViewUniform = glGetUniformLocation(m->program, MODEL_VIEW_NAME.c_str());
-    data->projectionUniform = glGetUniformLocation(m->program, PROJECTION_NAME.c_str());
-    data->colorUniform = glGetUniformLocation(m->program, COLOR_NAME.c_str());
-    
-    m->rendererData = UniquePtr<RendererDataGL>(data);
+    m->generated = true;
 }
 
 void RendererGL::generateSurfaceData(Surface* s) const {
@@ -128,9 +125,9 @@ void RendererGL::renderSurface(Surface* surface, MaterialInstance* materialInsta
     
     glUseProgram(material->program);
     
-    glUniformMatrix4fv(material->rendererData->projectionUniform, 1, GL_FALSE, m.m);
-    glUniformMatrix4fv(material->rendererData->modelViewUniform, 1, GL_FALSE, m.m);
-    glUniform4f(material->rendererData->colorUniform, 0, 1, 0, 1);
+    glUniformMatrix4fv(material->projectionUniform, 1, GL_FALSE, m.m);
+    glUniformMatrix4fv(material->modelViewUniform, 1, GL_FALSE, m.m);
+    glUniform4f(material->colorUniform, 0, 1, 0, 1);
 
     glBindVertexArray(surfaceData->vao);
     glDrawArrays(GL_TRIANGLES, 0, surface->verticesCount());

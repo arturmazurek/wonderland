@@ -11,8 +11,6 @@
 
 #include <string>
 
-struct RendererData;
-
 /**
  * Material is a shader with associated parameters
  * There is one material per surface. Each has its own instance
