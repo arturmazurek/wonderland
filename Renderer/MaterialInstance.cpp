@@ -10,7 +10,7 @@
 
 #include "Material.h"
 
-MaterialInstance::MaterialInstance(Material* parent) : mParent(parent) {
+MaterialInstance::MaterialInstance(Material* parent) : mCopied(false), mParent(parent) {
     
 }
 
@@ -20,4 +20,8 @@ MaterialInstance::~MaterialInstance() {
 
 Material* MaterialInstance::parent() const {
     return mParent;
+}
+
+void MaterialInstance::setParameter(const std::string&, float* value, int size) {
+    
 }

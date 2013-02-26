@@ -11,6 +11,12 @@
 
 #include <string>
 
+struct MaterialParam {
+    std::string name;
+    int paramHandle;
+    int size;
+};
+
 /**
  * Material is a shader with associated parameters
  * There is one material per surface. Each has its own instance
@@ -22,6 +28,8 @@ public:
     virtual ~Material();
     
     const std::string& name() const;
+    
+//    MaterialParam* getDefaultParams() const;
     
 private:
     std::string     mName;

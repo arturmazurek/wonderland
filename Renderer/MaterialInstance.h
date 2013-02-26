@@ -9,6 +9,8 @@
 #ifndef __Wonderland__MaterialInstance__
 #define __Wonderland__MaterialInstance__
 
+#include <string>
+
 class Material;
 
 class MaterialInstance {
@@ -18,8 +20,11 @@ public:
     
     Material* parent() const;
     
+    void setParameter(const std::string& paramName, float* value, int size);
+    
 private:
-    Material* mParent;
+    bool        mCopied;
+    Material*   mParent;
 };
 
 #endif /* defined(__Wonderland__MaterialInstance__) */
