@@ -50,8 +50,10 @@ public:
     
     const std::string& name() const;
     
-    virtual Array<MaterialParam> getDefaultParams() const = 0;
+    virtual Array<MaterialParam> createParams() const = 0;
     virtual void apply(const Array<MaterialParam>& params) = 0;
+    
+    void setDefaults(Array<MaterialParam>& param);
     
 private:
     std::string     mName;

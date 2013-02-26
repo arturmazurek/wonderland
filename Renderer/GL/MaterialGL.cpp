@@ -101,7 +101,7 @@ bool MaterialGL::buildMaterial(ShaderGL* vertexShader, ShaderGL* fragmentShader)
     return true;
 }
 
-Array<MaterialParam> MaterialGL::getDefaultParams() const {
+Array<MaterialParam> MaterialGL::createParams() const {
     if(!mLinked) {
         LOG("Cannot get parameters from an unlinked program");
         return Array<MaterialParam>();

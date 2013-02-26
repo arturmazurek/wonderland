@@ -22,7 +22,7 @@ public:
     MaterialGL(const std::string& name);
     ~MaterialGL();
     
-    virtual Array<MaterialParam> getDefaultParams() const override;
+    virtual Array<MaterialParam> createParams() const override;
     virtual void apply(const Array<MaterialParam>& params) override;
     
     bool buildMaterial(ShaderGL* vertexShader, ShaderGL* fragmentShader);

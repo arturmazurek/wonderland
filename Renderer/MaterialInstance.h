@@ -22,6 +22,9 @@ public:
     
     void setParameter(const std::string& paramName, float* value, int size);
     
+    // TODO - implement this one
+    MaterialInstance* clone() const;
+    
 private:
     bool        mCopied;
     Material*   mParent;

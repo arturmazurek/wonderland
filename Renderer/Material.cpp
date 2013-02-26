@@ -50,3 +50,22 @@ Material::~Material() {
 const std::string& Material::name() const {
     return mName;
 }
+
+static MaterialParam* _findParam(const std::string& name, Array<MaterialParam>& params) {
+    for(int i = 0; i < params.size(); ++i) {
+        if(name == params[i].name) {
+            return &params[i];
+        }
+    }
+    
+    return nullptr;
+}
+
+void Material::setDefaults(Array<MaterialParam>& params) {
+    MaterialParam* param = _findParam("color", params);
+    param->type = PARAM_TYPE_VEC4;
+    param->size = 4 * sizeof(float);
+    param->value = malloc(param->size);
+    float values[] = {0.f, 1.f, 0.f, 1.f};
+    memcpy(param->value, values, param->size);
+}
