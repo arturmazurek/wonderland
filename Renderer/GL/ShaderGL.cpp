@@ -12,7 +12,7 @@
 
 #include "Util/Log.h"
 
-const int ShaderGL::MAX_ERROR_LOG_LENGTH = 256;
+static const int MAX_ERROR_LOG_LENGTH = 256;
 
 ShaderGL::ShaderGL() : shader(0), type(TYPE_INVALID) {
     

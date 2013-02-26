@@ -27,8 +27,6 @@ struct ShaderGL {
     bool compile(const GLchar* body, Type type);
     std::string getShaderError() const;
     
-    static const int MAX_ERROR_LOG_LENGTH;
-    
     GLuint  shader;
     Type    type;
 };
