@@ -22,6 +22,9 @@ public:
     MaterialGL(const std::string& name);
     ~MaterialGL();
     
+    virtual Array<MaterialParam> getDefaultParams() const override;
+    virtual void apply(const Array<MaterialParam>& params) override;
+    
     bool buildMaterial(ShaderGL* vertexShader, ShaderGL* fragmentShader);
     
     bool generated;
@@ -33,6 +36,8 @@ public:
     
 private:
     static const std::string ATTRIBUTE_NAMES[];
+    
+    bool mLinked;
 };
 
 #endif /* defined(__Wonderland__MaterialGL__) */

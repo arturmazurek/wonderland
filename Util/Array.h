@@ -19,7 +19,7 @@ public:
     }
     
     Array(const Array& other) : mGrow(other.mGrow), mObjs(nullptr), mUsed(other.mUsed), mSize(other.mSize) {
-        mObjs = new T[size];
+        mObjs = new T[mSize];
         for(int i = 0; i < mUsed; ++i) {
             mObjs[i] = other.mObjs[i];
         }
