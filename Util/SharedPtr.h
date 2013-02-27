@@ -12,7 +12,7 @@
 template <typename T>
 class SharedPtr {
 public:
-    explicit SharedPtr(T* ptr = nullptr) : mPtr(ptr) {
+    explicit SharedPtr(T* ptr = nullptr) : mPtr(ptr), mCounter(nullptr) {
         if(mPtr) {
             mCounter = new Counter();
             increase();

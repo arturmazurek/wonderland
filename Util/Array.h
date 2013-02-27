@@ -9,6 +9,7 @@
 #ifndef Wonderland_Array_h
 #define Wonderland_Array_h
 
+#include <cassert>
 #include <cstring>
 
 template <typename T>
@@ -42,6 +43,8 @@ public:
     }
     
     T& operator[](int i) {
+        assert(i < mSize);
+        mUsed = i+1 > mUsed ? i+1 : mUsed;
         return mObjs[i];
     }
     

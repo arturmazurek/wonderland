@@ -8,6 +8,8 @@
 
 #include "Material.h"
 
+#include "Util/Log.h"
+
 MaterialParam::MaterialParam() : handle(0), value(nullptr), size(0), type(PARAM_TYPE_INVALID) {
 }
 
@@ -63,6 +65,12 @@ static MaterialParam* _findParam(const std::string& name, Array<MaterialParam>& 
 
 void Material::setDefaults(Array<MaterialParam>& params) const {
     MaterialParam* param = _findParam("color", params);
+    
+    if(!param) {
+        LOG("Can't find param named %s for %s", "color", mName.c_str());
+        return;
+    }
+    
     param->type = PARAM_TYPE_VEC4;
     param->size = 4 * sizeof(float);
     param->value = malloc(param->size);
