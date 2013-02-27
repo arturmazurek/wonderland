@@ -29,7 +29,7 @@ MaterialCacheGL::~MaterialCacheGL() {
     }
 }
 
-MaterialGL* MaterialCacheGL::getMaterial(const std::string& name) {
+Material* MaterialCacheGL::getMaterial(const std::string& name) {
     MaterialGL* material = mMaterials[name.c_str()];
     if(!material) {
         material = loadMaterial(name);

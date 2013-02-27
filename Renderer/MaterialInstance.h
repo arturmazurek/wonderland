@@ -11,9 +11,11 @@
 
 #include <string>
 
+#include "Util/Array.h"
 #include "Util/SharedPtr.h"
 
-class Material;
+#include "Material.h"
+
 struct MaterialInstanceParams;
 
 class MaterialInstance {
@@ -23,7 +25,8 @@ public:
     
     Material* parent() const;
     
-    void setParameter(const std::string& paramName, float* value, int size);
+    void setParameter(const std::string& paramName, void* value, int size);
+    void assignParameters(const Array<MaterialParam>& parameters);
     
     MaterialInstance* clone() const;
     

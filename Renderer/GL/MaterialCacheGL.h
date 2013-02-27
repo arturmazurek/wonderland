@@ -11,22 +11,23 @@
 
 #include <string>
 
+#include "Renderer/MaterialCache.h"
+
 #include "Util/HashMap.h"
 
 class MaterialGL;
 class ShaderCacheGL;
 
-class MaterialCacheGL {
+class MaterialCacheGL : public MaterialCache {
 public:
     MaterialCacheGL(const std::string& basePath);
-    ~MaterialCacheGL();
-
-    MaterialGL* getMaterial(const std::string& name);
+    virtual ~MaterialCacheGL();
     
 private:
     MaterialCacheGL(const MaterialCacheGL&);
     MaterialCacheGL& operator=(const MaterialCacheGL&);
     
+    virtual Material* getMaterial(const std::string& name) override;
     MaterialGL* loadMaterial(const std::string& name);
 
 private:

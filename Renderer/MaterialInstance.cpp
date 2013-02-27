@@ -14,6 +14,7 @@
 
 struct MaterialInstanceParams {
     MaterialInstanceParams(MaterialInstanceParams* other) : params(other->params) {}
+    MaterialInstanceParams(const Array<MaterialParam>& source) : params(source) {}
     
     Array<MaterialParam> params;
 };
@@ -40,7 +41,7 @@ static MaterialParam* _getParameter(const std::string& name, Array<MaterialParam
     return nullptr;
 }
 
-void MaterialInstance::setParameter(const std::string& name, float* value, int size) {
+void MaterialInstance::setParameter(const std::string& name, void* value, int size) {
     if(!mCopied) {
         MaterialInstanceParams* copy = new MaterialInstanceParams(mParams.get());
         mParams.reset(copy);
@@ -60,4 +61,8 @@ MaterialInstance* MaterialInstance::clone() const {
     result->mParams = mParams;
     
     return result;
+}
+
+void MaterialInstance::assignParameters(const Array<MaterialParam>& params) {
+    mParams.reset(new MaterialInstanceParams(params));
 }

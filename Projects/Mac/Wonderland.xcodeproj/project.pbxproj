@@ -47,6 +47,7 @@
 		6D36E0DE16C557CF00BEBCCC /* StaticMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D36E0DC16C557CF00BEBCCC /* StaticMesh.cpp */; };
 		6D36E0E216C5611C00BEBCCC /* Material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D36E0E016C5611C00BEBCCC /* Material.cpp */; };
 		6D36E0E516C564F500BEBCCC /* ShaderGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D36E0E316C564F500BEBCCC /* ShaderGL.cpp */; };
+		750EB80916DE9FD30063CE56 /* MaterialCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 750EB80716DE9FD20063CE56 /* MaterialCache.cpp */; };
 		7523C64316C9850100AA3D7C /* FileMac.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7523C64216C9850100AA3D7C /* FileMac.mm */; };
 		7561443816D94FD1000ECECE /* MaterialInstance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7561443616D94FD1000ECECE /* MaterialInstance.cpp */; };
 		7569479416C99F1400ECA36F /* SurfaceDataGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7569479216C99F1400ECA36F /* SurfaceDataGL.cpp */; };
@@ -152,6 +153,8 @@
 		6D36E0E316C564F500BEBCCC /* ShaderGL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ShaderGL.cpp; path = GL/ShaderGL.cpp; sourceTree = "<group>"; };
 		6D36E0E416C564F500BEBCCC /* ShaderGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShaderGL.h; path = GL/ShaderGL.h; sourceTree = "<group>"; };
 		6DFEC81616DD1F9E0071EFD1 /* Array.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Array.h; path = ../../Util/Array.h; sourceTree = "<group>"; };
+		750EB80716DE9FD20063CE56 /* MaterialCache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MaterialCache.cpp; sourceTree = "<group>"; };
+		750EB80816DE9FD30063CE56 /* MaterialCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaterialCache.h; sourceTree = "<group>"; };
 		7523C64216C9850100AA3D7C /* FileMac.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = FileMac.mm; path = ../../Platform/Mac/FileMac.mm; sourceTree = "<group>"; };
 		7561443616D94FD1000ECECE /* MaterialInstance.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MaterialInstance.cpp; sourceTree = "<group>"; };
 		7561443716D94FD1000ECECE /* MaterialInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaterialInstance.h; sourceTree = "<group>"; };
@@ -553,6 +556,8 @@
 				75BEAB9D16CAE9420067922C /* SurfaceData.h */,
 				7561443616D94FD1000ECECE /* MaterialInstance.cpp */,
 				7561443716D94FD1000ECECE /* MaterialInstance.h */,
+				750EB80716DE9FD20063CE56 /* MaterialCache.cpp */,
+				750EB80816DE9FD30063CE56 /* MaterialCache.h */,
 			);
 			name = Renderer;
 			path = ../../Renderer;
@@ -681,6 +686,7 @@
 				7523C64316C9850100AA3D7C /* FileMac.mm in Sources */,
 				7569479416C99F1400ECA36F /* SurfaceDataGL.cpp in Sources */,
 				7561443816D94FD1000ECECE /* MaterialInstance.cpp in Sources */,
+				750EB80916DE9FD30063CE56 /* MaterialCache.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

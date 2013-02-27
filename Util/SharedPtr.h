@@ -113,4 +113,24 @@ bool operator!=(const SharedPtr<T1>& t1, const SharedPtr<T2>& t2) {
     return !(t1 == t2);
 }
 
+template <typename T>
+bool operator==(const SharedPtr<T>& p1, T* p2) {
+    return p1.get() == p2;
+}
+
+template <typename T>
+bool operator==(T* p2, const SharedPtr<T>& p1) {
+    return p1 == p2;
+}
+
+template <typename T>
+bool operator!=(const SharedPtr<T>& p1, T* p2) {
+    return !(p1 == p2);
+}
+
+template <typename T>
+bool operator!=(T* p2, const SharedPtr<T>& p1) {
+    return p1 != p2;
+}
+
 #endif

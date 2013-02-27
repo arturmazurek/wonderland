@@ -23,6 +23,8 @@ public:
     
     void addSurface(SharedPtr<Surface> surface, UniquePtr<MaterialInstance> material);
     
+    MaterialInstance* getMaterial(Surface* ofSurface);
+    
     struct SurfaceInfo {
         SharedPtr<Surface> surface;
         MaterialInstance* material;

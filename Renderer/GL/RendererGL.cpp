@@ -48,10 +48,9 @@ void RendererGL::renderFrame() {
 }
 
 UniquePtr<MaterialInstance> RendererGL::createMaterial(const std::string& name) {
-    MaterialGL* material = mMaterialCache->getMaterial(name);
-    MaterialInstance* result = new MaterialInstance(material);
-    if(!material->generated) {
-        generateRendererData(material);
+    MaterialInstance* result = mMaterialCache->getMaterialInstance(name);
+    if(!static_cast<MaterialGL*>(result->parent())->generated) {
+        generateRendererData(static_cast<MaterialGL*>(result->parent()));
     }
     return UniquePtr<MaterialInstance>(result);
 }

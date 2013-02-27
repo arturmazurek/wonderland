@@ -30,3 +30,16 @@ void StaticMesh::addSurface(SharedPtr<Surface> surface, UniquePtr<MaterialInstan
 StaticMesh::SurfacesIterator StaticMesh::surfacesIterator() {
     return mSurfaces.iterator();
 }
+
+MaterialInstance* StaticMesh::getMaterial(Surface* ofSurface) {
+    SurfacesIterator iter = surfacesIterator();
+    while(iter.hasNext()) {
+        SurfaceInfo& si = iter.next();
+        
+        if(si.surface == ofSurface) {
+            return si.material;
+        }
+    }
+    
+    return nullptr;
+}
