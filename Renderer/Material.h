@@ -53,7 +53,7 @@ public:
     virtual Array<MaterialParam> createParams() const = 0;
     virtual void apply(const Array<MaterialParam>& params) = 0;
     
-    void setDefaults(Array<MaterialParam>& param);
+    void setDefaults(Array<MaterialParam>& param) const;
     
 private:
     std::string     mName;

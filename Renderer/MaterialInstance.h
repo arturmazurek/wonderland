@@ -11,7 +11,10 @@
 
 #include <string>
 
+#include "Util/SharedPtr.h"
+
 class Material;
+struct MaterialInstanceParams;
 
 class MaterialInstance {
 public:
@@ -22,12 +25,12 @@ public:
     
     void setParameter(const std::string& paramName, float* value, int size);
     
-    // TODO - implement this one
     MaterialInstance* clone() const;
     
 private:
-    bool        mCopied;
-    Material*   mParent;
+    bool                                mCopied;
+    Material*                           mParent;
+    SharedPtr<MaterialInstanceParams>   mParams;
 };
 
 #endif /* defined(__Wonderland__MaterialInstance__) */

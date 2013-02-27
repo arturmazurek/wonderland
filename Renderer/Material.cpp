@@ -61,7 +61,7 @@ static MaterialParam* _findParam(const std::string& name, Array<MaterialParam>& 
     return nullptr;
 }
 
-void Material::setDefaults(Array<MaterialParam>& params) {
+void Material::setDefaults(Array<MaterialParam>& params) const {
     MaterialParam* param = _findParam("color", params);
     param->type = PARAM_TYPE_VEC4;
     param->size = 4 * sizeof(float);
