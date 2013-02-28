@@ -9,7 +9,7 @@
 #ifndef __Wonderland__MaterialInstance__
 #define __Wonderland__MaterialInstance__
 
-#include <string>
+#include "Util/String.h"
 
 class Material;
 
@@ -20,7 +20,7 @@ public:
     
     Material* parent() const;
     
-    void setParameter(const std::string& paramName, float* value, int size);
+    void setParameter(const String& paramName, float* value, int size);
     
     // TODO - implement this one
     MaterialInstance* clone() const;

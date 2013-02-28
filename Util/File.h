@@ -9,13 +9,13 @@
 #ifndef Wonderland_File_h
 #define Wonderland_File_h
 
-#include <string>
+#include "String.h"
 
 namespace File {
     
-    std::string asString(const std::string& path);
+    String asString(const String& path);
     
-    std::string basePath();
+    String basePath();
     
 };
 

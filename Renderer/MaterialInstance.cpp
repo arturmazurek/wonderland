@@ -22,6 +22,6 @@ Material* MaterialInstance::parent() const {
     return mParent;
 }
 
-void MaterialInstance::setParameter(const std::string&, float* value, int size) {
+void MaterialInstance::setParameter(const String&, float* value, int size) {
     
 }

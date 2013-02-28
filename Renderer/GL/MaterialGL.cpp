@@ -41,13 +41,13 @@ static inline ParamType _type2Type(GLenum glType) {
 
 // Must be the same order as the enum of elements in
 // Vertex class
-const std::string MaterialGL::ATTRIBUTE_NAMES[] = {
+const String MaterialGL::ATTRIBUTE_NAMES[] = {
     "aPosition",
     "aNormal",
     "aUv"
 };
 
-MaterialGL::MaterialGL(const std::string& name) : Material(name), program(0), generated(false),
+MaterialGL::MaterialGL(const String& name) : Material(name), program(0), generated(false),
 modelViewUniform(0), projectionUniform(0), colorUniform(0), mLinked(false) {
     
 }
@@ -77,7 +77,7 @@ bool MaterialGL::buildMaterial(ShaderGL* vertexShader, ShaderGL* fragmentShader)
     glAttachShader(program, fragmentShader->shader);
     
     for(int i = 0; i < Vertex::ATTR_ENUM_SIZE; ++i) {
-        glBindAttribLocation(program, i, ATTRIBUTE_NAMES[i].c_str());
+        glBindAttribLocation(program, i, ATTRIBUTE_NAMES[i].data());
     }
     
     glLinkProgram(program);
@@ -85,7 +85,7 @@ bool MaterialGL::buildMaterial(ShaderGL* vertexShader, ShaderGL* fragmentShader)
     GLint linkSuccessful = GL_FALSE;
     glGetProgramiv(program, GL_LINK_STATUS, &linkSuccessful);
     if(linkSuccessful == GL_FALSE) {
-        LOG("Could not link program for material %s", name().c_str());
+        LOG("Could not link program for material %s", name().data());
         
         GLsizei length = 0;
         GLchar buffer[BUF_SIZE] = {0};
@@ -120,7 +120,7 @@ Array<MaterialParam> MaterialGL::createParams() const {
         
         MaterialParam param;
         param.handle = glGetUniformLocation(program, name);
-        param.name = std::string(name);
+        param.name = String(name);
         param.value = nullptr;
         param.type = _type2Type(type);
         

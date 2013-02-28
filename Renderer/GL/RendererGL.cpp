@@ -27,9 +27,9 @@
 
 static const int PARAMS_BUFFER_LENGTH = 256;
 
-const std::string RendererGL::MODEL_VIEW_NAME("uModelView");
-const std::string RendererGL::PROJECTION_NAME("uProjection");
-const std::string RendererGL::COLOR_NAME("uColor");
+const String RendererGL::MODEL_VIEW_NAME("uModelView");
+const String RendererGL::PROJECTION_NAME("uProjection");
+const String RendererGL::COLOR_NAME("uColor");
 
 RendererGL::RendererGL() {
     mMaterialCache = new MaterialCacheGL(File::basePath() + "/" + Constants::SHADERS_BASE);
@@ -47,7 +47,7 @@ void RendererGL::renderFrame() {
     }
 }
 
-UniquePtr<MaterialInstance> RendererGL::createMaterial(const std::string& name) {
+UniquePtr<MaterialInstance> RendererGL::createMaterial(const String& name) {
     MaterialGL* material = mMaterialCache->getMaterial(name);
     MaterialInstance* result = new MaterialInstance(material);
     if(!material->generated) {
@@ -86,9 +86,9 @@ void RendererGL::dropStaticMesh(StaticMesh* mesh, GameObject* owner) {
 }
 
 void RendererGL::generateRendererData(MaterialGL* m) const {
-    m->modelViewUniform = glGetUniformLocation(m->program, MODEL_VIEW_NAME.c_str());
-    m->projectionUniform = glGetUniformLocation(m->program, PROJECTION_NAME.c_str());
-    m->colorUniform = glGetUniformLocation(m->program, COLOR_NAME.c_str());
+    m->modelViewUniform = glGetUniformLocation(m->program, MODEL_VIEW_NAME.data());
+    m->projectionUniform = glGetUniformLocation(m->program, PROJECTION_NAME.data());
+    m->colorUniform = glGetUniformLocation(m->program, COLOR_NAME.data());
     
     m->generated = true;
 }

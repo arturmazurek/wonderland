@@ -13,13 +13,14 @@
 
 #include "OpenGL.h"
 
+#include "Util/String.h"
 #include "Util/UniquePtr.h"
 
 class ShaderGL;
 
 class MaterialGL : public Material {
 public:
-    MaterialGL(const std::string& name);
+    MaterialGL(const String& name);
     ~MaterialGL();
     
     virtual Array<MaterialParam> createParams() const override;
@@ -35,7 +36,7 @@ public:
     GLint colorUniform;
     
 private:
-    static const std::string ATTRIBUTE_NAMES[];
+    static const String ATTRIBUTE_NAMES[];
     
     bool mLinked;
 };

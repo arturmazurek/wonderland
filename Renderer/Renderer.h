@@ -9,8 +9,7 @@
 #ifndef __Wonderland__Renderer__
 #define __Wonderland__Renderer__
 
-#include <string>
-
+#include "Util/String.h"
 #include "Util/UniquePtr.h"
 
 class GameObject;
@@ -23,7 +22,7 @@ public:
     
     virtual void renderFrame() = 0;
     
-    virtual UniquePtr<MaterialInstance> createMaterial(const std::string& name) = 0;
+    virtual UniquePtr<MaterialInstance> createMaterial(const String& name) = 0;
     
     virtual void drawStaticMesh(StaticMesh* mesh, GameObject* owner) = 0;
     virtual void dropStaticMesh(StaticMesh* mesh, GameObject* owner) = 0;

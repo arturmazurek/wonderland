@@ -16,7 +16,7 @@
 #include "ShaderGL.h"
 #include "Vertex.h"
 
-MaterialCacheGL::MaterialCacheGL(const std::string& basePath) : mBasePath(basePath) {
+MaterialCacheGL::MaterialCacheGL(const String& basePath) : mBasePath(basePath) {
     mShaderCache = new ShaderCacheGL(mBasePath);
 }
 
@@ -29,31 +29,31 @@ MaterialCacheGL::~MaterialCacheGL() {
     }
 }
 
-MaterialGL* MaterialCacheGL::getMaterial(const std::string& name) {
-    MaterialGL* material = mMaterials[name.c_str()];
+MaterialGL* MaterialCacheGL::getMaterial(const String& name) {
+    MaterialGL* material = mMaterials[name.data()];
     if(!material) {
         material = loadMaterial(name);
         if(!material) {
-            LOG("Could not load material named %s", name.c_str());
+            LOG("Could not load material named %s", name.data());
             abort();
         }
-        mMaterials[name.c_str()] = material;
+        mMaterials[name.data()] = material;
     }
     return material;
 }
 
-MaterialGL* MaterialCacheGL::loadMaterial(const std::string& name) {
+MaterialGL* MaterialCacheGL::loadMaterial(const String& name) {
     // at the moment material consists only of a vertex and fragment shaders
     // named identically
     ShaderGL* vertexShader = mShaderCache->getShader(name, ShaderGL::VERTEX_SHADER);
     if(!vertexShader) {
-        LOG("Could not get vertex shader %s", name.c_str());
+        LOG("Could not get vertex shader %s", name.data());
         return nullptr;
     }
     
     ShaderGL* fragmentShader = mShaderCache->getShader(name, ShaderGL::FRAGMENT_SHADER);
     if(!fragmentShader) {
-        LOG("Could not get fragment shader %s", name.c_str());
+        LOG("Could not get fragment shader %s", name.data());
         return nullptr;
     }
     

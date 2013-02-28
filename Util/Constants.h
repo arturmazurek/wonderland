@@ -9,11 +9,11 @@
 #ifndef Wonderland_Constants_h
 #define Wonderland_Constants_h
 
-#include <string>
+#include "String.h"
 
 namespace Constants {
     
-    static const std::string SHADERS_BASE = "Shaders/GL";
+    static const String SHADERS_BASE = "Shaders/GL";
     
 }
 

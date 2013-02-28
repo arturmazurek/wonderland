@@ -74,6 +74,14 @@ public:
         return mPtr != nullptr;
     }
     
+    T& operator[](unsigned i) {
+        return mPtr[i];
+    }
+    
+    const T& operator[](unsigned i) const {
+        return mPtr[i];
+    }
+    
 private:
     void decrease() {
         if(!mCounter) {

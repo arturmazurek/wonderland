@@ -16,61 +16,72 @@
 
 class String {
 public:
-    String() {
+    String(const char* str = nullptr) {
+        if(str) {
+            makeCopy(str);
+        }
     }
     
     ~String() {
     }
     
-    explicit String(const char* buf) {
-        
-    }
     
-    String(const String& other) : mBuffer(other.mBuffer) {
+    String(const String& other) : mStr(other.mStr) {
     }
     
     String& operator=(const String& other) {
-        mBuffer = other.mBuffer;
+        mStr = other.mStr;
+        return *this;
+    }
+    
+    String& operator=(const char* str) {
+        makeCopy(str);
         return *this;
     }
     
     int size() const {
-        if(!mBuffer) {
+        if(!mStr) {
             return 0;
         }
-        return std::strlen(mBuffer.get());
+        return (int)std::strlen(mStr.get());
+    }
+    
+    bool empty() const {
+        return size() == 0;
     }
     
     char operator[](int i) const {
-        assert(i < std::strlen(mBuffer.get()));
-        return mBuffer[i];
+        assert(i < std::strlen(mStr.get()));
+        return mStr[i];
     }
     
     char& operator[](int i) {
-        assert(i < std::strlen(mBuffer.get()));
+        assert(i < std::strlen(mStr.get()));
         
-        if(mBuffer.unique()) {
-            return mBuffer[i];
+        if(mStr.unique()) {
+            return mStr[i];
         }
         
-        makeCopy(mBuffer.get());
+        makeCopy(mStr.get());
+        
+        return mStr[i];
     }
     
     const char* data() const {
-        return mBuffer.get();
+        return mStr.get();
     }
     
     operator bool() const {
-        return mBuffer.get() != nullptr;
+        return mStr.get() != nullptr;
     }
     
     String& operator+=(const String& other) {
         int len = size() + other.size();
-        SharedPtr<char> temp(new char[len + 1]);
+        SharedArray<char> temp(new char[len + 1]);
         std::memcpy(temp.get(), data(), size());
         std::memcpy(temp.get() + (size_t)(size()), other.data(), other.size());
         temp[len] = '\0';
-        mBuffer = temp;
+        mStr = temp;
 
         return *this;
     }
@@ -82,20 +93,20 @@ public:
 
 private:
     void makeCopy(const char* buffer) {
-        int len = std::strlen(buffer);
-        mBuffer.reset(new char[len + 1]);
-        std::memcpy(mBuffer.get(), buf, len);
-        mBuffer[len] = '\0';
+        int len = (int)std::strlen(buffer);
+        mStr.reset(new char[len + 1]);
+        std::memcpy(mStr.get(), buffer, len);
+        mStr[len] = '\0';
     }
     
 private:
-    SharedArray<char> mBuffer;
+    SharedArray<char> mStr;
 };
 
 inline String operator+(const String& a, const String& b) {
     String result(a);
-    a += b;
-    return a;
+    result += b;
+    return result;
 }
 
 inline String operator+(const char* a, const String& b) {
@@ -107,7 +118,7 @@ inline String operator+(const String& a, const char* b) {
 }
 
 inline bool operator==(const String& a, const String& b) {
-    return std::strcmp(a.get(), b.get();
+    return std::strcmp(a.data(), b.data());
 }
 
 inline bool operator==(const char* a, const String& b) {
