@@ -47,8 +47,8 @@ UniquePtr<World> Game::createWorld() const {
     mesh->addSurface(SharedPtr<Surface>(surface), mRenderer->createMaterial("simple"));
     
     MaterialInstance* material = mesh->getMaterial(surface);
-    float color[] = {1.f, 0.f, 0.f, 1.f};
-    material->setParameter("color", color, sizeof(color));
+    float color[] = {1.f, 1.f, 0.f, 1.f};
+    material->setParameter("uColor", color, sizeof(color));
     
     smc->setMesh(mesh);
     obj->addComponent(smc);

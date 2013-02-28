@@ -126,7 +126,8 @@ void RendererGL::renderSurface(Surface* surface, MaterialInstance* materialInsta
     
     glUniformMatrix4fv(material->projectionUniform, 1, GL_FALSE, m.m);
     glUniformMatrix4fv(material->modelViewUniform, 1, GL_FALSE, m.m);
-    glUniform4f(material->colorUniform, 0, 1, 0, 1);
+
+    material->apply(materialInstance->getParams());
 
     glBindVertexArray(surfaceData->vao);
     glDrawArrays(GL_TRIANGLES, 0, surface->verticesCount());

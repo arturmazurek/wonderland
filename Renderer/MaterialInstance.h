@@ -28,6 +28,8 @@ public:
     void setParameter(const String& paramName, void* value, int size);
     void assignParameters(const Array<MaterialParam>& parameters);
     
+    const Array<MaterialParam>& getParams() const;
+    
     MaterialInstance* clone() const;
     
 private:

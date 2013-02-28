@@ -13,6 +13,7 @@
 #include "Renderer/Vertex.h"
 
 #include "Util/Log.h"
+#include "Util/Util.h"
 
 static const int BUF_SIZE = 512;
 
@@ -45,6 +46,11 @@ const String MaterialGL::ATTRIBUTE_NAMES[] = {
     "aPosition",
     "aNormal",
     "aUv"
+};
+
+const String MaterialGL::IGNORED_UNIFORMS[] = {
+    "uModelView",
+    "uProjection"
 };
 
 MaterialGL::MaterialGL(const String& name) : Material(name), program(0), generated(false),
@@ -101,6 +107,15 @@ bool MaterialGL::buildMaterial(ShaderGL* vertexShader, ShaderGL* fragmentShader)
     return true;
 }
 
+static inline bool _isIgnored(const String& uniformName) {
+    for(int i = 0; i < ARRAY_SIZE(MaterialGL::IGNORED_UNIFORMS); ++i) {
+        if(MaterialGL::IGNORED_UNIFORMS[i] == uniformName) {
+            return true;
+        }
+    }
+    return false;
+}
+
 Array<MaterialParam> MaterialGL::createParams() const {
     if(!mLinked) {
         LOG("Cannot get parameters from an unlinked program");
@@ -110,13 +125,31 @@ Array<MaterialParam> MaterialGL::createParams() const {
     int count = 0;
     glGetProgramiv(program, GL_ACTIVE_UNIFORMS, &count);
     
-    Array<MaterialParam> result(count);
+    // First count non-ignored uniforms
+    int usedCount = 0;
     for(int i = 0; i < count; ++i) {
         GLenum type = GL_ZERO;
         int size = 0;
         char name[BUF_SIZE] = {0};
         
         glGetActiveUniform(program, i, BUF_SIZE-1, NULL, &size, &type, name);
+        if(!_isIgnored(name)) {
+            ++usedCount;
+        }
+    }
+    
+    // And then return only them
+    Array<MaterialParam> result(usedCount);
+    for(int i = 0, index = 0; index < usedCount; ++i) {
+        GLenum type = GL_ZERO;
+        int size = 0;
+        char name[BUF_SIZE] = {0};
+        
+        glGetActiveUniform(program, i, BUF_SIZE-1, NULL, &size, &type, name);
+        
+        if(_isIgnored(name)) {
+            continue;
+        }
         
         MaterialParam param;
         param.handle = glGetUniformLocation(program, name);
@@ -124,7 +157,9 @@ Array<MaterialParam> MaterialGL::createParams() const {
         param.value = nullptr;
         param.type = _type2Type(type);
         
-        result[i] = param;
+        result[index] = param;
+        
+        ++index;
     }
     
     return result;

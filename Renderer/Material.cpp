@@ -64,7 +64,7 @@ static MaterialParam* _findParam(const String& name, Array<MaterialParam>& param
 }
 
 void Material::setDefaults(Array<MaterialParam>& params) const {
-    MaterialParam* param = _findParam("color", params);
+    MaterialParam* param = _findParam("uColor", params);
     
     if(!param) {
         LOG("Can't find param named %s for %s", "color", mName.data());

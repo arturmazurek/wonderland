@@ -118,7 +118,7 @@ inline String operator+(const String& a, const char* b) {
 }
 
 inline bool operator==(const String& a, const String& b) {
-    return std::strcmp(a.data(), b.data());
+    return std::strcmp(a.data(), b.data()) == 0;
 }
 
 inline bool operator==(const char* a, const String& b) {

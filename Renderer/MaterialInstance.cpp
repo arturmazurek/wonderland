@@ -66,3 +66,7 @@ MaterialInstance* MaterialInstance::clone() const {
 void MaterialInstance::assignParameters(const Array<MaterialParam>& params) {
     mParams.reset(new MaterialInstanceParams(params));
 }
+
+const Array<MaterialParam>& MaterialInstance::getParams() const {
+    return mParams->params;
+}

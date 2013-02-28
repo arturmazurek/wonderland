@@ -20,6 +20,8 @@ class ShaderGL;
 
 class MaterialGL : public Material {
 public:
+    static const String IGNORED_UNIFORMS[];
+    
     MaterialGL(const String& name);
     ~MaterialGL();
     
