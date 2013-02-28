@@ -158,7 +158,7 @@
 		6DFEC81D16DF636F0071EFD1 /* SharedArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SharedArray.h; path = ../../Util/SharedArray.h; sourceTree = "<group>"; };
 		6DFEC83F16DF91320071EFD1 /* Util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Util.h; path = ../../Util/Util.h; sourceTree = "<group>"; };
 		6DFEC87216DFC0920071EFD1 /* MessageQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MessageQueue.cpp; path = ../../Game/MessageQueue.cpp; sourceTree = "<group>"; };
-		6DFEC87316DFC0920071EFD1 /* MessageQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageQueue.h; path = ../../Game/MessageQueue.h; sourceTree = "<group>"; };
+		6DFEC87316DFC0920071EFD1 /* MessageQueue.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = MessageQueue.h; path = ../../Game/MessageQueue.h; sourceTree = "<group>"; };
 		750EB80716DE9FD20063CE56 /* MaterialCache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MaterialCache.cpp; sourceTree = "<group>"; };
 		750EB80816DE9FD30063CE56 /* MaterialCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaterialCache.h; sourceTree = "<group>"; };
 		7523C64216C9850100AA3D7C /* FileMac.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = FileMac.mm; path = ../../Platform/Mac/FileMac.mm; sourceTree = "<group>"; };
