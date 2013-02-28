@@ -76,18 +76,18 @@ public:
     }
     
     String& operator+=(const String& other) {
-        int len = size() + other.size();
-        SharedArray<char> temp(new char[len + 1]);
-        std::memcpy(temp.get(), data(), size());
-        std::memcpy(temp.get() + (size_t)(size()), other.data(), other.size());
-        temp[len] = '\0';
-        mStr = temp;
-
-        return *this;
+        return *this += other.data();
     }
 
-    String& operator+=(const char* data) {
-        makeCopy(data);
+    String& operator+=(const char* str) {
+        int strLen = (int)strlen(str);
+        int len = size() + strLen;
+        SharedArray<char> temp(new char[len + 1]);
+        std::memcpy(temp.get(), data(), size());
+        std::memcpy(temp.get() + (size_t)(size()), str, strLen);
+        temp[len] = '\0';
+        mStr = temp;
+        
         return *this;
     }
 

@@ -12,11 +12,11 @@
 template <typename T>
 class SharedArray {
 public:
-    explicit SharedArray(T* ptr = nullptr) : mPtr(ptr) {
+    explicit SharedArray(T* ptr = nullptr) : mPtr(ptr), mCounter(nullptr) {
         if(mPtr) {
             mCounter = new Counter();
             increase();
-        }
+        } 
     }
     
     ~SharedArray() {
@@ -43,6 +43,8 @@ public:
         if(mPtr) {
             mCounter = new Counter();
             increase();
+        } else {
+            mPtr = nullptr;
         }
     }
     
