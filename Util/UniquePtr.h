@@ -79,12 +79,12 @@ private:
 };
 
 template <typename T1, typename T2>
-bool operator==(const UniquePtr<T1>& p1, const UniquePtr<T2>& p2) {
+inline bool operator==(const UniquePtr<T1>& p1, const UniquePtr<T2>& p2) {
     return p1.get() == p2.get();
 }
 
 template <typename T1, typename T2>
-bool operator!=(const UniquePtr<T1>& p1, const UniquePtr<T2>& p2) {
+inline bool operator!=(const UniquePtr<T1>& p1, const UniquePtr<T2>& p2) {
     return !(p1 == p2);
 }
 

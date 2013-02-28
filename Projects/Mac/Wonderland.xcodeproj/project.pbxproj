@@ -152,6 +152,8 @@
 		6D36E0E316C564F500BEBCCC /* ShaderGL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ShaderGL.cpp; path = GL/ShaderGL.cpp; sourceTree = "<group>"; };
 		6D36E0E416C564F500BEBCCC /* ShaderGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShaderGL.h; path = GL/ShaderGL.h; sourceTree = "<group>"; };
 		6DFEC81616DD1F9E0071EFD1 /* Array.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Array.h; path = ../../Util/Array.h; sourceTree = "<group>"; };
+		6DFEC81C16DF634B0071EFD1 /* String.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = String.h; path = ../../Util/String.h; sourceTree = "<group>"; };
+		6DFEC81D16DF636F0071EFD1 /* SharedArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SharedArray.h; path = ../../Util/SharedArray.h; sourceTree = "<group>"; };
 		7523C64216C9850100AA3D7C /* FileMac.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = FileMac.mm; path = ../../Platform/Mac/FileMac.mm; sourceTree = "<group>"; };
 		7561443616D94FD1000ECECE /* MaterialInstance.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MaterialInstance.cpp; sourceTree = "<group>"; };
 		7561443716D94FD1000ECECE /* MaterialInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaterialInstance.h; sourceTree = "<group>"; };
@@ -389,6 +391,8 @@
 				7561444016DA6CF1000ECECE /* SharedPtr.h */,
 				7561444116DA7C20000ECECE /* UniqueArray.h */,
 				6DFEC81616DD1F9E0071EFD1 /* Array.h */,
+				6DFEC81C16DF634B0071EFD1 /* String.h */,
+				6DFEC81D16DF636F0071EFD1 /* SharedArray.h */,
 			);
 			name = Util;
 			sourceTree = "<group>";
