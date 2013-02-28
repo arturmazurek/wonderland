@@ -8,8 +8,6 @@
 
 #include "Renderer.h"
 
-#include "GL/RendererGL.h"
-
 Renderer::Renderer() {
     
 }

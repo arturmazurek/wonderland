@@ -13,12 +13,12 @@
 
 namespace File {
     
-    std::string asString(const std::string& path) {
-        std::string result;
-        std::ifstream f(path);
+    String asString(const String& path) {
+        String result;
+        std::ifstream f(path.data());
         
         if(!f.is_open()) {
-            LOG("Could not open file at %s", path.c_str());
+            LOG("Could not open file at %s", path.data());
             return result;
         }
         

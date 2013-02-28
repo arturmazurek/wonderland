@@ -13,9 +13,9 @@
 
 namespace File {
     
-    std::string basePath() {
+    String basePath() {
         NSString* bundlePath = [[NSBundle mainBundle] bundlePath];
-        return std::string(bundlePath.UTF8String) + "/Contents/Resources";
+        return String(bundlePath.UTF8String) + "/Contents/Resources";
     }
     
 }

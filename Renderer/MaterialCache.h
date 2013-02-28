@@ -9,9 +9,8 @@
 #ifndef __Wonderland__MaterialCache__
 #define __Wonderland__MaterialCache__
 
-#include <string>
-
 #include "Util/HashMap.h"
+#include "Util/String.h"
 
 class Material;
 class MaterialInstance;
@@ -21,10 +20,10 @@ public:
     MaterialCache();
     virtual ~MaterialCache();
 
-    MaterialInstance* getMaterialInstance(const std::string& name);
+    MaterialInstance* getMaterialInstance(const String& name);
 
 protected:
-    virtual Material* getMaterial(const std::string& name) = 0;
+    virtual Material* getMaterial(const String& name) = 0;
 
 private:
     MaterialCache(const MaterialCache&);

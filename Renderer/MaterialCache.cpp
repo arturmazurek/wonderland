@@ -24,14 +24,14 @@ MaterialCache::~MaterialCache() {
     }
 }
 
-MaterialInstance* MaterialCache::getMaterialInstance(const std::string& name) {
-    if(mMaterialInstances[name.c_str()]) {
-        return mMaterialInstances[name.c_str()]->clone();
+MaterialInstance* MaterialCache::getMaterialInstance(const String& name) {
+    if(mMaterialInstances[name.data()]) {
+        return mMaterialInstances[name.data()]->clone();
     }
     
     Material* m = getMaterial(name);
     if(!m) {
-        LOG("Could not get material %s", name.c_str());
+        LOG("Could not get material %s", name.data());
         return nullptr;
     }
     
@@ -40,6 +40,6 @@ MaterialInstance* MaterialCache::getMaterialInstance(const std::string& name) {
     m->setDefaults(params);
     instance->assignParameters(params);
     
-    mMaterialInstances[name.c_str()] = instance;
+    mMaterialInstances[name.data()] = instance;
     return instance->clone();
 }

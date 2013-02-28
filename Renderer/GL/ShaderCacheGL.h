@@ -9,33 +9,32 @@
 #ifndef __Wonderland__ShaderCacheGL__
 #define __Wonderland__ShaderCacheGL__
 
-#include <string>
-
 #include "Util/HashMap.h"
+#include "Util/String.h"
 
 #include "ShaderGL.h"
 
 class ShaderCacheGL {
 public:
-    ShaderCacheGL(const std::string& basePath);
+    ShaderCacheGL(const String& basePath);
     ~ShaderCacheGL();
     
-    ShaderGL* getShader(const std::string& name, ShaderGL::Type type);
+    ShaderGL* getShader(const String& name, ShaderGL::Type type);
     
 private:
     ShaderCacheGL(ShaderCacheGL&);
     ShaderCacheGL& operator=(ShaderCacheGL&);
     
-    ShaderGL* loadShader(const std::string& name, ShaderGL::Type type) const;
+    ShaderGL* loadShader(const String& name, ShaderGL::Type type) const;
     
-    std::string fileName(std::string shaderName, ShaderGL::Type type) const;
+    String fileName(String shaderName, ShaderGL::Type type) const;
     
 private:
-    static const std::string    VERTEX_SHADER_EXTENSION;
-    static const std::string    FRAGMENT_SHADER_EXTENSION;
+    static const String    VERTEX_SHADER_EXTENSION;
+    static const String    FRAGMENT_SHADER_EXTENSION;
     
-    const std::string           mBasePath;
-    HashMap<ShaderGL*>          mShaders;
+    const String           mBasePath;
+    HashMap<ShaderGL*>     mShaders;
 };
 
 #endif /* defined(__Wonderland__ShaderCacheGL__) */

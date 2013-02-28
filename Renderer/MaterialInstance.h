@@ -9,7 +9,7 @@
 #ifndef __Wonderland__MaterialInstance__
 #define __Wonderland__MaterialInstance__
 
-#include <string>
+#include "Util/String.h"
 
 #include "Util/Array.h"
 #include "Util/SharedPtr.h"
@@ -25,7 +25,7 @@ public:
     
     Material* parent() const;
     
-    void setParameter(const std::string& paramName, void* value, int size);
+    void setParameter(const String& paramName, void* value, int size);
     void assignParameters(const Array<MaterialParam>& parameters);
     
     MaterialInstance* clone() const;

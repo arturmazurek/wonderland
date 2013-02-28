@@ -9,9 +9,8 @@
 #ifndef __Wonderland__Material__
 #define __Wonderland__Material__
 
-#include <string>
-
 #include "Util/Array.h"
+#include "Util/String.h"
 
 enum ParamType {
     PARAM_TYPE_INVALID = -1,
@@ -25,7 +24,7 @@ enum ParamType {
 };
 
 struct MaterialParam {
-    std::string name;
+    String      name;
     int         handle;
     
     void*       value;
@@ -45,10 +44,10 @@ struct MaterialParam {
  */
 class Material {
 public:
-    Material(const std::string& name);
+    Material(const String& name);
     virtual ~Material();
     
-    const std::string& name() const;
+    const String& name() const;
     
     virtual Array<MaterialParam> createParams() const = 0;
     virtual void apply(const Array<MaterialParam>& params) = 0;
@@ -56,7 +55,7 @@ public:
     void setDefaults(Array<MaterialParam>& param) const;
     
 private:
-    std::string     mName;
+    String     mName;
 };
 
 #endif /* defined(__Wonderland__Material__) */

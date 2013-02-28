@@ -1,33 +1,33 @@
 //
-//  SharedPtr.h
+//  SharedArray.h
 //  Wonderland
 //
 //  Created by Artur Mazurek on 24.02.2013.
 //  Copyright (c) 2013 Artur Mazurek. All rights reserved.
 //
 
-#ifndef Wonderland_SharedPtr_h
-#define Wonderland_SharedPtr_h
+#ifndef Wonderland_SharedArray_h
+#define Wonderland_SharedArray_h
 
 template <typename T>
-class SharedPtr {
+class SharedArray {
 public:
-    explicit SharedPtr(T* ptr = nullptr) : mPtr(ptr), mCounter(nullptr) {
+    explicit SharedArray(T* ptr = nullptr) : mPtr(ptr), mCounter(nullptr) {
         if(mPtr) {
             mCounter = new Counter();
             increase();
-        }
+        } 
     }
     
-    ~SharedPtr() {
+    ~SharedArray() {
         decrease();
     }
     
-    SharedPtr(const SharedPtr& other) : mCounter(other.mCounter), mPtr(other.mPtr) {
+    SharedArray(const SharedArray& other) : mCounter(other.mCounter), mPtr(other.mPtr) {
         increase();
     }
     
-    SharedPtr& operator=(const SharedPtr& other) {
+    SharedArray& operator=(const SharedArray& other) {
         decrease();
         mPtr = other.mPtr;
         mCounter = other.mCounter;
@@ -36,13 +36,15 @@ public:
         
         return *this;
     }
-
+    
     void reset(T* ptr = nullptr) {
         decrease();
         mPtr = ptr;
         if(mPtr) {
             mCounter = new Counter();
             increase();
+        } else {
+            mPtr = nullptr;
         }
     }
     
@@ -73,7 +75,15 @@ public:
     operator bool() const {
         return mPtr != nullptr;
     }
-
+    
+    T& operator[](unsigned i) {
+        return mPtr[i];
+    }
+    
+    const T& operator[](unsigned i) const {
+        return mPtr[i];
+    }
+    
 private:
     void decrease() {
         if(!mCounter) {
@@ -104,33 +114,13 @@ private:
 };
 
 template <typename T1, typename T2>
-inline bool operator==(const SharedPtr<T1>& t1, const SharedPtr<T2>& t2) {
+inline bool operator==(const SharedArray<T1>& t1, const SharedArray<T2>& t2) {
     return t1.get() == t2.get();
 }
 
 template <typename T1, typename T2>
-inline bool operator!=(const SharedPtr<T1>& t1, const SharedPtr<T2>& t2) {
+inline bool operator!=(const SharedArray<T1>& t1, const SharedArray<T2>& t2) {
     return !(t1 == t2);
-}
-
-template <typename T>
-bool operator==(const SharedPtr<T>& p1, T* p2) {
-    return p1.get() == p2;
-}
-
-template <typename T>
-bool operator==(T* p2, const SharedPtr<T>& p1) {
-    return p1 == p2;
-}
-
-template <typename T>
-bool operator!=(const SharedPtr<T>& p1, T* p2) {
-    return !(p1 == p2);
-}
-
-template <typename T>
-bool operator!=(T* p2, const SharedPtr<T>& p1) {
-    return p1 != p2;
 }
 
 #endif

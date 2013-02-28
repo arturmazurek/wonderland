@@ -41,7 +41,7 @@ MaterialParam& MaterialParam::operator=(const MaterialParam& other) {
     return *this;
 }
 
-Material::Material(const std::string& name) : mName(name) {
+Material::Material(const String& name) : mName(name) {
     
 }
 
@@ -49,11 +49,11 @@ Material::~Material() {
 
 }
 
-const std::string& Material::name() const {
+const String& Material::name() const {
     return mName;
 }
 
-static MaterialParam* _findParam(const std::string& name, Array<MaterialParam>& params) {
+static MaterialParam* _findParam(const String& name, Array<MaterialParam>& params) {
     for(int i = 0; i < params.size(); ++i) {
         if(name == params[i].name) {
             return &params[i];
@@ -67,7 +67,7 @@ void Material::setDefaults(Array<MaterialParam>& params) const {
     MaterialParam* param = _findParam("color", params);
     
     if(!param) {
-        LOG("Can't find param named %s for %s", "color", mName.c_str());
+        LOG("Can't find param named %s for %s", "color", mName.data());
         return;
     }
     

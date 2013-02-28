@@ -11,9 +11,8 @@
 
 #include "Renderer/Renderer.h"
 
-#include <string>
-
 #include "Util/List.h"
+#include "Util/String.h"
 
 #include "OpenGL.h"
 
@@ -28,7 +27,7 @@ public:
     
     virtual void renderFrame() override;
 
-    virtual UniquePtr<MaterialInstance> createMaterial(const std::string& name) override;
+    virtual UniquePtr<MaterialInstance> createMaterial(const String& name) override;
     
     virtual void drawStaticMesh(StaticMesh* mesh, GameObject* owner) override;
     virtual void dropStaticMesh(StaticMesh* mesh, GameObject* owner) override;
@@ -43,9 +42,9 @@ private:
     void generateSurfaceData(Surface* s) const;
     
 private:
-    static const std::string MODEL_VIEW_NAME;
-    static const std::string PROJECTION_NAME;
-    static const std::string COLOR_NAME;
+    static const String MODEL_VIEW_NAME;
+    static const String PROJECTION_NAME;
+    static const String COLOR_NAME;
     
     MaterialCacheGL*  mMaterialCache;
     
