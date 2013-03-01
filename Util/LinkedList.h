@@ -104,7 +104,7 @@ private:
     LinkedList& operator=(const LinkedList&);
     
 private:
-    template <typename T> friend class Iterator;
+    template <typename T> friend class LinkedListIterator;
 
     Node* mHead;
 };
