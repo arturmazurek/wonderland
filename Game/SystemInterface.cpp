@@ -19,7 +19,10 @@ SystemInterface::~SystemInterface() {
 }
 
 void SystemInterface::windowResized(int newWidth, int newHeight) {
-    
+    Message m;
+    m.type = MESSAGE_CATEGORY_SYSTEM;
+    m.param1 = newWidth;
+    m.param2 = newHeight;
 }
 
 void SystemInterface::keyPressed(int keyCode) {
