@@ -39,5 +39,10 @@ void MessageQueue::processMessages() {
 
 void MessageQueue::registerHandler(SharedPtr<MessageHandler> handler, MessageCategory forCategory) {
     assert(forCategory < MESSAGE_CATEGORY_ENUM_SIZE && forCategory >= 0);
+    
+    if(mHandlers[forCategory]) {
+        LOG("Warning - a handler already registered for category %d", forCategory);
+    }
+    
     mHandlers[forCategory] = handler;
 }

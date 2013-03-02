@@ -22,17 +22,17 @@ KeyboardHandler::~KeyboardHandler() {
 }
 
 void KeyboardHandler::handleMessage(const Message& message) {
-    if(message.param2 >= KEY_ENUM_SIZE) {
-        LOG("Key code unsupported yet - %d", message.param2);
+    if(message.param1 >= KEY_ENUM_SIZE) {
+        LOG("Key code unsupported yet - %d", message.param1);
         return;
     }
     
-    if(message.param1 == KEY_ACTION_PRESSED) {
-        LOG("Pressed key - %d", message.param2);
-        mKeys[message.param2] = true;
+    if(message.type == KEY_ACTION_PRESSED) {
+        LOG("Pressed key - %d", message.param1);
+        mKeys[message.param1] = true;
     } else {
-        LOG("Released key - %d", message.param2);
-        mKeys[message.param2] = false;
+        LOG("Released key - %d", message.param1);
+        mKeys[message.param1] = false;
     }
 }
 

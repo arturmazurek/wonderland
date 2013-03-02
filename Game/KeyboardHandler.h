@@ -12,16 +12,15 @@
 #include "KeyCodes.h"
 #include "MessageQueue.h"
 
-// goes as param1
-enum KeyAction {
-    KEY_ACTION_PRESSED,
-    KEY_ACTION_RELEASED
-};
-
-// key codes go as param2
+// key codes go as param1
 
 class KeyboardHandler : public MessageHandler {
 public:
+    enum TYPE {
+        KEY_ACTION_PRESSED,
+        KEY_ACTION_RELEASED
+    };
+    
     KeyboardHandler();
     ~KeyboardHandler();
     

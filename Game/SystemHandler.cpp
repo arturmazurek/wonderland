@@ -29,7 +29,7 @@ void SystemHandler::handleMessage(const Message& message) {
             break;
             
         default:
-            LOG("Unknown message type - %d", message.type);
+            LOG("System handler - unknown message type - %d", message.type);
             break;
     }
 }
