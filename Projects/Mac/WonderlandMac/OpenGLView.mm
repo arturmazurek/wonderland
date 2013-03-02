@@ -11,6 +11,7 @@
 
 #include "Game.h"
 #include "World.h"
+#include "GameInterface.h"
 
 @implementation OpenGLView
 
@@ -104,8 +105,6 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 	
 	if (self = [super initWithFrame:frameRect]) {
 		[[self openGLContext] makeCurrentContext];
-        
-        
 		
 		// Synchronize buffer swaps with vertical refresh rate
 		GLint swapInt = 1;
@@ -145,6 +144,9 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 	
 	// Delegate to the scene object to update for a change in the view size
 //	[[controller scene] setViewportRect:[self bounds]];
+    if(self.game) {
+        self.game->gameInterface()->windowResized(self.bounds.size.width, self.bounds.size.height);
+    }
 	[[self openGLContext] update];
 	
 	CGLUnlockContext((CGLContextObj)[[self openGLContext] CGLContextObj]);

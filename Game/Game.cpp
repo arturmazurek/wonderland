@@ -64,6 +64,8 @@ void Game::doFrame() {
         setWorld(createWorld());
     }
     
+    mMessageQueue.processMessages();
+    
 #ifndef DEBUG
     float frameTime = Timer::elapsedTime() - mLastFrameTime;
 #else

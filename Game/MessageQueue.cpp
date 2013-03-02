@@ -15,7 +15,8 @@ MessageQueue::MessageQueue() : mCurrentList(&mMessages1), mHandlers(MESSAGE_CATE
 }
 
 MessageQueue::~MessageQueue() {
-    
+    mMessages1.DeleteAll();
+    mMessages2.DeleteAll();
 }
 
 void MessageQueue::putMessage(UniquePtr<Message> message) {
@@ -38,4 +39,5 @@ void MessageQueue::processMessages() {
 
 void MessageQueue::registerHandler(SharedPtr<MessageHandler> handler, MessageCategory forCategory) {
     assert(forCategory < MESSAGE_CATEGORY_ENUM_SIZE && forCategory >= 0);
+    mHandlers[forCategory] = handler;
 }
