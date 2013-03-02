@@ -60,6 +60,7 @@
 		757FAD3416C845E500FCDC19 /* ComponentBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 757FAD2E16C845E500FCDC19 /* ComponentBase.cpp */; };
 		757FAD3516C845E500FCDC19 /* ComponentType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 757FAD3016C845E500FCDC19 /* ComponentType.cpp */; };
 		757FAD3616C845E500FCDC19 /* StaticMeshComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 757FAD3216C845E500FCDC19 /* StaticMeshComponent.cpp */; };
+		75816E7816E258DD008FEB03 /* KeyboardHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 75816E7616E258DD008FEB03 /* KeyboardHandler.cpp */; };
 		759C946216C69ED50070D6F7 /* File.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 759C946116C69ED50070D6F7 /* File.cpp */; };
 		759DB64516C7D9C500E9216C /* SystemInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 759DB64316C7D9C500E9216C /* SystemInfo.cpp */; };
 		759DB64916C7DA6D00E9216C /* RendererFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 759DB64716C7DA6D00E9216C /* RendererFactory.cpp */; };
@@ -201,6 +202,9 @@
 		757FAD3116C845E500FCDC19 /* ComponentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComponentType.h; sourceTree = "<group>"; };
 		757FAD3216C845E500FCDC19 /* StaticMeshComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StaticMeshComponent.cpp; sourceTree = "<group>"; };
 		757FAD3316C845E500FCDC19 /* StaticMeshComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticMeshComponent.h; sourceTree = "<group>"; };
+		75816E7616E258DD008FEB03 /* KeyboardHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KeyboardHandler.cpp; path = ../../Game/KeyboardHandler.cpp; sourceTree = "<group>"; };
+		75816E7716E258DD008FEB03 /* KeyboardHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyboardHandler.h; path = ../../Game/KeyboardHandler.h; sourceTree = "<group>"; };
+		75816E7A16E2898F008FEB03 /* KeyCodes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KeyCodes.h; path = ../../Game/KeyCodes.h; sourceTree = "<group>"; };
 		759C946016C69E780070D6F7 /* File.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = File.h; path = ../../Util/File.h; sourceTree = "<group>"; };
 		759C946116C69ED50070D6F7 /* File.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = File.cpp; path = ../../Util/File.cpp; sourceTree = "<group>"; };
 		759DB64316C7D9C500E9216C /* SystemInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SystemInfo.cpp; path = ../../Game/SystemInfo.cpp; sourceTree = "<group>"; };
@@ -367,6 +371,9 @@
 				6DFEC87B16E0E8430071EFD1 /* GameInterface.h */,
 				757E607716E24E810082DEBE /* SystemHandler.cpp */,
 				757E607816E24E810082DEBE /* SystemHandler.h */,
+				75816E7616E258DD008FEB03 /* KeyboardHandler.cpp */,
+				75816E7716E258DD008FEB03 /* KeyboardHandler.h */,
+				75816E7A16E2898F008FEB03 /* KeyCodes.h */,
 			);
 			name = Game;
 			sourceTree = "<group>";
@@ -711,6 +718,7 @@
 				6DFEC87416DFC0920071EFD1 /* MessageQueue.cpp in Sources */,
 				6DFEC87C16E0E8440071EFD1 /* GameInterface.cpp in Sources */,
 				757E607916E24E810082DEBE /* SystemHandler.cpp in Sources */,
+				75816E7816E258DD008FEB03 /* KeyboardHandler.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

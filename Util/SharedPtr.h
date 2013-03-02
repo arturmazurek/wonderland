@@ -27,6 +27,13 @@ public:
         increase();
     }
     
+    template <typename U> friend class SharedPtr;
+    
+    template <typename U>
+    SharedPtr(const SharedPtr<U>& other) : mCounter(reinterpret_cast<SharedPtr<T>::Counter*>(other.mCounter)), mPtr(other.mPtr) {
+        increase();
+    }
+    
     SharedPtr& operator=(const SharedPtr& other) {
         decrease();
         mPtr = other.mPtr;

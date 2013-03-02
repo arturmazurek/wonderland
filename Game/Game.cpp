@@ -23,6 +23,7 @@
 #include "Util/Timer.h"
 
 #include "GameInterface.h"
+#include "KeyboardHandler.h"
 #include "SystemHandler.h"
 #include "SystemInfo.h"
 
@@ -90,8 +91,12 @@ bool Game::initializeGame() {
     }
     
     mGameInterface.reset(new GameInterface(&mMessageQueue));
-    SharedPtr<MessageHandler> systemHandler(new SystemHandler(mRenderer.get()));
+    
+    SharedPtr<SystemHandler> systemHandler(new SystemHandler(mRenderer.get()));
     mMessageQueue.registerHandler(systemHandler, MESSAGE_CATEGORY_SYSTEM);
+    
+    SharedPtr<KeyboardHandler> keyboardHandler(new KeyboardHandler());
+    mMessageQueue.registerHandler(keyboardHandler, MESSAGE_CATEGORY_KEYBOARD);
     
     return true;
 }

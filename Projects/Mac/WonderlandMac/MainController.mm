@@ -8,7 +8,12 @@
 
 #import "MainController.h"
 #import "OpenGLView.h"
-//#import "Scene.h"
+
+#import <Carbon/Carbon.h>
+
+#include "Game.h"
+#include "GameInterface.h"
+#include "KeyCodes.h"
 
 @implementation MainController
 
@@ -157,20 +162,43 @@
 		[self startAnimation];
 }
 
-- (void) keyDown:(NSEvent *)event
-{
-//    unichar c = [[event charactersIgnoringModifiers] characterAtIndex:0];
-//    switch (c) {
-//			
-//            // [Esc] exits full-screen mode
-//        case 27:
-//			if (isInFullScreenMode)
-//				[self goWindow];
-//            break;
-//			
-//        default:
-//            break;
-//    }
+- (void) keyDown:(NSEvent *)event {
+    [self handleKey:event pressed:YES];
+}
+
+- (void) keyUp:(NSEvent *)event {
+    [self handleKey:event pressed:NO];
+}
+
+- (void) handleKey:(NSEvent*)event pressed:(BOOL)pressed {
+#define KEY(x) if(pressed) openGLView.game->gameInterface()->keyPressed(x); else openGLView.game->gameInterface()->keyReleased(x);
+    
+    switch (event.keyCode) {
+        case kVK_UpArrow:
+            KEY(KEY_UP);
+            break;
+            
+        case kVK_DownArrow:
+            KEY(KEY_DOWN);
+            break;
+            
+        case kVK_LeftArrow:
+            KEY(KEY_LEFT);
+            break;
+            
+        case kVK_RightArrow:
+            KEY(KEY_RIGHT);
+            break;
+            
+        case kVK_Escape:
+            KEY(KEY_ESCAPE);
+            break;
+            
+        default:
+            break;
+    }
+    
+#undef KEY
 }
 
 // Holding the mouse button and dragging the mouse changes the "roll" angle (y-axis) and the direction from which sunlight is coming (x-axis).
