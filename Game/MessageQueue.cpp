@@ -14,6 +14,10 @@ MessageQueue::MessageQueue() : mCurrentList(&mMessages1), mHandlers(MESSAGE_CATE
     
 }
 
+MessageQueue::~MessageQueue() {
+    
+}
+
 void MessageQueue::putMessage(UniquePtr<Message> message) {
     mCurrentList->InsertTail(message.release());
 }

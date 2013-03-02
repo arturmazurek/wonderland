@@ -22,10 +22,12 @@
 #include "Util/UniqueArray.h"
 #include "Util/Timer.h"
 
+#include "GameInterface.h"
+#include "SystemHandler.h"
 #include "SystemInfo.h"
 
 Game::Game() : mFirstFrame(true), mLastFrameTime(0), mWorld(nullptr) {
-    
+
 }
 
 Game::~Game() {
@@ -85,10 +87,18 @@ bool Game::initializeGame() {
         mRenderer = RendererFactory::createRenderer(RendererFactory::RENDERER_OPENGL);
     }
     
+    mGameInterface.reset(new GameInterface(&mMessageQueue));
+    SharedPtr<MessageHandler> systemHandler(new SystemHandler(mRenderer.get()));
+    mMessageQueue.registerHandler(systemHandler, MESSAGE_CATEGORY_SYSTEM);
+    
     return true;
 }
 
 void Game::setWorld(UniquePtr<World> world) {
     mWorld = world;
     mFirstFrame = true;
+}
+
+GameInterface* Game::gameInterface() {
+    return mGameInterface.get();
 }

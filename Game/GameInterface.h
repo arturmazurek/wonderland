@@ -1,20 +1,20 @@
 //
-//  SystemInterface.h
+//  GameInterface.h
 //  Wonderland
 //
 //  Created by Artur Mazurek on 01/03/2013.
 //  Copyright (c) 2013 Artur Mazurek. All rights reserved.
 //
 
-#ifndef __Wonderland__SystemInterface__
-#define __Wonderland__SystemInterface__
+#ifndef __Wonderland__GameInterface__
+#define __Wonderland__GameInterface__
 
 class MessageQueue;
 
-class SystemInterface {
+class GameInterface {
 public:
-    SystemInterface(MessageQueue* queue);
-    ~SystemInterface();
+    GameInterface(MessageQueue* queue);
+    ~GameInterface();
     
     void windowResized(int newWidth, int newHeight);
     
@@ -27,11 +27,11 @@ public:
     void mouseWheelScrolled(float amount);
     
 private:
-    SystemInterface(const SystemInterface&);
-    SystemInterface& operator=(const SystemInterface&);
+    GameInterface(const GameInterface&);
+    GameInterface& operator=(const GameInterface&);
     
 private:
     MessageQueue* mQueue;
 };
 
-#endif /* defined(__Wonderland__SystemInterface__) */
+#endif /* defined(__Wonderland__GameInterface__) */

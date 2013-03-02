@@ -48,7 +48,7 @@
 		6D36E0E216C5611C00BEBCCC /* Material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D36E0E016C5611C00BEBCCC /* Material.cpp */; };
 		6D36E0E516C564F500BEBCCC /* ShaderGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D36E0E316C564F500BEBCCC /* ShaderGL.cpp */; };
 		6DFEC87416DFC0920071EFD1 /* MessageQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6DFEC87216DFC0920071EFD1 /* MessageQueue.cpp */; };
-		6DFEC87C16E0E8440071EFD1 /* SystemInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6DFEC87A16E0E83F0071EFD1 /* SystemInterface.cpp */; };
+		6DFEC87C16E0E8440071EFD1 /* GameInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6DFEC87A16E0E83F0071EFD1 /* GameInterface.cpp */; };
 		750EB80916DE9FD30063CE56 /* MaterialCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 750EB80716DE9FD20063CE56 /* MaterialCache.cpp */; };
 		7523C64316C9850100AA3D7C /* FileMac.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7523C64216C9850100AA3D7C /* FileMac.mm */; };
 		7561443816D94FD1000ECECE /* MaterialInstance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7561443616D94FD1000ECECE /* MaterialInstance.cpp */; };
@@ -56,6 +56,7 @@
 		757C457A16C4513000487778 /* World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 757C457816C4513000487778 /* World.cpp */; };
 		757C457D16C4595100487778 /* SceneNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 757C457B16C4595100487778 /* SceneNode.cpp */; };
 		757C45A316C5B61000487778 /* ShaderCacheGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 757C45A116C5B61000487778 /* ShaderCacheGL.cpp */; };
+		757E607916E24E810082DEBE /* SystemHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 757E607716E24E810082DEBE /* SystemHandler.cpp */; };
 		757FAD3416C845E500FCDC19 /* ComponentBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 757FAD2E16C845E500FCDC19 /* ComponentBase.cpp */; };
 		757FAD3516C845E500FCDC19 /* ComponentType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 757FAD3016C845E500FCDC19 /* ComponentType.cpp */; };
 		757FAD3616C845E500FCDC19 /* StaticMeshComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 757FAD3216C845E500FCDC19 /* StaticMeshComponent.cpp */; };
@@ -160,8 +161,8 @@
 		6DFEC83F16DF91320071EFD1 /* Util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Util.h; path = ../../Util/Util.h; sourceTree = "<group>"; };
 		6DFEC87216DFC0920071EFD1 /* MessageQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MessageQueue.cpp; path = ../../Game/MessageQueue.cpp; sourceTree = "<group>"; };
 		6DFEC87316DFC0920071EFD1 /* MessageQueue.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = MessageQueue.h; path = ../../Game/MessageQueue.h; sourceTree = "<group>"; };
-		6DFEC87A16E0E83F0071EFD1 /* SystemInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SystemInterface.cpp; path = ../../Game/SystemInterface.cpp; sourceTree = "<group>"; };
-		6DFEC87B16E0E8430071EFD1 /* SystemInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SystemInterface.h; path = ../../Game/SystemInterface.h; sourceTree = "<group>"; };
+		6DFEC87A16E0E83F0071EFD1 /* GameInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameInterface.cpp; path = ../../Game/GameInterface.cpp; sourceTree = "<group>"; };
+		6DFEC87B16E0E8430071EFD1 /* GameInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameInterface.h; path = ../../Game/GameInterface.h; sourceTree = "<group>"; };
 		750EB80716DE9FD20063CE56 /* MaterialCache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MaterialCache.cpp; sourceTree = "<group>"; };
 		750EB80816DE9FD30063CE56 /* MaterialCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaterialCache.h; sourceTree = "<group>"; };
 		7523C64216C9850100AA3D7C /* FileMac.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = FileMac.mm; path = ../../Platform/Mac/FileMac.mm; sourceTree = "<group>"; };
@@ -192,6 +193,8 @@
 		757C459C16C5A6AB00487778 /* HashMap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HashMap.h; path = ../../Util/HashMap.h; sourceTree = "<group>"; };
 		757C45A116C5B61000487778 /* ShaderCacheGL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ShaderCacheGL.cpp; path = GL/ShaderCacheGL.cpp; sourceTree = "<group>"; };
 		757C45A216C5B61000487778 /* ShaderCacheGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShaderCacheGL.h; path = GL/ShaderCacheGL.h; sourceTree = "<group>"; };
+		757E607716E24E810082DEBE /* SystemHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SystemHandler.cpp; path = ../../Game/SystemHandler.cpp; sourceTree = "<group>"; };
+		757E607816E24E810082DEBE /* SystemHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SystemHandler.h; path = ../../Game/SystemHandler.h; sourceTree = "<group>"; };
 		757FAD2E16C845E500FCDC19 /* ComponentBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ComponentBase.cpp; sourceTree = "<group>"; };
 		757FAD2F16C845E500FCDC19 /* ComponentBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComponentBase.h; sourceTree = "<group>"; };
 		757FAD3016C845E500FCDC19 /* ComponentType.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ComponentType.cpp; sourceTree = "<group>"; };
@@ -360,8 +363,10 @@
 				759DB64416C7D9C500E9216C /* SystemInfo.h */,
 				6DFEC87216DFC0920071EFD1 /* MessageQueue.cpp */,
 				6DFEC87316DFC0920071EFD1 /* MessageQueue.h */,
-				6DFEC87A16E0E83F0071EFD1 /* SystemInterface.cpp */,
-				6DFEC87B16E0E8430071EFD1 /* SystemInterface.h */,
+				6DFEC87A16E0E83F0071EFD1 /* GameInterface.cpp */,
+				6DFEC87B16E0E8430071EFD1 /* GameInterface.h */,
+				757E607716E24E810082DEBE /* SystemHandler.cpp */,
+				757E607816E24E810082DEBE /* SystemHandler.h */,
 			);
 			name = Game;
 			sourceTree = "<group>";
@@ -704,7 +709,8 @@
 				7561443816D94FD1000ECECE /* MaterialInstance.cpp in Sources */,
 				750EB80916DE9FD30063CE56 /* MaterialCache.cpp in Sources */,
 				6DFEC87416DFC0920071EFD1 /* MessageQueue.cpp in Sources */,
-				6DFEC87C16E0E8440071EFD1 /* SystemInterface.cpp in Sources */,
+				6DFEC87C16E0E8440071EFD1 /* GameInterface.cpp in Sources */,
+				757E607916E24E810082DEBE /* SystemHandler.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

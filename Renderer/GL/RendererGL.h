@@ -32,6 +32,8 @@ public:
     virtual void drawStaticMesh(StaticMesh* mesh, GameObject* owner) override;
     virtual void dropStaticMesh(StaticMesh* mesh, GameObject* owner) override;
     
+    virtual void viewResize(int width, int height) override;
+    
 private:
     RendererGL(const RendererGL&);
     RendererGL& operator=(const RendererGL&);

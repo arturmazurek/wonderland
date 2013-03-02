@@ -38,7 +38,7 @@ class MessageHandler {
 public:
     virtual void handleMessage(const Message& m) = 0;
     
-    virtual ~MessageHandler();
+    virtual ~MessageHandler() {}
 };
 
 class MessageQueue {

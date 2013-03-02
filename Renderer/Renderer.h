@@ -27,6 +27,8 @@ public:
     virtual void drawStaticMesh(StaticMesh* mesh, GameObject* owner) = 0;
     virtual void dropStaticMesh(StaticMesh* mesh, GameObject* owner) = 0;
     
+    virtual void viewResize(int width, int height) = 0;
+    
 protected:
     Renderer();
     

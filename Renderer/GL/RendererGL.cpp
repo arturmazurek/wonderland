@@ -133,3 +133,7 @@ void RendererGL::renderSurface(Surface* surface, MaterialInstance* materialInsta
     glDrawArrays(GL_TRIANGLES, 0, surface->verticesCount());
     glBindVertexArray(0);
 }
+
+void RendererGL::viewResize(int width, int height) {
+    glViewport(0, 0, width, height);
+}
