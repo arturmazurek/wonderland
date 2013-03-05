@@ -13,29 +13,30 @@
 
 #include "Util/Array.h"
 #include "Util/SharedPtr.h"
+#include "Util/UniquePtr.h"
 
-#include "Material.h"
+#include "HMaterial.h"
 
-struct MaterialInstanceParams;
+class MaterialParams;
 
 class MaterialInstance {
 public:
-    MaterialInstance(Material* parent);
+    MaterialInstance(const HMaterial& parent);
     ~MaterialInstance();
     
-    Material* parent() const;
+    const HMaterial& parent() const;
     
     void setParameter(const String& paramName, void* value, int size);
-    void assignParameters(const Array<MaterialParam>& parameters);
+    void assignParameters(UniquePtr<MaterialParams> parameters);
     
-    const Array<MaterialParam>& getParams() const;
+    const MaterialParams& getParams() const;
     
     MaterialInstance* clone() const;
     
 private:
-    bool                                mCopied;
-    Material*                           mParent;
-    SharedPtr<MaterialInstanceParams>   mParams;
+    bool                        mCopied;
+    HMaterial                   mParent;
+    SharedPtr<MaterialParams>   mParams;
 };
-
+		
 #endif /* defined(__Wonderland__MaterialInstance__) */

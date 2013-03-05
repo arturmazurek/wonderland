@@ -9,6 +9,7 @@
 #ifndef __Wonderland__MaterialCache__
 #define __Wonderland__MaterialCache__
 
+#include "Util/HandleManager.h"
 #include "Util/HashMap.h"
 #include "Util/String.h"
 

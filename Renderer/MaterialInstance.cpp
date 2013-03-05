@@ -11,15 +11,9 @@
 #include "Util/Log.h"
 
 #include "Material.h"
+#include "MaterialParams.h"
 
-struct MaterialInstanceParams {
-    MaterialInstanceParams(MaterialInstanceParams* other) : params(other->params) {}
-    MaterialInstanceParams(const Array<MaterialParam>& source) : params(source) {}
-    
-    Array<MaterialParam> params;
-};
-
-MaterialInstance::MaterialInstance(Material* parent) : mCopied(false), mParent(parent) {
+MaterialInstance::MaterialInstance(const HMaterial& parent) : mCopied(false), mParent(parent) {
     
 }
 
@@ -27,7 +21,7 @@ MaterialInstance::~MaterialInstance() {
     
 }
 
-Material* MaterialInstance::parent() const {
+const HMaterial& MaterialInstance::parent() const {
     return mParent;
 }
 
@@ -43,17 +37,17 @@ static MaterialParam* _getParameter(const String& name, Array<MaterialParam>& fr
 
 void MaterialInstance::setParameter(const String& name, void* value, int size) {
     if(!mCopied) {
-        MaterialInstanceParams* copy = new MaterialInstanceParams(mParams.get());
+        MaterialParams* copy = new MaterialParams(*mParams.get());
         mParams.reset(copy);
         mCopied = true;
     }
     
-    MaterialParam* param = _getParameter(name, mParams->params);
-    if(param->size != size) {
-        LOG("Oops, trying to set %s in %s with something of size %d but destination expectes size %d", name.data(), mParent->name().data(), size, param->size);
+    MaterialParams::Parameter& param = mParams->getParameter(name);
+    if(param.size != size) {
+        LOG("Oops, trying to set %s with something of size %d but destination expectes size %d", name.data(), size, param.size);
         return;
     }
-    memcpy(param->value, value, size);
+    memcpy(param.value, value, size);
 }
 
 MaterialInstance* MaterialInstance::clone() const {
@@ -63,10 +57,10 @@ MaterialInstance* MaterialInstance::clone() const {
     return result;
 }
 
-void MaterialInstance::assignParameters(const Array<MaterialParam>& params) {
-    mParams.reset(new MaterialInstanceParams(params));
+void MaterialInstance::assignParameters(UniquePtr<MaterialParams> params) {
+    mParams.reset(params.release());
 }
 
-const Array<MaterialParam>& MaterialInstance::getParams() const {
-    return mParams->params;
+const MaterialParams& MaterialInstance::getParams() const {
+    return *mParams;
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D1AD93C16E6557900F0B3C7 /* MaterialParams.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D1AD93B16E6557900F0B3C7 /* MaterialParams.cpp */; };
 		6D36E05716C3F2CA00BEBCCC /* lapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 6D36DFF016C3F2CA00BEBCCC /* lapi.c */; };
 		6D36E05816C3F2CA00BEBCCC /* lauxlib.c in Sources */ = {isa = PBXBuildFile; fileRef = 6D36DFF216C3F2CA00BEBCCC /* lauxlib.c */; };
 		6D36E05916C3F2CA00BEBCCC /* lbaselib.c in Sources */ = {isa = PBXBuildFile; fileRef = 6D36DFF416C3F2CA00BEBCCC /* lbaselib.c */; };
@@ -81,6 +82,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6D1AD93716E6040500F0B3C7 /* HandleManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HandleManager.h; path = ../../Util/HandleManager.h; sourceTree = "<group>"; };
+		6D1AD93816E6176400F0B3C7 /* StaticAssert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StaticAssert.h; path = ../../Util/StaticAssert.h; sourceTree = "<group>"; };
+		6D1AD93916E6505700F0B3C7 /* HMaterial.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMaterial.h; sourceTree = "<group>"; };
+		6D1AD93A16E6521A00F0B3C7 /* MaterialParams.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MaterialParams.h; sourceTree = "<group>"; };
+		6D1AD93B16E6557900F0B3C7 /* MaterialParams.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MaterialParams.cpp; sourceTree = "<group>"; };
 		6D36DFF016C3F2CA00BEBCCC /* lapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lapi.c; sourceTree = "<group>"; };
 		6D36DFF116C3F2CA00BEBCCC /* lapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lapi.h; sourceTree = "<group>"; };
 		6D36DFF216C3F2CA00BEBCCC /* lauxlib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lauxlib.c; sourceTree = "<group>"; };
@@ -420,6 +426,8 @@
 				6DFEC81C16DF634B0071EFD1 /* String.h */,
 				6DFEC81D16DF636F0071EFD1 /* SharedArray.h */,
 				6DFEC83F16DF91320071EFD1 /* Util.h */,
+				6D1AD93716E6040500F0B3C7 /* HandleManager.h */,
+				6D1AD93816E6176400F0B3C7 /* StaticAssert.h */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -586,6 +594,9 @@
 				7561443716D94FD1000ECECE /* MaterialInstance.h */,
 				750EB80716DE9FD20063CE56 /* MaterialCache.cpp */,
 				750EB80816DE9FD30063CE56 /* MaterialCache.h */,
+				6D1AD93916E6505700F0B3C7 /* HMaterial.h */,
+				6D1AD93A16E6521A00F0B3C7 /* MaterialParams.h */,
+				6D1AD93B16E6557900F0B3C7 /* MaterialParams.cpp */,
 			);
 			name = Renderer;
 			path = ../../Renderer;
@@ -719,6 +730,7 @@
 				6DFEC87C16E0E8440071EFD1 /* GameInterface.cpp in Sources */,
 				757E607916E24E810082DEBE /* SystemHandler.cpp in Sources */,
 				75816E7816E258DD008FEB03 /* KeyboardHandler.cpp in Sources */,
+				6D1AD93C16E6557900F0B3C7 /* MaterialParams.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
