@@ -11,7 +11,7 @@
 #include <cassert>
 
 MessageQueue::MessageQueue() : mCurrentList(&mMessages1), mHandlers(MESSAGE_CATEGORY_ENUM_SIZE) {
-    
+    mHandlers.reserve(MESSAGE_CATEGORY_ENUM_SIZE);
 }
 
 MessageQueue::~MessageQueue() {

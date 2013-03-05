@@ -44,9 +44,23 @@ public:
         delete[] mObjs;
     }
     
+    void reserve(int n) {
+        if(n <= mUsed) {
+            return;
+        }
+        while(n > mSize) {
+            grow();
+        }
+        
+        mUsed = n;
+        
+        for(int i = 0; i < n; ++i) {
+            mObjs[i] = T();
+        }
+    }
+    
     T& operator[](int i) {
         assert(i < size());
-//        mUsed = i+1 > mUsed ? i+1 : mUsed;
         return mObjs[i];
     }
     
@@ -73,13 +87,7 @@ public:
     
     void add(const T& t) {
         if(mUsed + 1 >= mSize) {
-            mSize += mGrow;
-            T* temp = new T[mSize];
-            for(int i = 0; i < mUsed; ++i) {
-                temp[i] = mObjs[i];
-            }
-            delete[] mObjs;
-            mObjs = temp;
+            grow();
         }
         
         mObjs[mUsed] = t;
@@ -88,6 +96,17 @@ public:
     
     void removeLast() {
         --mUsed;
+    }
+    
+private:
+    void grow() {
+        mSize += mGrow;
+        T* temp = new T[mSize];
+        for(int i = 0; i < mUsed; ++i) {
+            temp[i] = mObjs[i];
+        }
+        delete[] mObjs;
+        mObjs = temp;
     }
     
 private:
