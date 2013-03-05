@@ -8,6 +8,8 @@
 
 #include "Renderer.h"
 
+TODO continue here
+
 Renderer::Renderer() {
     
 }

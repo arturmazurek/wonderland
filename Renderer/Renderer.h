@@ -9,12 +9,15 @@
 #ifndef __Wonderland__Renderer__
 #define __Wonderland__Renderer__
 
+#include "Util/List.h"
 #include "Util/String.h"
 #include "Util/UniquePtr.h"
 
 class GameObject;
+class MaterialCache;
 class MaterialInstance;
 class StaticMesh;
+class Surface;
 
 class Renderer {
 public:
@@ -32,9 +35,23 @@ public:
 protected:
     Renderer();
     
+    virtual UniquePtr<MaterialCache> createMaterialCache() const = 0;
+    
 private:
     Renderer(const Renderer&);
     Renderer& operator=(const Renderer&);
+    
+private:
+    UniquePtr<MaterialCache>  mMaterialCache;
+    
+    struct RenderInfo {
+        Surface*                surface;
+        MaterialInstance*       materialInstance;
+        GameObject*             owner;
+        StaticMesh*             sourceMesh;
+        LIST_LINK(RenderInfo)   listLink;
+    };
+    LIST_DECLARE(RenderInfo, listLink) mRenderables;
 };
 
 #endif /* defined(__Wonderland__Renderer__) */

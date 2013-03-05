@@ -38,6 +38,8 @@ private:
     RendererGL(const RendererGL&);
     RendererGL& operator=(const RendererGL&);
     
+    virtual UniquePtr<MaterialCache> createMaterialCache() const override;
+    
     void renderSurface(Surface* surface, MaterialInstance* materialInstance);
     
     void generateRendererData(MaterialGL* m) const;

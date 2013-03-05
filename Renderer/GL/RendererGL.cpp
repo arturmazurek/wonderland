@@ -39,6 +39,10 @@ RendererGL::~RendererGL() {
     delete mMaterialCache;
 }
 
+UniquePtr<MaterialCache> RendererGL::createMaterialCache() const {
+    return UniquePtr<MaterialCache>(new MaterialCacheGL(File::basePath() + "/" + Constants::SHADERS_BASE));
+}
+
 void RendererGL::renderFrame() {
     RenderInfo* renderable = mRenderables.Head();
     while(renderable) {
