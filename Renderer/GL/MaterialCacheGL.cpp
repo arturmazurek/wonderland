@@ -17,49 +17,41 @@
 #include "Vertex.h"
 
 MaterialCacheGL::MaterialCacheGL(const String& basePath) : mBasePath(basePath) {
-    mShaderCache = new ShaderCacheGL(mBasePath);
+    mShaderCache.reset(new ShaderCacheGL(mBasePath));
 }
 
 MaterialCacheGL::~MaterialCacheGL() {
-    delete mShaderCache;
-    
-    HashMap<MaterialGL*>::Iterator iterator = mMaterials.iterator();
-    while(iterator.hasNext()) {
-        delete iterator.next();
-    }
+
 }
 
-Material* MaterialCacheGL::createMaterial(const String& name) {
-    MaterialGL* material = loadMaterial(name);
-        if(!material) {
-            LOG("Could not load material named %s", name.data());
-            abort();
-        }
-        mMaterials[name.data()] = material;
+UniquePtr<Material> MaterialCacheGL::createMaterial(const String& name) {
+    UniquePtr<MaterialGL> material(loadMaterial(name));
+    if(!material) {
+        LOG("Could not load material named %s", name.data());
+        abort();
     }
     return material;
 }
 
-MaterialGL* MaterialCacheGL::loadMaterial(const String& name) {
+UniquePtr<MaterialGL> MaterialCacheGL::loadMaterial(const String& name) {
     // at the moment material consists only of a vertex and fragment shaders
     // named identically
     ShaderGL* vertexShader = mShaderCache->getShader(name, ShaderGL::VERTEX_SHADER);
     if(!vertexShader) {
         LOG("Could not get vertex shader %s", name.data());
-        return nullptr;
+        return UniquePtr<MaterialGL>();
     }
     
     ShaderGL* fragmentShader = mShaderCache->getShader(name, ShaderGL::FRAGMENT_SHADER);
     if(!fragmentShader) {
         LOG("Could not get fragment shader %s", name.data());
-        return nullptr;
+        return UniquePtr<MaterialGL>();
     }
     
-    MaterialGL* result = new MaterialGL(name);
+    UniquePtr<MaterialGL> result(new MaterialGL(name));
     if(!result->buildMaterial(vertexShader, fragmentShader)) {
         LOG("Could not build material");
-        delete result;
-        return nullptr;
+        result.reset();
     }
     
     return result;

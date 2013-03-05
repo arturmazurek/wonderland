@@ -25,8 +25,8 @@ public:
     MaterialGL(const String& name);
     ~MaterialGL();
     
-    virtual Array<MaterialParam> createParams() const override;
-    virtual void apply(const Array<MaterialParam>& params) override;
+    virtual UniquePtr<MaterialParams> createParams() const override;
+    virtual void apply(const MaterialParams& params) override;
     
     bool buildMaterial(ShaderGL* vertexShader, ShaderGL* fragmentShader);
     

@@ -14,18 +14,18 @@
 
 class MaterialParams {
 public:
-    struct Parameter {
-        enum Type {
-            TYPE_INVALID = -1,
-            TYPE_FLOAT,
-            TYPE_VEC2,
-            TYPE_VEC3,
-            TYPE_VEC4,
-            TYPE_MATRIX,
-            
-            TYPE_ENUM_SIZE
-        };
+    enum Type {
+        TYPE_INVALID = -1,
+        TYPE_FLOAT,
+        TYPE_VEC2,
+        TYPE_VEC3,
+        TYPE_VEC4,
+        TYPE_MATRIX,
         
+        TYPE_ENUM_SIZE
+    };
+    
+    struct Parameter {
         String      name;
         int         handle;
         

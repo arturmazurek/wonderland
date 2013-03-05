@@ -25,6 +25,7 @@ public:
     virtual ~MaterialCache();
 
     UniquePtr<MaterialInstance> createMaterialInstance(const String& name);
+    Material* getMaterial(const HMaterial& fromHandle);
 
 protected:
     virtual UniquePtr<Material> createMaterial(const String& name) = 0;
@@ -37,7 +38,7 @@ private:
     HashMap<MaterialInstance*> mMaterialInstances;
     
     HashMap<HMaterial> mHandles;
-    HandleManager<HMaterial, Material> mMaterials;
+    HandleManager<HMaterial, Material*> mMaterials;
 };
 
 #endif /* defined(__Wonderland__MaterialCache__) */

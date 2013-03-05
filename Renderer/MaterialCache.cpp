@@ -47,3 +47,12 @@ UniquePtr<MaterialInstance> MaterialCache::createMaterialInstance(const String& 
     mMaterialInstances[name.data()] = instance;
     return instance->clone();
 }
+
+Material* MaterialCache::getMaterial(const HMaterial& fromHandle) {
+    if(fromHandle.isNull()) {
+        LOG("Oops, trying to dereference null handle in %s", __PRETTY_FUNCTION__);
+        return nullptr;
+    }
+    
+    return mMaterials.dereference(fromHandle);
+}

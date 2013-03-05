@@ -163,6 +163,7 @@
 }
 
 - (void) keyDown:(NSEvent *)event {
+    NSLog(@"down");
     [self handleKey:event pressed:YES];
 }
 

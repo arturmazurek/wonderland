@@ -10,6 +10,7 @@
 
 #include "ShaderGL.h"
 
+#include "MaterialParams.h"
 #include "Renderer/Vertex.h"
 
 #include "Util/Log.h"
@@ -17,26 +18,26 @@
 
 static const int BUF_SIZE = 512;
 
-static inline ParamType _type2Type(GLenum glType) {
+static inline MaterialParams::Type _type2Type(GLenum glType) {
     switch (glType) {
         case GL_FLOAT:
-            return PARAM_TYPE_FLOAT;
+            return MaterialParams::TYPE_FLOAT;
             
         case GL_FLOAT_VEC2:
-            return PARAM_TYPE_VEC2;
+            return MaterialParams::TYPE_VEC2;
             
         case GL_FLOAT_VEC3:
-            return PARAM_TYPE_VEC3;
+            return MaterialParams::TYPE_VEC3;
             
         case GL_FLOAT_VEC4:
-            return PARAM_TYPE_VEC4;
+            return MaterialParams::TYPE_VEC4;
             
         case GL_FLOAT_MAT4:
-            return PARAM_TYPE_MATRIX;
+            return MaterialParams::TYPE_MATRIX;
             
         default:
             LOG("Type 0x%x unsupported", glType)
-            return PARAM_TYPE_INVALID;
+            return MaterialParams::TYPE_INVALID;
     }
 }
 
@@ -116,10 +117,10 @@ static inline bool _isIgnored(const String& uniformName) {
     return false;
 }
 
-Array<MaterialParam> MaterialGL::createParams() const {
+UniquePtr<MaterialParams> MaterialGL::createParams() const {
     if(!mLinked) {
         LOG("Cannot get parameters from an unlinked program");
-        return Array<MaterialParam>();
+        return UniquePtr<MaterialParams>();
     }
     
     int count = 0;
@@ -139,7 +140,7 @@ Array<MaterialParam> MaterialGL::createParams() const {
     }
     
     // And then return only them
-    Array<MaterialParam> result(usedCount);
+    UniquePtr<MaterialParams> result(new MaterialParams());
     for(int i = 0, index = 0; index < usedCount; ++i) {
         GLenum type = GL_ZERO;
         int size = 0;
@@ -151,13 +152,13 @@ Array<MaterialParam> MaterialGL::createParams() const {
             continue;
         }
         
-        MaterialParam param;
+        MaterialParams::Parameter param;
         param.handle = glGetUniformLocation(program, name);
         param.name = String(name);
         param.value = nullptr;
         param.type = _type2Type(type);
         
-        result[index] = param;
+        result->addParameter(param);
         
         ++index;
     }
@@ -165,27 +166,27 @@ Array<MaterialParam> MaterialGL::createParams() const {
     return result;
 }
 
-void MaterialGL::apply(const Array<MaterialParam>& params) {
-    for(int i = 0; i < params.size(); ++i ) {
-        const MaterialParam& param = params[i];
+void MaterialGL::apply(const MaterialParams& params) {
+    for(int i = 0; i < params.count(); ++i ) {
+        const MaterialParams::Parameter& param = params.getParameter(i);
         switch (param.type) {
-            case PARAM_TYPE_FLOAT:
+            case MaterialParams::TYPE_FLOAT:
                 glUniform1f(param.handle, *(float*)param.value);
                 break;
                 
-            case PARAM_TYPE_VEC2:
+            case MaterialParams::TYPE_VEC2:
                 glUniform2fv(param.handle, 1, (float*)param.value);
                 break;
                 
-            case PARAM_TYPE_VEC3:
+            case MaterialParams::TYPE_VEC3:
                 glUniform3fv(param.handle, 1, (float*)param.value);
                 break;
                 
-            case PARAM_TYPE_VEC4:
+            case MaterialParams::TYPE_VEC4:
                 glUniform4fv(param.handle, 1, (float*)param.value);
                 break;
                 
-            case PARAM_TYPE_MATRIX:
+            case MaterialParams::TYPE_MATRIX:
                 glUniformMatrix4fv(param.handle, 1, GL_FALSE, (float*)param.value);
                 break;
                 

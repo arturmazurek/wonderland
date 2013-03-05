@@ -25,7 +25,7 @@ public:
     }
     
     template <typename U>
-    UniquePtr(const UniquePtr<U>& other) : mPtr(const_cast<UniquePtr&>(other).release())  {
+    UniquePtr(const UniquePtr<U>& other) : mPtr(const_cast<UniquePtr<U>&>(other).release())  {
     }
     
     UniquePtr& operator=(const UniquePtr& other) {

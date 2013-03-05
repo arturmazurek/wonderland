@@ -36,6 +36,8 @@ public:
         for(int i = 0; i < mUsed; ++i) {
             mObjs[i] = other.mObjs[i];
         }
+        
+        return *this;
     }
     
     ~Array() {
@@ -43,17 +45,30 @@ public:
     }
     
     T& operator[](int i) {
-        assert(i < mSize);
-        mUsed = i+1 > mUsed ? i+1 : mUsed;
+        assert(i < size());
+//        mUsed = i+1 > mUsed ? i+1 : mUsed;
         return mObjs[i];
     }
     
     const T& operator[](int i) const {
+        assert(i < size());
         return mObjs[i];
     }
     
+    T& last() {
+        return (*this)[size()-1];
+    }
+    
+    const T& last() const {
+        return (*this)[size()-1];
+    }
+    
+    bool empty() const {
+        return size() == 0;
+    }
+    
     int size() const {
-        return mSize;
+        return mUsed;
     }
     
     void add(const T& t) {
@@ -69,6 +84,10 @@ public:
         
         mObjs[mUsed] = t;
         ++mUsed;
+    }
+    
+    void removeLast() {
+        --mUsed;
     }
     
 private:

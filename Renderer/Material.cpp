@@ -33,7 +33,7 @@ void Material::setDefaults(MaterialParams& params) const {
         return;
     }
     
-    param->type = MaterialParams::Parameter::TYPE_VEC4;
+    param->type = MaterialParams::TYPE_VEC4;
     param->size = 4 * sizeof(float);
     param->value = malloc(param->size);
     float values[] = {0.f, 1.f, 0.f, 1.f};

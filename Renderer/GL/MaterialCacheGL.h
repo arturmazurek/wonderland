@@ -28,11 +28,11 @@ private:
     MaterialCacheGL& operator=(const MaterialCacheGL&);
     
     virtual UniquePtr<Material> createMaterial(const String& name) override;
-    MaterialGL loadMaterial(const String& name);
+    UniquePtr<MaterialGL> loadMaterial(const String& name);
 
 private:
-    const String            mBasePath;
-    ShaderCacheGL*          mShaderCache;
+    const String                mBasePath;
+    UniquePtr<ShaderCacheGL>    mShaderCache;
 };
 
 #endif /* defined(__Wonderland__MaterialCacheGL__) */

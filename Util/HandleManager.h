@@ -10,8 +10,9 @@
 
 #include <cassert>
 
+#include "Array.h"
+#include "Log.h"
 #include "StaticAssert.h"
-#include "SharedPtr.h"
 
 template <typename Tag>
 class Handle {
@@ -90,21 +91,58 @@ public:
         
     }
     
-    HandleT acquire(ManagedT* managed) {
-        return HandleT();
+    HandleT acquire(const ManagedT& managed) {
+//    ManagedT* acquire(HandleT& handle) {
+        unsigned index = 0;
+        HandleT result;
+        
+        if(mFreeSlots.empty()) {
+            index = mMagicNumbers.size();
+            result.init(index);
+            mUserData.add(managed);
+            mMagicNumbers.add(result.magic());
+        } else {
+            index = mFreeSlots.last();
+            result.init(index);
+            mFreeSlots.removeLast();
+            mMagicNumbers[index] = result.magic();
+        }
+        
+        return result;
     }
     
     void release(const HandleT& handle) {
+        unsigned index = handle.index();
         
+        assert(index < mUserData.size());
+        assert(mMagicNumbers[index] == handle.magic());
+        
+        mMagicNumbers[index] = 0;
+        mFreeSlots.add(index);
     }
     
-    ManagedT* dereference(const HandleT& handle) {
-        return nullptr;
+    ManagedT dereference(const HandleT& handle) {
+        if(handle.isNull()) {
+            return ManagedT();
+        }
+        
+        unsigned index = handle.index();
+        if(index >= mUserData.size() || mMagicNumbers[index] != handle.magic()) {
+            LOG("Trying to dereference invalid handle");
+            return ManagedT();
+        }
+        
+        return mUserData[index];
     }
     
     const ManagedT* dereference(const HandleT& handle) const {
-        return nullptr;
+        return const_cast< HandleManager<HandleT, ManagedT>& >(*this).dereference(handle);
     }
+    
+private:
+    Array<ManagedT> mUserData;
+    Array<unsigned> mMagicNumbers;
+    Array<unsigned> mFreeSlots;
 };
 
 #endif

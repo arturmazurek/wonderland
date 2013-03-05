@@ -48,11 +48,14 @@ void RendererGL::renderFrame() {
 }
 
 UniquePtr<MaterialInstance> RendererGL::createMaterial(const String& name) {
-    MaterialInstance* result = mMaterialCache->getMaterialInstance(name);
-    if(!static_cast<MaterialGL*>(result->parent())->generated) {
-        generateRendererData(static_cast<MaterialGL*>(result->parent()));
+    UniquePtr<MaterialInstance> result(mMaterialCache->createMaterialInstance(name));
+    MaterialGL* m = static_cast<MaterialGL*>(mMaterialCache->getMaterial(result->parent()));
+    
+    if(!m->generated) {
+        generateRendererData(m);
     }
-    return UniquePtr<MaterialInstance>(result);
+    
+    return result;
 }
 
 void RendererGL::drawStaticMesh(StaticMesh* mesh, GameObject* owner) {
@@ -119,7 +122,7 @@ void RendererGL::generateSurfaceData(Surface* s) const {
 
 void RendererGL::renderSurface(Surface* surface, MaterialInstance* materialInstance) {
     Matrix m = Matrix::createIdentity();
-    MaterialGL* material = static_cast<MaterialGL*>(materialInstance->parent());
+    MaterialGL* material = static_cast<MaterialGL*>(mMaterialCache->getMaterial(materialInstance->parent()));
     SurfaceDataGL* surfaceData = static_cast<SurfaceDataGL*>(surface->surfaceData.get());
     
     glUseProgram(material->program);
