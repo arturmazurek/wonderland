@@ -11,7 +11,7 @@
 #include <cassert>
 
 #include "StaticAssert.h"
-#include "UniquePtr.h"
+#include "SharedPtr.h"
 
 template <typename Tag>
 class Handle {
@@ -90,7 +90,7 @@ public:
         
     }
     
-    HandleT acquire(UniquePtr<ManagedT> managed) {
+    HandleT acquire(ManagedT* managed) {
         return HandleT();
     }
     

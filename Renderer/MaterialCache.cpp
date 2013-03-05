@@ -31,10 +31,10 @@ UniquePtr<MaterialInstance> MaterialCache::createMaterialInstance(const String& 
         return mMaterialInstances[name.data()]->clone();
     }
     
-    UniquePtr<Material> m(createMaterial(name));
+    Material* m = createMaterial(name).release();
     if(!m) {
         LOG("Could not get material %s", name.data());
-        return m;
+        return UniquePtr<MaterialInstance>();
     }
     
     HMaterial newHandle = mMaterials.acquire(m);
