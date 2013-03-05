@@ -29,10 +29,8 @@ MaterialCacheGL::~MaterialCacheGL() {
     }
 }
 
-Material* MaterialCacheGL::getMaterial(const String& name) {
-    MaterialGL* material = mMaterials[name.data()];
-    if(!material) {
-        material = loadMaterial(name);
+Material* MaterialCacheGL::createMaterial(const String& name) {
+    MaterialGL* material = loadMaterial(name);
         if(!material) {
             LOG("Could not load material named %s", name.data());
             abort();

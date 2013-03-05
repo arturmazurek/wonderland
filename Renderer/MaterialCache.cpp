@@ -9,9 +9,11 @@
 #include "MaterialCache.h"
 
 #include "Util/Log.h"
+#include "Util/UniquePtr.h"
 
 #include "Material.h"
 #include "MaterialInstance.h"
+#include "MaterialParams.h"
 
 MaterialCache::MaterialCache() {
     
@@ -24,20 +26,22 @@ MaterialCache::~MaterialCache() {
     }
 }
 
-MaterialInstance* MaterialCache::getMaterialInstance(const String& name) {
+UniquePtr<MaterialInstance> MaterialCache::createMaterialInstance(const String& name) {
     if(mMaterialInstances[name.data()]) {
         return mMaterialInstances[name.data()]->clone();
     }
     
-    Material* m = getMaterial(name);
+    UniquePtr<Material> m(createMaterial(name));
     if(!m) {
         LOG("Could not get material %s", name.data());
-        return nullptr;
+        return m;
     }
     
-    MaterialInstance* instance = new MaterialInstance(m);
-    Array<MaterialParam> params = m->createParams();
-    m->setDefaults(params);
+    HMaterial newHandle = mMaterials.acquire(m);
+    
+    MaterialInstance* instance = new MaterialInstance(newHandle);
+    UniquePtr<MaterialParams> params = m->createParams();
+    m->setDefaults(*params);
     instance->assignParameters(params);
     
     mMaterialInstances[name.data()] = instance;

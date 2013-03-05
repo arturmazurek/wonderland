@@ -13,6 +13,7 @@
 
 #include "Util/HashMap.h"
 #include "Util/String.h"
+#include "Util/UniquePtr.h"
 
 class MaterialGL;
 class ShaderCacheGL;
@@ -26,12 +27,11 @@ private:
     MaterialCacheGL(const MaterialCacheGL&);
     MaterialCacheGL& operator=(const MaterialCacheGL&);
     
-    virtual Material* getMaterial(const String& name) override;
-    MaterialGL* loadMaterial(const String& name);
+    virtual UniquePtr<Material> createMaterial(const String& name) override;
+    MaterialGL loadMaterial(const String& name);
 
 private:
     const String            mBasePath;
-    HashMap<MaterialGL*>    mMaterials;
     ShaderCacheGL*          mShaderCache;
 };
 

@@ -25,16 +25,6 @@ const HMaterial& MaterialInstance::parent() const {
     return mParent;
 }
 
-static MaterialParam* _getParameter(const String& name, Array<MaterialParam>& from) {
-    for(int i = 0; i < from.size(); ++i) {
-        if(from[i].name == name) {
-            return &from[i];
-        }
-    }
-    
-    return nullptr;
-}
-
 void MaterialInstance::setParameter(const String& name, void* value, int size) {
     if(!mCopied) {
         MaterialParams* copy = new MaterialParams(*mParams.get());
@@ -42,16 +32,21 @@ void MaterialInstance::setParameter(const String& name, void* value, int size) {
         mCopied = true;
     }
     
-    MaterialParams::Parameter& param = mParams->getParameter(name);
-    if(param.size != size) {
-        LOG("Oops, trying to set %s with something of size %d but destination expectes size %d", name.data(), size, param.size);
+    MaterialParams::Parameter* param = mParams->getParameter(name);
+    if(!param) {
+        LOG("Oops, could not find parameter %s", name.data());
         return;
     }
-    memcpy(param.value, value, size);
+    if(param->size != size) {
+        LOG("Oops, trying to set %s with something of size %d but destination expectes size %d", name.data(), size, param->size);
+        return;
+    }
+    
+    memcpy(param->value, value, size);
 }
 
-MaterialInstance* MaterialInstance::clone() const {
-    MaterialInstance* result = new MaterialInstance(mParent);
+UniquePtr<MaterialInstance> MaterialInstance::clone() const {
+    UniquePtr<MaterialInstance> result(new MaterialInstance(mParent));
     result->mParams = mParams;
     
     return result;

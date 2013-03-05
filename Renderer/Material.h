@@ -11,31 +11,9 @@
 
 #include "Util/Array.h"
 #include "Util/String.h"
+#include "Util/UniquePtr.h"
 
-enum ParamType {
-    PARAM_TYPE_INVALID = -1,
-    PARAM_TYPE_FLOAT,
-    PARAM_TYPE_VEC2,
-    PARAM_TYPE_VEC3,
-    PARAM_TYPE_VEC4,
-    PARAM_TYPE_MATRIX,
-    
-    PARAM_TYPE_ENUM_SIZE
-};
-
-struct MaterialParam {
-    String      name;
-    int         handle;
-    
-    void*       value;
-    int         size;
-    ParamType   type;
-    
-    MaterialParam();
-    ~MaterialParam();
-    MaterialParam(const MaterialParam& other);
-    MaterialParam& operator=(const MaterialParam& other);
-};
+class MaterialParams;
 
 /**
  * Material is a shader with associated parameters
@@ -49,10 +27,10 @@ public:
     
     const String& name() const;
     
-    virtual Array<MaterialParam> createParams() const = 0;
-    virtual void apply(const Array<MaterialParam>& params) = 0;
+    virtual UniquePtr<MaterialParams> createParams() const = 0;
+    virtual void apply(const MaterialParams& params) = 0;
     
-    void setDefaults(Array<MaterialParam>& param) const;
+    void setDefaults(MaterialParams& param) const;
     
 private:
     String     mName;

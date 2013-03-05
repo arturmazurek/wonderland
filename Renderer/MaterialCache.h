@@ -12,6 +12,9 @@
 #include "Util/HandleManager.h"
 #include "Util/HashMap.h"
 #include "Util/String.h"
+#include "Util/UniquePtr.h"
+
+#include "HMaterial.h"
 
 class Material;
 class MaterialInstance;
@@ -21,10 +24,10 @@ public:
     MaterialCache();
     virtual ~MaterialCache();
 
-    MaterialInstance* getMaterialInstance(const String& name);
+    UniquePtr<MaterialInstance> createMaterialInstance(const String& name);
 
 protected:
-    virtual Material* getMaterial(const String& name) = 0;
+    virtual UniquePtr<Material> createMaterial(const String& name) = 0;
 
 private:
     MaterialCache(const MaterialCache&);
@@ -32,6 +35,9 @@ private:
 
 private:
     HashMap<MaterialInstance*> mMaterialInstances;
+    
+    HashMap<HMaterial> mHandles;
+    HandleManager<HMaterial, Material> mMaterials;
 };
 
 #endif /* defined(__Wonderland__MaterialCache__) */

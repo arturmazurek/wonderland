@@ -37,6 +37,21 @@ const MaterialParams::Parameter& MaterialParams::getParameter(int i) const {
     return mParams[i];
 }
 
+MaterialParams::Parameter* MaterialParams::getParameter(const String& name) {
+    int n = count();
+    for(int i = 0; i < n; ++i) {
+        if(mParams[i].name == name) {
+            return &mParams[i];
+        }
+    }
+    
+    return nullptr;
+}
+
+const MaterialParams::Parameter* MaterialParams::getParameter(const String& name) const {
+    return const_cast<MaterialParams&>(*this).getParameter(name);
+}
+
 int MaterialParams::count() const {
     return mParams.size();
 }

@@ -10,8 +10,8 @@
 
 #include <cassert>
 
-#import "StaticAssert.h"
-
+#include "StaticAssert.h"
+#include "UniquePtr.h"
 
 template <typename Tag>
 class Handle {
@@ -90,8 +90,8 @@ public:
         
     }
     
-    ManagedT* acquire(const HandleT& handle) {
-        return nullptr;
+    HandleT acquire(UniquePtr<ManagedT> managed) {
+        return HandleT();
     }
     
     void release(const HandleT& handle) {

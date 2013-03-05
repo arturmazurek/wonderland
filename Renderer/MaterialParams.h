@@ -44,8 +44,8 @@ public:
     Parameter& getParameter(int i);
     const Parameter& getParameter(int i) const;
     
-    Parameter& getParameter(const String& name);
-    const Parameter& getParameter(const String& name) const;
+    Parameter* getParameter(const String& name);
+    const Parameter* getParameter(const String& name) const;
     
     int count() const;
     

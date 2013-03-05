@@ -10,36 +10,7 @@
 
 #include "Util/Log.h"
 
-MaterialParam::MaterialParam() : handle(0), value(nullptr), size(0), type(PARAM_TYPE_INVALID) {
-}
-
-MaterialParam::~MaterialParam() {
-    free(value);
-}
-
-MaterialParam::MaterialParam(const MaterialParam& other) : name(other.name), handle(other.handle), value(nullptr), type(other.type) {
-    if(other.value) {
-        size = other.size;
-        value = malloc(size);
-        memcpy(value, other.value, size);
-    }
-}
-
-MaterialParam& MaterialParam::operator=(const MaterialParam& other) {
-    name = other.name;
-    handle = other.handle;
-    if(other.value) {
-        size = other.size;
-        value = malloc(size);
-        memcpy(value, other.value, size);
-    } else {
-        value = nullptr;
-        size = 0;
-    }
-    type = other.type;
-    
-    return *this;
-}
+#include "MaterialParams.h"
 
 Material::Material(const String& name) : mName(name) {
     
@@ -53,25 +24,16 @@ const String& Material::name() const {
     return mName;
 }
 
-static MaterialParam* _findParam(const String& name, Array<MaterialParam>& params) {
-    for(int i = 0; i < params.size(); ++i) {
-        if(name == params[i].name) {
-            return &params[i];
-        }
-    }
-    
-    return nullptr;
-}
-
-void Material::setDefaults(Array<MaterialParam>& params) const {
-    MaterialParam* param = _findParam("uColor", params);
+void Material::setDefaults(MaterialParams& params) const {
+//    MaterialParam* param = _findParam("uColor", params);
+    MaterialParams::Parameter* param = params.getParameter("uColor");
     
     if(!param) {
         LOG("Can't find param named %s for %s", "color", mName.data());
         return;
     }
     
-    param->type = PARAM_TYPE_VEC4;
+    param->type = MaterialParams::Parameter::TYPE_VEC4;
     param->size = 4 * sizeof(float);
     param->value = malloc(param->size);
     float values[] = {0.f, 1.f, 0.f, 1.f};

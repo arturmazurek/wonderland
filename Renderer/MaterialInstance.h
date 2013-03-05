@@ -31,7 +31,7 @@ public:
     
     const MaterialParams& getParams() const;
     
-    MaterialInstance* clone() const;
+    UniquePtr<MaterialInstance> clone() const;
     
 private:
     bool                        mCopied;
