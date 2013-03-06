@@ -23,19 +23,26 @@ class Renderer {
 public:
     virtual ~Renderer();
     
-    virtual void renderFrame() = 0;
-    
-    virtual UniquePtr<MaterialInstance> createMaterial(const String& name) = 0;
-    
-    virtual void drawStaticMesh(StaticMesh* mesh, GameObject* owner) = 0;
-    virtual void dropStaticMesh(StaticMesh* mesh, GameObject* owner) = 0;
-    
+    virtual void init();
     virtual void viewResize(int width, int height) = 0;
+    
+    void renderFrame();
+    
+    UniquePtr<MaterialInstance> createMaterial(const String& name);
+    
+    void drawStaticMesh(StaticMesh* mesh, GameObject* owner);
+    void dropStaticMesh(StaticMesh* mesh, GameObject* owner);
     
 protected:
     Renderer();
     
     virtual UniquePtr<MaterialCache> createMaterialCache() const = 0;
+    virtual void renderSurface(Surface* surface, MaterialInstance* materialInstance) = 0;
+    
+    virtual void usingSurface(Surface* surface) = 0;
+    virtual void usingMaterialInstance(MaterialInstance* materialInstance) = 0;
+    
+    MaterialCache* materialCache();
     
 private:
     Renderer(const Renderer&);

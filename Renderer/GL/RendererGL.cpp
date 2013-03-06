@@ -23,6 +23,7 @@
 
 #include "MaterialCacheGL.h"
 #include "MaterialGL.h"
+#include "OpenGL.h"
 #include "SurfaceDataGL.h"
 
 static const int PARAMS_BUFFER_LENGTH = 256;
@@ -32,62 +33,27 @@ const String RendererGL::PROJECTION_NAME("uProjection");
 const String RendererGL::COLOR_NAME("uColor");
 
 RendererGL::RendererGL() {
-    mMaterialCache = new MaterialCacheGL(File::basePath() + "/" + Constants::SHADERS_BASE);
+
 }
 
 RendererGL::~RendererGL() {
-    delete mMaterialCache;
+
 }
 
 UniquePtr<MaterialCache> RendererGL::createMaterialCache() const {
     return UniquePtr<MaterialCache>(new MaterialCacheGL(File::basePath() + "/" + Constants::SHADERS_BASE));
 }
 
-void RendererGL::renderFrame() {
-    RenderInfo* renderable = mRenderables.Head();
-    while(renderable) {
-        renderSurface(renderable->surface, renderable->materialInstance);
-        renderable = mRenderables.Next(renderable);
+void RendererGL::usingSurface(Surface* surface) {
+    if(!surface->surfaceData) {
+        generateSurfaceData(surface);
     }
 }
 
-UniquePtr<MaterialInstance> RendererGL::createMaterial(const String& name) {
-    UniquePtr<MaterialInstance> result(mMaterialCache->createMaterialInstance(name));
-    MaterialGL* m = static_cast<MaterialGL*>(mMaterialCache->getMaterial(result->parent()));
-    
-    if(!m->generated) {
-        generateRendererData(m);
-    }
-    
-    return result;
-}
-
-void RendererGL::drawStaticMesh(StaticMesh* mesh, GameObject* owner) {
-    StaticMesh::SurfacesIterator iterator = mesh->surfacesIterator();
-    while(iterator.hasNext()) {
-        RenderInfo *ri = new RenderInfo();
-        StaticMesh::SurfaceInfo& si = iterator.next();
-        
-        if(!si.surface->surfaceData) {
-            generateSurfaceData(si.surface.get());
-        }
-        
-        ri->surface = si.surface.get();
-        ri->materialInstance = si.material;
-        ri->owner = owner;
-        
-        mRenderables.InsertTail(ri);
-    }
-}
-
-void RendererGL::dropStaticMesh(StaticMesh* mesh, GameObject* owner) {
-    RenderInfo* ri = mRenderables.Head();
-    while(ri) {
-        if(ri->sourceMesh == mesh && ri->owner == owner) {
-            RenderInfo* temp = ri;
-            ri = mRenderables.Next(ri);
-            delete temp;
-        }
+void RendererGL::usingMaterialInstance(MaterialInstance* materialInstance) {
+    MaterialGL* material = static_cast<MaterialGL*>(materialCache()->getMaterial(materialInstance->parent()));
+    if(!material->generated) {
+        generateRendererData(material);
     }
 }
 
@@ -126,7 +92,7 @@ void RendererGL::generateSurfaceData(Surface* s) const {
 
 void RendererGL::renderSurface(Surface* surface, MaterialInstance* materialInstance) {
     Matrix m = Matrix::createIdentity();
-    MaterialGL* material = static_cast<MaterialGL*>(mMaterialCache->getMaterial(materialInstance->parent()));
+    MaterialGL* material = static_cast<MaterialGL*>(materialCache()->getMaterial(materialInstance->parent()));
     SurfaceDataGL* surfaceData = static_cast<SurfaceDataGL*>(surface->surfaceData.get());
     
     glUseProgram(material->program);

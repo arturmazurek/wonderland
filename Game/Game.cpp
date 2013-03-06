@@ -88,6 +88,7 @@ bool Game::initializeGame() {
     SystemInfo system;
     if(system.hasOpengGL()) {
         mRenderer = RendererFactory::createRenderer(RendererFactory::RENDERER_OPENGL);
+        mRenderer->init();
     }
     
     mGameInterface.reset(new GameInterface(&mMessageQueue));
