@@ -145,8 +145,10 @@ struct Matrix {
         result.m[index(0, 0)] = 2.0f / width;
         result.m[index(1, 1)] = 2.0f / height;
         result.m[index(2, 2)] = -1.0f;
-        result.m[index(0, 3)] = -1.0f;
-        result.m[index(1, 3)] = -1.0f;
+        
+        result.m[index(0, 3)] = 0;
+        result.m[index(1, 3)] = 0;
+        result.m[index(2, 3)] = -1.0f * (far + near) / (far - near);
         
         return result;
     }
