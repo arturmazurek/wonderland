@@ -48,6 +48,7 @@
 		6D36E0DE16C557CF00BEBCCC /* StaticMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D36E0DC16C557CF00BEBCCC /* StaticMesh.cpp */; };
 		6D36E0E216C5611C00BEBCCC /* Material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D36E0E016C5611C00BEBCCC /* Material.cpp */; };
 		6D36E0E516C564F500BEBCCC /* ShaderGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D36E0E316C564F500BEBCCC /* ShaderGL.cpp */; };
+		6DF0FF6516F34F91004934D1 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6DF0FF6316F34F91004934D1 /* Camera.cpp */; };
 		6DFEC87416DFC0920071EFD1 /* MessageQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6DFEC87216DFC0920071EFD1 /* MessageQueue.cpp */; };
 		6DFEC87C16E0E8440071EFD1 /* GameInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6DFEC87A16E0E83F0071EFD1 /* GameInterface.cpp */; };
 		750EB80916DE9FD30063CE56 /* MaterialCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 750EB80716DE9FD20063CE56 /* MaterialCache.cpp */; };
@@ -162,6 +163,9 @@
 		6D36E0E116C5611C00BEBCCC /* Material.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Material.h; sourceTree = "<group>"; };
 		6D36E0E316C564F500BEBCCC /* ShaderGL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ShaderGL.cpp; path = GL/ShaderGL.cpp; sourceTree = "<group>"; };
 		6D36E0E416C564F500BEBCCC /* ShaderGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShaderGL.h; path = GL/ShaderGL.h; sourceTree = "<group>"; };
+		6DF0FF6316F34F91004934D1 /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
+		6DF0FF6416F34F91004934D1 /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
+		6DF0FF6616F355D0004934D1 /* Math.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Math.h; sourceTree = "<group>"; };
 		6DFEC81616DD1F9E0071EFD1 /* Array.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Array.h; path = ../../Util/Array.h; sourceTree = "<group>"; };
 		6DFEC81C16DF634B0071EFD1 /* String.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = String.h; path = ../../Util/String.h; sourceTree = "<group>"; };
 		6DFEC81D16DF636F0071EFD1 /* SharedArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SharedArray.h; path = ../../Util/SharedArray.h; sourceTree = "<group>"; };
@@ -477,6 +481,7 @@
 			children = (
 				75A8217816C2F64C00C2E102 /* Vector.h */,
 				75A8217916C2FC6B00C2E102 /* Matrix.h */,
+				6DF0FF6616F355D0004934D1 /* Math.h */,
 			);
 			name = Math;
 			path = ../../Math;
@@ -597,6 +602,8 @@
 				6D1AD93916E6505700F0B3C7 /* HMaterial.h */,
 				6D1AD93A16E6521A00F0B3C7 /* MaterialParams.h */,
 				6D1AD93B16E6557900F0B3C7 /* MaterialParams.cpp */,
+				6DF0FF6316F34F91004934D1 /* Camera.cpp */,
+				6DF0FF6416F34F91004934D1 /* Camera.h */,
 			);
 			name = Renderer;
 			path = ../../Renderer;
@@ -731,6 +738,7 @@
 				757E607916E24E810082DEBE /* SystemHandler.cpp in Sources */,
 				75816E7816E258DD008FEB03 /* KeyboardHandler.cpp in Sources */,
 				6D1AD93C16E6557900F0B3C7 /* MaterialParams.cpp in Sources */,
+				6DF0FF6516F34F91004934D1 /* Camera.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
