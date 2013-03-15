@@ -12,6 +12,7 @@
 #include "Core/GameObject.h"
 #include "Core/World.h"
 
+#include "Renderer/Camera.h"
 #include "Renderer/MaterialInstance.h"
 #include "Renderer/Renderer.h"
 #include "Renderer/RendererFactory.h"
@@ -20,6 +21,7 @@
 #include "Renderer/Vertex.h"
 
 #include "Util/UniqueArray.h"
+#include "Util/SharedPtr.h"
 #include "Util/Timer.h"
 
 #include "GameInterface.h"
@@ -56,6 +58,9 @@ UniquePtr<World> Game::createWorld() const {
     smc->setMesh(mesh);
     obj->addComponent(smc);
     world->addObject(obj);
+    
+    SharedPtr<Camera> c(new Camera());
+    mRenderer->useCamera(c);
     
     return UniquePtr<World>(world);
 }

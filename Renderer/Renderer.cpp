@@ -8,8 +8,13 @@
 
 #include "Renderer.h"
 
+#include "Util/Log.h"
+
+#include "Camera.h"
 #include "MaterialCache.h"
+#include "MaterialInstance.h"
 #include "StaticMesh.h"
+#include "Surface.h"
 
 Renderer::Renderer() {
     
@@ -21,6 +26,14 @@ Renderer::~Renderer() {
 
 void Renderer::init() {
     mMaterialCache = createMaterialCache();
+}
+
+void Renderer::useCamera(SharedPtr<Camera> camera) {
+    mCurrentCamera = camera;
+}
+
+const Camera* Renderer::camera() const {
+    return mCurrentCamera.get();
 }
 
 UniquePtr<MaterialInstance> Renderer::createMaterial(const String& name) {
@@ -56,6 +69,11 @@ void Renderer::dropStaticMesh(StaticMesh* mesh, GameObject* owner) {
 }
 
 void Renderer::renderFrame() {
+    if(!mCurrentCamera) {
+        LOG("Renderer doesn't have a camera");
+        return;
+    }
+    
     RenderInfo* renderable = mRenderables.Head();
     while(renderable) {
         renderSurface(renderable->surface, renderable->materialInstance);

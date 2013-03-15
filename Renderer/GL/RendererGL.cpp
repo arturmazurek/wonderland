@@ -12,6 +12,7 @@
 
 #include "Math/Matrix.h"
 
+#include "Renderer/Camera.h"
 #include "Renderer/MaterialInstance.h"
 #include "Renderer/StaticMesh.h"
 #include "Renderer/Surface.h"
@@ -97,7 +98,7 @@ void RendererGL::renderSurface(Surface* surface, MaterialInstance* materialInsta
     
     glUseProgram(material->program);
     
-    glUniformMatrix4fv(material->projectionUniform, 1, GL_FALSE, m.m);
+    glUniformMatrix4fv(material->projectionUniform, 1, GL_FALSE, camera()->projection().m);
     glUniformMatrix4fv(material->modelViewUniform, 1, GL_FALSE, m.m);
 
     material->apply(materialInstance->getParams());

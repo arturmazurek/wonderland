@@ -55,3 +55,7 @@ void Camera::calculateProjection() {
         mProjection = Matrix::createOrtho(mWidth, mHeight, mNear, mFar);
     }
 }
+
+const Matrix& Camera::projection() const {
+    return mProjection;
+}

@@ -9,10 +9,14 @@
 #ifndef __Wonderland__Renderer__
 #define __Wonderland__Renderer__
 
+#include "Math/Matrix.h"
+
 #include "Util/List.h"
+#include "Util/SharedPtr.h"
 #include "Util/String.h"
 #include "Util/UniquePtr.h"
 
+class Camera;
 class GameObject;
 class MaterialCache;
 class MaterialInstance;
@@ -30,6 +34,8 @@ public:
     
     UniquePtr<MaterialInstance> createMaterial(const String& name);
     
+    void useCamera(SharedPtr<Camera> camera);
+    
     void drawStaticMesh(StaticMesh* mesh, GameObject* owner);
     void dropStaticMesh(StaticMesh* mesh, GameObject* owner);
     
@@ -44,12 +50,14 @@ protected:
     
     MaterialCache* materialCache();
     
+    const Camera* camera() const;
+    
 private:
     Renderer(const Renderer&);
     Renderer& operator=(const Renderer&);
     
 private:
-    UniquePtr<MaterialCache>  mMaterialCache;
+    UniquePtr<MaterialCache>            mMaterialCache;
     
     struct RenderInfo {
         Surface*                surface;
@@ -58,7 +66,9 @@ private:
         StaticMesh*             sourceMesh;
         LIST_LINK(RenderInfo)   listLink;
     };
-    LIST_DECLARE(RenderInfo, listLink) mRenderables;
+    LIST_DECLARE(RenderInfo, listLink)  mRenderables;
+    
+    SharedPtr<Camera>                   mCurrentCamera;
 };
 
 #endif /* defined(__Wonderland__Renderer__) */

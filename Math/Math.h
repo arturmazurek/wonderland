@@ -14,8 +14,8 @@ namespace Math {
     static const float pi = 3.14159265359f;
     static const float piInv = 0.31830988618f;
     static const float pi2 = 9.86960440109f;
-    static const float deg2Rad = 180.f / Pi;
-    static const float rad2Deg = Pi / 180.f;
+    static const float deg2Rad = 180.f / pi;
+    static const float rad2Deg = pi / 180.f;
     
     static inline float toDeg(float rad) {
         return rad * rad2Deg;

@@ -21,6 +21,8 @@ public:
     void setPerspective(float fovY, float aspect);
     void setOrtho(float width, float height);
     
+    const Matrix& projection() const;
+    
 private:
     Camera(const Camera&);
     Camera& operator=(const Camera&);
