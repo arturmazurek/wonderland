@@ -23,7 +23,7 @@ public:
     virtual ~RendererGL();
     
     virtual UniquePtr<MaterialCache> createMaterialCache() const override;
-    virtual void viewResize(int width, int height) override;
+    virtual void viewResized(int width, int height) override;
     
     virtual void renderSurface(Surface* surface, MaterialInstance* materialInstance) override;
     

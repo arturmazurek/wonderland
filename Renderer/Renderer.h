@@ -28,7 +28,7 @@ public:
     virtual ~Renderer();
     
     virtual void init();
-    virtual void viewResize(int width, int height) = 0;
+    virtual void viewResized(int width, int height);
     
     void renderFrame();
     

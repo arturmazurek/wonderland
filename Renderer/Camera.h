@@ -23,6 +23,9 @@ public:
     
     const Matrix& projection() const;
     
+    bool isPerspective() const;
+    float fov() const;
+    
 private:
     Camera(const Camera&);
     Camera& operator=(const Camera&);

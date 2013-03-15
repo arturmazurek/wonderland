@@ -108,6 +108,8 @@ void RendererGL::renderSurface(Surface* surface, MaterialInstance* materialInsta
     glBindVertexArray(0);
 }
 
-void RendererGL::viewResize(int width, int height) {
+void RendererGL::viewResized(int width, int height) {
     glViewport(0, 0, width, height);
+    
+    Renderer::viewResized(width, height);
 }

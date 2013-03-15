@@ -68,6 +68,15 @@ void Renderer::dropStaticMesh(StaticMesh* mesh, GameObject* owner) {
     }
 }
 
+void Renderer::viewResized(int width, int height) {
+    if(!mCurrentCamera->isPerspective()) {
+        mCurrentCamera->setOrtho(width, height);
+    } else {
+        float aspect = static_cast<float>(width) / height;
+        mCurrentCamera->setPerspective(mCurrentCamera->fov(), aspect);
+    }
+}
+
 void Renderer::renderFrame() {
     if(!mCurrentCamera) {
         LOG("Renderer doesn't have a camera");

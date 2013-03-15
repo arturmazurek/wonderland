@@ -59,3 +59,11 @@ void Camera::calculateProjection() {
 const Matrix& Camera::projection() const {
     return mProjection;
 }
+
+bool Camera::isPerspective() const {
+    return mPerspective;
+}
+
+float Camera::fov() const {
+    return mFovY;
+}

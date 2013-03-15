@@ -25,7 +25,7 @@ SystemHandler::~SystemHandler() {
 void SystemHandler::handleMessage(const Message& message) {
     switch(message.type) {
         case TYPE_SCREEN_RESIZE:
-            mRenderer->viewResize(message.param1, message.param2);
+            mRenderer->viewResized(message.param1, message.param2);
             break;
             
         default:

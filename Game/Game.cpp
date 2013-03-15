@@ -44,8 +44,8 @@ UniquePtr<World> Game::createWorld() const {
     StaticMesh* mesh = new StaticMesh();
     static Vertex vertices[] = {
         { Vector(0, 0, 0), {0, 0, 1}, {0, 0} },
-        { Vector(5, 0, 0), {0, 0, 1}, {0, 0} },
-        { Vector(5, 5, 0), {0, 0, 1}, {0, 0} }
+        { Vector(50, 0, 0), {0, 0, 1}, {0, 0} },
+        { Vector(50, 50, 0), {0, 0, 1}, {0, 0} }
     };
     
     Surface* surface = new Surface(UniqueArray<Vertex>(vertices), sizeof(vertices) / sizeof(*vertices));
