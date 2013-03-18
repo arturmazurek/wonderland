@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D0A7B4F16F77E7700303F86 /* CameraComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D0A7B4D16F77E7700303F86 /* CameraComponent.cpp */; };
 		6D1AD93C16E6557900F0B3C7 /* MaterialParams.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D1AD93B16E6557900F0B3C7 /* MaterialParams.cpp */; };
 		6D36E05716C3F2CA00BEBCCC /* lapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 6D36DFF016C3F2CA00BEBCCC /* lapi.c */; };
 		6D36E05816C3F2CA00BEBCCC /* lauxlib.c in Sources */ = {isa = PBXBuildFile; fileRef = 6D36DFF216C3F2CA00BEBCCC /* lauxlib.c */; };
@@ -83,6 +84,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6D0A7B4D16F77E7700303F86 /* CameraComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CameraComponent.cpp; sourceTree = "<group>"; };
+		6D0A7B4E16F77E7700303F86 /* CameraComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraComponent.h; sourceTree = "<group>"; };
 		6D1AD93716E6040500F0B3C7 /* HandleManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HandleManager.h; path = ../../Util/HandleManager.h; sourceTree = "<group>"; };
 		6D1AD93816E6176400F0B3C7 /* StaticAssert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StaticAssert.h; path = ../../Util/StaticAssert.h; sourceTree = "<group>"; };
 		6D1AD93916E6505700F0B3C7 /* HMaterial.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMaterial.h; sourceTree = "<group>"; };
@@ -471,6 +474,8 @@
 				757FAD3116C845E500FCDC19 /* ComponentType.h */,
 				757FAD3216C845E500FCDC19 /* StaticMeshComponent.cpp */,
 				757FAD3316C845E500FCDC19 /* StaticMeshComponent.h */,
+				6D0A7B4D16F77E7700303F86 /* CameraComponent.cpp */,
+				6D0A7B4E16F77E7700303F86 /* CameraComponent.h */,
 			);
 			name = Components;
 			path = ../../Core/Components;
@@ -739,6 +744,7 @@
 				75816E7816E258DD008FEB03 /* KeyboardHandler.cpp in Sources */,
 				6D1AD93C16E6557900F0B3C7 /* MaterialParams.cpp in Sources */,
 				6DF0FF6516F34F91004934D1 /* Camera.cpp in Sources */,
+				6D0A7B4F16F77E7700303F86 /* CameraComponent.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

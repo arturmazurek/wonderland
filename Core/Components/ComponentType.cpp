@@ -8,6 +8,7 @@
 
 #include "ComponentType.h"
 
+#include "CameraComponent.h"
 #include "ComponentBase.h"
 #include "StaticMeshComponent.h"
 
@@ -15,3 +16,4 @@
     const ComponentBase::Type componentClass::TYPE = number;
 
 CREATE_TYPE(StaticMeshComponent, 1);
+CREATE_TYPE(CameraComponent, 2);
