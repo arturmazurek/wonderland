@@ -10,45 +10,45 @@
 #define Wonderland_Quaternion_h
 
 struct Quaternion {
-    float real;
-    float i;
-    float j;
-    float k;
+    float x;
+    float y;
+    float z;
+    float w;
     
-    Quaternion() : real(0), i(0), j(0), k(0) {}
-    Quaternion(const Quaternion& other) : real(other.real), i(other.i), j(other.j), k(other.k) {}
+    Quaternion() : x(0), y(0), z(0), w(0) {}
+    Quaternion(const Quaternion& other) : x(other.x), y(other.y), z(other.z), w(other.w) {}
     Quaternion& operator=(const Quaternion& other) {
-        real = other.real;
-        i = other.i;
-        j = other.j;
-        k = other.k;
+        x = other.x;
+        y = other.y;
+        z = other.z;
+        w = other.w;
         
         return *this;
     }
     
     Quaternion& operator+=(const Quaternion& other) {
-        real += other.real;
-        i += other.i;
-        j += other.j;
-        k += other.k;
+        x += other.x;
+        y += other.y;
+        z += other.z;
+        w += other.w;
         
         return *this;
     }
     
     Quaternion& operator-=(const Quaternion& other) {
-        real -= other.real;
-        i -= other.i;
-        j -= other.j;
-        k -= other.k;
+        x -= other.x;
+        y -= other.y;
+        z -= other.z;
+        w -= other.w;
         
         return *this;
     }
     
     Quaternion& operator*=(const Quaternion& other) {
-        real = real*other.real - i*other.i - j*other.j - k*other.k;
-        i = real*other.i + i*other.real + j*other.k - k*other.j;
-        j = real*other.j - i*other.k + j*other.real + k*other.i;
-        k = real*other.k + i*other.j + j*other.i + k*other.real;
+        x = x*other.x - y*other.y - z*other.z - w*other.w;
+        y = x*other.y + y*other.x + z*other.w - w*other.z;
+        z = x*other.z - y*other.w + z*other.x + w*other.y;
+        w = x*other.w + y*other.z + z*other.y + w*other.x;
         
         return *this;
     }
