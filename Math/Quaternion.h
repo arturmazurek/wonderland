@@ -52,21 +52,72 @@ struct Quaternion {
         
         return *this;
     }
+    
+    Quaternion& operator*=(float k) {
+        x *= k;
+        y *= k;
+        z *= k;
+        w *= k;
+        
+        return *this;
+    }
+    
+    Quaternion& operator/=(float k) {
+        return (*this) *= (1.0f / k);
+    }
+    
+    float normSqr() const {
+        return x*x + y*y + z*z + w*w;
+    }
+    
+    float norm() const {
+        return std::sqrt(normSqr());
+    }
+    
+    Quaternion normalized() const {
+        Quaternion result(*this);
+        result.normalize();
+        
+        return result;
+    }
+    
+    Quaternion& normalize() {
+        return (*this) /= norm();
+    }
 };
     
 static inline Quaternion operator+(const Quaternion& a, const Quaternion& b) {
     Quaternion result(a);
-    return result += b;
+    result += b;
+    return result;
 }
     
 static inline Quaternion operator-(const Quaternion& a, const Quaternion& b) {
     Quaternion result(a);
-    return result -= b;
+    result -= b;
+    return result;
 }
     
 static inline Quaternion operator*(const Quaternion& a, const Quaternion& b) {
     Quaternion result(a);
-    return result *= a;
+    result *= a;
+    return result;
+}
+    
+static inline Quaternion operator*(const Quaternion& a, float k) {
+    Quaternion result(a);
+    result *= k;
+    return result;
+}
+    
+static inline Quaternion operator*(float k, const Quaternion& a) {
+    return a * k;
+}
+    
+static inline Quaternion operator/(const Quaternion& a, float k) {
+    Quaternion result(a);
+    result /= k;
+    return result;
 }
 
 #endif

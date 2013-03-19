@@ -164,26 +164,41 @@ struct Matrix {
         
         Matrix result;
         
-        // going in rows
+        // going in columns
         result.m[index(0,0)] = cos(yaw) * cos(pitch);
-        result.m[index(0,1)] = -sin(pitch);
-        result.m[index(0,2)] = sin(yaw) * cos(pitch);
-        
         result.m[index(1,0)] = cos(yaw)*sin(pitch)*cos(roll) - sin(yaw)*sin(roll);
-        result.m[index(1,1)] = cos(pitch) * cos(roll);
-        result.m[index(1,2)] = sin(yaw)*sin(pitch)*cos(roll) - cos(yaw)*sin(roll);
-        
         result.m[index(2,0)] = cos(yaw)*sin(pitch)*sin(roll) - sin(yaw)*cos(roll);
+        
+        result.m[index(0,1)] = -sin(pitch);
+        result.m[index(1,1)] = cos(pitch) * cos(roll);
         result.m[index(2,1)] = cos(pitch) * sin(roll);
+        
+        result.m[index(0,2)] = sin(yaw) * cos(pitch);
+        result.m[index(1,2)] = sin(yaw)*sin(pitch)*cos(roll) - cos(yaw)*sin(roll);
         result.m[index(2,2)] = sin(yaw)*sin(pitch)*sin(roll) + cos(yaw)*cos(roll);
         
-        result.m[index(3,3)] = 1;
+        result.m[index(3,3)] = 1.0f;
         
         return result;
     }
     
     static Matrix createRotation(const Quaternion& q) {
         Matrix result;
+        
+        // going in columns
+        result.m[index(0, 0)] = 1.0f - 2*(q.y*q.y - q.z*q.z);
+        result.m[index(1, 0)] = 2*(q.x*q.y - q.w*q.z);
+        result.m[index(2, 0)] = 2*(q.x*q.z + q.w*q.y);
+        
+        result.m[index(0, 1)] = 2*(q.x*q.y + q.w*q.z);
+        result.m[index(1, 1)] = 1.0f - 2*(q.x*q.x - q.z*q.z);
+        result.m[index(2, 1)] = 2*(q.y*q.z - q.w*q.x);
+        
+        result.m[index(0, 2)] = 2*(q.x*q.z - q.w*q.y);
+        result.m[index(1, 2)] = 2*(q.y*q.z + q.w*q.x);
+        result.m[index(2, 2)] = 1.0f - 2*(q.x*q.x - q.y*q.y);
+        
+        result.m[index(3, 3)] = 1.0f;
         
         return result;
     }
