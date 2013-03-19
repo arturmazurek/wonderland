@@ -13,6 +13,7 @@
 
 #include <cmath>
 
+#include "Quaternion.h"
 #include "Vector.h"
 
 // m00 m01 m02 m03
@@ -180,6 +181,13 @@ struct Matrix {
         
         return result;
     }
+    
+    static Matrix createRotation(const Quaternion& q) {
+        Matrix result;
+        
+        return result;
+    }
+    
 };
     
 
