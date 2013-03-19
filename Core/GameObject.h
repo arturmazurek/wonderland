@@ -35,6 +35,7 @@ public:
     
 public:
     bool                    toDelete;
+    bool                    transformUpdated;
     
 private:
     static unsigned         sIdCounter;

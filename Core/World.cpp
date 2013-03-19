@@ -54,6 +54,9 @@ void World::update(float timeInSeconds) {
         
         if(obj->transform.dirty()) {
             updateTransform(obj);
+            obj->transformUpdated = true;
+        } else {
+            obj->transformUpdated = false;
         }
         obj = mObjects.Next(obj);
     }

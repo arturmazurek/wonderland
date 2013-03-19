@@ -21,11 +21,11 @@ CameraComponent::~CameraComponent() {
 }
 
 void CameraComponent::update(float dt, GameObject* owner) {
-    if(!owner->transform.dirty()) {
+    if(!owner->transformUpdated) {
         return;
     }
     
-
+    // Set camera view
 }
 
 Camera* CameraComponent::camera() {

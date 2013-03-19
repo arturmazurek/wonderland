@@ -9,6 +9,8 @@
 #ifndef __Wonderland__CameraComponent__
 #define __Wonderland__CameraComponent__
 
+#include "Math/Matrix.h"
+
 #include "Util/SharedPtr.h"
 
 #include "ComponentBase.h"
@@ -27,6 +29,9 @@ public:
     
     Camera* camera();
     const Camera* camera() const;
+    
+    const Matrix& projection() const;
+    const Matrix& view() const;
     
 private:
     SharedPtr<Camera> mCamera;
