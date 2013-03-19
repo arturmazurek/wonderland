@@ -9,6 +9,8 @@
 #ifndef Wonderland_Math_h
 #define Wonderland_Math_h
 
+// We're using a right-hand coordinate system.
+
 namespace Math {
 
     static const float pi = 3.14159265359f;

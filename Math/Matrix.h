@@ -11,6 +11,8 @@
 
 #include <cstring>
 
+#include <cmath>
+
 #include "Vector.h"
 
 // m00 m01 m02 m03
@@ -149,6 +151,32 @@ struct Matrix {
         result.m[index(0, 3)] = 0;
         result.m[index(1, 3)] = 0;
         result.m[index(2, 3)] = -1.0f * (far + near) / (far - near);
+        
+        return result;
+    }
+    
+    // yaw is rotation around axis Y
+    // pitch is rotation around axis Z
+    // roll is rotation around axis X
+    static Matrix createRotation(float yaw, float pitch, float roll) {
+        using namespace std;
+        
+        Matrix result;
+        
+        // going in rows
+        result.m[index(0,0)] = cos(yaw) * cos(pitch);
+        result.m[index(0,1)] = -sin(pitch);
+        result.m[index(0,2)] = sin(yaw) * cos(pitch);
+        
+        result.m[index(1,0)] = cos(yaw)*sin(pitch)*cos(roll) - sin(yaw)*sin(roll);
+        result.m[index(1,1)] = cos(pitch) * cos(roll);
+        result.m[index(1,2)] = sin(yaw)*sin(pitch)*cos(roll) - cos(yaw)*sin(roll);
+        
+        result.m[index(2,0)] = cos(yaw)*sin(pitch)*sin(roll) - sin(yaw)*cos(roll);
+        result.m[index(2,1)] = cos(pitch) * sin(roll);
+        result.m[index(2,2)] = sin(yaw)*sin(pitch)*sin(roll) + cos(yaw)*cos(roll);
+        
+        result.m[index(3,3)] = 1;
         
         return result;
     }
