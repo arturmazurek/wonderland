@@ -13,18 +13,19 @@
 
 namespace Math {
 
-    static const float pi = 3.14159265359f;
-    static const float piInv = 0.31830988618f;
-    static const float pi2 = 9.86960440109f;
-    static const float deg2Rad = 180.f / pi;
-    static const float rad2Deg = pi / 180.f;
+    static const float PI = 3.14159265359f;
+    static const float PI_INV = 0.31830988618f;
+    static const float PI2 = 9.86960440109f;
+    static const float DEG_2_RAD = 180.f / PI;
+    static const float RAD_2_DEG = PI / 180.f;
+    static const float EPSILON = 0.00001;
     
     static inline float toDeg(float rad) {
-        return rad * rad2Deg;
+        return rad * RAD_2_DEG;
     }
     
     static inline float toRad(float deg) {
-        return deg * deg2Rad;
+        return deg * DEG_2_RAD;
     }
     
 };
