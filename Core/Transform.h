@@ -10,6 +10,7 @@
 #define __Wonderland__Transform__
 
 #include "Math/Matrix.h"
+#include "Math/Rotator.h"
 #include "Math/Vector.h"
 
 class Transform {
