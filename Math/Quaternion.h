@@ -18,6 +18,7 @@ struct Quaternion {
     float w;
     
     Quaternion() : x(0), y(0), z(0), w(0) {}
+    Quaternion(float x, float y, float z, float w) : x(x), y(y), z(z), w(w) {}
     Quaternion(const Quaternion& other) : x(other.x), y(other.y), z(other.z), w(other.w) {}
     Quaternion& operator=(const Quaternion& other) {
         x = other.x;
