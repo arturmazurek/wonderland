@@ -235,7 +235,7 @@ struct Matrix {
     
 };
     
-static inline Matrix operator*(const Matrix& mA, const Matrix& mB) {
+static Matrix operator*(const Matrix& mA, const Matrix& mB) {
     Matrix result;
     
     const float* a = mA.m;
@@ -262,6 +262,35 @@ static inline Matrix operator*(const Matrix& mA, const Matrix& mB) {
     result.m[15] = a[3]*b[12] + a[7]*b[13] + a[11]*b[14] + a[15]*b[15];
     
     return result;
+}
+    
+// Implies w == 1
+static Vector multiplyPoint(const Matrix& a, const Vector& v) {
+    Vector result;
+    
+    float wInv = 1.0f / a.m[15];
+    
+    result.x = (a.m[0]*v.x + a.m[4]*v.y + a.m[8]*v.z + a.m[12]) * wInv;
+    result.y = (a.m[1]*v.x + a.m[5]*v.y + a.m[9]*v.z + a.m[13]) * wInv;
+    result.z = (a.m[2]*v.x + a.m[6]*v.y + a.m[10]*v.z + a.m[14]) * wInv;
+    
+    return result;
+}
+    
+// Implies w == 0;
+static Vector multiplyDirection(const Matrix& a, const Vector& v) {
+    Vector result;
+    
+    result.x = a.m[0]*v.x + a.m[4]*v.y + a.m[8]*v.z;
+    result.y = a.m[1]*v.x + a.m[5]*v.y + a.m[9]*v.z;
+    result.z = a.m[2]*v.x + a.m[6]*v.y + a.m[10]*v.z;
+    
+    return result;
+}
+    
+// assumes we're multiplying a point
+static Vector operator*(const Matrix& m, const Vector& v) {
+    return multiplyPoint(m, v);
 }
 
 #endif
