@@ -84,6 +84,7 @@
 
 /* Begin PBXFileReference section */
 		6D0A7B5016F8B2CF00303F86 /* Quaternion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Quaternion.h; sourceTree = "<group>"; };
+		6D0A7B5116FA1AD900303F86 /* Rotator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Rotator.h; sourceTree = "<group>"; };
 		6D1AD93716E6040500F0B3C7 /* HandleManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HandleManager.h; path = ../../Util/HandleManager.h; sourceTree = "<group>"; };
 		6D1AD93816E6176400F0B3C7 /* StaticAssert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StaticAssert.h; path = ../../Util/StaticAssert.h; sourceTree = "<group>"; };
 		6D1AD93916E6505700F0B3C7 /* HMaterial.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMaterial.h; sourceTree = "<group>"; };
@@ -484,6 +485,7 @@
 				75A8217916C2FC6B00C2E102 /* Matrix.h */,
 				6DF0FF6616F355D0004934D1 /* Math.h */,
 				6D0A7B5016F8B2CF00303F86 /* Quaternion.h */,
+				6D0A7B5116FA1AD900303F86 /* Rotator.h */,
 			);
 			name = Math;
 			path = ../../Math;
