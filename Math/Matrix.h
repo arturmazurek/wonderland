@@ -164,41 +164,69 @@ struct Matrix {
         
         Matrix result;
         
+        const float theta = pitch;
+        const float psi = yaw;
+        const float phi = roll;
+        
         // going in columns
-        result.m[index(0,0)] = cos(yaw) * cos(pitch);
-        result.m[index(1,0)] = cos(yaw)*sin(pitch)*cos(roll) - sin(yaw)*sin(roll);
-        result.m[index(2,0)] = cos(yaw)*sin(pitch)*sin(roll) - sin(yaw)*cos(roll);
+        result.m[index(0,0)] = cos(theta) * cos(psi);
+        result.m[index(1,0)] = -cos(theta)*sin(psi);
+        result.m[index(2,0)] = sin(theta);
         
-        result.m[index(0,1)] = -sin(pitch);
-        result.m[index(1,1)] = cos(pitch) * cos(roll);
-        result.m[index(2,1)] = cos(pitch) * sin(roll);
+        result.m[index(0,1)] = cos(phi)*sin(psi) + sin(phi)*sin(theta)*cos(psi);
+        result.m[index(1,1)] = cos(phi)*cos(psi) - sin(phi)*sin(theta)*sin(psi);
+        result.m[index(2,1)] = -sin(phi)*cos(theta);
         
-        result.m[index(0,2)] = sin(yaw) * cos(pitch);
-        result.m[index(1,2)] = sin(yaw)*sin(pitch)*cos(roll) - cos(yaw)*sin(roll);
-        result.m[index(2,2)] = sin(yaw)*sin(pitch)*sin(roll) + cos(yaw)*cos(roll);
+        result.m[index(0,2)] = sin(phi)*sin(psi) - cos(phi)*sin(theta)*cos(psi);
+        result.m[index(1,2)] = sin(phi)*cos(psi) + cos(phi)*sin(theta)*sin(psi);
+        result.m[index(2,2)] = cos(phi)*cos(theta);
         
         result.m[index(3,3)] = 1.0f;
         
         return result;
     }
     
+    // q must be normalised
     static Matrix createRotation(const Quaternion& q) {
         Matrix result;
         
         // going in columns
-        result.m[index(0, 0)] = 1.0f - 2*(q.y*q.y - q.z*q.z);
-        result.m[index(1, 0)] = 2*(q.x*q.y - q.w*q.z);
-        result.m[index(2, 0)] = 2*(q.x*q.z + q.w*q.y);
+        result.m[index(0, 0)] = 1.0f - 2*(q.y*q.y + q.z*q.z);
+        result.m[index(1, 0)] = 2*(q.x*q.y + q.w*q.z);
+        result.m[index(2, 0)] = 2*(q.x*q.z - q.w*q.y);
         
-        result.m[index(0, 1)] = 2*(q.x*q.y + q.w*q.z);
-        result.m[index(1, 1)] = 1.0f - 2*(q.x*q.x - q.z*q.z);
-        result.m[index(2, 1)] = 2*(q.y*q.z - q.w*q.x);
+        result.m[index(0, 1)] = 2*(q.x*q.y - q.w*q.z);
+        result.m[index(1, 1)] = 1.0f - 2*(q.x*q.x + q.z*q.z);
+        result.m[index(2, 1)] = 2*(q.y*q.z + q.w*q.x);
         
-        result.m[index(0, 2)] = 2*(q.x*q.z - q.w*q.y);
-        result.m[index(1, 2)] = 2*(q.y*q.z + q.w*q.x);
-        result.m[index(2, 2)] = 1.0f - 2*(q.x*q.x - q.y*q.y);
+        result.m[index(0, 2)] = 2*(q.x*q.z + q.w*q.y);
+        result.m[index(1, 2)] = 2*(q.y*q.z - q.w*q.x);
+        result.m[index(2, 2)] = 1.0f - 2*(q.x*q.x + q.y*q.y);
         
         result.m[index(3, 3)] = 1.0f;
+        
+        return result;
+    }
+    
+    // axis must be normalised
+    static Matrix createRotation(const Vector& axis, float angle) {
+        Matrix result;
+        
+        const float s = std::sin(angle);
+        const float c = std::cos(angle);
+        
+        // going in columns
+        result.m[index(0, 0)] = c + axis.x*axis.x*(1.0f - c);
+        result.m[index(1, 0)] = axis.y*axis.x*(1.0f - c) + axis.z*s;
+        result.m[index(2, 0)] = axis.z*axis.x*(1.0f - c) - axis.y*s;
+        
+        result.m[index(0, 1)] = axis.x*axis.y*(1.0f - c) - axis.z*s;
+        result.m[index(1, 1)] = c + axis.y*axis.y*(1.0f - c);
+        result.m[index(2, 1)] = axis.z*axis.y*(1.0f - c) + axis.x*s;
+        
+        result.m[index(0, 2)] = axis.x*axis.z*(1.0f - c) + axis.y*s;
+        result.m[index(1, 2)] = axis.y*axis.z*(1.0f - c) - axis.x*s;
+        result.m[index(2, 2)] = c + axis.z*axis.z*(1.0f - c);
         
         return result;
     }

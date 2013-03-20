@@ -9,6 +9,8 @@
 #ifndef Wonderland_Quaternion_h
 #define Wonderland_Quaternion_h
 
+#include "Util/Log.h"
+
 struct Quaternion {
     float x;
     float y;
@@ -83,6 +85,29 @@ struct Quaternion {
     
     Quaternion& normalize() {
         return (*this) /= norm();
+    }
+    
+    Quaternion conjugate() const {
+        Quaternion result(*this);
+        result.x *= -1;
+        result.y *= -1;
+        result.z *= -1;
+        
+        return result;
+    }
+    
+    Quaternion inverse() const {
+        Quaternion result = conjugate();
+        
+        float n = norm();
+        if(n == 0) {
+            LOG("Can't get inverse of zero quaternion");
+            return result;
+        }
+        
+        result /= norm();
+        
+        return result;
     }
 };
     
