@@ -59,7 +59,7 @@ UniquePtr<World> Game::createWorld() const {
     obj->addComponent(smc);
     world->addObject(obj);
     
-//    obj->transform.setPos(Vector(20, 0, 0));
+    obj->transform.setPos(Vector(0.9f, 0, 0)); // TODO - continue here :P
     
     SharedPtr<Camera> c(new Camera());
     mRenderer->useCamera(c);
