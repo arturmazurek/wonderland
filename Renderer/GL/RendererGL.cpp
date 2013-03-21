@@ -45,17 +45,45 @@ UniquePtr<MaterialCache> RendererGL::createMaterialCache() const {
     return UniquePtr<MaterialCache>(new MaterialCacheGL(File::basePath() + "/" + Constants::SHADERS_BASE));
 }
 
-void RendererGL::usingSurface(Surface* surface) {
-    if(!surface->surfaceData) {
-        generateSurfaceData(surface);
-    }
-}
+//void RendererGL::usingSurface(Surface* surface) {
+//    if(!surface->surfaceData) {
+//        generateSurfaceData(surface);
+//    }
+//}
+//
+//void RendererGL::usingMaterialInstance(MaterialInstance* materialInstance) {
+//    MaterialGL* material = static_cast<MaterialGL*>(materialCache()->getMaterial(materialInstance->parent()));
+//    if(!material->generated) {
+//        generateRendererData(material);
+//    }
+//}
 
-void RendererGL::usingMaterialInstance(MaterialInstance* materialInstance) {
-    MaterialGL* material = static_cast<MaterialGL*>(materialCache()->getMaterial(materialInstance->parent()));
+void RendererGL::useMaterial(Material* m) {
+    if(!m) {
+        mCurrentMaterial = nullptr;
+        return;
+    }
+    
+    MaterialGL* material = static_cast<MaterialGL*>(m);
     if(!material->generated) {
         generateRendererData(material);
     }
+    
+    if(mCurrentMaterial == material) {
+        return;
+    }
+    
+    mCurrentMaterial = material;
+    glUseProgram(mCurrentMaterial->program);
+    glUniformMatrix4fv(material->projectionUniform, 1, GL_FALSE, camera()->projection().m); // TODO: not a good place for this one
+}
+
+void RendererGL::useObjectTransform(const Matrix& transform) {
+    if(!mCurrentMaterial) {
+        return;
+    }
+    
+    glUniformMatrix4fv(mCurrentMaterial->modelViewUniform, 1, GL_FALSE, transform.m);
 }
 
 void RendererGL::generateRendererData(MaterialGL* m) const {
@@ -92,16 +120,11 @@ void RendererGL::generateSurfaceData(Surface* s) const {
 }
 
 void RendererGL::renderSurface(Surface* surface, MaterialInstance* materialInstance) {
-    Matrix m = Matrix::createIdentity();
-    MaterialGL* material = static_cast<MaterialGL*>(materialCache()->getMaterial(materialInstance->parent()));
     SurfaceDataGL* surfaceData = static_cast<SurfaceDataGL*>(surface->surfaceData.get());
-    
-    glUseProgram(material->program);
-    
-    glUniformMatrix4fv(material->projectionUniform, 1, GL_FALSE, camera()->projection().m);
-    glUniformMatrix4fv(material->modelViewUniform, 1, GL_FALSE, m.m);
-
-    material->apply(materialInstance->getParams());
+    if(!surfaceData) {
+        generateSurfaceData(surface);
+        surfaceData = static_cast<SurfaceDataGL*>(surface->surfaceData.get());
+    }
 
     glBindVertexArray(surfaceData->vao);
     glDrawArrays(GL_TRIANGLES, 0, surface->verticesCount());

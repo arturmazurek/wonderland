@@ -8,9 +8,12 @@
 
 #include "Renderer.h"
 
+#include "Core/GameObject.h"
+
 #include "Util/Log.h"
 
 #include "Camera.h"
+#include "Material.h"
 #include "MaterialCache.h"
 #include "MaterialInstance.h"
 #include "StaticMesh.h"
@@ -52,8 +55,8 @@ void Renderer::drawStaticMesh(StaticMesh* mesh, GameObject* owner) {
         
         mRenderables.InsertTail(ri);
         
-        usingSurface(ri->surface);
-        usingMaterialInstance(ri->materialInstance);
+//        usingSurface(ri->surface);
+//        usingMaterialInstance(ri->materialInstance);
     }
 }
 
@@ -83,8 +86,19 @@ void Renderer::renderFrame() {
         return;
     }
     
+    GameObject* obj = nullptr;
     RenderInfo* renderable = mRenderables.Head();
     while(renderable) {
+        Material* m = mMaterialCache->getMaterial(renderable->materialInstance->parent());
+        useMaterial(m);
+        
+        if(obj != renderable->owner) {
+            obj = renderable->owner;
+            useObjectTransform(obj->transform.getMatrix());
+        }
+        
+        m->apply(renderable->materialInstance->getParams());
+        
         renderSurface(renderable->surface, renderable->materialInstance);
         renderable = mRenderables.Next(renderable);
     }

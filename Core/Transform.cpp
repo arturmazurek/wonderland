@@ -81,6 +81,14 @@ const Rotator& Transform::getRotation() const {
     return mRotation;
 }
 
+const Matrix& Transform::getMatrix() const {
+    if(mDirty) {
+        LOG("Asking a dirty transform for its matrix");
+    }
+    
+    return mFrame;
+}
+
 void Transform::update(const Transform& parentTransform) {
     mFrame = mRotation.rotationMatrix();
     mFrame = Matrix::createScale(mScale.x, mScale.y, mScale.z) * mFrame;

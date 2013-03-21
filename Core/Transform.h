@@ -39,6 +39,8 @@ public:
     const Rotator& getRotation() const;
     
     void update(const Transform& parentTransform);
+    
+    const Matrix& getMatrix() const;
 private:
     bool        mDirty;
     Matrix      mFrame;
