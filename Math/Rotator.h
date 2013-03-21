@@ -111,6 +111,10 @@ public:
             axis = Vector(mQ.x*s, mQ.y*s, mQ.z*s);
         }
     }
+    
+    Matrix rotationMatrix() const {
+        return Matrix::createRotation(mQ);
+    }
 
 private:
     Quaternion mQ;

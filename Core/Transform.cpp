@@ -14,7 +14,6 @@ Transform::Transform() : mDirty(false), mFrame(Matrix::createIdentity()), mScale
 }
 
 Transform::~Transform() {
-
 }
 
 const Vector& Transform::pos() const {
@@ -23,7 +22,7 @@ const Vector& Transform::pos() const {
 
 void Transform::setPos(const Vector& pos) {
     mPosition = pos;
-    mDirty = true;
+    setDirty();
 }
 
 float Transform::scale() const {
@@ -35,7 +34,7 @@ float Transform::scale() const {
 
 void Transform::setScale(float s) {
     mScale.x = mScale.y = mScale.z = s;
-    mDirty = true;
+    setDirty();
 }
 
 float Transform::scaleX() const {
@@ -52,17 +51,17 @@ float Transform::scaleZ() const {
 
 void Transform::setScaleX(float sx) {
     mScale.x = sx;
-    mDirty = true;
+    setDirty();
 }
 
 void Transform::setScaleY(float sy) {
     mScale.y = sy;
-    mDirty = true;
+    setDirty();
 }
 
 void Transform::setScaleZ(float sz) {
     mScale.z = sz;
-    mDirty = true;
+    setDirty();
 }
 
 bool Transform::dirty() const {
@@ -73,13 +72,21 @@ void Transform::setDirty() {
     mDirty = true;
 }
 
+void Transform::setRotation(const Rotator& rot) {
+    mRotation = rot;
+    setDirty();
+}
+
+const Rotator& Transform::getRotation() const {
+    return mRotation;
+}
+
 void Transform::update(const Transform& parentTransform) {
-    mFrame = Matrix::createIdentity();
-    mFrame.setScale(mScale.x, mScale.y, mScale.z);
-    mFrame.setTranslation(mPosition);
-    // also set rotation
-    
-    // multiply mFrame by parentTransform->mFrame
+    mFrame = mRotation.rotationMatrix();
+    mFrame = Matrix::createScale(mScale.x, mScale.y, mScale.z) * mFrame;
+    mFrame = Matrix::createTranslation(mPosition);
+
+    mFrame = parentTransform.mFrame * mFrame;
     
     mDirty = false;
 }

@@ -35,12 +35,16 @@ public:
     bool dirty() const;
     void setDirty();
     
+    void setRotation(const Rotator& rot);
+    const Rotator& getRotation() const;
+    
     void update(const Transform& parentTransform);
 private:
     bool        mDirty;
     Matrix      mFrame;
     Vector      mPosition;
     Vector      mScale;
+    Rotator     mRotation;
 };
 
 #endif /* defined(__Wonderland__Transform__) */
