@@ -59,7 +59,8 @@ UniquePtr<World> Game::createWorld() const {
     obj->addComponent(smc);
     world->addObject(obj);
     
-    obj->transform.setPos(Vector(0.9f, 0, 0)); // TODO - continue here :P
+    // TODO: before window is resized nothing is visible...
+    obj->transform.setPos(Vector(-25, -25, 0));
     
     SharedPtr<Camera> c(new Camera());
     mRenderer->useCamera(c);
