@@ -54,9 +54,6 @@ void Renderer::drawStaticMesh(StaticMesh* mesh, GameObject* owner) {
         ri->owner = owner;
         
         mRenderables.InsertTail(ri);
-        
-//        usingSurface(ri->surface);
-//        usingMaterialInstance(ri->materialInstance);
     }
 }
 

@@ -46,9 +46,6 @@ protected:
     virtual UniquePtr<MaterialCache> createMaterialCache() const = 0;
     virtual void renderSurface(Surface* surface, MaterialInstance* materialInstance) = 0;
     
-//    virtual void usingSurface(Surface* surface) = 0;
-//    virtual void usingMaterialInstance(MaterialInstance* materialInstance) = 0;
-    
     virtual void useMaterial(Material* material) = 0;
     virtual void useObjectTransform(const Matrix& transform) = 0;
     

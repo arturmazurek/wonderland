@@ -45,19 +45,6 @@ UniquePtr<MaterialCache> RendererGL::createMaterialCache() const {
     return UniquePtr<MaterialCache>(new MaterialCacheGL(File::basePath() + "/" + Constants::SHADERS_BASE));
 }
 
-//void RendererGL::usingSurface(Surface* surface) {
-//    if(!surface->surfaceData) {
-//        generateSurfaceData(surface);
-//    }
-//}
-//
-//void RendererGL::usingMaterialInstance(MaterialInstance* materialInstance) {
-//    MaterialGL* material = static_cast<MaterialGL*>(materialCache()->getMaterial(materialInstance->parent()));
-//    if(!material->generated) {
-//        generateRendererData(material);
-//    }
-//}
-
 void RendererGL::useMaterial(Material* m) {
     if(!m) {
         mCurrentMaterial = nullptr;
@@ -75,7 +62,6 @@ void RendererGL::useMaterial(Material* m) {
     
     mCurrentMaterial = material;
     glUseProgram(mCurrentMaterial->program);
-    glUniformMatrix4fv(material->projectionUniform, 1, GL_FALSE, camera()->projection().m); // TODO: not a good place for this one
 }
 
 void RendererGL::useObjectTransform(const Matrix& transform) {
@@ -120,6 +106,8 @@ void RendererGL::generateSurfaceData(Surface* s) const {
 }
 
 void RendererGL::renderSurface(Surface* surface, MaterialInstance* materialInstance) {
+    glUniformMatrix4fv(mCurrentMaterial->projectionUniform, 1, GL_FALSE, camera()->projection().m); // TODO: find a better place
+    
     SurfaceDataGL* surfaceData = static_cast<SurfaceDataGL*>(surface->surfaceData.get());
     if(!surfaceData) {
         generateSurfaceData(surface);

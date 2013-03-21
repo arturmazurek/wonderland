@@ -27,9 +27,6 @@ public:
     
     virtual void renderSurface(Surface* surface, MaterialInstance* materialInstance) override;
     
-//    virtual void usingSurface(Surface* surface) override;
-//    virtual void usingMaterialInstance(MaterialInstance* materialInstance) override;
-    
     virtual void useMaterial(Material* material) override;
     virtual void useObjectTransform(const Matrix& transform) override;
     
