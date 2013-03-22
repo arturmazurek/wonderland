@@ -59,6 +59,9 @@ UniquePtr<World> Game::createWorld() const {
     obj->addComponent(smc);
     world->addObject(obj);
     
+    obj->transform.setPos(Vector(-25, -25, 0));
+    obj->transform.setScale(3);
+    
     SharedPtr<Camera> c(new Camera());
     mRenderer->useCamera(c);
     

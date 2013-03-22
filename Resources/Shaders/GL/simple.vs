@@ -8,5 +8,5 @@ in vec3 aNormal;
 in vec2 aUv;
 
 void main() {
-	gl_Position = uModelView * uProjection * vec4(aPosition, 1.0);
+	gl_Position =  uProjection * uModelView * vec4(aPosition, 1.0);
 }

@@ -12,6 +12,8 @@
 #include <cmath>
 #include <limits>
 
+#include "Quaternion.h"
+
 struct Vector {
     float x, y, z;
     
@@ -60,6 +62,18 @@ struct Vector {
         (*this) /= length();
         return *this;
     }
+    
+    Vector& rotate(const Quaternion& q) {
+        Quaternion v(x, y, z, 0);
+        v *= q.conjugate();
+        v = q*v;
+        
+        x = v.x;
+        y = v.y;
+        z = v.z;
+        
+        return *this;
+    }
 };
     
 static inline Vector operator+(const Vector& a, const Vector& b) {
@@ -106,5 +120,5 @@ static inline bool equal(const Vector& a, const Vector& b, float epsilon = std::
     using namespace std;
     return fabsf(a.x-b.x) <= epsilon && fabsf(a.y-b.y) <= epsilon && fabsf(a.z-b.z) <= epsilon;
 }
-
+    
 #endif

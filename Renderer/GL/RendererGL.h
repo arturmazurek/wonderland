@@ -27,8 +27,8 @@ public:
     
     virtual void renderSurface(Surface* surface, MaterialInstance* materialInstance) override;
     
-    virtual void usingSurface(Surface* surface) override;
-    virtual void usingMaterialInstance(MaterialInstance* materialInstance) override;
+    virtual void useMaterial(Material* material) override;
+    virtual void useObjectTransform(const Matrix& transform) override;
     
 private:
     RendererGL(const RendererGL&);
@@ -41,6 +41,8 @@ private:
     static const String MODEL_VIEW_NAME;
     static const String PROJECTION_NAME;
     static const String COLOR_NAME;
+    
+    MaterialGL*         mCurrentMaterial;
 };
 
 #endif /* defined(__Wonderland__RendererGL__) */
