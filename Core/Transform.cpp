@@ -91,8 +91,8 @@ const Matrix& Transform::getMatrix() const {
 
 void Transform::update(const Transform& parentTransform) {
     mFrame = mRotation.rotationMatrix();
-    mFrame = Matrix::createTranslation(mPosition) * mFrame;
     mFrame = Matrix::createScale(mScale.x, mScale.y, mScale.z) * mFrame;
+    mFrame = Matrix::createTranslation(mPosition) * mFrame;
 
     mFrame = parentTransform.mFrame * mFrame;
     
