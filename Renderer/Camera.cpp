@@ -15,7 +15,9 @@ static const float DEFAULT_FAR = 10.f;
 static const float DEFAULT_WIDTH = 100.f;
 static const float DEFAULT_HEIGHT = 100.f;
 
-Camera::Camera() : mProjection(Matrix::createIdentity()), mNear(DEFAULT_NEAR), mFar(DEFAULT_FAR), mPerspective(false), mFovY(Math::toRad(45.f)), mAspect(1), mWidth(DEFAULT_WIDTH), mHeight(DEFAULT_HEIGHT) {
+Camera::Camera() :
+mProjection(Matrix::createIdentity()), mView(Matrix::createIdentity()), mNear(DEFAULT_NEAR), mFar(DEFAULT_FAR), mPerspective(false), mFovY(Math::toRad(45.f)), mAspect(1), mWidth(DEFAULT_WIDTH), mHeight(DEFAULT_HEIGHT) {
+    
     calculateProjection();
 }
 
@@ -66,4 +68,12 @@ bool Camera::isPerspective() const {
 
 float Camera::fov() const {
     return mFovY;
+}
+
+const Matrix& Camera::view() const {
+    return mView;
+}
+
+void Camera::setView(const Matrix& view) {
+    mView = view;
 }

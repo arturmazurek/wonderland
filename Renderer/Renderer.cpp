@@ -91,7 +91,7 @@ void Renderer::renderFrame() {
         
         if(obj != renderable->owner) {
             obj = renderable->owner;
-            useObjectTransform(obj->transform.getMatrix());
+            useObjectTransform(mCurrentCamera->view() * obj->transform.getMatrix());
         }
         
         m->apply(renderable->materialInstance->getParams());

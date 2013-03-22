@@ -22,6 +22,8 @@ public:
     void setOrtho(float width, float height);
     
     const Matrix& projection() const;
+    const Matrix& view() const;
+    void setView(const Matrix& m);
     
     bool isPerspective() const;
     float fov() const;
@@ -34,6 +36,7 @@ private:
     
 private:
     Matrix  mProjection;
+    Matrix  mView;
     
     float   mNear;
     float   mFar;

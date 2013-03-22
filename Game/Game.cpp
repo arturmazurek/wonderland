@@ -8,6 +8,7 @@
 
 #include "Game.h"
 
+#include "Core/Components/CameraComponent.h"
 #include "Core/Components/StaticMeshComponent.h"
 #include "Core/GameObject.h"
 #include "Core/World.h"
@@ -56,8 +57,15 @@ static void _addTestObj(World* world, Renderer* renderer) {
 }
 
 static void _addTestCamera(World* world, Renderer* renderer) {
-    SharedPtr<Camera> c(new Camera());
-    renderer->useCamera(c);
+    GameObject* obj = new GameObject();
+    CameraComponent* cc = new CameraComponent(renderer);
+    
+    obj->addComponent(cc);
+    cc->useCamera();
+    
+//    obj->transform.setPos(Vector(100, 0, 0));
+    
+    world->addObject(obj);
 }
 
 Game::Game() : mFirstFrame(true), mLastFrameTime(0), mWorld(nullptr) {

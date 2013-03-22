@@ -11,8 +11,9 @@
 #include "Core/GameObject.h"
 
 #include "Renderer/Camera.h"
+#include "Renderer/Renderer.h"
 
-CameraComponent::CameraComponent() : mCamera(new Camera()) {
+CameraComponent::CameraComponent(Renderer* renderer) : mRenderer(renderer), mCamera(new Camera()) {
     
 }
 
@@ -25,14 +26,15 @@ void CameraComponent::update(float dt, GameObject* owner) {
         return;
     }
     
-    // Set camera view
+    updateViewTransform(owner->transform);
 }
 
-Camera* CameraComponent::camera() {
-    return mCamera.get();
+void CameraComponent::useCamera() {
+    mRenderer->useCamera(mCamera);
 }
 
-const Camera* CameraComponent::camera() const {
-    return mCamera.get();
+void CameraComponent::updateViewTransform(const Transform& transform) {
+    Matrix m = Matrix::createTranslation(-transform.pos());
+    
+    mCamera->setView(m);
 }
-

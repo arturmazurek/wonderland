@@ -9,6 +9,8 @@
 #ifndef __Wonderland__CameraComponent__
 #define __Wonderland__CameraComponent__
 
+#include "Core/Transform.h"
+
 #include "Math/Matrix.h"
 
 #include "Util/SharedPtr.h"
@@ -17,24 +19,25 @@
 
 class Camera;
 class GameObject;
+class Renderer;
 
-class CameraComponent : ComponentBase {
+class CameraComponent : public ComponentBase {
 public:
     DEFINE_TYPE;
     
-    CameraComponent();
+    CameraComponent(Renderer* renderer);
     virtual ~CameraComponent();
     
     virtual void update(float dt, GameObject* owner);
     
-    Camera* camera();
-    const Camera* camera() const;
-    
-    const Matrix& projection() const;
-    const Matrix& view() const;
+    void useCamera();
     
 private:
-    SharedPtr<Camera> mCamera;
+    void updateViewTransform(const Transform& transform);
+    
+private:
+    Renderer*           mRenderer;
+    SharedPtr<Camera>   mCamera;
 };
 
 #endif /* defined(__Wonderland__CameraComponent__) */

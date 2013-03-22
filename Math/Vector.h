@@ -30,12 +30,6 @@ struct Vector {
         return *this;
     }
     
-    Vector operator-() {
-        Vector result = *this;
-        result.x *= -1; result.y *= -1; result.z *= -1;
-        return result;
-    }
-    
     Vector& operator-=(const Vector& other) {
         x -= other.x; y -= other.y; z -= other.z;
         return *this;
@@ -75,6 +69,15 @@ struct Vector {
         return *this;
     }
 };
+    
+static inline Vector operator-(const Vector& a) {
+    Vector result;
+    result.x = -a.x;
+    result.y = -a.y;
+    result.z = -a.z;
+    
+    return result;
+}
     
 static inline Vector operator+(const Vector& a, const Vector& b) {
     Vector result(a);
