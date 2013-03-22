@@ -52,8 +52,8 @@ static void _addTestObj(World* world, Renderer* renderer) {
     world->addObject(obj);
     
     obj->transform.setPos(Vector(0, 0, 0));
-    obj->transform.setRotation(Rotator(0, 0, 0));
-    obj->transform.setScale(1);
+    obj->transform.setRotation(Rotator(Math::toRad(15), 0, 0));
+    obj->transform.setScale(3);
 }
 
 static void _addTestCamera(World* world, Renderer* renderer) {
@@ -63,7 +63,7 @@ static void _addTestCamera(World* world, Renderer* renderer) {
     obj->addComponent(cc);
     cc->useCamera();
     
-//    obj->transform.setPos(Vector(100, 0, 0));
+    obj->transform.setPos(Vector(25, 25, 0));
     
     world->addObject(obj);
 }
