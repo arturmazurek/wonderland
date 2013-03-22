@@ -29,17 +29,8 @@
 #include "SystemHandler.h"
 #include "SystemInfo.h"
 
-Game::Game() : mFirstFrame(true), mLastFrameTime(0), mWorld(nullptr) {
-
-}
-
-Game::~Game() {
-}
-
-UniquePtr<World> Game::createWorld() const {
-    World* world = new World();
+static void _addTestObj(World* world, Renderer* renderer) {
     GameObject* obj = new GameObject();
-    
     StaticMeshComponent* smc = new StaticMeshComponent();
     StaticMesh* mesh = new StaticMesh();
     static Vertex vertices[] = {
@@ -49,7 +40,7 @@ UniquePtr<World> Game::createWorld() const {
     };
     
     Surface* surface = new Surface(UniqueArray<Vertex>(vertices), sizeof(vertices) / sizeof(*vertices));
-    mesh->addSurface(SharedPtr<Surface>(surface), mRenderer->createMaterial("simple"));
+    mesh->addSurface(SharedPtr<Surface>(surface), renderer->createMaterial("simple"));
     
     MaterialInstance* material = mesh->getMaterial(surface);
     float color[] = {1.f, 1.f, 0.f, 1.f};
@@ -62,9 +53,25 @@ UniquePtr<World> Game::createWorld() const {
     obj->transform.setPos(Vector(0, 0, 0));
     obj->transform.setRotation(Rotator(0, 0, 0));
     obj->transform.setScale(1);
-    
+}
+
+static void _addTestCamera(World* world, Renderer* renderer) {
     SharedPtr<Camera> c(new Camera());
-    mRenderer->useCamera(c);
+    renderer->useCamera(c);
+}
+
+Game::Game() : mFirstFrame(true), mLastFrameTime(0), mWorld(nullptr) {
+
+}
+
+Game::~Game() {
+}
+
+UniquePtr<World> Game::createWorld() const {
+    World* world = new World();
+    
+    _addTestObj(world, mRenderer.get());
+    _addTestCamera(world, mRenderer.get());
     
     return UniquePtr<World>(world);
 }
