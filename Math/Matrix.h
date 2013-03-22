@@ -116,25 +116,25 @@ private:
 public:
     
     Matrix& invert() {        
-        for(int j = 0; j < N; ++j) {
+        for(int i = 0; i < N; ++i) {
             // swap row with the row that has the largest element in column j
-            int max = j;
-            for(int i = j; i < N; ++i) {
-                if(std::abs(m[index(i, j)]) > std::abs(m[index(i, max)])) {
-                    max = i;
+            int max = i;
+            for(int k = i; k < N; ++k) {
+                if(std::abs(m[index(i, k)]) > std::abs(m[index(i, max)])) {
+                    max = k;
                 }
             }
             
-            float temp = m[index(j, j)];
+            float temp = m[index(max, i)];
             if(temp == 0) {
                 LOG("Oops, matrix with zero determinant given, not inverting but");
                 LOG("it might have been messed up by the attemted inversion.");
                 return *this;
             }
             
-            swapRows(j, max);
+            swapRows(i, max);
         
-            for(int i = 0; i < N; ++i) {
+            for(int j = 0; j < N; ++j) {
                 m[index(i, j)] /= temp;
             }
             
