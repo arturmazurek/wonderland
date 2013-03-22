@@ -10,8 +10,9 @@
 #define Wonderland_Matrix_h
 
 #include <cstring>
-
 #include <cmath>
+
+#include <algorithm>
 
 #include "Quaternion.h"
 #include "Vector.h"
@@ -97,6 +98,65 @@ struct Matrix {
         m[index(0, 2)] *= sz; m[index(1, 2)] *= sz; m[index(2, 2)] *= sz;
         
         return *this;
+    }
+    
+private:
+    void swapRows(int a, int b) {
+        if(a == b) {
+            return;
+        }
+        
+        float temp = 0;
+        for(int i = 0; i < N; ++i) {
+            temp = m[index(a, i)];
+            m[index(a, i)] = m[index(b, i)];
+            m[index(b, i)] = temp;
+        }
+    }
+public:
+    
+    Matrix& invert() {        
+        for(int j = 0; j < N; ++j) {
+            // swap row with the row that has the largest element in column j
+            int max = j;
+            for(int i = j; i < N; ++i) {
+                if(std::abs(m[index(i, j)]) > std::abs(m[index(i, max)])) {
+                    max = i;
+                }
+            }
+            
+            float temp = m[index(j, j)];
+            if(temp == 0) {
+                LOG("Oops, matrix with zero determinant given, not inverting but");
+                LOG("it might have been messed up by the attemted inversion.");
+                return *this;
+            }
+            
+            swapRows(j, max);
+        
+            for(int i = 0; i < N; ++i) {
+                m[index(i, j)] /= temp;
+            }
+            
+            for(int i = 0; i < N; ++i) {
+                if(i == j) {
+                    continue;
+                }
+                
+                temp = m[index(i, j)];
+                for(int k = 0; k < N; ++k) {
+                    m[index(k, i)] -= m[index(j, i)] * temp; // TODO - check this
+                }
+            }
+        }
+        
+        return *this;
+    }
+    
+    Matrix inverted() const {
+        Matrix result(*this);
+        result.invert();
+        return result;
     }
     
     static Matrix createIdentity() {
