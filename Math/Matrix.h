@@ -138,15 +138,16 @@ public:
                 m[index(i, j)] /= temp;
             }
             
-            for(int i = 0; i < N; ++i) {
+            for(int j = 0; j < N; ++j) {
                 if(i == j) {
                     continue;
                 }
                 
-                temp = m[index(i, j)];
+                temp = m[index(j, i)];
                 for(int k = 0; k < N; ++k) {
-                    m[index(k, i)] -= m[index(j, i)] * temp; // TODO - check this
+                    m[index(j, k)] -= m[index(i, k)] * temp;
                 }
+                m[index(j, i)] = 0; // it should be 0, so hopefully this increases stability
             }
         }
         
