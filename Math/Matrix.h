@@ -36,6 +36,14 @@ struct Matrix {
         return 4*j + i;
     }
     
+    void debugPrint() const {
+        LOG("%f %f %f %f", m[0], m[4], m[8], m[12]);
+        LOG("%f %f %f %f", m[1], m[5], m[9], m[13]);
+        LOG("%f %f %f %f", m[2], m[6], m[10], m[14]);
+        LOG("%f %f %f %f", m[3], m[7], m[11], m[15]);
+        LOG("");
+    }
+    
     Matrix& operator*=(float k) {
         for(int i = 0; i < 16; ++i) {
             m[i] *= k;
@@ -100,57 +108,81 @@ struct Matrix {
         return *this;
     }
     
-private:
-    void swapRows(int a, int b) {
-        if(a == b) {
-            return;
-        }
-        
-        float temp = 0;
-        for(int i = 0; i < N; ++i) {
-            temp = m[index(a, i)];
-            m[index(a, i)] = m[index(b, i)];
-            m[index(b, i)] = temp;
-        }
-    }
 public:
     
-    Matrix& invert() {        
-        for(int i = 0; i < N; ++i) {
-            // swap row with the row that has the largest element in column j
-            int max = i;
-            for(int k = i; k < N; ++k) {
-                if(std::abs(m[index(i, k)]) > std::abs(m[index(i, max)])) {
-                    max = k;
+    Matrix& invert() {
+        Matrix inverse = createIdentity();
+        int i, j, k, swap;
+        float t;
+        float temp[4][4];
+        
+        for (i=0; i<4; i++)
+        {
+            for (j=0; j<4; j++)
+            {
+                temp[i][j] = m[i*4+j];
+            }
+        }
+        
+        for (i = 0; i < 4; i++)
+        {
+            /*
+             ** Look for largest element in column
+             */
+            swap = i;
+            for (j = i + 1; j < 4; j++)
+            {
+                if (fabs(temp[j][i]) > fabs(temp[i][i]))
+                {
+                    swap = j;
                 }
             }
             
-            float temp = m[index(max, i)];
-            if(temp == 0) {
-                LOG("Oops, matrix with zero determinant given, not inverting but");
-                LOG("it might have been messed up by the attemted inversion.");
+            if (swap != i)
+            {
+                /*
+                 ** Swap rows.
+                 */
+                for (k = 0; k < 4; k++)
+                {
+                    t = temp[i][k];
+                    temp[i][k] = temp[swap][k];
+                    temp[swap][k] = t;
+                    
+                    t = inverse.m[i*4+k];
+                    inverse.m[i*4+k] = inverse.m[swap*4+k];
+                    inverse.m[swap*4+k] = t;
+                }
+            }
+            
+            if (temp[i][i] == 0)
+            {
+                LOG("Oops, matrix with zero determinant given, not inverting.");
                 return *this;
             }
             
-            swapRows(i, max);
-        
-            for(int j = 0; j < N; ++j) {
-                m[index(i, j)] /= temp;
+            t = temp[i][i];
+            for (k = 0; k < 4; k++)
+            {
+                temp[i][k] /= t;
+                inverse.m[i*4+k] /= t;
             }
-            
-            for(int j = 0; j < N; ++j) {
-                if(i == j) {
+            for (j = 0; j < 4; j++)
+            {
+                if (j == i)
+                {
                     continue;
                 }
-                
-                temp = m[index(j, i)];
-                for(int k = 0; k < N; ++k) {
-                    m[index(j, k)] -= m[index(i, k)] * temp;
+                t = temp[j][i];
+                for (k = 0; k < 4; k++)
+                {
+                    temp[j][k] -= temp[i][k]*t;
+                    inverse.m[j*4+k] -= inverse.m[i*4+k]*t;
                 }
-                m[index(j, i)] = 0; // it should be 0, so hopefully this increases stability
             }
         }
         
+        std::memcpy(m, inverse.m, sizeof(m));
         return *this;
     }
     
