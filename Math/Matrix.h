@@ -115,13 +115,13 @@ public:
         int i, j, k, swap;
         float t;
         
-        for (i = 0; i < 4; i++) {
+        for (i = 0; i < 4; ++i) {
             /*
              ** Look for largest element in column
              */
             swap = i;
-            for (j = i + 1; j < 4; j++) {
-                if (fabs(m[index(i, j)]) > fabs(m[index(i, i)])) {
+            for (j = i + 1; j < 4; ++j) {
+                if (std::abs(m[index(i, j)]) > std::abs(m[index(i, i)])) {
                     swap = j;
                 }
             }
@@ -130,7 +130,7 @@ public:
                 /*
                  ** Swap rows.
                  */
-                for (k = 0; k < 4; k++) {
+                for (k = 0; k < 4; ++k) {
                     t = m[index(k, i)];
                     m[index(k, i)] = m[index(k, swap)];
                     m[index(k, swap)] = t;
@@ -147,16 +147,16 @@ public:
             }
             
             t = m[index(i, i)];
-            for (k = 0; k < 4; k++) {
+            for (k = 0; k < 4; ++k) {
                 m[index(k, i)] /= t;
                 inverse.m[index(k, i)] /= t;
             }
-            for (j = 0; j < 4; j++) {
+            for (j = 0; j < 4; ++j) {
                 if (j == i) {
                     continue;
                 }
                 t = m[index(i, j)];
-                for (k = 0; k < 4; k++) {
+                for (k = 0; k < 4; ++k) {
                     m[index(k, j)] -= m[index(k, i)]*t;
                     inverse.m[index(k, j)] -= inverse.m[index(k, i)]*t;
                 }
