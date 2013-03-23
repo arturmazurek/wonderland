@@ -114,40 +114,26 @@ public:
         Matrix inverse = createIdentity();
         int i, j, k, swap;
         float t;
-        float temp[4][4];
         
-        for (i=0; i<4; i++)
-        {
-            for (j=0; j<4; j++)
-            {
-                temp[i][j] = m[index(j, i)];
-            }
-        }
-        
-        for (i = 0; i < 4; i++)
-        {
+        for (i = 0; i < 4; i++) {
             /*
              ** Look for largest element in column
              */
             swap = i;
-            for (j = i + 1; j < 4; j++)
-            {
-                if (fabs(temp[j][i]) > fabs(temp[i][i]))
-                {
+            for (j = i + 1; j < 4; j++) {
+                if (fabs(m[index(i, j)]) > fabs(m[index(i, i)])) {
                     swap = j;
                 }
             }
             
-            if (swap != i)
-            {
+            if (swap != i) {
                 /*
                  ** Swap rows.
                  */
-                for (k = 0; k < 4; k++)
-                {
-                    t = temp[i][k];
-                    temp[i][k] = temp[swap][k];
-                    temp[swap][k] = t;
+                for (k = 0; k < 4; k++) {
+                    t = m[index(k, i)];
+                    m[index(k, i)] = m[index(k, swap)];
+                    m[index(k, swap)] = t;
                     
                     t = inverse.m[index(k, i)];
                     inverse.m[index(k, i)] = inverse.m[index(k, swap)];
@@ -155,28 +141,23 @@ public:
                 }
             }
             
-            if (temp[i][i] == 0)
-            {
+            if (m[index(i, i)] == 0) {
                 LOG("Oops, matrix with zero determinant given, not inverting.");
                 return *this;
             }
             
-            t = temp[i][i];
-            for (k = 0; k < 4; k++)
-            {
-                temp[i][k] /= t;
+            t = m[index(i, i)];
+            for (k = 0; k < 4; k++) {
+                m[index(k, i)] /= t;
                 inverse.m[index(k, i)] /= t;
             }
-            for (j = 0; j < 4; j++)
-            {
-                if (j == i)
-                {
+            for (j = 0; j < 4; j++) {
+                if (j == i) {
                     continue;
                 }
-                t = temp[j][i];
-                for (k = 0; k < 4; k++)
-                {
-                    temp[j][k] -= temp[i][k]*t;
+                t = m[index(i, j)];
+                for (k = 0; k < 4; k++) {
+                    m[index(k, j)] -= m[index(k, i)]*t;
                     inverse.m[index(k, j)] -= inverse.m[index(k, i)]*t;
                 }
             }
