@@ -120,7 +120,7 @@ public:
         {
             for (j=0; j<4; j++)
             {
-                temp[i][j] = m[i*4+j];
+                temp[i][j] = m[index(j, i)];
             }
         }
         
@@ -149,9 +149,9 @@ public:
                     temp[i][k] = temp[swap][k];
                     temp[swap][k] = t;
                     
-                    t = inverse.m[i*4+k];
-                    inverse.m[i*4+k] = inverse.m[swap*4+k];
-                    inverse.m[swap*4+k] = t;
+                    t = inverse.m[index(k, i)];
+                    inverse.m[index(k, i)] = inverse.m[index(k, swap)];
+                    inverse.m[index(k, swap)] = t;
                 }
             }
             
@@ -165,7 +165,7 @@ public:
             for (k = 0; k < 4; k++)
             {
                 temp[i][k] /= t;
-                inverse.m[i*4+k] /= t;
+                inverse.m[index(k, i)] /= t;
             }
             for (j = 0; j < 4; j++)
             {
@@ -177,7 +177,7 @@ public:
                 for (k = 0; k < 4; k++)
                 {
                     temp[j][k] -= temp[i][k]*t;
-                    inverse.m[j*4+k] -= inverse.m[i*4+k]*t;
+                    inverse.m[index(k, j)] -= inverse.m[index(k, i)]*t;
                 }
             }
         }
