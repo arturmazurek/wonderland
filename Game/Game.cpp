@@ -62,6 +62,7 @@ static void _addTestCamera(World* world, Renderer* renderer) {
     
     obj->addComponent(cc);
     cc->useCamera();
+    cc->getCamera()->setClipPlanes(-200.0f, 200.0f);
     
     obj->transform.setPos(Vector(25, 25, 0));
     obj->transform.setRotation(Rotator(Math::toRad(15), 0, 0));

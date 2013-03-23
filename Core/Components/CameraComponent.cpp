@@ -36,3 +36,7 @@ void CameraComponent::useCamera() {
 void CameraComponent::updateViewTransform(const Transform& transform) {  
     mCamera->setView(transform.getMatrix().inverted());
 }
+
+SharedPtr<Camera> CameraComponent::getCamera() {
+    return mCamera;
+}

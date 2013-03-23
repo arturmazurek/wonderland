@@ -219,15 +219,14 @@ public:
     }
     
     static Matrix createOrtho(float width, float height, float near, float far) {
-        Matrix result = createIdentity();
+        Matrix result;
         
         result.m[index(0, 0)] = 2.0f / width;
         result.m[index(1, 1)] = 2.0f / height;
-        result.m[index(2, 2)] = -1.0f;
+        result.m[index(2, 2)] = -2.0f / (far - near);
+        result.m[index(3, 3)] = 1.0f;
         
-        result.m[index(0, 3)] = 0;
-        result.m[index(1, 3)] = 0;
-        result.m[index(2, 3)] = -1.0f * (far + near) / (far - near);
+        result.m[index(2, 3)] = -(far + near) / (far - near);
         
         return result;
     }

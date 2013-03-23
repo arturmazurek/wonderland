@@ -31,6 +31,7 @@ public:
     virtual void update(float dt, GameObject* owner);
     
     void useCamera();
+    SharedPtr<Camera> getCamera();
     
 private:
     void updateViewTransform(const Transform& transform);
