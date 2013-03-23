@@ -34,7 +34,16 @@ void CameraComponent::useCamera() {
 }
 
 void CameraComponent::updateViewTransform(const Transform& transform) {
+    /*
+     mFrame = mRotation.rotationMatrix();
+     mFrame = Matrix::createScale(mScale.x, mScale.y, mScale.z) * mFrame;
+     mFrame = Matrix::createTranslation(mPosition) * mFrame;
+     
+     mFrame = parentTransform.mFrame * mFrame;
+     */
+    
     Matrix m = Matrix::createTranslation(-transform.pos());
+    m = transform.getRotation().inverted().rotationMatrix() * m;
     
     mCamera->setView(m);
 }

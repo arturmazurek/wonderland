@@ -64,6 +64,7 @@ static void _addTestCamera(World* world, Renderer* renderer) {
     cc->useCamera();
     
     obj->transform.setPos(Vector(25, 25, 0));
+    obj->transform.setRotation(Rotator(Math::toRad(15), 0, 0));
     
     world->addObject(obj);
 }

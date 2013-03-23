@@ -99,13 +99,10 @@ struct Quaternion {
     
     Quaternion inverse() const {
         Quaternion result = conjugate();
-        
-        float n = norm();
-        if(n == 0) {
-            LOG("Can't get inverse of zero quaternion");
+        if(x == 0 && y == 0 && z == 0 && w == 0) {
             return result;
         }
-        
+    
         result /= norm();
         
         return result;

@@ -115,6 +115,16 @@ public:
     Matrix rotationMatrix() const {
         return Matrix::createRotation(mQ);
     }
+    
+    Rotator inverted() const {
+        Rotator result(mQ.inverse());
+        return result;
+    }
+    
+    Rotator& inverse() {
+        mQ = mQ.inverse();
+        return *this;
+    }
 
 private:
     Quaternion mQ;
