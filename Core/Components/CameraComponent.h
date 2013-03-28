@@ -32,6 +32,7 @@ public:
     virtual void update(float dt) override;
     
     void lookAt(const Vector& position, const Vector& target, const Vector& up);
+    void lookAt(const Vector& direction, const Vector& up);
     
     void useCamera();
     SharedPtr<Camera> getCamera();

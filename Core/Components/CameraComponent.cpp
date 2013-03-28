@@ -43,4 +43,5 @@ SharedPtr<Camera> CameraComponent::getCamera() {
 
 void CameraComponent::lookAt(const Vector& position, const Vector& target, const Vector& up) {
     owner()->transform.setPos(position);
+    owner()->transform.lookAt((target - position).normalize(), up, -Vector::unitZ());
 }

@@ -63,9 +63,9 @@ static void _addTestCamera(World* world, Renderer* renderer) {
     obj->addComponent(cc);
     
     cc->useCamera();
-    cc->getCamera()->setClipPlanes(-200.0f, 200.0f);
+    cc->getCamera()->setClipPlanes(0, 200.0f);
     
-    cc->lookAt(Vector(150, 0, -5), Vector::zero(), Vector::unitY());
+    cc->lookAt(Vector(1, 1, 1), Vector(0, 0, 0), Vector::unitY());
     
     world->addObject(obj);
 }

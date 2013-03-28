@@ -38,6 +38,8 @@ public:
     void setRotation(const Rotator& rot);
     const Rotator& getRotation() const;
     
+    void lookAt(const Vector& direction, const Vector& up = Vector::unitZ(), const Vector& forward = Vector::unitX());
+    
     void update(const Transform& parentTransform);
     
     const Matrix& getMatrix() const;

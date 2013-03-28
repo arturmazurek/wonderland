@@ -81,6 +81,10 @@ const Rotator& Transform::getRotation() const {
     return mRotation;
 }
 
+void Transform::lookAt(const Vector& direction, const Vector& up, const Vector& forward) {
+    mRotation = Rotator::createLookAt(direction, up, forward);
+}
+
 const Matrix& Transform::getMatrix() const {
     if(mDirty) {
         LOG("Asking a dirty transform for its matrix");
