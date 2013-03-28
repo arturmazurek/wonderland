@@ -29,6 +29,8 @@ Renderer::~Renderer() {
 
 void Renderer::init() {
     mMaterialCache = createMaterialCache();
+    
+    cullFaces(false);
 }
 
 void Renderer::useCamera(SharedPtr<Camera> camera) {

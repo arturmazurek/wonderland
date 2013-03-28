@@ -30,6 +30,8 @@ public:
     virtual void useMaterial(Material* material) override;
     virtual void useObjectTransform(const Matrix& transform) override;
     
+    virtual void cullFaces(bool enabled) override;
+    
 private:
     RendererGL(const RendererGL&);
     RendererGL& operator=(const RendererGL&);

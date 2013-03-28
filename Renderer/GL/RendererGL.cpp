@@ -124,3 +124,11 @@ void RendererGL::viewResized(int width, int height) {
     
     Renderer::viewResized(width, height);
 }
+
+void RendererGL::cullFaces(bool enabled) {
+    if(enabled) {
+        glEnable(GL_CULL_FACE);
+    } else {
+        glDisable(GL_CULL_FACE);
+    }
+}

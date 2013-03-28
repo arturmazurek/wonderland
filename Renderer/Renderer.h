@@ -49,6 +49,8 @@ protected:
     virtual void useMaterial(Material* material) = 0;
     virtual void useObjectTransform(const Matrix& transform) = 0;
     
+    virtual void cullFaces(bool enabled) = 0;
+    
     MaterialCache* materialCache();
     
     const Camera* camera() const;
