@@ -8,7 +8,10 @@
 
 #include "StaticMesh.h"
 
+#include "Game/ServiceLocator.h"
+
 #include "MaterialInstance.h"
+#include "Renderer.h"
 #include "Surface.h"
 
 StaticMesh::StaticMesh() {
@@ -23,8 +26,8 @@ StaticMesh::~StaticMesh() {
     }
 }
 
-void StaticMesh::addSurface(SharedPtr<Surface> surface, UniquePtr<MaterialInstance> material) {
-    mSurfaces.add({surface, material.release()});
+void StaticMesh::addSurface(SharedPtr<Surface> surface, const String& material) {
+    mSurfaces.add({surface, material, nullptr});
 }
 
 StaticMesh::SurfacesIterator StaticMesh::surfacesIterator() {
@@ -37,6 +40,9 @@ MaterialInstance* StaticMesh::getMaterial(Surface* ofSurface) {
         SurfaceInfo& si = iter.next();
         
         if(si.surface == ofSurface) {
+            if(!si.material) {
+                si.material = ServiceLocator::renderer->createMaterial(si.materialName).release();
+            }
             return si.material;
         }
     }

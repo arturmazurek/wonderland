@@ -11,6 +11,7 @@
 
 #include "Util/LinkedList.h"
 #include "Util/SharedPtr.h"
+#include "Util/String.h"
 #include "Util/UniquePtr.h"
 
 class Surface;
@@ -21,16 +22,20 @@ public:
     StaticMesh();
     ~StaticMesh();
     
-    void addSurface(SharedPtr<Surface> surface, UniquePtr<MaterialInstance> material);
+    void addSurface(SharedPtr<Surface> surface, const String& materialName);
     
     MaterialInstance* getMaterial(Surface* ofSurface);
     
     struct SurfaceInfo {
-        SharedPtr<Surface> surface;
-        MaterialInstance* material;
+        SharedPtr<Surface>  surface;
+        String              materialName;
+        MaterialInstance*   material;
     };
     typedef LinkedList<SurfaceInfo>::Iterator SurfacesIterator;
     SurfacesIterator surfacesIterator();
+    
+private:
+    MaterialInstance* createMaterial(const String& materialName) const;
     
 private:
     LinkedList<SurfaceInfo> mSurfaces;

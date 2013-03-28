@@ -26,7 +26,7 @@ class CameraComponent : public ComponentBase {
 public:
     DEFINE_TYPE;
     
-    CameraComponent(Renderer* renderer);
+    CameraComponent();
     virtual ~CameraComponent();
     
     virtual void update(float dt) override;
@@ -41,7 +41,6 @@ private:
     void updateViewTransform(const Transform& transform);
     
 private:
-    Renderer*           mRenderer;
     SharedPtr<Camera>   mCamera;
 };
 

@@ -71,6 +71,7 @@
 		75B4E81F16C6D28600DD2F63 /* MaterialCacheGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 75B4E81D16C6D28500DD2F63 /* MaterialCacheGL.cpp */; };
 		75B4E82216C6DF3200DD2F63 /* Shaders in Resources */ = {isa = PBXBuildFile; fileRef = 75B4E82116C6DF3200DD2F63 /* Shaders */; };
 		75B4E82516C6E28F00DD2F63 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 75B4E82416C6E28F00DD2F63 /* Timer.cpp */; };
+		75BD85761704E82F004AAE9E /* ServiceLocator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 75BD85751704E82F004AAE9E /* ServiceLocator.cpp */; };
 		75C139A716BE91E900F81C99 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75C139A616BE91E900F81C99 /* Cocoa.framework */; };
 		75C139B116BE91E900F81C99 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 75C139AF16BE91E900F81C99 /* InfoPlist.strings */; };
 		75C139B316BE91E900F81C99 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C139B216BE91E900F81C99 /* main.m */; };
@@ -237,6 +238,8 @@
 		75B4E82116C6DF3200DD2F63 /* Shaders */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Shaders; path = ../../../wonderland/Resources/Shaders; sourceTree = "<group>"; };
 		75B4E82316C6E1D500DD2F63 /* Timer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Timer.h; path = ../../../wonderland/Util/Timer.h; sourceTree = "<group>"; };
 		75B4E82416C6E28F00DD2F63 /* Timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Timer.cpp; path = ../../../wonderland/Util/Timer.cpp; sourceTree = "<group>"; };
+		75BD85731704E69C004AAE9E /* ServiceLocator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ServiceLocator.h; path = ../../Game/ServiceLocator.h; sourceTree = "<group>"; };
+		75BD85751704E82F004AAE9E /* ServiceLocator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ServiceLocator.cpp; path = ../../Game/ServiceLocator.cpp; sourceTree = "<group>"; };
 		75BEAB9D16CAE9420067922C /* SurfaceData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SurfaceData.h; sourceTree = "<group>"; };
 		75C139A216BE91E900F81C99 /* Wonderland.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wonderland.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75C139A616BE91E900F81C99 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -389,6 +392,8 @@
 				75816E7616E258DD008FEB03 /* KeyboardHandler.cpp */,
 				75816E7716E258DD008FEB03 /* KeyboardHandler.h */,
 				75816E7A16E2898F008FEB03 /* KeyCodes.h */,
+				75BD85731704E69C004AAE9E /* ServiceLocator.h */,
+				75BD85751704E82F004AAE9E /* ServiceLocator.cpp */,
 			);
 			name = Game;
 			sourceTree = "<group>";
@@ -749,6 +754,7 @@
 				6D1AD93C16E6557900F0B3C7 /* MaterialParams.cpp in Sources */,
 				6DF0FF6516F34F91004934D1 /* Camera.cpp in Sources */,
 				6D0A7B4F16F77E7700303F86 /* CameraComponent.cpp in Sources */,
+				75BD85761704E82F004AAE9E /* ServiceLocator.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

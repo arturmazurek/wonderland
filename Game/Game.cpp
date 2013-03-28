@@ -27,10 +27,11 @@
 
 #include "GameInterface.h"
 #include "KeyboardHandler.h"
+#include "ServiceLocator.h"
 #include "SystemHandler.h"
 #include "SystemInfo.h"
 
-static void _addTestObj(World* world, Renderer* renderer) {
+static void _addTestObj(World* world) {
     GameObject* obj = new GameObject();
     StaticMeshComponent* smc = new StaticMeshComponent();
     obj->addComponent(smc);
@@ -43,7 +44,7 @@ static void _addTestObj(World* world, Renderer* renderer) {
     };
     
     Surface* surface = new Surface(UniqueArray<Vertex>(vertices), sizeof(vertices) / sizeof(*vertices));
-    mesh->addSurface(SharedPtr<Surface>(surface), renderer->createMaterial("position_color"));
+    mesh->addSurface(SharedPtr<Surface>(surface), "position_color");
     
     MaterialInstance* material = mesh->getMaterial(surface);
     float color[] = {1.f, 1.f, 0.f, 1.f};
@@ -57,9 +58,9 @@ static void _addTestObj(World* world, Renderer* renderer) {
 //    obj->transform.setScale(3);
 }
 
-static void _addTestCamera(World* world, Renderer* renderer) {
+static void _addTestCamera(World* world) {
     GameObject* obj = new GameObject();
-    CameraComponent* cc = new CameraComponent(renderer);
+    CameraComponent* cc = new CameraComponent();
     obj->addComponent(cc);
     
     cc->useCamera();
@@ -76,13 +77,14 @@ Game::Game() : mFirstFrame(true), mLastFrameTime(0), mWorld(nullptr) {
 }
 
 Game::~Game() {
+    ServiceLocator::renderer = nullptr;
 }
 
 UniquePtr<World> Game::createWorld() const {
     World* world = new World();
     
-    _addTestObj(world, mRenderer.get());
-    _addTestCamera(world, mRenderer.get());
+    _addTestObj(world);
+    _addTestCamera(world);
     
     return UniquePtr<World>(world);
 }
@@ -117,6 +119,7 @@ bool Game::initializeGame() {
         mRenderer = RendererFactory::createRenderer(RendererFactory::RENDERER_OPENGL);
         mRenderer->init();
     }
+    ServiceLocator::renderer = mRenderer.get();
     
     mGameInterface.reset(new GameInterface(&mMessageQueue));
     

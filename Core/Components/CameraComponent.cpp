@@ -10,10 +10,12 @@
 
 #include "Core/GameObject.h"
 
+#include "Game/ServiceLocator.h"
+
 #include "Renderer/Camera.h"
 #include "Renderer/Renderer.h"
 
-CameraComponent::CameraComponent(Renderer* renderer) : ComponentBase(), mRenderer(renderer), mCamera(new Camera()) {
+CameraComponent::CameraComponent() : ComponentBase(), mCamera(new Camera()) {
     
 }
 
@@ -30,7 +32,7 @@ void CameraComponent::update(float dt) {
 }
 
 void CameraComponent::useCamera() {
-    mRenderer->useCamera(mCamera);
+    ServiceLocator::renderer->useCamera(mCamera);
 }
 
 void CameraComponent::updateViewTransform(const Transform& transform) {  

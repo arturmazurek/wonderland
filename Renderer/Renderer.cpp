@@ -20,11 +20,11 @@
 #include "Surface.h"
 
 Renderer::Renderer() {
-    
+
 }
 
 Renderer::~Renderer() {
-    
+
 }
 
 void Renderer::init() {
