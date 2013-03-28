@@ -11,9 +11,29 @@
 
 #include "External/sparsehash/dense_hash_map"
 
+#include "Log.h"
+#include "String.h"
+
+
+
 template <class DataT>
 class HashMap {
-public:    
+private:
+    struct HashString {
+        size_t operator()(const char *s) const {
+            if(!s) {
+                return 0;
+            }
+            
+            size_t hash = 0;
+            for(int i = 0; s[i] != 0; ++i) {
+                hash = 65599 * hash + s[i];
+            }
+            return hash ^ (hash >> 16);
+        }
+    };
+    
+public:
     HashMap() {
         mMap.set_empty_key(nullptr);
     }
@@ -47,7 +67,7 @@ public:
         
     private:
         template <typename U> friend class HashMap;
-        typedef typename google::dense_hash_map<const char *, T, std::hash<const char*> >::iterator IteratorType;
+        typedef typename google::dense_hash_map<const char *, T, HashString >::iterator IteratorType;
         IteratorType mCurrent;
         IteratorType mEnd;
     };
@@ -60,9 +80,9 @@ public:
         result.mEnd = mMap.end();
         return result;
     }
-    
+
 private:
-    google::dense_hash_map<const char*, DataT, std::hash<const char*> > mMap;
+    google::dense_hash_map<const char*, DataT, HashString > mMap;
 };
 
 #endif
