@@ -26,8 +26,8 @@ StaticMesh::~StaticMesh() {
     }
 }
 
-void StaticMesh::addSurface(SharedPtr<Surface> surface, const String& material) {
-    mSurfaces.add({surface, material, nullptr});
+void StaticMesh::addSurface(SharedPtr<Surface> surface, const String& materialName) {
+    mSurfaces.add({surface, ServiceLocator::renderer->createMaterial(materialName).release()});
 }
 
 StaticMesh::SurfacesIterator StaticMesh::surfacesIterator() {
@@ -40,9 +40,6 @@ MaterialInstance* StaticMesh::getMaterial(Surface* ofSurface) {
         SurfaceInfo& si = iter.next();
         
         if(si.surface == ofSurface) {
-            if(!si.material) {
-                si.material = ServiceLocator::renderer->createMaterial(si.materialName).release();
-            }
             return si.material;
         }
     }

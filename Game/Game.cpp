@@ -8,6 +8,8 @@
 
 #include "Game.h"
 
+#include <cstring>
+
 #include "Core/Components/CameraComponent.h"
 #include "Core/Components/StaticMeshComponent.h"
 #include "Core/GameObject.h"
@@ -24,12 +26,51 @@
 #include "Util/UniqueArray.h"
 #include "Util/SharedPtr.h"
 #include "Util/Timer.h"
+#include "Util/Util.h"
 
 #include "GameInterface.h"
 #include "KeyboardHandler.h"
 #include "ServiceLocator.h"
 #include "SystemHandler.h"
 #include "SystemInfo.h"
+
+static GameObject* _createCube(float w) {
+    w *= 0.5f;
+    
+    static Vertex staticVertices[] = {
+        // +Z
+        { Vector(-w, -w, w), {0, 0, 1}, {0, 0} },
+        { Vector(w, -w, w), {0, 0, 1}, {0, 0} },
+        { Vector(-w, w, w), {0, 0, 1}, {0, 0} },
+        { Vector(w, -w, w), {0, 0, 1}, {0, 0} },
+        { Vector(w, w, w), {0, 0, 1}, {0, 0} },
+        { Vector(-w, w, w), {0, 0, 1}, {0, 0} },
+        
+        // +Y
+        { Vector(-w, w, -w), {0, 0, 1}, {0, 0} },
+        { Vector(w, w, -w), {0, 0, 1}, {0, 0} },
+        { Vector(-w, w, w), {0, 0, 1}, {0, 0} },
+        { Vector(w, w, -w), {0, 0, 1}, {0, 0} },
+        { Vector(w, w, w), {0, 0, 1}, {0, 0} },
+        { Vector(-w, w, w), {0, 0, 1}, {0, 0} }
+    };
+    
+    GameObject* cube = new GameObject();
+    StaticMeshComponent* smc = new StaticMeshComponent();
+    cube->addComponent(smc);
+    
+    StaticMesh* mesh = new StaticMesh();
+    
+//    UniqueArray<Vertex> vertices(new Vertex[ARRAY_SIZE(staticVertices)]);
+//    std::memcpy(vertices.get(), staticVertices, ARRAY_SIZE(staticVertices));
+//    SharedPtr<Surface> surface(new Surface(vertices, ARRAY_SIZE(staticVertices)));
+    SharedPtr<Surface> surface(new Surface(UniqueArray<Vertex>(staticVertices), ARRAY_SIZE(staticVertices)));
+    mesh->addSurface(surface, "simple");
+    
+    smc->setMesh(mesh);
+    
+    return cube;
+}
 
 static void _addTestObj(World* world) {
     GameObject* obj = new GameObject();
@@ -39,11 +80,11 @@ static void _addTestObj(World* world) {
     StaticMesh* mesh = new StaticMesh();
     static Vertex vertices[] = {
         { Vector(0, 0, 0), {0, 0, 1}, {0, 0} },
-        { Vector(50, 0, 0), {0, 0, 1}, {0, 0} },
-        { Vector(50, 50, 0), {0, 0, 1}, {0, 0} }
+        { Vector(5, 0, 0), {0, 0, 1}, {0, 0} },
+        { Vector(5, 5, 0), {0, 0, 1}, {0, 0} }
     };
     
-    Surface* surface = new Surface(UniqueArray<Vertex>(vertices), sizeof(vertices) / sizeof(*vertices));
+    Surface* surface = new Surface(UniqueArray<Vertex>(vertices), ARRAY_SIZE(vertices));
     mesh->addSurface(SharedPtr<Surface>(surface), "position_color");
     
     MaterialInstance* material = mesh->getMaterial(surface);
@@ -53,8 +94,8 @@ static void _addTestObj(World* world) {
     smc->setMesh(mesh);
     world->addObject(obj);
     
-    obj->transform.setPos(Vector(0, -20, 0));
-    obj->transform.setRotation(Rotator(0, 0, Math::toRad(90)));
+//    obj->transform.setPos(Vector(0, -20, 0));
+//    obj->transform.setRotation(Rotator(0, 0, Math::toRad(90)));
 //    obj->transform.setScale(3);
 }
 
@@ -67,7 +108,7 @@ static void _addTestCamera(World* world) {
     cc->getCamera()->setPerspective(Math::toRad(45.0f), 1.6f);
     cc->getCamera()->setClipPlanes(1, 200.0f);
     
-    cc->lookAt(Vector(0, 0, 150), Vector(0, 0, 0), Vector::unitY());
+    cc->lookAt(Vector(10, 0, 50), Vector(0, 0, 0), Vector::unitY());
     
     world->addObject(obj);
 }
@@ -85,6 +126,9 @@ UniquePtr<World> Game::createWorld() const {
     
     _addTestObj(world);
     _addTestCamera(world);
+    
+    GameObject* cube = _createCube(4.0f);
+    world->addObject(cube);
     
     return UniquePtr<World>(world);
 }

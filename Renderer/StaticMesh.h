@@ -28,7 +28,6 @@ public:
     
     struct SurfaceInfo {
         SharedPtr<Surface>  surface;
-        String              materialName;
         MaterialInstance*   material;
     };
     typedef LinkedList<SurfaceInfo>::Iterator SurfacesIterator;

@@ -8,8 +8,8 @@ out vec4 fragColor;
 
 void main() {
     vec4 color = uColor;
-    color.r = aPositionPs.x / 50;
-    color.g = aPositionPs.y / 50;
-    color.b = aPositionPs.z / 50;
+    color.r = aPositionPs.x / 5;
+    color.g = aPositionPs.y / 5;
+    color.b = aPositionPs.z / 5;
 	fragColor = color;
 }
