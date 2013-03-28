@@ -128,11 +128,14 @@ public:
     }
     
     static Rotator createLookAt(const Vector& newDirection, const Vector& up, const Vector& forward) {
-        Vector axis = cross(newDirection, forward);
-        axis.normalize();
-        
         float angle = dot(newDirection, forward);
         angle = (angle < 0 ? -1.0f : 1.0f) * std::acos(angle);
+        
+        Vector axis(up);
+        if(angle > Math::EPSILON) {
+            axis = cross(newDirection, forward);
+            axis.normalize();
+        }
         
         return Rotator(axis, angle);
     }
