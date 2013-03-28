@@ -205,15 +205,15 @@ public:
         return result;
     }
     
-    static Matrix createPerspective(float fovy, float aspect, float nearZ, float farZ) {
+    static Matrix createPerspective(float fovy, float aspect, float near, float far) {
         Matrix result;
         
-        float f = 1.f / std::tanf( (M_PI * fovy /180) * 0.5f);
-        result.m[0] = f / aspect;
+        float f = 1.f / std::tan(fovy * 0.5f);
+        result.m[index(0, 0)] = f / aspect;
         result.m[index(1, 1)] = f;
-        result.m[index(2, 2)] = (farZ + nearZ) / (nearZ - farZ);
+        result.m[index(2, 2)] = (far + near) / (near - far);
         result.m[index(3, 2)] = -1;
-        result.m[index(2, 3)] = (2 * farZ * nearZ) / (nearZ - farZ);
+        result.m[index(2, 3)] = (2 * far * near) / (near - far);
         
         return result;
     }

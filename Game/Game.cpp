@@ -54,7 +54,7 @@ static void _addTestObj(World* world, Renderer* renderer) {
     
     obj->transform.setPos(Vector(0, 0, 0));
 //    obj->transform.setRotation(Rotator(Math::toRad(15), 0, 0));
-    obj->transform.setScale(3);
+//    obj->transform.setScale(3);
 }
 
 static void _addTestCamera(World* world, Renderer* renderer) {
@@ -63,9 +63,10 @@ static void _addTestCamera(World* world, Renderer* renderer) {
     obj->addComponent(cc);
     
     cc->useCamera();
-    cc->getCamera()->setClipPlanes(0, 200.0f);
+    cc->getCamera()->setPerspective(Math::toRad(45.0f), 1.6f);
+    cc->getCamera()->setClipPlanes(1, 200.0f);
     
-    cc->lookAt(Vector(0, 0, 1), Vector(0, 0, 0), Vector::unitY());
+    cc->lookAt(Vector(0, 0, 100), Vector(0, 0, 0), Vector::unitY());
     
     world->addObject(obj);
 }
