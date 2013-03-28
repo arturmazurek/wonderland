@@ -43,7 +43,7 @@ static void _addTestObj(World* world, Renderer* renderer) {
     };
     
     Surface* surface = new Surface(UniqueArray<Vertex>(vertices), sizeof(vertices) / sizeof(*vertices));
-    mesh->addSurface(SharedPtr<Surface>(surface), renderer->createMaterial("simple"));
+    mesh->addSurface(SharedPtr<Surface>(surface), renderer->createMaterial("position_color"));
     
     MaterialInstance* material = mesh->getMaterial(surface);
     float color[] = {1.f, 1.f, 0.f, 1.f};

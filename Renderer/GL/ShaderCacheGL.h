@@ -25,7 +25,7 @@ private:
     ShaderCacheGL(ShaderCacheGL&);
     ShaderCacheGL& operator=(ShaderCacheGL&);
     
-    ShaderGL* loadShader(const String& name, ShaderGL::Type type) const;
+    ShaderGL* loadShader(const String& filename, ShaderGL::Type type) const;
     
     String fileName(String shaderName, ShaderGL::Type type) const;
     

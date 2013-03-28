@@ -28,11 +28,12 @@ ShaderCacheGL::~ShaderCacheGL() {
 }
 
 ShaderGL* ShaderCacheGL::getShader(const String& name, ShaderGL::Type type) {
-    ShaderGL* s = mShaders[fileName(name, type).data()];
+    String file = fileName(name, type);
+    ShaderGL* s = mShaders[file.data()];
     if(!s) {
-        s = loadShader(name, type);
+        s = loadShader(file, type);
         if(s) {
-            mShaders[fileName(name, type).data()] = s;
+            mShaders[file.data()] = s;
         } else {
             abort();
         }
@@ -40,8 +41,8 @@ ShaderGL* ShaderCacheGL::getShader(const String& name, ShaderGL::Type type) {
     return s;
 }
 
-ShaderGL* ShaderCacheGL::loadShader(const String& name, ShaderGL::Type type) const {
-    String fullPath = mBasePath  + "/" + fileName(name, type);
+ShaderGL* ShaderCacheGL::loadShader(const String& filename, ShaderGL::Type type) const {
+    String fullPath = mBasePath  + "/" + filename;
     
     String shaderSource = File::asString(fullPath);
     if(shaderSource.empty()) {
@@ -51,7 +52,7 @@ ShaderGL* ShaderCacheGL::loadShader(const String& name, ShaderGL::Type type) con
     
     ShaderGL* shader = new ShaderGL();
     if(!shader->compile(shaderSource.data(), type)) {
-        LOG("Could not compile shader named %s, of type 0x%x", name.data(), type);
+        LOG("Could not compile shader named %s, of type 0x%x", filename.data(), type);
         LOG("Info:\n%s\n", shader->getShaderError().c_str());
         
         delete shader;

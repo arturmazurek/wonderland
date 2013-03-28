@@ -76,7 +76,7 @@ bool MaterialGL::buildMaterial(ShaderGL* vertexShader, ShaderGL* fragmentShader)
     }
     
     if(fragmentShader->type != ShaderGL::FRAGMENT_SHADER) {
-        LOG("Given fragment shadef 0x%p is not a fragment shader", fragmentShader);
+        LOG("Given fragment shader 0x%p is not a fragment shader", fragmentShader);
         return false;
     }
     
