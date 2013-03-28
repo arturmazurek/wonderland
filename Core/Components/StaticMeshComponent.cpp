@@ -10,7 +10,7 @@
 
 #include "StaticMesh.h"
 
-StaticMeshComponent::StaticMeshComponent() {
+StaticMeshComponent::StaticMeshComponent() : ComponentBase() {
     
 }
 
@@ -18,7 +18,7 @@ StaticMeshComponent::~StaticMeshComponent() {
     
 }
 
-void StaticMeshComponent::update(float dt, GameObject* owner) {
+void StaticMeshComponent::update(float dt) {
     
 }
 

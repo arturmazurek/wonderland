@@ -33,6 +33,8 @@
 static void _addTestObj(World* world, Renderer* renderer) {
     GameObject* obj = new GameObject();
     StaticMeshComponent* smc = new StaticMeshComponent();
+    obj->addComponent(smc);
+    
     StaticMesh* mesh = new StaticMesh();
     static Vertex vertices[] = {
         { Vector(0, 0, 0), {0, 0, 1}, {0, 0} },
@@ -48,24 +50,22 @@ static void _addTestObj(World* world, Renderer* renderer) {
     material->setParameter("uColor", color, sizeof(color));
     
     smc->setMesh(mesh);
-    obj->addComponent(smc);
     world->addObject(obj);
     
     obj->transform.setPos(Vector(0, 0, 0));
-    obj->transform.setRotation(Rotator(Math::toRad(15), 0, 0));
+//    obj->transform.setRotation(Rotator(Math::toRad(15), 0, 0));
     obj->transform.setScale(3);
 }
 
 static void _addTestCamera(World* world, Renderer* renderer) {
     GameObject* obj = new GameObject();
     CameraComponent* cc = new CameraComponent(renderer);
-    
     obj->addComponent(cc);
+    
     cc->useCamera();
     cc->getCamera()->setClipPlanes(-200.0f, 200.0f);
     
-    obj->transform.setPos(Vector(25, 25, 0));
-    obj->transform.setRotation(Rotator(Math::toRad(15), 0, 0));
+    cc->lookAt(Vector(150, 0, -5), Vector::zero(), Vector::unitY());
     
     world->addObject(obj);
 }

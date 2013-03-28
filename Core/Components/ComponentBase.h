@@ -16,21 +16,29 @@
 class GameObject;
 
 class ComponentBase {
+    friend class GameObject;
 public:
     virtual ~ComponentBase();
     
     typedef int Type;
     virtual Type type() const = 0;
     
-    virtual void update(float dt, GameObject* owner) = 0;
+    virtual void update(float dt) = 0;
     
     LIST_LINK(ComponentBase) mOwnersLink;
 protected:
     ComponentBase();
     
+    GameObject* owner();
+    
 private:
     ComponentBase(const ComponentBase&);
     ComponentBase& operator=(const ComponentBase&);
+    
+    void setOwner(GameObject* owner);
+    
+private:
+    GameObject* mOwner;
 };
 
 #endif /* defined(__Wonderland__ComponentBase__) */

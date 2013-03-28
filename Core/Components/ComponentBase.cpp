@@ -8,10 +8,18 @@
 
 #include "ComponentBase.h"
 
-ComponentBase::ComponentBase() {
+ComponentBase::ComponentBase() : mOwner(nullptr) {
     
 }
 
 ComponentBase::~ComponentBase() {
 
+}
+
+GameObject* ComponentBase::owner() {
+    return mOwner;
+}
+
+void ComponentBase::setOwner(GameObject* owner) {
+    mOwner = owner;
 }

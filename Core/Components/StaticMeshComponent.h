@@ -21,7 +21,7 @@ public:
     StaticMeshComponent();
     ~StaticMeshComponent();
     
-    virtual void update(float dt, GameObject* owner) override;
+    virtual void update(float dt) override;
     
     StaticMesh* getMesh();
     void setMesh(StaticMesh* mesh);

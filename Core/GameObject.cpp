@@ -36,7 +36,7 @@ void GameObject::removeFromParent() {
 void GameObject::update(float timeInSeconds) {
     ComponentBase* component = mComponents.Head();
     while(component) {
-        component->update(timeInSeconds, this);
+        component->update(timeInSeconds);
         component = mComponents.Next(component);
     }
 }
@@ -47,6 +47,7 @@ void GameObject::addComponent(ComponentBase* component) {
         return;
     }
     mComponents.InsertTail(component);
+    component->setOwner(this);
 }
 
 bool GameObject::hasComponent(const ComponentBase* component) const {

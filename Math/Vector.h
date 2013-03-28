@@ -68,6 +68,26 @@ struct Vector {
         
         return *this;
     }
+    
+    static const Vector& zero() {
+        static Vector result;
+        return result;
+    }
+    
+    static const Vector& unitX() {
+        static Vector result(1.0f, 0.0f, 0.0f);
+        return result;
+    }
+    
+    static const Vector& unitY() {
+        static Vector result(0.0f, 1.0f, 0.0f);
+        return result;
+    }
+    
+    static const Vector& unitZ() {
+        static Vector result(0.0f, 0.0f, 1.0f);
+        return result;
+    }
 };
     
 static inline Vector operator-(const Vector& a) {

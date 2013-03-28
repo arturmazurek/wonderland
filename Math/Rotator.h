@@ -13,6 +13,7 @@
 
 #include "Math.h"
 #include "Quaternion.h"
+#include "Vector.h"
 
 class Rotator {
 public:
@@ -124,6 +125,16 @@ public:
     Rotator& inverse() {
         mQ = mQ.inverse();
         return *this;
+    }
+    
+    static Rotator createLookAt(const Vector& newDirection, const Vector& frontVector = Vector(1, 0, 0)) {
+        Vector axis = cross(newDirection, frontVector);
+        axis.normalize();
+        
+        float angle = dot(newDirection, frontVector);
+        angle = (angle < 0 ? -1.0f : 1.0f) * std::acos(angle);
+        
+        return Rotator(axis, angle);
     }
 
 private:

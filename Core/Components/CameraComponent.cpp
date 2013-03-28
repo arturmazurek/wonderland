@@ -13,7 +13,7 @@
 #include "Renderer/Camera.h"
 #include "Renderer/Renderer.h"
 
-CameraComponent::CameraComponent(Renderer* renderer) : mRenderer(renderer), mCamera(new Camera()) {
+CameraComponent::CameraComponent(Renderer* renderer) : ComponentBase(), mRenderer(renderer), mCamera(new Camera()) {
     
 }
 
@@ -21,12 +21,12 @@ CameraComponent::~CameraComponent() {
     
 }
 
-void CameraComponent::update(float dt, GameObject* owner) {
-    if(!owner->transformUpdated) {
+void CameraComponent::update(float dt) {
+    if(!owner()->transformUpdated) {
         return;
     }
     
-    updateViewTransform(owner->transform);
+    updateViewTransform(owner()->transform);
 }
 
 void CameraComponent::useCamera() {
@@ -39,4 +39,8 @@ void CameraComponent::updateViewTransform(const Transform& transform) {
 
 SharedPtr<Camera> CameraComponent::getCamera() {
     return mCamera;
+}
+
+void CameraComponent::lookAt(const Vector& position, const Vector& target, const Vector& up) {
+    owner()->transform.setPos(position);
 }

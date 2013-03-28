@@ -306,6 +306,7 @@ public:
         return result;
     }
     
+    
 };
     
 static Matrix operator*(const Matrix& mA, const Matrix& mB) {

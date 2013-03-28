@@ -12,6 +12,7 @@
 #include "Core/Transform.h"
 
 #include "Math/Matrix.h"
+#include "Math/Vector.h"
 
 #include "Util/SharedPtr.h"
 
@@ -28,7 +29,9 @@ public:
     CameraComponent(Renderer* renderer);
     virtual ~CameraComponent();
     
-    virtual void update(float dt, GameObject* owner);
+    virtual void update(float dt) override;
+    
+    void lookAt(const Vector& position, const Vector& target, const Vector& up);
     
     void useCamera();
     SharedPtr<Camera> getCamera();
