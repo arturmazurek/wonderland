@@ -34,7 +34,7 @@
 #include "SystemHandler.h"
 #include "SystemInfo.h"
 
-static GameObject* _createCube(float w) {
+static GameObject* _createCube(float w, float r, float g, float b) {
     w *= 0.5f;
     
     static Vertex staticVertices[] = {
@@ -46,13 +46,45 @@ static GameObject* _createCube(float w) {
         { Vector(w, w, w), {0, 0, 1}, {0, 0} },
         { Vector(-w, w, w), {0, 0, 1}, {0, 0} },
         
+        // -Z
+        { Vector(-w, -w, -w), {0, 0, 1}, {0, 0} },
+        { Vector(w, -w, -w), {0, 0, 1}, {0, 0} },
+        { Vector(-w, w, -w), {0, 0, 1}, {0, 0} },
+        { Vector(w, -w, -w), {0, 0, 1}, {0, 0} },
+        { Vector(w, w, -w), {0, 0, 1}, {0, 0} },
+        { Vector(-w, w, -w), {0, 0, 1}, {0, 0} },
+        
         // +Y
         { Vector(-w, w, -w), {0, 0, 1}, {0, 0} },
         { Vector(w, w, -w), {0, 0, 1}, {0, 0} },
         { Vector(-w, w, w), {0, 0, 1}, {0, 0} },
         { Vector(w, w, -w), {0, 0, 1}, {0, 0} },
         { Vector(w, w, w), {0, 0, 1}, {0, 0} },
-        { Vector(-w, w, w), {0, 0, 1}, {0, 0} }
+        { Vector(-w, w, w), {0, 0, 1}, {0, 0} },
+        
+        // -Y
+        { Vector(-w, -w, -w), {0, 0, 1}, {0, 0} },
+        { Vector(w, -w, -w), {0, 0, 1}, {0, 0} },
+        { Vector(-w, -w, w), {0, 0, 1}, {0, 0} },
+        { Vector(w, -w, -w), {0, 0, 1}, {0, 0} },
+        { Vector(w, -w, w), {0, 0, 1}, {0, 0} },
+        { Vector(-w, -w, w), {0, 0, 1}, {0, 0} },
+        
+        // +X
+        { Vector(w, -w, -w), {0, 0, 1}, {0, 0} },
+        { Vector(w, w, -w), {0, 0, 1}, {0, 0} },
+        { Vector(w, -w, w), {0, 0, 1}, {0, 0} },
+        { Vector(w, w, -w), {0, 0, 1}, {0, 0} },
+        { Vector(w, w, w), {0, 0, 1}, {0, 0} },
+        { Vector(w, -w, w), {0, 0, 1}, {0, 0} },
+        
+        // -X
+        { Vector(-w, -w, -w), {0, 0, 1}, {0, 0} },
+        { Vector(-w, w, -w), {0, 0, 1}, {0, 0} },
+        { Vector(-w, -w, w), {0, 0, 1}, {0, 0} },
+        { Vector(-w, w, -w), {0, 0, 1}, {0, 0} },
+        { Vector(-w, w, w), {0, 0, 1}, {0, 0} },
+        { Vector(-w, -w, w), {0, 0, 1}, {0, 0} }
     };
     
     GameObject* cube = new GameObject();
@@ -67,6 +99,10 @@ static GameObject* _createCube(float w) {
     SharedPtr<Surface> surface(new Surface(UniqueArray<Vertex>(staticVertices), ARRAY_SIZE(staticVertices)));
     mesh->addSurface(surface, "simple");
     
+    float colors[] = { r, g, b, 1.0f };
+    MaterialInstance* mi = mesh->getMaterial(surface.get());
+    mi->setParameter("uColor", colors, sizeof(colors));
+    
     smc->setMesh(mesh);
     
     return cube;
@@ -80,8 +116,8 @@ static void _addTestObj(World* world) {
     StaticMesh* mesh = new StaticMesh();
     static Vertex vertices[] = {
         { Vector(0, 0, 0), {0, 0, 1}, {0, 0} },
-        { Vector(5, 0, 0), {0, 0, 1}, {0, 0} },
-        { Vector(5, 5, 0), {0, 0, 1}, {0, 0} }
+        { Vector(3, 0, 0), {0, 0, 1}, {0, 0} },
+        { Vector(3, 3, 0), {0, 0, 1}, {0, 0} }
     };
     
     Surface* surface = new Surface(UniqueArray<Vertex>(vertices), ARRAY_SIZE(vertices));
@@ -96,6 +132,7 @@ static void _addTestObj(World* world) {
     
 //    obj->transform.setPos(Vector(0, -20, 0));
 //    obj->transform.setRotation(Rotator(0, 0, Math::toRad(90)));
+    obj->transform.setRotation(Rotator(Vector(0, 0, 1), 0.3f));
 //    obj->transform.setScale(3);
 }
 
@@ -108,7 +145,7 @@ static void _addTestCamera(World* world) {
     cc->getCamera()->setPerspective(Math::toRad(45.0f), 1.6f);
     cc->getCamera()->setClipPlanes(1, 200.0f);
     
-    cc->lookAt(Vector(10, 0, 50), Vector(0, 0, 0), Vector::unitY());
+    cc->lookAt(Vector(20, 20, 20), Vector(0, 0, 0), Vector::unitY());
     
     world->addObject(obj);
 }
@@ -127,7 +164,16 @@ UniquePtr<World> Game::createWorld() const {
     _addTestObj(world);
     _addTestCamera(world);
     
-    GameObject* cube = _createCube(4.0f);
+    GameObject* cube = _createCube(1.0f, 1, 0, 0);
+    cube->transform.setPos(Vector(10, 0, 0));
+    world->addObject(cube);
+    
+    cube = _createCube(1.0f, 0, 1, 0);
+    cube->transform.setPos(Vector(0, 10, 0));
+    world->addObject(cube);
+    
+    cube = _createCube(1.0f, 0, 0, 1);
+    cube->transform.setPos(Vector(0, 0, 10));
     world->addObject(cube);
     
     return UniquePtr<World>(world);

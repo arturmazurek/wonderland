@@ -133,7 +133,7 @@ public:
         
         Vector axis(up);
         if(angle > Math::EPSILON) {
-            axis = cross(newDirection, forward);
+            axis = cross(forward, newDirection);
             axis.normalize();
         }
         
