@@ -83,6 +83,7 @@ const Rotator& Transform::getRotation() const {
 
 void Transform::lookAt(const Vector& direction, const Vector& up, const Vector& forward) {
     mRotation = Rotator::createLookAt(direction, up, forward);
+    setDirty();
 }
 
 const Matrix& Transform::getMatrix() const {

@@ -145,7 +145,7 @@ static void _addTestCamera(World* world) {
     cc->getCamera()->setPerspective(Math::toRad(45.0f), 1.6f);
     cc->getCamera()->setClipPlanes(1, 200.0f);
     
-    cc->lookAt(Vector(20, 20, 20), Vector(0, 0, 0), Vector::unitY());
+    cc->lookAt(Vector(30, 30, 30), Vector(0, 0, 0), Vector::unitY());
     
     world->addObject(obj);
 }
